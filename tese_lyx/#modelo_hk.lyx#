@@ -442,8 +442,50 @@ ou
 .
 \end_layout
 
+\begin_layout Standard
+O algoritmo de otimização utilizado no treinamento foi o Adam, com os parâmetros
+ default (alpha, beta_1, beta_2, epsilon ?) 
+\end_layout
+
 \begin_layout Section
 Resultados 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/chart.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
