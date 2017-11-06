@@ -1,0 +1,671 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass classicthesis
+\use_default_options true
+\maintain_unincluded_children false
+\language brazilian
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command biber
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language swedish
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Métodos de atribuição de estrutura secundária
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:template"
+
+\end_inset
+
+Ibis redibis numquam peribis in bello.
+\end_layout
+
+\begin_layout Section
+Introdução
+\end_layout
+
+\begin_layout Subsection
+DSSP
+\end_layout
+
+\begin_layout Standard
+Em 1983, Kabsch e Sander publicaram o algoritmo de atribuição de estruturas
+ secundárias de proteínas que viria a ser o mais utilizado até os dias atuais,
+ o DSSP (
+\emph on
+Dictionary of Protein Secondary Structure
+\emph default
+).
+ 
+\end_layout
+
+\begin_layout Standard
+No trabalho, os autores afirmam que a atribuição de estruturas secundárias
+ a partir das coordenadas atômicas de estruturas proteicas é um problema
+ de reconhecimento de padrões.
+ Nesse contexto, eles optaram por identificar esses padrões através de ligações
+ de hidrogênio entre átomos da cadeia principal ao invés de ângulos 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+.
+ ou de posições relativas de 
+\begin_inset Formula $C_{\alpha}$
+\end_inset
+
+ .
+ A justificativa utilizada foi que a presença, ou ausência, de ligações
+ de hidrogênio poderiam ser avaliadas por um simples critério energético,
+ enquanto que outras características precisariam do ajuste de um número
+ maior de parâmetros.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Na época havia um pouco mais de 100 estruturas depositadas
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As ligações de hidrogênio foram definidas por eles utilizando um modelo
+ eletrostático.
+ Nesse modelo, uma ligação de hidrogênio 
+\begin_inset Formula $HB$
+\end_inset
+
+ ocorrerá se, e somente se, a energia 
+\begin_inset Formula $E$
+\end_inset
+
+ for menor que 
+\begin_inset Formula $-0.5kcal/mol$
+\end_inset
+
+.
+ Para o cálculo são utilizadas as cargas parciais 
+\begin_inset Formula $+q_{1},-q_{1}$
+\end_inset
+
+ nos átomos 
+\begin_inset Formula $C$
+\end_inset
+
+ e 
+\begin_inset Formula $O$
+\end_inset
+
+, e 
+\begin_inset Formula $-q_{2},+q_{2}$
+\end_inset
+
+ nos átomos 
+\begin_inset Formula $N$
+\end_inset
+
+ e 
+\begin_inset Formula $H$
+\end_inset
+
+, onde 
+\begin_inset Formula $q_{1}=0.42e$
+\end_inset
+
+ e 
+\begin_inset Formula $q_{2}=0.20e$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+E<-0.5kcal/mol\implies HB=\text{Verdade}\intertext{onde}E=q_{1}q_{2}(1/r(ON)+1/r(CH)-1/r(OH)-1/r(CN))*f\label{eq:dssp_energy}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Na equação 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dssp_energy"
+
+\end_inset
+
+, 
+\begin_inset Formula $r(AB)$
+\end_inset
+
+ é a distância interatômica entre A e B em ångström e o fator dimensional
+ 
+\begin_inset Formula $f=332$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Os autores afirmam que, por este modelo, uma boa ligação de hidrogênio teria
+ aproximadamente 
+\begin_inset Formula $-3kcal/mol$
+\end_inset
+
+.
+ Assim, a escolha de um limiar em 
+\begin_inset Formula $-0.5kcal/mol$
+\end_inset
+
+ torna o modelo mais tolerante à erros nas coordenadas atômicas e à ligações
+ de hidrogênios bifurcadas 
+\backslash
+citep{Kabsch1983}.
+\end_layout
+
+\begin_layout Standard
+Uma vez definido o modelo para identificar ligações de hidrogênio, essas
+ são testadas e anotadas na cadeia polipeptídica em duas classes ou padrões
+ elementares: (1) padrão
+\emph on
+ n-Turn
+\emph default
+ e (2) padrão 
+\emph on
+Bridge
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+O padrão 
+\emph on
+n-Turn
+\emph default
+, onde 
+\begin_inset Formula $n\in\{3,4,5\}$
+\end_inset
+
+, apresentam uma ligação de hidrogênio entre o 
+\begin_inset Formula $CO$
+\end_inset
+
+ do resíduo 
+\begin_inset Formula $i$
+\end_inset
+
+ e o 
+\begin_inset Formula $NH$
+\end_inset
+
+ do resíduo 
+\begin_inset Formula $i+n$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\textit{n-Turn}\impliedby HB(i,\,i+n),\,n\in\{3,\,4,\,5\}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+O padrão 
+\emph on
+Bridge
+\emph default
+ pode ocorrer de duas formas, a paralela e a antiparalela.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\textit{Paralela}\impliedby[HB(i-1,j)\land HB(j,i+1)]\lor[HB(j-1,i)\land HB(i,j+1)]\\
+\textit{Antiparalela}\impliedby[HB(i,j)\land HB(j,i)]\lor[HB(i-1,j+1)\land HB(j-1,i+1)]
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sendo que as sequências 
+\begin_inset Formula $i-1,i,i+1$
+\end_inset
+
+ e 
+\begin_inset Formula $j-1,j,j+1$
+\end_inset
+
+ não apresentam sobreposição (
+\emph on
+overlap
+\emph default
+) de resíduos entre si.
+\end_layout
+
+\begin_layout Standard
+As ocorrências dos padrões elementares 
+\emph on
+n-Turn
+\emph default
+ e 
+\emph on
+Bridge
+\emph default
+ ao longo da cadeia polipeptídica é utilizada para a atribuição dos elementos
+ de estrutura secundária.
+ Como exemplos, a repetição de padrões 
+\emph on
+4-Turn
+\emph default
+ consecutivos indica a ocorrência de uma hélice 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, enquanto que resíduos consecutivos que apresentem padrões 
+\emph on
+Bridge
+\emph default
+ formam uma fita de uma folha 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+No trabalho, os autores mencionam que esse algoritmo proposto produz hélices
+ mais curtas, com um resíduo a menos em cada extremidade, em relação a anotação
+ seguindo as regras da IUPAC.
+ Outra característica do algoritmo é que hélices que apresentem algumas
+ ligações de hidrogênio ausentes, são mantidas como uma hélice única ao
+ invés de múltiplas hélices com 
+\emph on
+kinks
+\emph default
+.
+ O mesmo ocorre com resíduos que formam 
+\emph on
+bulges
+\emph default
+ em fitas, sendo os mesmo também anotados como parte da fita.
+ 
+\end_layout
+
+\begin_layout Subsection
+STRIDE
+\end_layout
+
+\begin_layout Subsection
+KAKSI
+\end_layout
+
+\begin_layout Standard
+KAKSI é um método de atribuição de estruturas secundárias proposto por Martin
+ e colaboradores 
+\backslash
+citeyear{Martin2005}.
+ Esse método foi desenvolvido utilizando padrões de distâncias entre 
+\begin_inset Formula $C_{\alpha}$
+\end_inset
+
+ e de ângulos 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Resumidamente, a heurística de atribuição de estrutura secundárias busca
+ primeiramente por hélices, sendo que um resíduo é classificado como hélice
+ se atender aos critérios de distâncias entre 
+\begin_inset Formula $C_{\alpha}$
+\end_inset
+
+ ou aos critérios de ângulos 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+.
+ Em seguida, é feito a classificação dos resíduos em fitas.
+ Somente os resíduos não-hélice podem ser classificados em fitas, e para
+ tal, eles precisam atender aos critérios de distância entre
+\begin_inset Formula $C_{\alpha}$
+\end_inset
+
+ e aos critérios de ângulos 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Critérios para classificação de hélices:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Distância entre 
+\begin_inset Formula $C_{\alpha}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Todas as distâncias entre 
+\begin_inset Formula $C_{\alpha}$
+\end_inset
+
+ em uma janela de seis resíduos [i,i+5] precisam estar dentro do intervalo
+\begin_inset Formula $[M_{\alpha}-\varepsilon_{H}\times SD_{\alpha},M_{\alpha}+\varepsilon_{H}\times SD_{\alpha}]$
+\end_inset
+
+, onde 
+\begin_inset Formula $M_{\alpha}$
+\end_inset
+
+ e 
+\begin_inset Formula $SD_{\alpha}$
+\end_inset
+
+ são respectivamente a média e o desvio padrão observado em hélices 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Ângulos 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout 
+Todos os pares de ângulos 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ em uma janela de quatro resíduos precisam satisfazer as condições: 
+\begin_inset Formula $\Phi<0\text{°}$
+\end_inset
+
+ e 
+\begin_inset Formula $-90\text{°}<\Psi<60\text{°}$
+\end_inset
+
+.
+ Além disso, ao menos um par de ângulos precisa estar em uma região densamente
+ povoada, com densidade
+\begin_inset Formula $>\sigma_{H}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Critérios para classificação de folhas:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Distância entre 
+\begin_inset Formula $C_{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout 
+Todos as distâncias entre 
+\begin_inset Formula $C_{\alpha}$
+\end_inset
+
+ em duas janelas de três resíduos precisam estar no intervalo 
+\begin_inset Formula $[M_{\beta}-\varepsilon_{b}\times SD_{\beta},M_{\beta}+\varepsilon_{b}\times SD_{\beta}]$
+\end_inset
+
+, onde 
+\begin_inset Formula $M_{\beta}$
+\end_inset
+
+ e 
+\begin_inset Formula $SD_{\beta}$
+\end_inset
+
+ são respectivamente a média e o desvio padrão observado em folhas 
+\begin_inset Formula $\beta$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Ângulos 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout 
+Cada par de ângulos 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ presente na zona povoada de resíduos em folhas
+\begin_inset Formula $\beta$
+\end_inset
+
+ incrementa um contador em 1.
+ Quando um resíduo central da janela apresenta 
+\begin_inset Formula $-120\text{°}<\Psi<50\text{°}$
+\end_inset
+
+, o contador é reiniciado em zero.
+ Esse critério é satisfeito se o contator 
+\begin_inset Formula $\geq\sigma_{b}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+Além destes critérios, há critérios para detecção de 
+\emph on
+kink
+\emph default
+ em hélices e um critério de correção de segmentos, que altera um resíduo
+ para o estado de coil quando ocorre continuidade de segmentos hélice-fita,
+ ou fita-hélice, tornando as hélices 1 resíduo menor.
+\end_layout
+
+\begin_layout Standard
+Os vários parâmetros necessários ao método foram ajustados empiricamente
+ utilizando um conjunto de 2880 domínios estruturais, com identidade sequencial
+ inferior à 40%, resolvidos por cristalografia e com resolução superior
+ a 2.25Å.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+% Distance criterion for β-sheets (C3).
+ All the Cα distances in % two sliding windows of length w3 (here w3 = 3)
+ must be in % the interval [Mβ - εb × SDβ; Mβ + εb × SDβ].
+ Mβ and SDβ represent the mean and standard deviation of Cα distance % distribut
+ions in β-sheets.
+\end_layout
+
+\begin_layout Plain Layout
+% Angle criterion for β-sheets (C4).
+ For each (Φ/Ψ) angle % pair falling in the populated zone of the Ramachandran
+ % map (density > 0), we increment a counter score(sheet) by % 1.
+ If a (Φ/Ψ) angle pair of the central residue of a sliding % window verifies
+ -120° < Ψ < 50°, then score(sheet) is reset % to zero.
+ The final score(sheet) must be greater or equal to σ
+\end_layout
+
+\begin_layout Plain Layout
+% Contiguous segments correction, criterion (C5).
+ If a helix % and a strand are adjacent, a coil is introduced in between,
+ % shortening the helix by one residue.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+PROSS
+\end_layout
+
+\begin_layout Section
+Materiais e Métodos
+\end_layout
+
+\begin_layout Section
+Resultados
+\end_layout
+
+\begin_layout Section
+Conclusão
+\end_layout
+
+\end_body
+\end_document

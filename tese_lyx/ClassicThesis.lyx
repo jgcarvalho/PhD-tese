@@ -366,6 +366,16 @@ Desenvolvimento
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
+filename "metodos_atribuicao.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
 filename "modelo_hk.lyx"
 
 \end_inset
