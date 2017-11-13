@@ -75,16 +75,6 @@
 Métodos de atribuição de estrutura secundária
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "cha:template"
-
-\end_inset
-
-Ibis redibis numquam peribis in bello.
-\end_layout
-
 \begin_layout Section
 Introdução
 \end_layout
@@ -117,27 +107,29 @@ No trabalho, os autores afirmam que a atribuição de estruturas secundárias
 \begin_inset Formula $\Psi$
 \end_inset
 
-.
  ou de posições relativas de 
 \begin_inset Formula $C_{\alpha}$
 \end_inset
 
- .
+.
  A justificativa utilizada foi que a presença, ou ausência, de ligações
  de hidrogênio poderiam ser avaliadas por um simples critério energético,
- enquanto que outras características precisariam do ajuste de um número
- maior de parâmetros.
- 
-\begin_inset Note Note
+ enquanto as outras características precisariam do ajuste de um número maior
+ de parâmetros.
+\begin_inset Marginal
 status open
 
 \begin_layout Plain Layout
-Na época havia um pouco mais de 100 estruturas depositadas
+Na época havia um pouco mais de 100 estruturas depositadas no 
+\emph on
+Protein Data Bank
+\emph default
+.
 \end_layout
 
 \end_inset
 
-
+ 
 \end_layout
 
 \begin_layout Standard
@@ -236,8 +228,13 @@ Os autores afirmam que, por este modelo, uma boa ligação de hidrogênio teria
 
  torna o modelo mais tolerante à erros nas coordenadas atômicas e à ligações
  de hidrogênios bifurcadas 
-\backslash
-citep{Kabsch1983}.
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kabsch_dictionary_1983"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -287,7 +284,7 @@ n-Turn
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
-\textit{n-Turn}\impliedby Hbond(i,\,i+n),\,n\in\{3,\,4,\,5\}
+\textit{n-Turn}\impliedby HB(i,\,i+n),\,n\in\{3,\,4,\,5\}
 \end{gather}
 
 \end_inset
@@ -306,8 +303,8 @@ Bridge
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
-\textit{Parallel Bridge}\impliedby[Hbond(i-1,j)\land Hbond(j,i+1)]\lor[Hbond(j-1,i)\land Hbond(i,j+1)]\\
-\textit{Antiparallel Bridge}\impliedby[Hbond(i,j)\land Hbond(j,i)]\lor[Hbond(i-1,j+1)\land Hbond(j-1,i+1)]
+\textit{Paralela}\impliedby[HB(i-1,j)\land HB(j,i+1)]\lor[HB(j-1,i)\land HB(i,j+1)]\\
+\textit{Antiparalela}\impliedby[HB(i,j)\land HB(j,i)]\lor[HB(i-1,j+1)\land HB(j-1,i+1)]
 \end{gather}
 
 \end_inset
@@ -340,17 +337,17 @@ n-Turn
 \emph on
 Bridge
 \emph default
- ao longo da cadeia polipeptídica é utilizada para a atribuição dos elementos
+ ao longo da cadeia polipeptídica são utilizadas para a atribuição dos elementos
  de estrutura secundária.
- Como exemplos, a repetição de padrões 
+ Como exemplos, repetições consecutivas do padrão 
 \emph on
 4-Turn
 \emph default
- consecutivos indica a ocorrência de uma hélice 
+ indicam a ocorrência de uma hélice 
 \begin_inset Formula $\alpha$
 \end_inset
 
-, enquanto que resíduos consecutivos que apresentem padrões 
+, enquanto resíduos consecutivos com padrão 
 \emph on
 Bridge
 \emph default
@@ -382,6 +379,70 @@ bulges
 
 \begin_layout Subsection
 STRIDE
+\end_layout
+
+\begin_layout Standard
+O método de atribuição de estrutura secundárias STRIDE foi desenvolvido
+ com o objetivo de reproduzir, com o máximo de acurácia possível, a anotação
+ humana feita por cristalógrafos.
+ No método são utilizados como critérios tanto as energias de ligações de
+ hidrogênio quanto a propensão dos ângulos torcionais 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ da cadeia polipeptídica.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E_{hb}=E_{r}*E_{t}*E_{p}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E_{r}=\frac{-3E_{m}r_{m}⁸}{r^{8}}+\frac{-4E_{m}r_{m}⁶}{r^{6}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E_{p}=\cos\text{²p}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E_{t}=\begin{cases}
+(0.9+0.1\sin2t_{i})\cos t_{0} & 0<t_{i}<90\text{°}\\
+K_{1}(K_{2}-\cos²t_{i})³\cos t_{0} & 90\text{°}<t_{i}<110\text{°}\\
+0 & t_{i}>110\text{°}
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -439,12 +500,6 @@ Resumidamente, a heurística de atribuição de estrutura secundárias busca
 \end_inset
 
 .
-\end_layout
-
-\begin_layout 
-
-\backslash
-begin{enumerate}
 \end_layout
 
 \begin_layout Enumerate
@@ -509,11 +564,11 @@ Todos os pares de ângulos
 \end_inset
 
  em uma janela de quatro resíduos precisam satisfazer as condições: 
-\begin_inset Formula $\Phi<0\degree$
+\begin_inset Formula $\Phi<0\text{°}$
 \end_inset
 
  e 
-\begin_inset Formula $-90\degree<\Psi<60\degree$
+\begin_inset Formula $-90\text{°}<\Psi<60\text{°}$
 \end_inset
 
 .
@@ -594,7 +649,7 @@ Cada par de ângulos
 
  incrementa um contador em 1.
  Quando um resíduo central da janela apresenta 
-\begin_inset Formula $-120\degree<\Psi<50\degree$
+\begin_inset Formula $-120\text{°}<\Psi<50\text{°}$
 \end_inset
 
 , o contador é reiniciado em zero.
@@ -621,11 +676,15 @@ kink
 Os vários parâmetros necessários ao método foram ajustados empiricamente
  utilizando um conjunto de 2880 domínios estruturais, com identidade sequencial
  inferior à 40%, resolvidos por cristalografia e com resolução superior
- a 2.25.
+ a 2.25Å.
  
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 % Distance criterion for β-sheets (C3).
  All the Cα distances in % two sliding windows of length w3 (here w3 = 3)
  must be in % the interval [Mβ - εb × SDβ; Mβ + εb × SDβ].
@@ -633,7 +692,7 @@ Os vários parâmetros necessários ao método foram ajustados empiricamente
 ions in β-sheets.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 % Angle criterion for β-sheets (C4).
  For each (Φ/Ψ) angle % pair falling in the populated zone of the Ramachandran
  % map (density > 0), we increment a counter score(sheet) by % 1.
@@ -642,10 +701,15 @@ ions in β-sheets.
  The final score(sheet) must be greater or equal to σ
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 % Contiguous segments correction, criterion (C5).
  If a helix % and a strand are adjacent, a coil is introduced in between,
  % shortening the helix by one residue.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -656,8 +720,353 @@ PROSS
 Materiais e Métodos
 \end_layout
 
+\begin_layout Standard
+Diferentemente de vários métodos publicados de predição de estrutura secundária
+ que utilizaram os resultados de atribuição provenientes de apenas um método,
+ comumente o DSSP, nós optamos por utilizar os resultados de um consenso
+ entre quatro métodos.
+ Consequentemente, é importante analisar como esses métodos diferem entre
+ si.
+\end_layout
+
+\begin_layout Standard
+As análises a seguir foram feitas entre os resíduos de 6749 proteínas do
+ banco de dados Top8000-HOM50 que tiveram estrutura secundária atribuída
+ por todos os métodos.
+ Isso excluí 5,19% dos resíduos que não tiveram a estrutura secundária atribuída
+ por não terem sido visualizados na estrutura experimental e 0,05% dos resíduos
+ que não tiveram sua estrutura atribuída por um ou mais programas devido
+ à possíveis falhas dos programas.
+ 
+\end_layout
+
+\begin_layout Standard
+Notamos que, entre os quatro métodos de atribuição analisados, há a ocorrência
+ de uma variação considerável entre as estruturas secundárias atribuídas
+ para cada resíduo.
+ A figura 
+\backslash
+ref{fig:comparacao_metodos_atribuicao} demonstra a similaridade observada
+ entre os métodos.
+ Como esperado, a maior similaridade é observada entre os métodos DSSP e
+ STRIDE, uma vez que o último é inspirado no primeiro.
+ Entretanto, a similaridade entre os demais métodos encontra-se na faixa
+ entre 83% e 85%.
+ A porcentagem de resíduos que apresentaram consenso entre os quatro métodos
+ foi de apenas 74,43%.
+\end_layout
+
 \begin_layout Section
 Resultados
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/comparacao_metodos_atribuicao.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Similaridade entre as estruturas secundárias atribuídas para cada resíduo
+ entre os quatro métodos de atribuição de estruturas secundárias: DSSP,
+ STRIDE, KAKSI e PROSS.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/distribuicao_comprimento_helices.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Distribuição do comprimento de hélices por método de atribuição de estrutura
+ secundária.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/distribuicao_comprimento_fitas.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Distribuição do comprimento de fitas por método de atribuição de estrutura
+ secundária.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Quais aminoácidos sofrem maior variação entre os métodos? * normalizar pelo
+ número de aminoácidos de cada tipo * removendo residuos nao visualizados
+ no cristal.
+ SCRIPT dissenso_x_aminoacido.py 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/dissenso_aminoacido.svg
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Onde ocorrem a falta de consenso? * Se for entre resíduos com o mesmo tipo
+ de estrutura há separação/união da estrutura * Se for entre resíduos com
+ diferentes tipos de estrutura há encurtamento/elongamento da estrutura
+ * Pode ainda ser no inicio/fim da cadeia 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/dissenso_eventos.svg
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Há relação entre o número de resíduos dissensos vs tamanho da estrutura?
+ * Proteinas mais curtas ou mais longas são mais variáveis? SCRIPT: not_consensu
+s_VS_length.py OUTLIER PDB ID: 3Q23 1.8A
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/not_consensus_vs_length.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Quantos resíduos apresentam o dissenso: - helice/fita - helice/coil - fita/coil
+ - helice/fita/coil * Isso mostra os principais problemas SCRIPT: tipos_de_disse
+nso.py
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/tipos_de_dissenso.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
