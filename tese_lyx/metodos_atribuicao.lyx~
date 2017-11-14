@@ -761,6 +761,98 @@ Resultados
 \end_layout
 
 \begin_layout Standard
+A comparação das estruturas secundárias atribuídas pelos métodos DSSP, STRIDE,
+ KAKSI e PROSS demonstrou que há diferenças significativas entre eles.
+ Aproximadamente 25%, de 1,7 milhão de resíduos que compõe o conjunto de
+ dados, não apresentaram consenso na estrutura secundária atribuída pelos
+ quatro métodos (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Estrutura-secundária-atribuída"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Quantos resíduos tem atribuição igual entre os métodos e quantos são diferentes?
+ Não visualizados? Erros? SCRIPT: atribuicao_count_res.py
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/atribuicao_count_res.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Estrutura secundária atribuída aos resíduos das proteínas do conjunto de
+ dados.
+ Aproximadamente 29,5% dos resíduos foram classificados como hélices (H);
+ 14,5% como fitas (E); 26,5% como coils (C); 24,2% não apresentam consenso
+ entre os quatro métodos de atribuição (Dissenso); 5,2% são resíduos não
+ visualizados na estrutura atômica resolvida e 0,04% dos resíduos apresentaram
+ algum problema que durante a atribuição da estrutura secundária por pelo
+ menos um dos métodos (Erro*).
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Estrutura-secundária-atribuída"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As similaridades obtidas pela comparação pareada dos métodos de atribuição
+ indicam que, com exceção do DSSP x STRIDE, aproximadamente 85% dos resíduos
+ apresentam consenso entre dois métodos (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Similaridade-atribuiçao"
+
+\end_inset
+
+).
+ Considerando a comparação conjunta dos quatro métodos que demonstra consenso
+ em 74,4% dos resíduos podemos inferir que as posições de dissenso variam
+ entre os métodos.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -783,11 +875,104 @@ status open
 Similaridade entre as estruturas secundárias atribuídas para cada resíduo
  entre os quatro métodos de atribuição de estruturas secundárias: DSSP,
  STRIDE, KAKSI e PROSS.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Similaridade-atribuiçao"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Características das estruturas secundárias atribuídas
+\end_layout
+
+\begin_layout Standard
+Em relação ao número de estruturas secundárias atribuídas, o DSSP atribui
+ o maior número de hélices, ~67 mil.
+ Esse valor é apenas 5,7% maior que o número atribuído pelo STRIDE, mas
+ 31,6% maior que o KAKSI e 42% maior que o atribuído pelo PROSS.
+ Quanto as fitas, o método que atribui o maior número foi o STRIDE ~68mil.
+ O número de fitas atribuídas por método apresentou uma variação menor que
+ as hélices.
+ O número de fitas atribuídas pelo DSSP foi apenas 0,03% menor, pelo PROSS,
+ 0,3% menor e pelo KAKSI, 0,5% menor.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Qual a variação no número de estruturas secundarias? SCRIPT atribuicao_n_ss.py
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/atribuicao_n_ss.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Número de estruturas secundárias atribuídas pelos métodos DSSP, STRIDE,
+ KAKSI e PROSS.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+figuras no junyper.
+ Esses boxplots não ficaram tão bons.
 \end_layout
 
 \end_inset
