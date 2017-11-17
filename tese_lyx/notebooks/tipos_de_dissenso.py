@@ -85,7 +85,7 @@ def main():
     for k in tipo.keys():
         tipo[k] /= total
     print(tipo)
-    plot_bar(tipo)
+    # plot_bar(tipo)
     
 
 if __name__ == '__main__':

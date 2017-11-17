@@ -716,11 +716,150 @@ ions in β-sheets.
 PROSS
 \end_layout
 
+\begin_layout Standard
+PROSS é um método de atribuição de estruturas secundárias que utiliza somente
+ os ângulos torcionais 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ da cadeia principal.
+ Originalmente, cada resíduo era classificado em um mesoestado (
+\emph on
+mesostate
+\emph default
+) de acordo com o valor de seus ângulos torcionais 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "srinivasan_physical_1999,gong_does_2005"
+
+\end_inset
+
+.
+ Cada mesoestado equivale a um quadrante de dimensões 60° x 60°, totalizando
+ 36 mesoestados possíveis (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pross_coarse"
+
+\end_inset
+
+).
+ Em seguida, seguindo um conjunto de regras, cada resíduo era classificado
+ em hélice 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, folha 
+\begin_inset Formula $\beta$
+\end_inset
+
+, volta 
+\begin_inset Formula $\beta$
+\end_inset
+
+, P
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+II
+\end_layout
+
+\end_inset
+
+ou coil.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/pross_coarse.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pross_coarse"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/pross_fine.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Materiais e Métodos
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Diferentemente de vários métodos publicados de predição de estrutura secundária
  que utilizaram os resultados de atribuição provenientes de apenas um método,
  comumente o DSSP, nós optamos por utilizar os resultados de um consenso
@@ -729,7 +868,7 @@ Diferentemente de vários métodos publicados de predição de estrutura secund�
  si.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 As análises a seguir foram feitas entre os resíduos de 6749 proteínas do
  banco de dados Top8000-HOM50 que tiveram estrutura secundária atribuída
  por todos os métodos.
@@ -740,7 +879,7 @@ As análises a seguir foram feitas entre os resíduos de 6749 proteínas do
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Notamos que, entre os quatro métodos de atribuição analisados, há a ocorrência
  de uma variação considerável entre as estruturas secundárias atribuídas
  para cada resíduo.
@@ -754,6 +893,11 @@ ref{fig:comparacao_metodos_atribuicao} demonstra a similaridade observada
  entre 83% e 85%.
  A porcentagem de resíduos que apresentaram consenso entre os quatro métodos
  foi de apenas 74,43%.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -908,7 +1052,15 @@ Em relação ao número de estruturas secundárias atribuídas, o DSSP atribui
  O número de fitas atribuídas por método apresentou uma variação menor que
  as hélices.
  O número de fitas atribuídas pelo DSSP foi apenas 0,03% menor, pelo PROSS,
- 0,3% menor e pelo KAKSI, 0,5% menor.
+ 0,3% menor e pelo KAKSI, 0,5% menor (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Número-de-estruturas"
+
+\end_inset
+
+).
+ 
 \end_layout
 
 \begin_layout Standard
@@ -946,6 +1098,14 @@ status open
 \begin_layout Plain Layout
 Número de estruturas secundárias atribuídas pelos métodos DSSP, STRIDE,
  KAKSI e PROSS.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Número-de-estruturas"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -963,11 +1123,37 @@ Número de estruturas secundárias atribuídas pelos métodos DSSP, STRIDE,
 \end_layout
 
 \begin_layout Standard
+A distribuição do comprimento das estruturas secundárias também difere entre
+ os métodos de atribuição.
+ A mediana do comprimento das hélices atribuídas pelo DSSP é 8, 9 no STRIDE,
+ 10 no PROSS e de 12 resíduos no KAKSI (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-do-comprimento-helices"
+
+\end_inset
+
+).
+ Hélices mais curtas são mais frequentes tanto no DSSP quanto no STRIDE.
+ Caso duas ou mais hélices curtas sejam unidas e anotadas como uma hélice
+ longa por outros métodos, teríamos um menor número de hélices.
+ Isso explicaria em parte o fato dos métodos KAKSI e PROSS anotarem um menor
+ número de hélices (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Número-de-estruturas"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-SCRIPT:  junyper
+SCRIPT: atribuicao_len_ss.py
 \end_layout
 
 \end_inset
@@ -983,7 +1169,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename figures/distribuicao_comprimento_helices.pdf
+	filename figures/atribuicao_len_ss_H.pdf
 	width 100line%
 
 \end_inset
@@ -997,6 +1183,14 @@ status open
 \begin_layout Plain Layout
 Distribuição do comprimento de hélices por método de atribuição de estrutura
  secundária.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Distribuição-do-comprimento-helices"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1010,6 +1204,19 @@ Distribuição do comprimento de hélices por método de atribuição de estrutu
 \end_layout
 
 \begin_layout Standard
+As distribuições dos comprimentos das fitas apresentam mediana de 6 resíduos
+ para os quatro métodos de atribuição (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-do-comprimento_fitas"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -1017,7 +1224,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename figures/distribuicao_comprimento_fitas.pdf
+	filename figures/atribuicao_len_ss_E.pdf
 	width 100line%
 
 \end_inset
@@ -1031,7 +1238,10 @@ status open
 \begin_layout Plain Layout
 Distribuição do comprimento de fitas por método de atribuição de estrutura
  secundária.
-\end_layout
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Distribuição-do-comprimento_fitas"
 
 \end_inset
 
@@ -1041,6 +1251,30 @@ Distribuição do comprimento de fitas por método de atribuição de estrutura
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Características dos dissensos
+\end_layout
+
+\begin_layout Standard
+O número de dissensos observados nas proteínas apresenta uma relação linear
+ com o comprimento da cadeia polipeptídica.
+ Assim, em média, aproximadamente 25% dos resíduos não apresentam consenso
+ entre os métodos de atribuição analisados (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:comprimento_x_dissenso"
+
+\end_inset
+
+).
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1048,10 +1282,9 @@ Distribuição do comprimento de fitas por método de atribuição de estrutura
 status open
 
 \begin_layout Plain Layout
-Quais aminoácidos sofrem maior variação entre os métodos? * normalizar pelo
- número de aminoácidos de cada tipo * removendo residuos nao visualizados
- no cristal.
- SCRIPT dissenso_x_aminoacido.py 
+Há relação entre o número de resíduos dissensos vs tamanho da estrutura?
+ * Proteinas mais curtas ou mais longas são mais variáveis? SCRIPT: not_consensu
+s_VS_length.py OUTLIER PDB ID: 3Q23 1.8A
 \end_layout
 
 \end_inset
@@ -1067,7 +1300,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename figures/dissenso_aminoacido.svg
+	filename figures/not_consensus_vs_length.pdf
 	width 100line%
 
 \end_inset
@@ -1079,8 +1312,12 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\end_layout
+Relação entre o número de dissensos e o comprimento da cadeia polipeptídica.
+ Distribuição da fração de resíduos que não apresentaram consenso (dissensos)
+ por proteína.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:comprimento_x_dissenso"
 
 \end_inset
 
@@ -1090,6 +1327,186 @@ status open
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Na comparação entre as estruturas secundárias atribuídas para cada resíduo,
+ quatro tipos de dissensos podem ocorrer.
+ O tipo 
+\begin_inset Formula $H\leftrightarrow C$
+\end_inset
+
+, onde o resíduo é anotado como hélice por alguns métodos e fita por outros,
+ e da mesma forma os tipos 
+\begin_inset Formula $E\leftrightarrow C$
+\end_inset
+
+, 
+\begin_inset Formula $H\leftrightarrow E$
+\end_inset
+
+ e 
+\begin_inset Formula $H\leftrightarrow C\leftrightarrow E$
+\end_inset
+
+.
+ A análise dos dissensos demonstrou que os dois tipos dominantes são 
+\begin_inset Formula $H\leftrightarrow C$
+\end_inset
+
+, com 48,7%, e 
+\begin_inset Formula $E\leftrightarrow C$
+\end_inset
+
+, com 50,5%, totalizando 99,2% dos casos de dissenso.
+ Dos demais tipos, 
+\begin_inset Formula $H\leftrightarrow E$
+\end_inset
+
+ ocorre 0,1% e 
+\begin_inset Formula $H\leftrightarrow C\leftrightarrow E$
+\end_inset
+
+ ocorre em 0,7% dos casos (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Proporção-dos-quatro"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Quantos resíduos apresentam o dissenso: - helice/fita - helice/coil - fita/coil
+ - helice/fita/coil * Isso mostra os principais problemas SCRIPT: tipos_de_disse
+nso.py
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/tipos_de_dissenso.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Proporção dos quatro tipos de dissensos que os resíduos podem apresentar.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Proporção-dos-quatro"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Outra característica analisada é a região relativa onde as regiões de dissenso
+ ocorrem.
+ Para isso, definimos 9 tipos de regiões que diferem pelo tipo de estrutura
+ secundária que precede e sucede o dissenso.
+ Por exemplo, 
+\begin_inset Formula $C?H$
+\end_inset
+
+ é um dissenso antecedido por um coil e sucedido por uma hélice, o que indicaria
+ que há variações em relação ao resíduo que inicia a hélice.
+ 
+\end_layout
+
+\begin_layout Standard
+Notamos que a maioria dos dissensos ocorre em regiões de transição entre
+ coil e as estruturas secundárias hélice ou fita.
+ Assim, os tipos mais frequentes foram 
+\begin_inset Formula $C?E$
+\end_inset
+
+, 
+\begin_inset Formula $E?C$
+\end_inset
+
+, 
+\begin_inset Formula $H?C$
+\end_inset
+
+ e 
+\begin_inset Formula $C?H$
+\end_inset
+
+ (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ocorrências-de-dissensos"
+
+\end_inset
+
+).
+ Isso indica que os métodos de atribuição tem pouca precisão em anotar onde
+ começam e terminam as estruturas secundárias.
+\end_layout
+
+\begin_layout Standard
+Os tipos 
+\begin_inset Formula $E?H$
+\end_inset
+
+ e 
+\begin_inset Formula $H?E$
+\end_inset
+
+ foram pouco frequentes, o que era esperado uma vez que a transição entre
+ esses dois tipos de estruturas costumam ocorrer pelo intermédio de regiões
+ de coil.
+ 
+\end_layout
+
+\begin_layout Standard
+O tipo 
+\begin_inset Formula $C?C$
+\end_inset
+
+ também apresentou um grande número de ocorrências.
+ Isso indica que alguns métodos de atribuição podem falhar na atribuição
+ de regiões inteiras de estruturas secundárias, por exemplo, ignorando a
+ presença de uma hélice inteira ou de uma fita.
 \end_layout
 
 \begin_layout Standard
@@ -1128,15 +1545,23 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+Ocorrências de dissensos por região relativa à estrutura secundária precedente
+ e sucedente.
+ Ex.
+ C?H indica uma região de dissenso imediatamente posterior a um coil e anterior
+ a uma hélice.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ocorrências-de-dissensos"
 
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -1146,13 +1571,69 @@ status open
 \end_layout
 
 \begin_layout Standard
+A frequência relativa dos aminoácidos em regiões de dissenso mostrou que
+ o resíduo mais comum nessas regiões é a glicina.
+ Acreditamos que um dos motivos seja a maior variação dos ângulos 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ que esse resíduo pode apresentar, fato que poderia dificultar a atribuição
+ da estrutura secundária por métodos que utilizam tais ângulos, como o PROSS,
+ ou a posição relativa de carbonos alfa, como o KAKSI.
+\end_layout
+
+\begin_layout Standard
+Em relação aos aminoácidos hidrofóbicos, parece haver uma menor tendência
+ deles ocorrerem em regiões de dissenso.
+ É possível que a maior frequência desses aminoácidos em regiões internas
+ da estrutura proteica limite a variabilidade dos estados conformacionais
+ e apresente ligações de hidrogênio mais próximas ao padrão ideal.
+ Isso poderia explicar um maior consenso na atribuição da estrutura secundária
+ por diferentes métodos.
+\end_layout
+
+\begin_layout Standard
+Observamos ainda uma maior frequência do aspartato (D) em relação ao glutamato
+ (E) e da asparagina (N) em relação à glutamina (Q).
+ Essas diferenças aparentemente refletem as diferenças de propensão observadas
+ nos inícios e finais de hélice (
+\emph on
+helix capping
+\emph default
+) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "aurora_helix_1998,doig_n-_1995"
+
+\end_inset
+
+ e inícios e finais de fitas (
+\emph on
+beta-sheet capping
+\emph default
+) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "farzadfard_beta-sheet_2008"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Há relação entre o número de resíduos dissensos vs tamanho da estrutura?
- * Proteinas mais curtas ou mais longas são mais variáveis? SCRIPT: not_consensu
-s_VS_length.py OUTLIER PDB ID: 3Q23 1.8A
+Quais aminoácidos sofrem maior variação entre os métodos? * normalizar pelo
+ número de aminoácidos de cada tipo * removendo residuos nao visualizados
+ no cristal.
+ SCRIPT dissenso_x_aminoacido.py 
 \end_layout
 
 \end_inset
@@ -1168,7 +1649,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename figures/not_consensus_vs_length.pdf
+	filename figures/dissenso_aminoacido.svg
 	width 100line%
 
 \end_inset
@@ -1180,67 +1661,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
+Frequência dos aminoácidos em regiões de dissenso.
+ A frequência foi normalizada pelo número total de ocorrências do aminoácido
+ nas proteínas do conjunto de dados.
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Quantos resíduos apresentam o dissenso: - helice/fita - helice/coil - fita/coil
- - helice/fita/coil * Isso mostra os principais problemas SCRIPT: tipos_de_disse
-nso.py
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figures/tipos_de_dissenso.pdf
-	width 100line%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 

@@ -33,14 +33,22 @@ def plot_bar(tipo):
 def main():
     tr = {'H?H':0, 'C?C':0, 'E?E':0, 'C?H':0, 'H?C':0, 'C?E':0, 'E?C':0, 'E?H':0,'H?E':0}
     tr_dssp = {'H?H':0, 'C?C':0, 'E?E':0, 'C?H':0, 'H?C':0, 'C?E':0, 'E?C':0, 'E?H':0,'H?E':0}
+    tr_stride = {'H?H':0, 'C?C':0, 'E?E':0, 'C?H':0, 'H?C':0, 'C?E':0, 'E?C':0, 'E?H':0,'H?E':0}
+    tr_pross = {'H?H':0, 'C?C':0, 'E?E':0, 'C?H':0, 'H?C':0, 'C?E':0, 'E?C':0, 'E?H':0,'H?E':0}
     for fn in glob(DATA_PATH+'/transitions_all3/*'):
         count(fn, tr)
     for fn in glob(DATA_PATH+'/transitions_dssp/*'):
         count(fn, tr_dssp)
+    for fn in glob(DATA_PATH+'/transitions_stride/*'):
+        count(fn, tr_stride)
+    for fn in glob(DATA_PATH+'/transitions_pross/*'):
+        count(fn, tr_pross)
 
     print(tr)
     print(tr_dssp)
-    plot_bar(tr)
+    print(tr_stride)
+    print(tr_pross)
+    # plot_bar(tr)
 
 if __name__ == '__main__':
     main()
