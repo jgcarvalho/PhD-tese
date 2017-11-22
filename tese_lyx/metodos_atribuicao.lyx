@@ -384,7 +384,14 @@ STRIDE
 \begin_layout Standard
 O método de atribuição de estrutura secundárias STRIDE foi desenvolvido
  com o objetivo de reproduzir, com o máximo de acurácia possível, a anotação
- humana feita por cristalógrafos.
+ humana feita por cristalógrafos 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "frishman_knowledge-based_1995"
+
+\end_inset
+
+.
  No método são utilizados como critérios tanto as energias de ligações de
  hidrogênio quanto a propensão dos ângulos torcionais 
 \begin_inset Formula $\Phi$
@@ -398,9 +405,14 @@ O método de atribuição de estrutura secundárias STRIDE foi desenvolvido
 \end_layout
 
 \begin_layout Standard
+A energia das ligações de hidrogênio são calculadas de acordo com a seguinte
+ função: 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-E_{hb}=E_{r}*E_{t}*E_{p}
+E_{hb}=E_{r}*E_{t}*E_{p}\label{eq:hb_stride}
 \end{equation}
 
 \end_inset
@@ -409,9 +421,51 @@ E_{hb}=E_{r}*E_{t}*E_{p}
 \end_layout
 
 \begin_layout Standard
+Onde 
+\begin_inset Formula $E_{r}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:stride_er"
+
+\end_inset
+
+) é o termo de distância, 
+\begin_inset Formula $E_{p}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:stride_ep"
+
+\end_inset
+
+) e 
+\begin_inset Formula $E_{t}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:stride_et"
+
+\end_inset
+
+) descrevem as propriedades direcionais da ligação de hidrogênio.
+ 
+\end_layout
+
+\begin_layout Standard
+Sendo que,
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-E_{r}=\frac{-3E_{m}r_{m}⁸}{r^{8}}+\frac{-4E_{m}r_{m}⁶}{r^{6}}
+E_{r}=\frac{-3E_{m}r_{m}⁸}{r^{8}}+\frac{-4E_{m}r_{m}⁶}{r^{6}}\label{eq:stride_er}
 \end{equation}
 
 \end_inset
@@ -420,14 +474,34 @@ E_{r}=\frac{-3E_{m}r_{m}⁸}{r^{8}}+\frac{-4E_{m}r_{m}⁶}{r^{6}}
 \end_layout
 
 \begin_layout Standard
+Para a ligação de hidrogênio entre átomos da cadeia principal 
+\begin_inset Formula $E_{m}=-2,8\,kcal/mol$
+\end_inset
+
+ e 
+\begin_inset Formula $r_{m}=3,0\,\text{Å.}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Os termos angulares são representados pelas seguintes funções:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-E_{p}=\cos\text{²p}
+E_{p}=\cos\text{²p}\label{eq:stride_ep}
 \end{equation}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+e
 \end_layout
 
 \begin_layout Standard
@@ -437,12 +511,105 @@ E_{t}=\begin{cases}
 (0.9+0.1\sin2t_{i})\cos t_{0} & 0<t_{i}<90\text{°}\\
 K_{1}(K_{2}-\cos²t_{i})³\cos t_{0} & 90\text{°}<t_{i}<110\text{°}\\
 0 & t_{i}>110\text{°}
+\end{cases}\label{eq:stride_et}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+onde 
+\begin_inset Formula $K_{1}=0,9/cos^{6}110°$
+\end_inset
+
+, 
+\begin_inset Formula $K_{2}=cos^{2}110\text{°}$
+\end_inset
+
+e os ângulos 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ e 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ são, respectivamente, os desvios angulares da ligação de hidrogênio.
+\end_layout
+
+\begin_layout Standard
+A propensão dos ângulos torcionais para hélices 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ e fitas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ são calculadas respectivamente como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P_{i}^{\alpha}=\begin{cases}
+\frac{N_{i}^{\alpha}}{N_{i}^{total}} & se\,-180\text{°}<\Psi<10\text{°\,}e\,-120\text{°}<\Phi<45\text{°}\\
+0 & caso\,contrário
 \end{cases}
 \end{equation}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+e
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P_{i}^{\beta}=\begin{cases}
+\frac{N_{i}^{\beta}}{N_{i}^{total}} & se\,-180\text{°}<\Psi<0\text{°\,e\,-180\text{°}<\Phi<-120\text{°}\,}ou\,45\text{°}<\Phi<180\text{°}\\
+0 & caso\,contrário
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+onde 
+\begin_inset Formula $N_{i}^{\alpha}$
+\end_inset
+
+ e 
+\begin_inset Formula $N_{i}^{\beta}$
+\end_inset
+
+ são, respectivamente, os números de resíduos definidos como hélice e fita
+ em um quadrante 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ de dimensões 20°
+\begin_inset Formula $\times$
+\end_inset
+
+20°, e 
+\begin_inset Formula $N_{i}^{total}$
+\end_inset
+
+ é o número total de resíduos nesse quadrante.
 \end_layout
 
 \begin_layout Subsection
@@ -617,7 +784,7 @@ Todos as distâncias entre
 \begin_inset Formula $\beta$
 \end_inset
 
-
+.
 \end_layout
 
 \end_deeper
@@ -739,8 +906,11 @@ key "srinivasan_physical_1999,gong_does_2005"
 \end_inset
 
 .
- Cada mesoestado equivale a um quadrante de dimensões 60° x 60°, totalizando
- 36 mesoestados possíveis (Figura 
+ Cada mesoestado equivale a um quadrante de dimensões 60°
+\begin_inset Formula $\times$
+\end_inset
+
+60°, totalizando 36 mesoestados possíveis (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:pross_coarse"
@@ -748,12 +918,11 @@ reference "fig:pross_coarse"
 \end_inset
 
 ).
- Em seguida, seguindo um conjunto de regras, cada resíduo era classificado
- em hélice 
+ Em seguida, cada resíduo é classificado em hélice 
 \begin_inset Formula $\alpha$
 \end_inset
 
-, folha 
+, fita 
 \begin_inset Formula $\beta$
 \end_inset
 
@@ -765,12 +934,84 @@ reference "fig:pross_coarse"
 \begin_inset script subscript
 
 \begin_layout Plain Layout
-II
+II 
 \end_layout
 
 \end_inset
 
-ou coil.
+ou coil de acordo com um um conjunto de regras.
+ São elas:
+\end_layout
+
+\begin_layout Enumerate
+Hélices
+\begin_inset Formula $\alpha$
+\end_inset
+
+: Uma região é identificada como hélice se houverem 5 ou mais resíduos contínuos
+ no conjunto de mesoestados {O, P}.
+\end_layout
+
+\begin_layout Enumerate
+Fita 
+\begin_inset Formula $\beta$
+\end_inset
+
+: Uma região é definida como fita se houverem 3 ou mais resíduos contínuos
+ no conjunto de mesoestados {L, G, F, A, R, M}.
+\end_layout
+
+\begin_layout Enumerate
+Volta 
+\begin_inset Formula $\beta$
+\end_inset
+
+: São definidos como voltas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ todos os pares de dipeptídeos com combinações no conjunto {OO, OP, OJ,
+ PO, PP, PJ, JO, JP, JJ, Mo, Mp, Mj, Ro, Rp, Rj, oo, op, oj, po, pp, pj,
+ jo, jp, jj, mO, mP, mJ, rO, rP, rJ}.
+\end_layout
+
+\begin_layout Enumerate
+P
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+II 
+\end_layout
+
+\end_inset
+
+: Resíduos que não foram classificados como fita, mas que estão no conjunto
+ {M, R} são categorizados como poliprolina II.
+\end_layout
+
+\begin_layout Enumerate
+Coil: Todos os outros resíduos não classificados como hélices 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, fitas 
+\begin_inset Formula $\beta$
+\end_inset
+
+, voltas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ ou P
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+II 
+\end_layout
+
+\end_inset
+
+são classificados como coil.
 \end_layout
 
 \begin_layout Standard
@@ -792,6 +1033,19 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+Mesoestados 60°
+\begin_inset Formula $\times$
+\end_inset
+
+60° para descrever os resíduos de acordo com os ângulos torcionais 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:pross_coarse"
@@ -816,6 +1070,43 @@ name "fig:pross_coarse"
 \end_layout
 
 \begin_layout Standard
+Posteriormente, outra versão do método PROSS passou a utilizar 144 mesoestados
+ com área 30°
+\begin_inset Formula $\times$
+\end_inset
+
+30° (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pross_fine"
+
+\end_inset
+
+).
+ As regras continuaram sendo estabelecidas de forma semelhante a feita anteriorm
+ente, mas utilizando estados mais específicos.
+ Por exemplo:
+\end_layout
+
+\begin_layout Enumerate
+Hélices
+\begin_inset Formula $\alpha$
+\end_inset
+
+: Uma região é identificada como hélice se houverem 5 ou mais resíduos contínuos
+ no conjunto de mesoestados {De, Df, Ed, Ee, Ef, Fe}.
+\end_layout
+
+\begin_layout Enumerate
+Fita 
+\begin_inset Formula $\beta$
+\end_inset
+
+: Uma região é definida como fita se houverem 3 ou mais resíduos contínuos
+ no conjunto de mesoestados {Bj, Bk, Bl, Cj, Ck, Cl, Dj, Dk, Dl}.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -834,6 +1125,26 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+Mesoestados 30°
+\begin_inset Formula $\times$
+\end_inset
+
+30° para descrever os resíduos de acordo com os ângulos torcionais 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pross_fine"
+
+\end_inset
+
 
 \end_layout
 
@@ -849,6 +1160,29 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Segundo os autores, a utilização somente dos ângulos torcionais da cadeia
+ principal apresenta a vantagem de representar, corretamente, as fitas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ como estruturas secundárias 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "srinivasan_physical_1999"
+
+\end_inset
+
+.
+ Outros métodos, ao utilizarem ligações de hidrogênio, acabam definindo
+ as folhas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ como estruturas secundárias, as quais, no contexto físico, seriam mais
+ apropriadamente classificadas como estruturas terciárias.
 \end_layout
 
 \begin_layout Section

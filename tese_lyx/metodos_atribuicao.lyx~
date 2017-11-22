@@ -717,7 +717,310 @@ PROSS
 \end_layout
 
 \begin_layout Standard
+PROSS é um método de atribuição de estruturas secundárias que utiliza somente
+ os ângulos torcionais 
+\begin_inset Formula $\Phi$
+\end_inset
 
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ da cadeia principal.
+ Originalmente, cada resíduo era classificado em um mesoestado (
+\emph on
+mesostate
+\emph default
+) de acordo com o valor de seus ângulos torcionais 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "srinivasan_physical_1999,gong_does_2005"
+
+\end_inset
+
+.
+ Cada mesoestado equivale a um quadrante de dimensões 60°
+\begin_inset Formula $\times$
+\end_inset
+
+60°, totalizando 36 mesoestados possíveis (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pross_coarse"
+
+\end_inset
+
+).
+ Em seguida, cada resíduo é classificado em hélice 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, fita 
+\begin_inset Formula $\beta$
+\end_inset
+
+, volta 
+\begin_inset Formula $\beta$
+\end_inset
+
+, P
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+II 
+\end_layout
+
+\end_inset
+
+ou coil de acordo com um um conjunto de regras.
+ São elas:
+\end_layout
+
+\begin_layout Enumerate
+Hélices
+\begin_inset Formula $\alpha$
+\end_inset
+
+: Uma região é identificada como hélice se houverem 5 ou mais resíduos contínuos
+ no conjunto de mesoestados {O, P}.
+\end_layout
+
+\begin_layout Enumerate
+Fita 
+\begin_inset Formula $\beta$
+\end_inset
+
+: Uma região é definida como fita se houverem 3 ou mais resíduos contínuos
+ no conjunto de mesoestados {L, G, F, A, R, M}.
+\end_layout
+
+\begin_layout Enumerate
+Volta 
+\begin_inset Formula $\beta$
+\end_inset
+
+: São definidos como voltas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ todos os pares de dipeptídeos com combinações no conjunto {OO, OP, OJ,
+ PO, PP, PJ, JO, JP, JJ, Mo, Mp, Mj, Ro, Rp, Rj, oo, op, oj, po, pp, pj,
+ jo, jp, jj, mO, mP, mJ, rO, rP, rJ}.
+\end_layout
+
+\begin_layout Enumerate
+P
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+II 
+\end_layout
+
+\end_inset
+
+: Resíduos que não foram classificados como fita, mas que estão no conjunto
+ {M, R} são categorizados como poliprolina II.
+\end_layout
+
+\begin_layout Enumerate
+Coil: Todos os outros resíduos não classificados como hélices 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, fitas 
+\begin_inset Formula $\beta$
+\end_inset
+
+, voltas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ ou P
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+II 
+\end_layout
+
+\end_inset
+
+são classificados como coil.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/pross_coarse.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mesoestados 60°
+\begin_inset Formula $\times$
+\end_inset
+
+60° para descrever os resíduos de acordo com os ângulos torcionais 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pross_coarse"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Posteriormente, outra versão do método PROSS passou a utilizar 144 mesoestados
+ com área 30°
+\begin_inset Formula $\times$
+\end_inset
+
+30° (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pross_fine"
+
+\end_inset
+
+).
+ As regras continuaram sendo estabelecidas de forma semelhante a feita anteriorm
+ente, mas utilizando estados mais específicos.
+ Por exemplo:
+\end_layout
+
+\begin_layout Enumerate
+Hélices
+\begin_inset Formula $\alpha$
+\end_inset
+
+: Uma região é identificada como hélice se houverem 5 ou mais resíduos contínuos
+ no conjunto de mesoestados {De, Df, Ed, Ee, Ef, Fe}.
+\end_layout
+
+\begin_layout Enumerate
+Fita 
+\begin_inset Formula $\beta$
+\end_inset
+
+: Uma região é definida como fita se houverem 3 ou mais resíduos contínuos
+ no conjunto de mesoestados {Bj, Bk, Bl, Cj, Ck, Cl, Dj, Dk, Dl}.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/pross_fine.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mesoestados 30°
+\begin_inset Formula $\times$
+\end_inset
+
+30° para descrever os resíduos de acordo com os ângulos torcionais 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pross_fine"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Segundo os autores, a utilização somente dos ângulos torcionais da cadeia
+ principal apresenta a vantagem de representar, corretamente, as fitas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ como estruturas secundárias 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "srinivasan_physical_1999"
+
+\end_inset
+
+.
+ Outros métodos, ao utilizarem ligações de hidrogênio, acabam definindo
+ as folhas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ como estruturas secundárias, as quais, no contexto físico, seriam mais
+ apropriadamente classificadas como estruturas terciárias.
+\end_layout
+
+\begin_layout Standard
+Neste trabalho, como utilizamos apenas a classificação em 3 estados, todos
+ os resíduos que não são hélices ou fitas, são considerados coil.
 \end_layout
 
 \begin_layout Section
