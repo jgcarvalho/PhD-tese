@@ -384,7 +384,14 @@ STRIDE
 \begin_layout Standard
 O método de atribuição de estrutura secundárias STRIDE foi desenvolvido
  com o objetivo de reproduzir, com o máximo de acurácia possível, a anotação
- humana feita por cristalógrafos.
+ humana feita por cristalógrafos 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "frishman_knowledge-based_1995"
+
+\end_inset
+
+.
  No método são utilizados como critérios tanto as energias de ligações de
  hidrogênio quanto a propensão dos ângulos torcionais 
 \begin_inset Formula $\Phi$
@@ -398,9 +405,14 @@ O método de atribuição de estrutura secundárias STRIDE foi desenvolvido
 \end_layout
 
 \begin_layout Standard
+A energia das ligações de hidrogênio são calculadas de acordo com a seguinte
+ função: 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-E_{hb}=E_{r}*E_{t}*E_{p}
+E_{hb}=E_{r}*E_{t}*E_{p}\label{eq:hb_stride}
 \end{equation}
 
 \end_inset
@@ -409,9 +421,51 @@ E_{hb}=E_{r}*E_{t}*E_{p}
 \end_layout
 
 \begin_layout Standard
+Onde 
+\begin_inset Formula $E_{r}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:stride_er"
+
+\end_inset
+
+) é o termo de distância, 
+\begin_inset Formula $E_{p}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:stride_ep"
+
+\end_inset
+
+) e 
+\begin_inset Formula $E_{t}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:stride_et"
+
+\end_inset
+
+) descrevem as propriedades direcionais da ligação de hidrogênio.
+ 
+\end_layout
+
+\begin_layout Standard
+Sendo que,
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-E_{r}=\frac{-3E_{m}r_{m}⁸}{r^{8}}+\frac{-4E_{m}r_{m}⁶}{r^{6}}
+E_{r}=\frac{-3E_{m}r_{m}⁸}{r^{8}}+\frac{-4E_{m}r_{m}⁶}{r^{6}}\label{eq:stride_er}
 \end{equation}
 
 \end_inset
@@ -420,14 +474,34 @@ E_{r}=\frac{-3E_{m}r_{m}⁸}{r^{8}}+\frac{-4E_{m}r_{m}⁶}{r^{6}}
 \end_layout
 
 \begin_layout Standard
+Para a ligação de hidrogênio entre átomos da cadeia principal 
+\begin_inset Formula $E_{m}=-2,8\,kcal/mol$
+\end_inset
+
+ e 
+\begin_inset Formula $r_{m}=3,0\,\text{Å.}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Os termos angulares são representados pelas seguintes funções:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-E_{p}=\cos\text{²p}
+E_{p}=\cos\text{²p}\label{eq:stride_ep}
 \end{equation}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+e
 \end_layout
 
 \begin_layout Standard
@@ -437,12 +511,105 @@ E_{t}=\begin{cases}
 (0.9+0.1\sin2t_{i})\cos t_{0} & 0<t_{i}<90\text{°}\\
 K_{1}(K_{2}-\cos²t_{i})³\cos t_{0} & 90\text{°}<t_{i}<110\text{°}\\
 0 & t_{i}>110\text{°}
+\end{cases}\label{eq:stride_et}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+onde 
+\begin_inset Formula $K_{1}=0,9/cos^{6}110°$
+\end_inset
+
+, 
+\begin_inset Formula $K_{2}=cos^{2}110\text{°}$
+\end_inset
+
+e os ângulos 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ e 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ são, respectivamente, os desvios angulares da ligação de hidrogênio.
+\end_layout
+
+\begin_layout Standard
+A propensão dos ângulos torcionais para hélices 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ e fitas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ são calculadas respectivamente como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P_{i}^{\alpha}=\begin{cases}
+\frac{N_{i}^{\alpha}}{N_{i}^{total}} & se\,-180\text{°}<\Psi<10\text{°\,}e\,-120\text{°}<\Phi<45\text{°}\\
+0 & caso\,contrário
 \end{cases}
 \end{equation}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+e
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P_{i}^{\beta}=\begin{cases}
+\frac{N_{i}^{\beta}}{N_{i}^{total}} & se\,-180\text{°}<\Psi<0\text{°\,e\,-180\text{°}<\Phi<-120\text{°}\,}ou\,45\text{°}<\Phi<180\text{°}\\
+0 & caso\,contrário
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+onde 
+\begin_inset Formula $N_{i}^{\alpha}$
+\end_inset
+
+ e 
+\begin_inset Formula $N_{i}^{\beta}$
+\end_inset
+
+ são, respectivamente, os números de resíduos definidos como hélice e fita
+ em um quadrante 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ de dimensões 20°
+\begin_inset Formula $\times$
+\end_inset
+
+20°, e 
+\begin_inset Formula $N_{i}^{total}$
+\end_inset
+
+ é o número total de resíduos nesse quadrante.
 \end_layout
 
 \begin_layout Subsection
@@ -617,7 +784,7 @@ Todos as distâncias entre
 \begin_inset Formula $\beta$
 \end_inset
 
-
+.
 \end_layout
 
 \end_deeper
@@ -1016,11 +1183,6 @@ key "srinivasan_physical_1999"
 
  como estruturas secundárias, as quais, no contexto físico, seriam mais
  apropriadamente classificadas como estruturas terciárias.
-\end_layout
-
-\begin_layout Standard
-Neste trabalho, como utilizamos apenas a classificação em 3 estados, todos
- os resíduos que não são hélices ou fitas, são considerados coil.
 \end_layout
 
 \begin_layout Section
