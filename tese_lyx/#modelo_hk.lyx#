@@ -72,7 +72,7 @@
 \begin_body
 
 \begin_layout Chapter
-Rede Neural similar ao modelo de Holley e Karplus (1989)
+Rede neural similar ao modelo de Holley e Karplus (1989)
 \end_layout
 
 \begin_layout Standard
@@ -136,7 +136,7 @@ Segundo os autores, a performance de 64,3% (Q3) atingida pela rede neural
  número de estruturas não iria melhorar a predição para proteínas não homólogas
  as do conjunto de treinamento.
  Assim, a explicação mais plausível segundo eles era que a influência de
- resíduos mais distantes na sequência, e que portanto não estão presentes
+ resíduos mais distantes na sequência, e que portanto não estão contidos
  na janela utilizada como entrada, precisaria ser considerada na predição.
  Caso isso fosse confirmado, eles acreditavam que seriam necessários novos
  métodos para considerar esses efeitos.
@@ -255,7 +255,7 @@ key "chandonia_importance_1996"
  poderia aumentar a acurácia da predição utilizando redes neurais.
  Entretanto, como observado por eles, o aumento do conjunto de dados poderia
  requerer modificações na arquitetura da rede neural para produzir uma melhor
- a acurácia.
+ acurácia.
  Assim, com um conjunto de 318 estruturas proteicas e aumentando o número
  de neurônios da camada oculta de 2 para 8, eles conseguiram uma acurácia
  de 67%.
@@ -271,8 +271,9 @@ key "holley_protein_1989"
 \end_inset
 
 .
- O objetivo foi avaliar qual o desempenho do modelo utilizando um conjunto
- de dados com mais de 6000 proteínas.
+ O objetivo foi avaliar qual o desempenho do modelo utilizando o conjunto
+ de dados com mais de 6000 proteínas e assim estabeler uma linha base para
+ comparação com os métodos propostos neste trabalho.
 \end_layout
 
 \begin_layout Section
@@ -443,8 +444,14 @@ ou
 \end_layout
 
 \begin_layout Standard
-O algoritmo de otimização utilizado no treinamento foi o Adam, com os parâmetros
- default (alpha, beta_1, beta_2, epsilon ?) 
+O algoritmo de otimização utilizado no treinamento foi o Adam 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "kingma_adam:_2014"
+
+\end_inset
+
+, com os parâmetros default (alpha, beta_1, beta_2, epsilon ?).
 \end_layout
 
 \begin_layout Section

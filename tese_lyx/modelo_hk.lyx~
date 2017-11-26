@@ -72,7 +72,7 @@
 \begin_body
 
 \begin_layout Chapter
-Rede Neural similar ao modelo de Holley e Karplus (1989)
+Rede neural similar ao modelo de Holley e Karplus (1989)
 \end_layout
 
 \begin_layout Standard
@@ -255,7 +255,7 @@ key "chandonia_importance_1996"
  poderia aumentar a acurácia da predição utilizando redes neurais.
  Entretanto, como observado por eles, o aumento do conjunto de dados poderia
  requerer modificações na arquitetura da rede neural para produzir uma melhor
- a acurácia.
+ acurácia.
  Assim, com um conjunto de 318 estruturas proteicas e aumentando o número
  de neurônios da camada oculta de 2 para 8, eles conseguiram uma acurácia
  de 67%.
@@ -271,8 +271,9 @@ key "holley_protein_1989"
 \end_inset
 
 .
- O objetivo foi avaliar qual o desempenho do modelo utilizando um conjunto
- de dados com mais de 6000 proteínas.
+ O objetivo foi avaliar qual o desempenho do modelo utilizando o conjunto
+ de dados com mais de 6000 proteínas e assim estabeler uma linha base para
+ comparação.
 \end_layout
 
 \begin_layout Section

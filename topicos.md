@@ -14,8 +14,8 @@
 ### Resultados
 
     -ok Quantos resíduos tem a mesma estrutura secundária entre os métodos?
-    - Qual a variação no tamanho das estruturas secundarias?
-    - Qual a variação no número de estruturas secundarias?
+    -ok Qual a variação no tamanho das estruturas secundarias?
+    -ok Qual a variação no número de estruturas secundarias?
         (Tem como mostrar isso melhor que boxplot?)
     -ok Quais aminoácidos sofrem maior variação entre os métodos?
         * normalizar pelo número de aminoácidos de cada tipo
