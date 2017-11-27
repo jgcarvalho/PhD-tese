@@ -79,6 +79,13 @@ Métodos de atribuição de estrutura secundária
 Introdução
 \end_layout
 
+\begin_layout Standard
+Os métodos computacionais de atribuição de estruturas secundárias surgiram
+ com o objetivo de automatizar e reduzir a subjetividade da atribuição feita
+ por cristalógrafos.
+ Em geral, tais métodos buscam padrões na estrutura 
+\end_layout
+
 \begin_layout Subsection
 DSSP
 \end_layout
@@ -828,7 +835,7 @@ KAKSI
 
 \begin_layout Standard
 KAKSI é um método de atribuição de estruturas secundárias proposto por Martin
- e colaboradores  
+ e colaboradores 
 \backslash
 citeyear{Martin2005}.
  Esse método foi desenvolvido utilizando padrões de distâncias entre 

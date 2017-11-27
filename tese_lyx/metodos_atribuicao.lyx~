@@ -612,6 +612,107 @@ onde
  é o número total de resíduos nesse quadrante.
 \end_layout
 
+\begin_layout Standard
+A hélice mínima é definida se ocorrem duas ligações de hidrogênio consecutivas,
+ ou seja, entre resíduos 
+\begin_inset Formula $k,k+4$
+\end_inset
+
+ e 
+\begin_inset Formula $k+1,k+5$
+\end_inset
+
+, utilizando a função:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E_{hb}^{k,k+4}\left(1+W_{1}^{\alpha}+W_{2}^{\alpha}\frac{P_{k}^{\alpha}+P_{k+4}^{\alpha}}{2}\right)<T_{1}^{\alpha}\label{eq:h_s1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Caso a condição seja verdadeira, os resíduos centrais 
+\begin_inset Formula $k+1,k+2,k+3\,e\,k+4$
+\end_inset
+
+ são classificados como hélice.
+ Já os resíduos 
+\begin_inset Formula $k,k+5$
+\end_inset
+
+ serão classificados como hélice se respeitarem as condições adicionais:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P_{k}^{\alpha}<T_{2}^{\alpha}\label{eq:h_s2}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+P_{k+5}^{\alpha}<T_{3}^{\alpha}\label{eq:h_s3}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nas funções 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:h_s1"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:h_s2"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:h_s3"
+
+\end_inset
+
+, 
+\begin_inset Formula $W_{1}^{\alpha}$
+\end_inset
+
+, 
+\begin_inset Formula $W_{2}^{\alpha}$
+\end_inset
+
+, 
+\begin_inset Formula $T_{1}^{\alpha}$
+\end_inset
+
+, 
+\begin_inset Formula $T_{2}^{\alpha}$
+\end_inset
+
+ e 
+\begin_inset Formula $T_{3}^{\alpha}$
+\end_inset
+
+ são pesos e limites empíricos que foram otimizados.
+\end_layout
+
 \begin_layout Subsection
 KAKSI
 \end_layout
