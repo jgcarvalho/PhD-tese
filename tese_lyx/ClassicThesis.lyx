@@ -360,6 +360,10 @@ pagenumbering{arabic}
 \end_layout
 
 \begin_layout Part
+Introdução
+\end_layout
+
+\begin_layout Part
 Desenvolvimento
 \end_layout
 
@@ -377,6 +381,26 @@ filename "metodos_atribuicao.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "modelo_hk.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "automatos_celulares.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "redes_residuais.lyx"
 
 \end_inset
 
@@ -414,7 +438,7 @@ Errem omnium ea per, pro congue populo ornatus cu, ex qui dicant nemore
 \end_layout
 
 \begin_layout Part
-The Showcase
+Conclusão
 \end_layout
 
 \begin_layout Standard

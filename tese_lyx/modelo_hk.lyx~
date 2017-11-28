@@ -110,11 +110,11 @@ text-to-speech
 \begin_layout Standard
 A melhor arquitetura testada por eles consistia de duas redes neurais em
  sequência.
- A primeira recebia como entrada 13 resíduos de uma cadeia polipeptídica
+ A primeira recebia como entrada 13 resíduos da sequência polipeptídica
  e como saída emitia 3 valores no intervalo entre 0 e 1 correspondentes
  aos elementos de estrutura secundária, coil, hélice e fita.
  Cada resíduo era codificado em um vetor binário com 21 elementos representando
- os 20 aminoácidos e um elemento indicando a ausência de um aminoácido.
+ os 20 aminoácidos e um elemento indicando a ausência de aminoácidos.
  A segunda rede neural tinha como entrada os valores de saída da rede anterior
  para uma janela de 13 resíduos e emitia novamente 3 valores no intervalo
  entre 0 e 1 representando a pontuação para os 3 elementos de estrutura
@@ -136,7 +136,7 @@ Segundo os autores, a performance de 64,3% (Q3) atingida pela rede neural
  número de estruturas não iria melhorar a predição para proteínas não homólogas
  as do conjunto de treinamento.
  Assim, a explicação mais plausível segundo eles era que a influência de
- resíduos mais distantes na sequência, e que portanto não estão presentes
+ resíduos mais distantes na sequência, e que portanto não estão contidos
  na janela utilizada como entrada, precisaria ser considerada na predição.
  Caso isso fosse confirmado, eles acreditavam que seriam necessários novos
  métodos para considerar esses efeitos.
@@ -273,7 +273,7 @@ key "holley_protein_1989"
 .
  O objetivo foi avaliar qual o desempenho do modelo utilizando o conjunto
  de dados com mais de 6000 proteínas e assim estabeler uma linha base para
- comparação.
+ comparação com os métodos propostos neste trabalho.
 \end_layout
 
 \begin_layout Section
