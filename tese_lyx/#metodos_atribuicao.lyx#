@@ -83,7 +83,32 @@ Introdução
 Os métodos computacionais de atribuição de estruturas secundárias surgiram
  com o objetivo de automatizar e reduzir a subjetividade da atribuição feita
  por cristalógrafos.
- Em geral, tais métodos buscam padrões na estrutura 
+ Em geral, tais métodos buscam um conjunto de padrões estruturais que melhor
+ representam a estrutura atribuída por especialistas.
+\end_layout
+
+\begin_layout Standard
+Entretanto, como a atribuição por especialistas podem diferir entre si e,
+ sobretudo, pela dificuldade de selecionar quais os melhores parâmetros,
+ os métodos computacionais apresentam variações entre si.
+\end_layout
+
+\begin_layout Standard
+Diferentes autores sugerem a impossibilidade de se eleger qual o melhor
+ método, uma vez que todos estão corretos segundo os princípios adotados
+ por eles 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kabsch_dictionary_1983,colloch_comparison_1993,frishman_knowledge-based_1995,zhang_secondary_2015"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Subsection

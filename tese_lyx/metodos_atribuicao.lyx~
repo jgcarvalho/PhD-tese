@@ -79,6 +79,24 @@ Métodos de atribuição de estrutura secundária
 Introdução
 \end_layout
 
+\begin_layout Standard
+Os métodos computacionais de atribuição de estruturas secundárias surgiram
+ com o objetivo de automatizar e reduzir a subjetividade da atribuição feita
+ por cristalógrafos.
+ Em geral, tais métodos buscam um conjunto de padrões estruturais que melhor
+ representam a estrutura atribuída por especialistas.
+\end_layout
+
+\begin_layout Standard
+Entretanto, como a atribuição por especialistas podem diferir entre si e,
+ sobretudo, pela dificuldade de selecionar quais os melhores parâmetros,
+ os métodos computacionais apresentam variações entre si.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
 \begin_layout Subsection
 DSSP
 \end_layout
@@ -711,6 +729,115 @@ reference "eq:h_s3"
 \end_inset
 
  são pesos e limites empíricos que foram otimizados.
+\end_layout
+
+\begin_layout Standard
+A folha 
+\begin_inset Formula $\beta$
+\end_inset
+
+ mínima é definida por duas ligações de hidrogênio consecutivas através
+ das seguintes funções:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{cases}
+E_{hb1}\left(1+W_{1}^{\beta}+W_{2}^{\beta}.CONF_{Antiparalela}\right)<T_{Antiparalela}^{\beta}\\
+E_{hb2}\left(1+W_{1}^{\beta}+W_{2}^{\beta}.CONF_{Antiparalela}\right)<T_{Antiparalela}^{\beta}
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{cases}
+E_{hb1}\left(1+W_{1}^{\beta}+W_{2}^{\beta}.CONF_{Paralela}\right)<T_{Paralela}^{\beta}\\
+E_{hb2}\left(1+W_{1}^{\beta}+W_{2}^{\beta}.CONF_{Paralela}\right)<T_{Paralela}^{\beta}
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+onde 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+CONF=\frac{P_{Int1}^{\beta}+P_{Int2}^{\beta}}{2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $W_{1}^{\beta}$
+\end_inset
+
+,
+\begin_inset Formula $W_{2}^{\beta}$
+\end_inset
+
+, 
+\begin_inset Formula $T_{Paralela}^{\beta}$
+\end_inset
+
+, 
+\begin_inset Formula $T_{Antiparalela}^{\beta}$
+\end_inset
+
+ são pesos e limites empíricos que foram otimizados.
+\end_layout
+
+\begin_layout Standard
+A otimização dos pesos foi realizada de forma a aumentar a acurácia (
+\begin_inset Formula $Q_{3}$
+\end_inset
+
+) entre a atribuição feita pelo método e a atribuição feita por cristalógrafos.
+ Utilizando 223 proteínas, os autores definiram os seguintes valores: 
+\begin_inset Formula $W_{1}^{\alpha}=W_{2}^{\alpha}=1$
+\end_inset
+
+, 
+\begin_inset Formula $T_{1}^{\alpha}=230.0$
+\end_inset
+
+, 
+\begin_inset Formula $T_{2}^{\alpha}$
+\end_inset
+
+ e 
+\begin_inset Formula $T_{3}^{\alpha}=0.06$
+\end_inset
+
+, 
+\begin_inset Formula $W_{1}^{\beta}=W_{2}^{\beta}=0.2$
+\end_inset
+
+, 
+\begin_inset Formula $T_{Paralela}^{\beta}=-240.0$
+\end_inset
+
+ e 
+\begin_inset Formula $T_{Antiparalela}^{\beta}=-310.0$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Subsection
