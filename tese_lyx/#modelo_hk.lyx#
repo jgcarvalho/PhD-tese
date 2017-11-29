@@ -72,7 +72,7 @@
 \begin_body
 
 \begin_layout Chapter
-Rede Neural similar ao modelo de Holley e Karplus (1989)
+Rede neural similar ao modelo de Holley e Karplus (1989)
 \end_layout
 
 \begin_layout Standard
@@ -110,11 +110,11 @@ text-to-speech
 \begin_layout Standard
 A melhor arquitetura testada por eles consistia de duas redes neurais em
  sequência.
- A primeira recebia como entrada 13 resíduos de uma cadeia polipeptídica
+ A primeira recebia como entrada 13 resíduos da sequência polipeptídica
  e como saída emitia 3 valores no intervalo entre 0 e 1 correspondentes
  aos elementos de estrutura secundária, coil, hélice e fita.
  Cada resíduo era codificado em um vetor binário com 21 elementos representando
- os 20 aminoácidos e um elemento indicando a ausência de um aminoácido.
+ os 20 aminoácidos e um elemento indicando a ausência de aminoácidos.
  A segunda rede neural tinha como entrada os valores de saída da rede anterior
  para uma janela de 13 resíduos e emitia novamente 3 valores no intervalo
  entre 0 e 1 representando a pontuação para os 3 elementos de estrutura
@@ -135,8 +135,8 @@ Segundo os autores, a performance de 64,3% (Q3) atingida pela rede neural
  apenas 106 estruturas (85 para treinamento) com o argumento de que um maior
  número de estruturas não iria melhorar a predição para proteínas não homólogas
  as do conjunto de treinamento.
- Assim, a explicação mais plausível segundo eles era que a influência de
- resíduos mais distantes na sequência, e que portanto não estão presentes
+ Assim, a explicação mais plausível, segundo eles, era que a influência
+ de resíduos mais distantes na sequência, e que portanto não estão contidos
  na janela utilizada como entrada, precisaria ser considerada na predição.
  Caso isso fosse confirmado, eles acreditavam que seriam necessários novos
  métodos para considerar esses efeitos.
@@ -255,7 +255,7 @@ key "chandonia_importance_1996"
  poderia aumentar a acurácia da predição utilizando redes neurais.
  Entretanto, como observado por eles, o aumento do conjunto de dados poderia
  requerer modificações na arquitetura da rede neural para produzir uma melhor
- a acurácia.
+ acurácia.
  Assim, com um conjunto de 318 estruturas proteicas e aumentando o número
  de neurônios da camada oculta de 2 para 8, eles conseguiram uma acurácia
  de 67%.
@@ -271,8 +271,9 @@ key "holley_protein_1989"
 \end_inset
 
 .
- O objetivo foi avaliar qual o desempenho do modelo utilizando um conjunto
- de dados com mais de 6000 proteínas.
+ O objetivo foi avaliar qual o desempenho do modelo utilizando o conjunto
+ de dados com mais de 6000 proteínas e assim estabeler uma linha base para
+ comparação com os métodos propostos neste trabalho.
 \end_layout
 
 \begin_layout Section
@@ -443,8 +444,14 @@ ou
 \end_layout
 
 \begin_layout Standard
-O algoritmo de otimização utilizado no treinamento foi o Adam, com os parâmetros
- default (alpha, beta_1, beta_2, epsilon ?) 
+O algoritmo de otimização utilizado no treinamento foi o Adam 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "kingma_adam:_2014"
+
+\end_inset
+
+, com os parâmetros default (alpha, beta_1, beta_2, epsilon ?).
 \end_layout
 
 \begin_layout Section
