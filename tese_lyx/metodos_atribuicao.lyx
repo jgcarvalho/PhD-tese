@@ -104,7 +104,20 @@ key "kabsch_dictionary_1983,colloch_comparison_1993,frishman_knowledge-based_199
 \end_inset
 
 .
+ Assim, métodos que utilizam a informação da estrutura secundária de proteínas,
+ como os métodos de predição de estruturas secundárias, acabaram optando,
+ possivelmente de forma natural, por escolherem um método de atribuição
+ como padrão.
+ Consequentemente, podemos observar o método DSSP como o mais utilizado.
  
+\end_layout
+
+\begin_layout Standard
+Nesse trabalho, nós decidimos comparar quatro métodos de atribuição que
+ utilizam padrões diferentes para classificar elementos de estrutura secundária.
+ O objetivo disso foi entender como a atribuição varia entre os métodos
+ e assim, avaliar qual informação deveríamos utilizar e analisar ao longo
+ do trabalho.
 \end_layout
 
 \begin_layout Subsection
@@ -641,7 +654,7 @@ onde
 \end_layout
 
 \begin_layout Standard
-A hélice mínima é definida se ocorrem duas ligações de hidrogênio consecutivas,
+A hélice mínima é definida por duas ligações de hidrogênio consecutivas,
  ou seja, entre resíduos 
 \begin_inset Formula $k,k+4$
 \end_inset
@@ -857,8 +870,13 @@ KAKSI
 \begin_layout Standard
 KAKSI é um método de atribuição de estruturas secundárias proposto por Martin
  e colaboradores 
-\backslash
-citeyear{Martin2005}.
+\begin_inset CommandInset citation
+LatexCommand citep
+key "martin_protein_2005"
+
+\end_inset
+
+.
  Esse método foi desenvolvido utilizando padrões de distâncias entre 
 \begin_inset Formula $C_{\alpha}$
 \end_inset
@@ -892,7 +910,7 @@ Resumidamente, a heurística de atribuição de estrutura secundárias busca
 .
  Em seguida, é feito a classificação dos resíduos em fitas.
  Somente os resíduos não-hélice podem ser classificados em fitas, e para
- tal, eles precisam atender aos critérios de distância entre
+ tal, eles precisam atender aos critérios de distância entre 
 \begin_inset Formula $C_{\alpha}$
 \end_inset
 
@@ -926,7 +944,7 @@ Todas as distâncias entre
 \begin_inset Formula $C_{\alpha}$
 \end_inset
 
- em uma janela de seis resíduos [i,i+5] precisam estar dentro do intervalo
+ em uma janela de seis resíduos [i, i+5] precisam estar dentro do intervalo
 \begin_inset Formula $[M_{\alpha}-\varepsilon_{H}\times SD_{\alpha},M_{\alpha}+\varepsilon_{H}\times SD_{\alpha}]$
 \end_inset
 
@@ -959,7 +977,7 @@ Todas as distâncias entre
 \end_layout
 
 \begin_deeper
-\begin_layout 
+\begin_layout Standard
 Todos os pares de ângulos 
 \begin_inset Formula $\Phi$
 \end_inset
@@ -1001,7 +1019,7 @@ Distância entre
 \end_layout
 
 \begin_deeper
-\begin_layout 
+\begin_layout Standard
 Todos as distâncias entre 
 \begin_inset Formula $C_{\alpha}$
 \end_inset
@@ -1039,7 +1057,7 @@ Todos as distâncias entre
 \end_layout
 
 \begin_deeper
-\begin_layout 
+\begin_layout Standard
 Cada par de ângulos 
 \begin_inset Formula $\Phi$
 \end_inset

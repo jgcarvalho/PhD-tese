@@ -72,11 +72,42 @@
 \begin_body
 
 \begin_layout Chapter
-Autômatos celulares
+Redes reurais residuais
 \end_layout
 
 \begin_layout Section
 Introdução
+\end_layout
+
+\begin_layout Standard
+As redes neurais profundas são capazes de integrar atributos de vários níveis
+ de abstração de forma hierárquica.
+ Isso ocorre porque cada camada oculta de neurônios aumenta o nível de abstração
+ dos atributos.
+ 
+\end_layout
+
+\begin_layout Standard
+Dentre as arquiteturas de redes neurais profundas, a redes neurais convolucionai
+s profundas tem obtido grande sucesso em diversas aplicações relacionadas
+ a imagem como classificação e detecção de objetos.
+ Nas redes convolucionais, são utilizados neurônios que possuem conexões
+ locais com a camada imediatamente anterior.
+ Tais neurônios são então aplicados a todos os elementos da camada anterior
+ realizando uma espécie de varredura.
+ Assim, um neurônio que responde a um determinado padrão local, irá responder
+ a esse padrão independetemente de onde ele ocorra.
+\end_layout
+
+\begin_layout Standard
+A propriedade de detectar padrões locais, quando combinada as múltiplas
+ camadas das redes profundas, 
+\end_layout
+
+\begin_layout Standard
+Deep networks naturally integrate low/mid/high- level features [50] and
+ classifiers in an end-to-end multi- layer fashion, and the “levels” of
+ features can be enriched by the number of stacked layers (depth).
 \end_layout
 
 \begin_layout Section
