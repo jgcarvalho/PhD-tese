@@ -360,6 +360,10 @@ pagenumbering{arabic}
 \end_layout
 
 \begin_layout Part
+Introdução
+\end_layout
+
+\begin_layout Part
 Desenvolvimento
 \end_layout
 
@@ -404,12 +408,6 @@ filename "redes_residuais.lyx"
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Chapter01.lyx"
-
-\end_inset
-
 
 \end_layout
 
@@ -434,60 +432,11 @@ Errem omnium ea per, pro congue populo ornatus cu, ex qui dicant nemore
 \end_layout
 
 \begin_layout Part
-The Showcase
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Chapter02.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Chapter03.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Part
-The Lyx Port
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Chapter04.lyx"
-
-\end_inset
-
-
+Conclusão
 \end_layout
 
 \begin_layout Standard
 \begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Part
-\start_of_appendix
-Appendix
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Chapter0A.lyx"
-
 \end_inset
 
 
@@ -518,27 +467,7 @@ filename "Bibliography.lyx"
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Colophon.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Declaration.lyx"
-
 \end_inset
 
 

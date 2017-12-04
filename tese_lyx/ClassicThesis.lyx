@@ -407,16 +407,6 @@ filename "redes_residuais.lyx"
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Chapter01.lyx"
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Part Introduction (ClassicThesis)
 Lorem ipsum at nusquam appellantur his, ut eos erant homero concludaturque.
  Albucius appellantur deterruisset id eam, vivendum partiendo dissentiet
@@ -442,56 +432,7 @@ Conclusão
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Chapter02.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Chapter03.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Part
-The Lyx Port
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Chapter04.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Part
-\start_of_appendix
-Appendix
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Chapter0A.lyx"
-
 \end_inset
 
 
@@ -522,27 +463,7 @@ filename "Bibliography.lyx"
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Colophon.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Declaration.lyx"
-
 \end_inset
 
 

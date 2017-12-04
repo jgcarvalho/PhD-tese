@@ -83,8 +83,8 @@ Introdução
 As redes neurais profundas são capazes de integrar atributos de vários níveis
  de abstração de forma hierárquica.
  Isso ocorre porque cada camada oculta de neurônios aumenta o nível de abstração
- dos atributos.
- 
+ dos atributos, assim, cada camada de neurônios consegue construir atributos
+ derivados das camadas anteriores.
 \end_layout
 
 \begin_layout Standard
@@ -96,22 +96,386 @@ s profundas tem obtido grande sucesso em diversas aplicações relacionadas
  Tais neurônios são então aplicados a todos os elementos da camada anterior
  realizando uma espécie de varredura.
  Assim, um neurônio que responde a um determinado padrão local, irá responder
- a esse padrão independetemente de onde ele ocorra.
+ a esse padrão independetemente de onde ele ocorra espacialemente.
 \end_layout
 
 \begin_layout Standard
 A propriedade de detectar padrões locais, quando combinada as múltiplas
- camadas das redes profundas, 
+ camadas das redes profundas, possibilita criarmos um modelo de predição
+ com semelhanças importantes ao modelo de autômatos celulares.
+ Essas semelhanças, as quais motivaram esse trabalho, são a utilização de
+ padrões locais na sequência que ao longo do tempo vão se propagando ao
+ longo da proteína até a formação da estrutura nativa.
 \end_layout
 
 \begin_layout Standard
+Quando ambos os métodos são comparados, redes neurais convoluticionais profundas
+ e autômatos celulares, podemos listar 
+\emph on
+a priori
+\emph default
+ algumas vantagens e desvantagens.
+ Dentre as vantagens das redes neurais convolucionais profundas temos:
+\end_layout
+
+\begin_layout Itemize
+o modelo não exige uma pré determinação dos estados intermediários, como
+ foi necessário com os autômatos celulares que necessita de estados discretos
+\end_layout
+
+\begin_layout Itemize
+as redes neurais possuem métodos de treinamento bem estabelecidos, eficazes
+ e eficientes
+\end_layout
+
+\begin_layout Standard
+Por outro lado, os autômatos celulares possuem as seguintes vantagens:
+\end_layout
+
+\begin_layout Itemize
+análise da sequência temporal de eventos
+\end_layout
+
+\begin_layout Itemize
+fácil interpretação das hierárquias dos padrões ao longo da sequência
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Deep networks naturally integrate low/mid/high- level features [50] and
  classifiers in an end-to-end multi- layer fashion, and the “levels” of
  features can be enriched by the number of stacked layers (depth).
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Materiais e métodos
+\end_layout
+
+\begin_layout Standard
+Dentre as arquiteturas de redes neurais convolucionais profundas, o modelo
+ que acreditamos ser o mais adequado foram os das redes neurais residuais.
+ Esse modelo, proposto inicialmente por He e colaboradores [He, 2015] facilitou
+ o treinamento de redes convolucionais profundas, permitindo a construção
+ de redes com até 1000 camadas de profundidade.
+\end_layout
+
+\begin_layout Standard
+No modelo proposto por nós, a camada de entrada da rede utiliza a representação
+ 
+\emph on
+one hot encoding
+\emph default
+, onde cada aminoácido é representado por um vetor com 22 posições.
+ Essas posições representam os 20 aminoácidos mais duas posições que represetam
+ a ausência de um aminoácido anterior ou posterior aos aminoácidos
+\emph on
+.
+ 
+\emph default
+A utilização de códigos para a ausência de aminoácidos na posição teve como
+ objetivo manter constante a somatória dos valores de entrada para as convoluçõe
+s (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Codificação-da-sequência"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+Com o objetivo de tornar mais didática a codificação de entrada, podemos
+ comparar a entrada com uma imagem, o tipo de dado mais comum para redes
+ convolucionais.
+ As imagens coloridas (RGB) são representadas como pixels, onde cada pixel
+ tem 3 valores, os canais, para representar as cores vermelho, verde e azul.
+ O tamanho da imagem representa os números de pixel que ela tem de largura
+ e altura.
+ Assim, uma imagem colorida de tamanho 800x600, tem dimensões 3x600x800
+ (CHW - 
+\emph on
+Channels, Height, Width
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+Na codificação da proteína, o número de canais é 22 representando os aminoácidos
+ e ausência deles como mencionado anteriormente.
+ Uma das dimensões representa a cadeia polipeptídica, essa dimensão tem
+ tamanho 3000.
+ Nessa dimensão, as primeiras 500 posições possuem o código de ausência
+ de aminoácido anterior a proteína.
+ A partir da 501 posição, tem início os códigos que representam a sequência
+ de resíduos da proteína.
+ Após o término da sequência, a matriz é preenchida com o código para ausência
+ de aminoácidos posteriores a proteína.
+ O tamanho de 3000 possibilita que, para a cadeia polipeptídica mais longa
+ em nosso conjunto de dados, que possui quase 2000 resíduos, tenhamos 500
+ códigos de ausência antes e depois.
+ A outra dimensão da matriz é igual a 1.
+ Assim, a matriz de entrada possui dimensões 22x3000x1 (CHW).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/one_hot_encoding.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Codificação da sequência de aminoácidos da proteína no formato 
+\emph on
+one hot encoding.
+ 
+\emph default
+Os códigos '>' e '<' representam, respectivamente, a ausência de um aminoácido
+ anterior e posterior a proteína.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Codificação-da-sequência"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A codificação inicial, no formato 
+\emph on
+one hot encoding,
+\emph default
+ é capaz de representar apenas se os aminoácidos são iguais ou difentes.
+ Consequentemente, um Aspartato será igualmente diferente de um Glutamato
+ quanto de uma Fenilalanina, mesmo sabendo que os dois primeiros possuem
+ propriedades físico-químicas semelhantes.
+ 
+\end_layout
+
+\begin_layout Standard
+Entretanto, ao invés de passarmos esse tipo de informação 
+\emph on
+a priori
+\emph default
+, optamos por utilizar como segunda camada da rede uma convolução 1x1, que
+ amplia o número de canais de 22 para 32.
+ Essa camada tem como objetivo, aprender uma melhor representação para os
+ aminoácidos e assim, as similaridades entre eles (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagrama-de-uma"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+A representação da segunda camada é mantida (residualmente) até a camada
+ final, onde outra convolução 1x1 reduz o número de canais de 32 para 3.
+ Esses 3 canais finais estão relacionados aos 3 elementos de estrutura de
+ secundária e, após a aplicação da função Softmax, representam a probabilidade
+ de cada um dos 3 elementos, hélice, fita e coil, para cada resíduo da proteína.
+\end_layout
+
+\begin_layout Standard
+É importante notar que nas camadas descritas até o momento, não há influência
+ de resíduos vizinhos, dado que são utilizadas somentes convoluções 1x1.
+\end_layout
+
+\begin_layout Standard
+A influência da vizinhança ocorre através dos blocos da rede residual.
+ O primeiro bloco, ou terceira camada, capta a saída da segunda camada e,
+ após realizar seus cálculos, soma sua matriz de resultados a matriz de
+ entrada.
+ Essa matriz, alterada pelo primeiro bloco, será a entrada do segundo bloco,
+ e assim sucessivamente.
+ Após as alterações feitas pelos blocos, a camada final mencionada anteriormente
+ fará a convolução 1x1 de 32 para 3 canais.
+ Como mencionamos anteriormente, os resultados da segunda camada são mantidos,
+ mas como são alterados pelos blocos, eles são mantidos apenas residualmente
+ e por isso a rede é chamada de rede residual.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/residual_ss.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diagrama de uma rede neural residual utilizada neste trabalho.
+ A entrada da rede consiste na sequência de resíduos de uma proteína no
+ formato 
+\emph on
+one-hot encoding.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Diagrama-de-uma"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A proposta original para as redes residuais utilizam uma função de ativação
+ não linear do tipo ReLU (Rectified Linear Unit) ao longo do caminho residual
+ [He, 2015].
+ Dentro do bloco são utilizados em sequência, uma convolução 3x3, uma camada
+ de batch normalization, um ReLU, outra convolução 3x3 e outra camada de
+ batch normalization (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Blocos"
+
+\end_inset
+
+ a).
+ Posteriormente He e colaboradores [He, 2016] testaram diversas variações
+ dos blocos e notaram que a alteração da ordem das camadas e a mudança do
+ função de ativação do caminho residual para dentro do bloco melhoravam
+ o desempenho da rede neural (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Blocos"
+
+\end_inset
+
+ b).
+ 
+\end_layout
+
+\begin_layout Standard
+No entanto, durante alguns testes preliminares na fase de construção do
+ nosso modelo demonstravam uma queda de desempenho com a utilização da camada
+ de batch normalization (resultados não mostrados).
+ Acreditamos que o motivo disso seja a influência que das regiões com códigos
+ que representam a ausência de resíduos possam ter no código dos aminoácidos
+ e, uma vez que as cadeias polipeptídicas tem tamanhos diferentes para proteínas
+ diferentes, essa influência possivelmente não é constante.
+\end_layout
+
+\begin_layout Standard
+Entretanto, a retirada da camada de batch normalization tornava as redes
+ testadas mais suscetível ao sobreajuste (
+\emph on
+overfitting
+\emph default
+).
+ A solução encontrada de regularização foi utilizar um camada de dropout
+ dentro do bloco, como utilizado por Zagoruyko e Komodakis [2017] nas Wide
+ Residual Networks.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/blocos_residuais.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Blocos 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Blocos"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
