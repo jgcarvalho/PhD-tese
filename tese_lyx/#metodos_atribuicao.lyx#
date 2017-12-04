@@ -1447,6 +1447,118 @@ Materiais e Métodos
 \end_layout
 
 \begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+O conjunto de proteínas utilizado ao longo deste trabalho foi obtido do
+ banco de dados 
+\begin_inset Quotes sld
+\end_inset
+
+TOP8000-best-hom50
+\begin_inset Quotes srd
+\end_inset
+
+ (atualizado em 2015).
+ Esse banco de dados é organizado pelo Richardson Lab da Universidade de
+ Duke e está disponível em 
+\begin_inset CommandInset href
+LatexCommand href
+name "github.com/rlabduke/reference_data"
+target "https://github.com/rlabduke/reference_data/tree/master/Top8000"
+
+\end_inset
+
+.
+ A estruturas proteicas do banco de dados estão separadas por cadeias e
+ atendem aos seguintes critérios:
+\end_layout
+
+\begin_layout Itemize
+Resolução 
+\begin_inset Formula $<$
+\end_inset
+
+ 2,0Å
+\end_layout
+
+\begin_layout Itemize
+MolProbity score 
+\begin_inset Formula $<$
+\end_inset
+
+ 2,0
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\leq$
+\end_inset
+
+5% dos resíduos apresentando comprimentos de ligação anormais (
+\begin_inset Formula $>4\sigma$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\leq$
+\end_inset
+
+5% dos resíduos apresentando ângulos de ligação anormais (
+\begin_inset Formula $>4\sigma$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\leq$
+\end_inset
+
+5% dos resíduos com desvios anormais do 
+\begin_inset Formula $C_{\beta}$
+\end_inset
+
+ (
+\begin_inset Formula $>0,25\text{Å}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+identidade sequencial entre elas 
+\begin_inset Formula $<$
+\end_inset
+
+50% (HOM50)
+\end_layout
+
+\begin_layout Standard
+A estrutura secundária dessas proteínas foram atribuídas pelos métodos DSSP,
+ STRIDE, KAKSI e PROSS.
+ Proteínas que possuíam resíduos indeterminados na sequência de aminoácidos
+ ou que apresentaram algum erro durante a atribuição da estrutura secundária
+ por algum dos quatro métodos foram removidas do conjunto.
+ 
+\end_layout
+
+\begin_layout Standard
+O conjunto de dados final é composto por 6749 cadeias polipeptídicas das
+ 7233 presentes no banco de dados 
+\begin_inset Quotes sld
+\end_inset
+
+TOP8000-best-hom50
+\begin_inset Quotes srd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 

@@ -135,8 +135,8 @@ Segundo os autores, a performance de 64,3% (Q3) atingida pela rede neural
  apenas 106 estruturas (85 para treinamento) com o argumento de que um maior
  número de estruturas não iria melhorar a predição para proteínas não homólogas
  as do conjunto de treinamento.
- Assim, a explicação mais plausível segundo eles era que a influência de
- resíduos mais distantes na sequência, e que portanto não estão contidos
+ Assim, a explicação mais plausível, segundo eles, era que a influência
+ de resíduos mais distantes na sequência, e que portanto não estão contidos
  na janela utilizada como entrada, precisaria ser considerada na predição.
  Caso isso fosse confirmado, eles acreditavam que seriam necessários novos
  métodos para considerar esses efeitos.
@@ -287,7 +287,11 @@ feed-forward
 \shape default
 com uma camada de neurônios oculta.
  A camada de entrada recebe 17 resíduos, cada um codificado em um vetor
- binário (one-hot enconding) com 22 posições.
+ binário (
+\emph on
+one-hot enconding
+\emph default
+) com 22 posições.
  Cada uma das 22 posições representam um aminoácido ou uma posição 
 \begin_inset Quotes sld
 \end_inset
