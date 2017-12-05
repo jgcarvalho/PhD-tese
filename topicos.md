@@ -38,17 +38,27 @@
 
 ### Introdução
 
-- Rede neural desenvolvida por Holley e Karplus
+- Rede neural desenvolvida por Holley e Karplus (e PSIPRED)
 
 ### Materiais e métodos
 
 - Implementação da rede neural similar a HK
+- Método de predição PSIPRED (estado da arte)
 
 ### Resultados
 
-- Análise do treinamento variando o número de neurônios
-    - Gráfico para mostrar quando o overfitting começa a ocorrer
-- Análise do treinamento utilizando os dados de consenso x os métodos separadamente
+- Modelo HK
+    - Análise do treinamento variando o número de neurônios
+        - Gráfico para mostrar quando o overfitting começa a ocorrer
+    - Análise do treinamento utilizando os dados de consenso x os métodos de atribuição separadamente (mostrar que apenas os dados de consenso funcionam melhor)
+    - Analise do melhor modelo de rede HK (Q3, Qh, Qe e Qc)
+    - Comparações com atribuição:
+        - tamanho das estruturas secundárias
+        - número das estruturas secundárias
+    - % de erros por aminoácidos
+    - Exemplos de proteinas com Q3 alto, médio, baixo
+- Modelo PSIPRED
+    - Q3, Qh, Qc e Qe - consenso, dssp, stride, kaksi e pross
 
 ### Conclusão
 
@@ -71,9 +81,11 @@
 
 ### Resultados
 
+- Evolução do EDA por função de fitness 
 - Q3 obtidos para cada função de fitness
-- Distribuição do número de resíduos por estrutura secundária (por f fitness)
 - Similaridade entre as estruturas secundárias preditas por diferentes funções de fitness
+- Erro por tipo de aminoácido
+- Exemplo de automato com Q3, alto, médio, baixo (resultado final e evolução)
 
 ### Conclusão
 
@@ -92,5 +104,11 @@
 
 ### Resultados
 
+- Análise do treinamento de redes com diferentes camadas (overfitting)
 - Q3 obtido
 - Embedding (codificação do aminoácido) semelhança entre os resíduos
+- Comparação com atribuição
+    - Tamanho da estrutura secundária
+    - Numero de segmentos de estrutura secundária
+- Erro por tipo de aminoácido
+- Exemplo de proteinas com Q3, alto, médio, baixo
