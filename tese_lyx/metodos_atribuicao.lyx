@@ -1604,7 +1604,14 @@ ref{fig:comparacao_metodos_atribuicao} demonstra a similaridade observada
 \end_layout
 
 \begin_layout Section
-Resultados
+Resultados 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:cap1-resultados"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

@@ -82,7 +82,7 @@
 ### Resultados
 
 - Evolução do EDA por função de fitness 
-- Q3 obtidos para cada função de fitness
+- ok Q3 obtidos para cada função de fitness (treinamento)
 - Similaridade entre as estruturas secundárias preditas por diferentes funções de fitness
 - Erro por tipo de aminoácido
 - Exemplo de automato com Q3, alto, médio, baixo (resultado final e evolução)
