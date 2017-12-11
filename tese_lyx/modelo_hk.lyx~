@@ -568,6 +568,10 @@ Resultados
 \end_layout
 
 \begin_layout Subsection
+Rede neural similar ao modelo de Holley e Karplus
+\end_layout
+
+\begin_layout Subsubsection
 Influência da atribuição na predição
 \end_layout
 
@@ -583,15 +587,17 @@ Teste consenso
 \end_inset
 
 ).
- Isso ocorre independente de quais dados são utilizado para o treinamento.
+ Isso ocorre independente de qual a fonte dos dados utilizado para o treinamento
+ (Consenso, DSSP, STRIDE, KAKSI ou PROSS).
 \end_layout
 
 \begin_layout Standard
 Na rede com maior acurácia, com 64 neurônicos na camada oculta e treinada
- apenas com os resíduos que apresentaram consenso.
- A diferença entre a acurácia no teste para os dados de consenso foi de
- 75,27%, enquanto a acurácia com dados dos métodos de atribuição individuais
- foi de aproximadamente 68%.
+ apenas com os resíduos que apresentaram consenso, a diferença entre a acurácia
+ no teste para os dados de consenso foi de 75,27%, enquanto a acurácia com
+ dados dos métodos de atribuição individuais foi de aproximadamente 68%.
+ O valores da tabela abaixo correspondem a média de 5 treinamentos para
+ cada rede.
 \end_layout
 
 \begin_layout Standard
@@ -3615,6 +3621,56 @@ Q_{3}dissenso\simeq0,476
  consenso.
 \end_layout
 
+\begin_layout Subsubsection
+Análise do treinamento
+\end_layout
+
+\begin_layout Standard
+Analisamos a influência do número de neurônios na camada oculta durante
+ o treinamento por 1000 épocas.
+ Cada época corresponde a utilização de todos os dados do conjunto de treinament
+o, ou seja, o conjunto é apresentadoa à rede neural 1000 vezes para que
+ os pesos, ou parâmetros, sejam otimizados buscando a redução da entropia
+ cruzada.
+\end_layout
+
+\begin_layout Standard
+Durante o treinamento, o conjunto de validação também é apresentado a rede
+ para calcular a entropia cruzada.
+ No entanto, ao contrário do conjunto de treinamento, o conjunto de validação
+ não é utilizado no aprendizado, o que significa que ele não é usado para
+ a otimização dos pesos.
+ A comparação da entropia cruzada do conjunto de treinamento com a do conjunto
+ de validação permite analisarmos se está ocorrendo um sobreajuste (
+\emph on
+overfiting
+\emph default
+) da rede neural para os dados de treinamento.
+ Um sobreajuste indica que a rede neural está memorizando os dados de treinament
+o ao invés de aprender um padrão geral para ser aplicado à novos casos.
+\end_layout
+
+\begin_layout Standard
+Na figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Treinamento-das-redes"
+
+\end_inset
+
+ é possível observar que a rede com 128 neurônios na camada oculta apresenta
+ uma maior diferença entre a entropia cruzada no conjunto de treinamento
+ e o conjunto de validação.
+ Notamos ainda que a entropia cruzada próxima a época 1000 apresenta uma
+ tendência de redução e, consequentemente, uma tendência em aumentar a diferença
+ da entropia entre os conjuntos.
+ Esse fato, juntamente com a semelhança entre os valores de entropia cruzada
+ para o conjunto de validação nas redes com 32, 64 e 128 neurônios, são
+ fortes indicativos da ocorrência de sobreajuste na rede com 128 neurônios
+ na camada oculta.
+ 
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 wide false
@@ -3635,6 +3691,16 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+Treinamento das redes neurais com diferentes números de neurônios na camada
+ oculta.
+ O gráfico mostra o desempenho da rede nos conjuntos de treinamento e validação.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Treinamento-das-redes"
+
+\end_inset
+
 
 \end_layout
 
@@ -3652,8 +3718,42 @@ status open
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection
+Acurácia da predição por tipos de estrutura secundária
+\end_layout
 
+\begin_layout Standard
+A rede neural similar ao modelo de Holley e Karplus apresentou uma maior
+ acurácia para hélices (~ 80%), seguido de coils (~ 75%) e fitas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ (~ 60%).
+ A menor acurácia em fitas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ foi observada em outros trabalhos [?].
+ Entre as causas sugeridas para a menor acurácia está a caractística não
+ local da formação de folhas 
+\begin_inset Formula $\beta$
+\end_inset
+
+, que são formadas por fitas, muitas vezes distantes na sequência de aminoácidos.
+ Outra possível causa da menor acurácia é o menor número, nos conjuntos
+ de dados, de resíduos que compõem as fitas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ em relação à hélices e coils (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Estrutura-secundária-atribuída"
+
+\end_inset
+
+).
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3745,7 +3845,7 @@ Q
 
 \shape smallcaps
 \size footnotesize
-H
+C
 \end_layout
 
 \end_inset
@@ -3769,7 +3869,7 @@ Q
 
 \shape smallcaps
 \size footnotesize
-E
+H
 \end_layout
 
 \end_inset
@@ -3916,7 +4016,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-0,746
+0,721
 \end_layout
 
 \end_inset
@@ -3927,7 +4027,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-67,6
+68,8
 \end_layout
 
 \end_inset
@@ -3938,7 +4038,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-66,8
+72,6
 \end_layout
 
 \end_inset
@@ -3949,7 +4049,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-65,2
+74,8
 \end_layout
 
 \end_inset
@@ -3960,7 +4060,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-68,9
+50,1
 \end_layout
 
 \end_inset
@@ -3994,7 +4094,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-0,755
+0,720
 \end_layout
 
 \end_inset
@@ -4005,7 +4105,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-67,2
+68,8
 \end_layout
 
 \end_inset
@@ -4016,7 +4116,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-65,9
+72,5
 \end_layout
 
 \end_inset
@@ -4027,7 +4127,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-65,0
+73,9
 \end_layout
 
 \end_inset
@@ -4038,7 +4138,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-69.9
+51,0
 \end_layout
 
 \end_inset
@@ -4072,7 +4172,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-0,747
+0,723
 \end_layout
 
 \end_inset
@@ -4083,7 +4183,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-67,5
+68,7
 \end_layout
 
 \end_inset
@@ -4094,7 +4194,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-66,9
+72,8
 \end_layout
 
 \end_inset
@@ -4105,7 +4205,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-65,6
+74,0
 \end_layout
 
 \end_inset
@@ -4116,7 +4216,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-69,2
+50,5
 \end_layout
 
 \end_inset
@@ -4152,7 +4252,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-0,696
+0,680
 \end_layout
 
 \end_inset
@@ -4163,7 +4263,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-70,4
+71,0
 \end_layout
 
 \end_inset
@@ -4174,7 +4274,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-70,9
+73,5
 \end_layout
 
 \end_inset
@@ -4185,7 +4285,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-69,1
+76,5
 \end_layout
 
 \end_inset
@@ -4196,7 +4296,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-70,7
+55,2
 \end_layout
 
 \end_inset
@@ -4230,7 +4330,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-0,705
+0,680
 \end_layout
 
 \end_inset
@@ -4241,7 +4341,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-69,8
+71,0
 \end_layout
 
 \end_inset
@@ -4252,7 +4352,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-69,2
+73,8
 \end_layout
 
 \end_inset
@@ -4263,7 +4363,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-68,5
+74,5
 \end_layout
 
 \end_inset
@@ -4274,7 +4374,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-71,1
+57,8
 \end_layout
 
 \end_inset
@@ -4308,7 +4408,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-0,697
+0,677
 \end_layout
 
 \end_inset
@@ -4319,7 +4419,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-70,4
+71,2
 \end_layout
 
 \end_inset
@@ -4330,7 +4430,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-70,6
+74,2
 \end_layout
 
 \end_inset
@@ -4341,7 +4441,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-69,9
+76,3
 \end_layout
 
 \end_inset
@@ -4352,7 +4452,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-70,4
+55,9
 \end_layout
 
 \end_inset
@@ -4388,7 +4488,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-0,644
+0,630
 \end_layout
 
 \end_inset
@@ -4399,7 +4499,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-73,1
+73,6
 \end_layout
 
 \end_inset
@@ -4410,7 +4510,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-74,9
+75,5
 \end_layout
 
 \end_inset
@@ -4421,7 +4521,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-71,9
+79,3
 \end_layout
 
 \end_inset
@@ -4432,7 +4532,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-71,7
+58,7
 \end_layout
 
 \end_inset
@@ -4466,7 +4566,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-0,653
+0,627
 \end_layout
 
 \end_inset
@@ -4477,7 +4577,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-72,5
+73,6
 \end_layout
 
 \end_inset
@@ -4488,7 +4588,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-73,5
+74,6
 \end_layout
 
 \end_inset
@@ -4499,7 +4599,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-70,8
+79,9
 \end_layout
 
 \end_inset
@@ -4510,7 +4610,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-72,1
+57,8
 \end_layout
 
 \end_inset
@@ -4544,7 +4644,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-0,648
+0,634
 \end_layout
 
 \end_inset
@@ -4555,7 +4655,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-72,9
+73,3
 \end_layout
 
 \end_inset
@@ -4566,7 +4666,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-74,5
+75,1
 \end_layout
 
 \end_inset
@@ -4577,7 +4677,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-72,0
+79,0
 \end_layout
 
 \end_inset
@@ -4588,7 +4688,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-71,5
+58,2
 \end_layout
 
 \end_inset
@@ -4624,7 +4724,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-0,617
+0,604
 \end_layout
 
 \end_inset
@@ -4635,7 +4735,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-74,4
+74,8
 \end_layout
 
 \end_inset
@@ -4646,7 +4746,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-76,6
+76,1
 \end_layout
 
 \end_inset
@@ -4657,7 +4757,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-72,5
+80,4
 \end_layout
 
 \end_inset
@@ -4668,7 +4768,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-73,1
+61,3
 \end_layout
 
 \end_inset
@@ -4702,7 +4802,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-0,629
+0,607
 \end_layout
 
 \end_inset
@@ -4713,7 +4813,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-73,6
+74,7
 \end_layout
 
 \end_inset
@@ -4724,7 +4824,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-75,9
+76,9
 \end_layout
 
 \end_inset
@@ -4735,7 +4835,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-71,8
+79,0
 \end_layout
 
 \end_inset
@@ -4746,7 +4846,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-71,8
+61,5
 \end_layout
 
 \end_inset
@@ -4780,7 +4880,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-0,625
+0,610
 \end_layout
 
 \end_inset
@@ -4791,7 +4891,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-73,9
+74,5
 \end_layout
 
 \end_inset
@@ -4802,7 +4902,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-76,5
+76,4
 \end_layout
 
 \end_inset
@@ -4813,7 +4913,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-73,0
+81,0
 \end_layout
 
 \end_inset
@@ -4824,7 +4924,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-71,4
+60,8
 \end_layout
 
 \end_inset
@@ -4860,7 +4960,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-0,596
+0,580
 \end_layout
 
 \end_inset
@@ -4871,7 +4971,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-75,4
+75,9
 \end_layout
 
 \end_inset
@@ -4882,7 +4982,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-77,7
+76,9
 \end_layout
 
 \end_inset
@@ -4893,7 +4993,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-73,8
+81,3
 \end_layout
 
 \end_inset
@@ -4904,7 +5004,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-73,8
+63,2
 \end_layout
 
 \end_inset
@@ -4938,7 +5038,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-0,617
+0,591
 \end_layout
 
 \end_inset
@@ -4949,7 +5049,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-74,1
+75,4
 \end_layout
 
 \end_inset
@@ -4960,7 +5060,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-76,0
+76,7
 \end_layout
 
 \end_inset
@@ -4971,7 +5071,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-73,2
+81,2
 \end_layout
 
 \end_inset
@@ -4982,7 +5082,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-72,3
+60,7
 \end_layout
 
 \end_inset
@@ -5016,7 +5116,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-0,615
+0,597
 \end_layout
 
 \end_inset
@@ -5027,7 +5127,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-74,4
+75,2
 \end_layout
 
 \end_inset
@@ -5038,7 +5138,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-76,6
+76,3
 \end_layout
 
 \end_inset
@@ -5049,7 +5149,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-74,2
+81,8
 \end_layout
 
 \end_inset
@@ -5060,7 +5160,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-72,1
+61,1
 \end_layout
 
 \end_inset
@@ -5096,7 +5196,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-0,570
+0,557
 \end_layout
 
 \end_inset
@@ -5107,7 +5207,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-76,5
+77,0
 \end_layout
 
 \end_inset
@@ -5118,7 +5218,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-78,6
+77,8
 \end_layout
 
 \end_inset
@@ -5129,7 +5229,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-75,7
+82,3
 \end_layout
 
 \end_inset
@@ -5140,7 +5240,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-74,7
+64,7
 \end_layout
 
 \end_inset
@@ -5174,7 +5274,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-0,616
+0,580
 \end_layout
 
 \end_inset
@@ -5185,7 +5285,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-74,7
+75,8
 \end_layout
 
 \end_inset
@@ -5196,7 +5296,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-79,1
+76,7
 \end_layout
 
 \end_inset
@@ -5207,7 +5307,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-70,2
+81,3
 \end_layout
 
 \end_inset
@@ -5218,7 +5318,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-71,8
+62,1
 \end_layout
 
 \end_inset
@@ -5252,7 +5352,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-0,615
+0,595
 \end_layout
 
 \end_inset
@@ -5263,7 +5363,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-74,9
+75,2
 \end_layout
 
 \end_inset
@@ -5274,7 +5374,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-79,2
+75,7
 \end_layout
 
 \end_inset
@@ -5285,7 +5385,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-71,9
+81,8
 \end_layout
 
 \end_inset
@@ -5296,7 +5396,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-71,6
+61,2
 \end_layout
 
 \end_inset
@@ -5332,7 +5432,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-0,536
+0,532
 \end_layout
 
 \end_inset
@@ -5343,7 +5443,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-78,0
+78,1
 \end_layout
 
 \end_inset
@@ -5354,7 +5454,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-80,1
+79,0
 \end_layout
 
 \end_inset
@@ -5365,7 +5465,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-78,3
+83,2
 \end_layout
 
 \end_inset
@@ -5376,7 +5476,7 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
-75,7
+66,4
 \end_layout
 
 \end_inset
@@ -5410,7 +5510,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-0,641
+0,595
 \end_layout
 
 \end_inset
@@ -5421,7 +5521,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-73,8
+75,4
 \end_layout
 
 \end_inset
@@ -5432,7 +5532,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-76,6
+74,9
 \end_layout
 
 \end_inset
@@ -5443,7 +5543,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-71,2
+81,1
 \end_layout
 
 \end_inset
@@ -5454,7 +5554,7 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
-71,9
+63,9
 \end_layout
 
 \end_inset
@@ -5488,7 +5588,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-0,639
+0,600
 \end_layout
 
 \end_inset
@@ -5499,7 +5599,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-73,9
+75,2
 \end_layout
 
 \end_inset
@@ -5510,7 +5610,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-76,9
+75,7
 \end_layout
 
 \end_inset
@@ -5521,7 +5621,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-72,4
+80,8
 \end_layout
 
 \end_inset
@@ -5532,7 +5632,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-71,3
+62,8
 \end_layout
 
 \end_inset
