@@ -326,6 +326,20 @@ Redes neurais para a predição a partir da matriz de substituição específica
  por posição (PSSM)
 \end_layout
 
+\begin_layout Standard
+Em 1999, Jones [?] publicou o método de predição PSIPRED.
+ O principal diferencial desse método em relação ao método de Holley e Karplus
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "holley_protein_1989"
+
+\end_inset
+
+ é a utilização de matrizes de substituição específica por posição.
+ As 
+\end_layout
+
 \begin_layout Section
 Materiais e Métodos
 \end_layout
@@ -6379,6 +6393,15 @@ Teste
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+atualizar o 64
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
