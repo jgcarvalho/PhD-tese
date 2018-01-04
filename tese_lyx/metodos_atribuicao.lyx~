@@ -82,14 +82,15 @@ Introdução
 \begin_layout Standard
 Os métodos computacionais de atribuição de estruturas secundárias surgiram
  com o objetivo de automatizar e reduzir a subjetividade da atribuição feita
- por cristalógrafos.
+ por cristalógrafos em estruturas resolvidas experimentalmente.
  Em geral, tais métodos buscam um conjunto de padrões estruturais que melhor
- representam a estrutura atribuída por especialistas.
+ representam a estrutura secundária atribuída por especialistas.
 \end_layout
 
 \begin_layout Standard
-Entretanto, como a atribuição por especialistas podem diferir entre si e,
- sobretudo, pela dificuldade de selecionar quais os melhores parâmetros,
+Entretanto, como a atribuição feita por diferentes especialistas pode diferir
+ devido ao uso de padrões subjetivos e, sobretudo, pela dificuldade de seleciona
+r parâmetros objetivos que reproduzam a atribuição feita por especialistas,
  os métodos computacionais apresentam variações entre si.
 \end_layout
 
@@ -108,13 +109,15 @@ key "kabsch_dictionary_1983,colloch_comparison_1993,frishman_knowledge-based_199
  como os métodos de predição de estruturas secundárias, acabaram optando,
  possivelmente de forma natural, por escolherem um método de atribuição
  como padrão.
- Consequentemente, podemos observar o método DSSP como o mais utilizado.
+ Consequentemente, podemos observar o método DSSP como o mais utilizado
+ como padrão de referência.
  
 \end_layout
 
 \begin_layout Standard
 Nesse trabalho, nós decidimos comparar quatro métodos de atribuição que
- utilizam padrões diferentes para classificar elementos de estrutura secundária.
+ utilizam diferentes parâmetros para classificar elementos de estrutura
+ secundária.
  O objetivo disso foi entender como a atribuição varia entre os métodos
  e assim, avaliar qual informação deveríamos utilizar e analisar ao longo
  do trabalho.
@@ -131,7 +134,14 @@ Em 1983, Kabsch e Sander publicaram o algoritmo de atribuição de estruturas
 \emph on
 Dictionary of Protein Secondary Structure
 \emph default
-).
+)
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kabsch_dictionary_1983"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -140,7 +150,13 @@ No trabalho, os autores afirmam que a atribuição de estruturas secundárias
  a partir das coordenadas atômicas de estruturas proteicas é um problema
  de reconhecimento de padrões.
  Nesse contexto, eles optaram por identificar esses padrões através de ligações
- de hidrogênio entre átomos da cadeia principal ao invés de ângulos 
+ de hidrogênio entre átomos da cadeia principal.
+ 
+\end_layout
+
+\begin_layout Standard
+A utilização das ligações de hidrogênio da cadeia principal ao invés de
+ ângulos 
 \begin_inset Formula $\Phi$
 \end_inset
 
@@ -152,11 +168,11 @@ No trabalho, os autores afirmam que a atribuição de estruturas secundárias
 \begin_inset Formula $C_{\alpha}$
 \end_inset
 
-.
- A justificativa utilizada foi que a presença, ou ausência, de ligações
- de hidrogênio poderiam ser avaliadas por um simples critério energético,
- enquanto as outras características precisariam do ajuste de um número maior
- de parâmetros.
+ foi justificada pela simplicidade.
+ A presença, ou ausência, de ligações de hidrogênio poderiam ser avaliadas
+ por um simples critério energético, enquanto que outras características
+ precisariam do ajuste numérico de um número maior de parâmetros.
+ 
 \begin_inset Marginal
 status open
 
@@ -174,8 +190,7 @@ Protein Data Bank
 \end_layout
 
 \begin_layout Standard
-As ligações de hidrogênio foram definidas por eles utilizando um modelo
- eletrostático.
+O DSSP define as ligações de hidrogênio utilizando um modelo eletrostático.
  Nesse modelo, uma ligação de hidrogênio 
 \begin_inset Formula $HB$
 \end_inset
@@ -263,11 +278,11 @@ Os autores afirmam que, por este modelo, uma boa ligação de hidrogênio teria
 \end_inset
 
 .
- Assim, a escolha de um limiar em 
+ Assim, a escolha do limiar como
 \begin_inset Formula $-0.5kcal/mol$
 \end_inset
 
- torna o modelo mais tolerante à erros nas coordenadas atômicas e à ligações
+ torna o modelo mais tolerante a erros nas coordenadas atômicas e a ligações
  de hidrogênios bifurcadas 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -279,8 +294,8 @@ key "kabsch_dictionary_1983"
 \end_layout
 
 \begin_layout Standard
-Uma vez definido o modelo para identificar ligações de hidrogênio, essas
- são testadas e anotadas na cadeia polipeptídica em duas classes ou padrões
+Uma vez definido o modelo para identificar ligações de hidrogênio, elas
+ são procuradas e anotadas na cadeia polipeptídica em duas classes ou padrões
  elementares: (1) padrão
 \emph on
  n-Turn
@@ -400,9 +415,9 @@ Bridge
 \end_layout
 
 \begin_layout Standard
-No trabalho, os autores mencionam que esse algoritmo proposto produz hélices
- mais curtas, com um resíduo a menos em cada extremidade, em relação a anotação
- seguindo as regras da IUPAC.
+No trabalho, os autores mencionam que o algoritmo proposto produz hélices
+ mais curtas, com um resíduo a menos em cada extremidade da hélice, em relação
+ a anotação seguindo as regras da IUPAC.
  Outra característica do algoritmo é que hélices que apresentem algumas
  ligações de hidrogênio ausentes, são mantidas como uma hélice única ao
  invés de múltiplas hélices com 
@@ -414,7 +429,7 @@ kinks
 \emph on
 bulges
 \emph default
- em fitas, sendo os mesmo também anotados como parte da fita.
+ em fitas, sendo os mesmos anotados como parte integrante da fita.
  
 \end_layout
 
@@ -500,10 +515,6 @@ reference "eq:stride_et"
 \end_layout
 
 \begin_layout Standard
-Sendo que,
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 E_{r}=\frac{-3E_{m}r_{m}⁸}{r^{8}}+\frac{-4E_{m}r_{m}⁶}{r^{6}}\label{eq:stride_er}
@@ -515,7 +526,19 @@ E_{r}=\frac{-3E_{m}r_{m}⁸}{r^{8}}+\frac{-4E_{m}r_{m}⁶}{r^{6}}\label{eq:strid
 \end_layout
 
 \begin_layout Standard
-Para a ligação de hidrogênio entre átomos da cadeia principal 
+Onde 
+\begin_inset Formula $r$
+\end_inset
+
+ é a distância entre o nitrogênio 
+\begin_inset Formula $N$
+\end_inset
+
+ e o oxigênio 
+\begin_inset Formula $O$
+\end_inset
+
+ da cadeia principal de resíduos diferentes, 
 \begin_inset Formula $E_{m}=-2,8\,kcal/mol$
 \end_inset
 
@@ -578,6 +601,19 @@ e os ângulos
 \end_inset
 
  são, respectivamente, os desvios angulares da ligação de hidrogênio.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+inserir a figura para mostrar r p ti t0
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -877,8 +913,9 @@ key "martin_protein_2005"
 \end_inset
 
 .
- Esse método foi desenvolvido utilizando padrões de distâncias entre 
-\begin_inset Formula $C_{\alpha}$
+ Esse método foi desenvolvido utilizando padrões de distâncias entre carbonos
+ alfa 
+\begin_inset Formula $(C_{\alpha})$
 \end_inset
 
  e de ângulos 
@@ -893,13 +930,17 @@ key "martin_protein_2005"
 \end_layout
 
 \begin_layout Standard
-Resumidamente, a heurística de atribuição de estrutura secundárias busca
- primeiramente por hélices, sendo que um resíduo é classificado como hélice
- se atender aos critérios de distâncias entre 
+A heurística de atribuição de estrutura secundárias busca primeiramente
+ por hélices, sendo que um resíduo é classificado como hélice se respeitar
+ os critérios de distâncias entre 
 \begin_inset Formula $C_{\alpha}$
 \end_inset
 
- ou aos critérios de ângulos 
+ 
+\series bold
+ou
+\series default
+ os critérios de ângulos 
 \begin_inset Formula $\Phi$
 \end_inset
 
@@ -910,11 +951,15 @@ Resumidamente, a heurística de atribuição de estrutura secundárias busca
 .
  Em seguida, é feito a classificação dos resíduos em fitas.
  Somente os resíduos não-hélice podem ser classificados em fitas, e para
- tal, eles precisam atender aos critérios de distância entre 
+ tal, eles precisam repeitar os critérios de distância entre 
 \begin_inset Formula $C_{\alpha}$
 \end_inset
 
- e aos critérios de ângulos 
+ 
+\series bold
+e
+\series default
+ os critérios de ângulos 
 \begin_inset Formula $\Phi$
 \end_inset
 
@@ -1075,7 +1120,7 @@ Cada par de ângulos
 \begin_inset Formula $-120\text{°}<\Psi<50\text{°}$
 \end_inset
 
-, o contador é reiniciado em zero.
+ (fora da região de fitas), o contador é reiniciado em zero.
  Esse critério é satisfeito se o contator 
 \begin_inset Formula $\geq\sigma_{b}$
 \end_inset
@@ -1086,7 +1131,7 @@ Cada par de ângulos
 \end_deeper
 \end_deeper
 \begin_layout Standard
-Além destes critérios, há critérios para detecção de 
+Além dos critérios acima, há outros para detecção de 
 \emph on
 kink
 \emph default
@@ -1105,7 +1150,7 @@ Os vários parâmetros necessários ao método foram ajustados empiricamente
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 % Distance criterion for β-sheets (C3).
@@ -1195,7 +1240,7 @@ II
 
 \end_inset
 
-ou coil de acordo com um um conjunto de regras.
+ou coil de acordo com um conjunto de regras.
  São elas:
 \end_layout
 
@@ -1433,7 +1478,7 @@ key "srinivasan_physical_1999"
 \end_inset
 
 .
- Outros métodos, ao utilizarem ligações de hidrogênio, acabam definindo
+ Métodos como o DSSP, ao utilizarem ligações de hidrogênio, acabam definindo
  as folhas 
 \begin_inset Formula $\beta$
 \end_inset
@@ -1540,8 +1585,8 @@ identidade sequencial entre elas
 A estrutura secundária dessas proteínas foram atribuídas pelos métodos DSSP,
  STRIDE, KAKSI e PROSS.
  Proteínas que possuíam resíduos indeterminados na sequência de aminoácidos
- ou que apresentaram algum erro durante a atribuição da estrutura secundária
- por algum dos quatro métodos foram removidas do conjunto.
+ ou que apresentaram algum erro de execução durante a atribuição da estrutura
+ secundária por algum dos quatro métodos foram removidas do conjunto.
  
 \end_layout
 
@@ -1604,14 +1649,21 @@ ref{fig:comparacao_metodos_atribuicao} demonstra a similaridade observada
 \end_layout
 
 \begin_layout Section
-Resultados
+Resultados 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:cap1-resultados"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 A comparação das estruturas secundárias atribuídas pelos métodos DSSP, STRIDE,
  KAKSI e PROSS demonstrou que há diferenças significativas entre eles.
- Aproximadamente 25%, de 1,7 milhão de resíduos que compõe o conjunto de
- dados, não apresentaram consenso na estrutura secundária atribuída pelos
+ Aproximadamente 24% dos 1,7 milhão de resíduos que presentes no conjunto
+ de dados não apresentaram consenso na estrutura secundária atribuída pelos
  quatro métodos (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1658,12 +1710,13 @@ status open
 \begin_layout Plain Layout
 Estrutura secundária atribuída aos resíduos das proteínas do conjunto de
  dados.
- Aproximadamente 29,5% dos resíduos foram classificados como hélices (H);
- 14,5% como fitas (E); 26,5% como coils (C); 24,2% não apresentam consenso
- entre os quatro métodos de atribuição (Dissenso); 5,2% são resíduos não
- visualizados na estrutura atômica resolvida e 0,04% dos resíduos apresentaram
- algum problema que durante a atribuição da estrutura secundária por pelo
- menos um dos métodos (Erro*).
+ Entre os resíduos que apresentaram consenso entre os métodos, aproximadamente
+ 29,5% foram classificados como hélices (H); 14,5% como fitas (E); 26,5%
+ como coils (C).
+ 24,2% não apresentam consenso entre os quatro métodos de atribuição (Dissenso);
+ 5,2% são resíduos não visualizados na estrutura atômica resolvida e 0,04%
+ dos resíduos não tiveram a estrutura secundária atribuída por todos os
+ quatro métodos (Erro*).
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Estrutura-secundária-atribuída"
@@ -1747,13 +1800,13 @@ Características das estruturas secundárias atribuídas
 \end_layout
 
 \begin_layout Standard
-Em relação ao número de estruturas secundárias atribuídas, o DSSP atribui
+Em relação ao número de estruturas secundárias atribuídas, o DSSP atribuiu
  o maior número de hélices, ~67 mil.
  Esse valor é apenas 5,7% maior que o número atribuído pelo STRIDE, mas
  31,6% maior que o KAKSI e 42% maior que o atribuído pelo PROSS.
- Quanto as fitas, o método que atribui o maior número foi o STRIDE ~68mil.
- O número de fitas atribuídas por método apresentou uma variação menor que
- as hélices.
+ Quanto as fitas, o método que atribuiu o maior número foi o STRIDE ~68mil.
+ O número de fitas atribuídas por cada método apresentou uma variação menor
+ que as hélices.
  O número de fitas atribuídas pelo DSSP foi apenas 0,03% menor, pelo PROSS,
  0,3% menor e pelo KAKSI, 0,5% menor (Figura 
 \begin_inset CommandInset ref
@@ -1828,8 +1881,8 @@ name "fig:Número-de-estruturas"
 \begin_layout Standard
 A distribuição do comprimento das estruturas secundárias também difere entre
  os métodos de atribuição.
- A mediana do comprimento das hélices atribuídas pelo DSSP é 8, 9 no STRIDE,
- 10 no PROSS e de 12 resíduos no KAKSI (Figura 
+ A mediana do comprimento das hélices atribuídas pelo DSSP é de 8 resíduos,
+ 9 no STRIDE, 10 no PROSS e de 12 resíduos no KAKSI (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Distribuição-do-comprimento-helices"
@@ -1840,8 +1893,8 @@ reference "fig:Distribuição-do-comprimento-helices"
  Hélices mais curtas são mais frequentes tanto no DSSP quanto no STRIDE.
  Caso duas ou mais hélices curtas sejam unidas e anotadas como uma hélice
  longa por outros métodos, teríamos um menor número de hélices.
- Isso explicaria em parte o fato dos métodos KAKSI e PROSS anotarem um menor
- número de hélices (Figura 
+ Isso explicaria, ao menos parcialmente, o fato dos métodos KAKSI e PROSS
+ anotarem um menor número de hélices (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Número-de-estruturas"
@@ -2302,8 +2355,9 @@ Em relação aos aminoácidos hidrofóbicos, parece haver uma menor tendência
 \begin_layout Standard
 Observamos ainda uma maior frequência do aspartato (D) em relação ao glutamato
  (E) e da asparagina (N) em relação à glutamina (Q).
- Essas diferenças aparentemente refletem as diferenças de propensão observadas
- nos inícios e finais de hélice (
+ Essas diferenças podem estar relacionadas à maior propensão do aspartato
+ e da asparagina em relação ao glutamato e à glutamina nos inícios e finais
+ de hélice (
 \emph on
 helix capping
 \emph default
@@ -2381,6 +2435,32 @@ Frequência dos aminoácidos em regiões de dissenso.
 
 \begin_layout Section
 Conclusão
+\end_layout
+
+\begin_layout Standard
+Uma das etapas iniciais no desenvolvimento de métodos de predição de estrutura
+ secundária é a preparação dos dados de referência.
+ Parte dessa preparação consiste na atribuição da estrutura secundária em
+ proteínas com estrutura atômica resolvida.
+ Em geral, trabalhos da literatura costumam utilizar o método DSSP como
+ padrão.
+ Entretanto, a diferença observada entre as atribuições de estrutura secundária
+ efetuadas por diferentes métodos computacionais indica que essa etapa pode
+ ser importante para o desenvolvimento de preditores com maior acurácia.
+\end_layout
+
+\begin_layout Standard
+Ao longo deste trabalho nós exploramos a utilização dos dados de cada um
+ dos quatro métodos citados e sua influência no treinamento de preditores.
+ Como veremos adiante, a utilização apenas de resíduos que apresentam consenso
+ na atribuição resulta em preditores com acurácia maior ou semelhante ao
+ melhor método de atribuição.
+ Neste contexto, melhor método de atribuição significa o que produziu os
+ dados que resultaram no preditor com maior acurácia.
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \end_body

@@ -95,18 +95,26 @@ Neste capítulo analisamos o resultado de dois métodos que utilizam redes
  A diferença entre os métodos está sobretudo nos dados de entrada.
  Enquanto um deles realizada a predição a partir da sequência de aminoácidos
  das proteínas, o outro utiliza uma matriz de substituição específica por
- posição (PSSM).
+ posição (PSSM) produzida pelo PSI-BLAST 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "altschul_gapped_1997"
+
+\end_inset
+
+.
  Métodos baseados em matrizes PSSM são o estado da arte para a predição
  de estruturas secundárias.
  
 \end_layout
 
 \begin_layout Standard
-Como o método que usa apenas a sequência como entrada foi proposto em 1989,
- o objetivo desse capítulo foi avaliar qual o desempenho máximo que poderia
- ser atingido por um método semelhante utilizando um conjunto de dados maior.
- Isso nos fornece uma desempenho basal para ser utilizado como referência
- para os métodos propostos neste trabalho.
+Como o método que utiliza apenas a sequência de aminoácidos como entrada
+ foi proposto em 1989, o objetivo desse capítulo foi avaliar qual a acurácia
+ que poderia ser atingida por um método semelhante utilizando um conjunto
+ de dados maior.
+ Isso nos fornece um acurácia de referência para ser comparada aos métodos
+ propostos neste trabalho.
 \end_layout
 
 \begin_layout Standard
@@ -134,7 +142,14 @@ key "qian_predicting_1988"
 \shape italic
 text-to-speech
 \shape default
-), cujo primeiro autor era Sejnowski (NETtalk 1986).
+) denominado NETtalk 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sejnowski_parallel_1987"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -145,7 +160,10 @@ A melhor arquitetura testada por eles consistia de duas redes neurais em
  aos elementos de estrutura secundária, coil, hélice e fita.
  Cada resíduo era codificado em um vetor binário com 21 elementos representando
  os 20 aminoácidos e um elemento indicando a ausência de aminoácidos.
- A segunda rede neural tinha como entrada os valores de saída da rede anterior
+\end_layout
+
+\begin_layout Standard
+A segunda rede neural recebia como entrada os valores de saída da rede anterior
  para uma janela de 13 resíduos e emitia novamente 3 valores no intervalo
  entre 0 e 1 representando a pontuação para os 3 elementos de estrutura
  secundária.
@@ -159,20 +177,16 @@ Os autores exploraram também a utilização de uma camada oculta de neurônios,
 \end_layout
 
 \begin_layout Standard
-Segundo os autores, a performance de 64,3% (Q3) atingida pela rede neural
- artificial, apesar de superior aos métodos anteriores, foi decepcionante.
- Dentre as possíveis explicações, eles minimizaram a influência de utilizarem
- apenas 106 estruturas (85 para treinamento) com o argumento de que um maior
- número de estruturas não iria melhorar a predição para proteínas não homólogas
- as do conjunto de treinamento.
- Assim, a explicação mais plausível, segundo eles, era que a influência
- de resíduos mais distantes na sequência, e que portanto não estão contidos
- na janela utilizada como entrada, precisaria ser considerada na predição.
+Segundo os autores, a acurácia de 64,3% (Q3) atingida pela rede neural artificia
+l, apesar de superior aos métodos anteriores, foi decepcionante.
+ A explicação mais plausível, segundo eles, era que a influência de resíduos
+ mais distantes na sequência, e que portanto não estão contidos na janela
+ de entrada, precisaria ser considerada na predição.
  Caso isso fosse confirmado, eles acreditavam que seriam necessários novos
  métodos para considerar esses efeitos.
  Eles concluem o trabalho com a hipótese de que um banco de dados maior
- de proteínas homólogas poderia permitir uma rede neural artificial aprender
- a equivalência dos aminoácidos em diferentes contextos na proteína.
+ de proteínas homólogas poderia possibilitar que uma rede neural artificial
+ aprendesse a equivalência dos aminoácidos em diferentes contextos na proteína.
 \end_layout
 
 \begin_layout Standard
