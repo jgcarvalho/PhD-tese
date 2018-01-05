@@ -142,7 +142,14 @@ key "qian_predicting_1988"
 \shape italic
 text-to-speech
 \shape default
-), cujo primeiro autor era Sejnowski (NETtalk 1986).
+) denominado NETtalk 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sejnowski_parallel_1987"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -151,9 +158,12 @@ A melhor arquitetura testada por eles consistia de duas redes neurais em
  A primeira recebia como entrada 13 resíduos da sequência polipeptídica
  e como saída emitia 3 valores no intervalo entre 0 e 1 correspondentes
  aos elementos de estrutura secundária, coil, hélice e fita.
- Cada resíduo era codificado em um vetor binário com 21 elementos representando
+ Cada resíduo foi codificado em um vetor binário com 21 elementos representando
  os 20 aminoácidos e um elemento indicando a ausência de aminoácidos.
- A segunda rede neural tinha como entrada os valores de saída da rede anterior
+\end_layout
+
+\begin_layout Standard
+A segunda rede neural recebia como entrada os valores de saída da rede anterior
  para uma janela de 13 resíduos e emitia novamente 3 valores no intervalo
  entre 0 e 1 representando a pontuação para os 3 elementos de estrutura
  secundária.
@@ -167,20 +177,16 @@ Os autores exploraram também a utilização de uma camada oculta de neurônios,
 \end_layout
 
 \begin_layout Standard
-Segundo os autores, a performance de 64,3% (Q3) atingida pela rede neural
- artificial, apesar de superior aos métodos anteriores, foi decepcionante.
- Dentre as possíveis explicações, eles minimizaram a influência de utilizarem
- apenas 106 estruturas (85 para treinamento) com o argumento de que um maior
- número de estruturas não iria melhorar a predição para proteínas não homólogas
- as do conjunto de treinamento.
- Assim, a explicação mais plausível, segundo eles, era que a influência
- de resíduos mais distantes na sequência, e que portanto não estão contidos
- na janela utilizada como entrada, precisaria ser considerada na predição.
+Segundo os autores, a acurácia de 64,3% (Q3) atingida pela rede neural artificia
+l, apesar de superior aos métodos anteriores, foi decepcionante.
+ A explicação mais plausível, segundo eles, era que a influência de resíduos
+ mais distantes na sequência, e que portanto não estão contidos na janela
+ de entrada, precisaria ser considerada na predição.
  Caso isso fosse confirmado, eles acreditavam que seriam necessários novos
  métodos para considerar esses efeitos.
  Eles concluem o trabalho com a hipótese de que um banco de dados maior
- de proteínas homólogas poderia permitir uma rede neural artificial aprender
- a equivalência dos aminoácidos em diferentes contextos na proteína.
+ de proteínas homólogas poderia possibilitar que uma rede neural artificial
+ aprendesse a equivalência dos aminoácidos em diferentes contextos na proteína.
 \end_layout
 
 \begin_layout Standard
@@ -193,11 +199,23 @@ key "holley_protein_1989"
 \end_inset
 
 .
- Este modelo também utilizou uma janela, neste caso de 17 aminoácidos.
- Nesta rede, os autores utilizaram uma camada de neurônios oculta, sendo
+ Este modelo também utilizou uma janela de resíduos como entrada, mas neste
+ caso, com tamanho 17.
+ A camada de saída possuía 2 neurônios, um indicando hélice e outro indicando
+ fita.
+ A predição de um coil era definida caso nenhum dos neurônios de saída atingisse
+ um valor maior que o limiar.
+\end_layout
+
+\begin_layout Standard
+Nesta rede, os autores utilizaram uma camada de neurônios oculta, sendo
  a camada com dois neurônios a que demonstrou maior acurácia no conjunto
  de teste.
- A acurácia do método foi de aproximadamente 63%.
+ 
+\end_layout
+
+\begin_layout Standard
+A acurácia do método foi de aproximadamente 63%.
  Os autores testaram ainda uma codificação de aminoácidos com características
  como hidrofobicidade, carga e flexibilidade da cadeia principal, entretanto,
  a acurácia observada nesse modelo foi de 61% e portanto inferior a codificação
@@ -308,8 +326,15 @@ key "holley_protein_1989"
 \end_inset
 
 , por ser construído com uma arquitetura mais convencional que utiliza um
- rede neural com uma camada oculta, ao invés de duas redes em sequência,
- foi o método escolhido para ser testado.
+ rede neural com uma camada oculta, ao invés de duas redes em sequência
+ como a de Qian e Sejnowski 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "qian_predicting_1988"
+
+\end_inset
+
+, foi o método escolhido para ser testado.
 \end_layout
 
 \begin_layout Standard
@@ -344,7 +369,7 @@ key "holley_protein_1989"
 
 \end_inset
 
- é a utilização de matrizes de substituição específica por posição.
+ foi a utilização de matrizes de substituição específica por posição (PSSM).
  As 
 \end_layout
 

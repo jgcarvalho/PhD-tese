@@ -158,7 +158,7 @@ A melhor arquitetura testada por eles consistia de duas redes neurais em
  A primeira recebia como entrada 13 resíduos da sequência polipeptídica
  e como saída emitia 3 valores no intervalo entre 0 e 1 correspondentes
  aos elementos de estrutura secundária, coil, hélice e fita.
- Cada resíduo era codificado em um vetor binário com 21 elementos representando
+ Cada resíduo foi codificado em um vetor binário com 21 elementos representando
  os 20 aminoácidos e um elemento indicando a ausência de aminoácidos.
 \end_layout
 
@@ -199,11 +199,23 @@ key "holley_protein_1989"
 \end_inset
 
 .
- Este modelo também utilizou uma janela, neste caso de 17 aminoácidos.
- Nesta rede, os autores utilizaram uma camada de neurônios oculta, sendo
+ Este modelo também utilizou uma janela de resíduos como entrada, mas neste
+ caso, com tamanho 17.
+ A camada de saída possuía 2 neurônios, um indicando hélice e outro indicando
+ fita.
+ A predição de um coil era definida caso nenhum dos neurônios de saída atingisse
+ um valor maior que o limiar.
+\end_layout
+
+\begin_layout Standard
+Nesta rede, os autores utilizaram uma camada de neurônios oculta, sendo
  a camada com dois neurônios a que demonstrou maior acurácia no conjunto
  de teste.
- A acurácia do método foi de aproximadamente 63%.
+ 
+\end_layout
+
+\begin_layout Standard
+A acurácia do método foi de aproximadamente 63%.
  Os autores testaram ainda uma codificação de aminoácidos com características
  como hidrofobicidade, carga e flexibilidade da cadeia principal, entretanto,
  a acurácia observada nesse modelo foi de 61% e portanto inferior a codificação
@@ -314,8 +326,15 @@ key "holley_protein_1989"
 \end_inset
 
 , por ser construído com uma arquitetura mais convencional que utiliza um
- rede neural com uma camada oculta, ao invés de duas redes em sequência,
- foi o método escolhido para ser testado.
+ rede neural com uma camada oculta, ao invés de duas redes em sequência
+ como a de Qian e Sejnowski 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "qian_predicting_1988"
+
+\end_inset
+
+, foi o método escolhido para ser testado.
 \end_layout
 
 \begin_layout Standard
@@ -350,8 +369,47 @@ key "holley_protein_1989"
 
 \end_inset
 
- é a utilização de matrizes de substituição específica por posição.
- As 
+ foi a utilização de matrizes de substituição específica por posição (PSSM)
+ ou 
+\emph on
+profile
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+A PSSM é produzida através do método de alinhamento PSI-Blast (
+\emph on
+Position-Specific
+\emph default
+ 
+\emph on
+Iterative
+\emph default
+)
+\begin_inset CommandInset citation
+LatexCommand citep
+key "altschul_gapped_1997"
+
+\end_inset
+
+.
+ Nesse método, o primeiro alinhamento entre a sequência da proteína alvo
+ e as proteínas de um banco de dados é feita utilizando um matriz de substituiçã
+o de aminoácidos como a BLOSUM62.
+ Na etapa seguinte, as proteínas com maior similaridade nesse primeiro alinhamen
+to são utilizadas para a construção de uma nova matriz de substituição.
+ No entanto, essa segunda matriz tem probabilidades específicas para os
+ aminoácidos em cada posição da sequência, trata-se portanto de uma PSSM.
+ Essa PSSM é então utilizada para um segundo alinhamento e o resultados
+ são utilizados para atualizar a PSSM.
+ Esse processo é iterativo e ocorre por um número definido de passos ou
+ até os resultados convergirem, ou seja, não forem encontradas novas proteínas
+ nos resultados.
+\end_layout
+
+\begin_layout Standard
+Assim, a PSSM contém informação de regiões conservadas 
 \end_layout
 
 \begin_layout Section
