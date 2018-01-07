@@ -111,8 +111,8 @@ key "altschul_gapped_1997"
 \begin_layout Standard
 Como o método que utiliza apenas a sequência de aminoácidos como entrada
  foi proposto em 1989, o objetivo desse capítulo foi avaliar qual a acurácia
- que poderia ser atingida por um método semelhante utilizando um conjunto
- de dados maior.
+ que poderia ser atingida por um método similar utilizando um conjunto de
+ dados maior.
  Isso nos fornece um acurácia de referência para ser comparada aos métodos
  propostos neste trabalho.
 \end_layout
@@ -369,8 +369,145 @@ key "holley_protein_1989"
 
 \end_inset
 
- foi a utilização de matrizes de substituição específica por posição (PSSM).
- As 
+ foi a utilização de matrizes de substituição específica por posição (PSSM)
+ ou 
+\emph on
+profile
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+A PSSM é produzida através do método de alinhamento PSI-Blast (
+\emph on
+Position-Specific
+\emph default
+ 
+\emph on
+Iterative
+\emph default
+ 
+\emph on
+Blast
+\emph default
+) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "altschul_gapped_1997"
+
+\end_inset
+
+.
+ No PSI-Blast, o primeiro alinhamento entre a sequência da proteína alvo
+ e as proteínas de um banco de dados é feito utilizando uma matriz de substituiç
+ão de aminoácidos como por exemplo a BLOSUM62 [?].
+ Na etapa seguinte, as proteínas com maior similaridade nesse primeiro alinhamen
+to são utilizadas para a construção de uma nova matriz de substituição.
+ No entanto, essa segunda matriz tem probabilidades específicas para os
+ aminoácidos em cada posição da sequência da proteína alvo, ou seja, essa
+ matriz é uma PSSM.
+ A PSSM é então utilizada para um segundo alinhamento e o resultados são
+ utilizados para atualizar as probabilidades da PSSM.
+ Esse processo é iterativo e ocorre por um número definido de passos ou
+ até os resultados convergirem, isto é, quando não forem encontradas novas
+ proteínas nos resultados do alinhamento com o banco de dados.
+\end_layout
+
+\begin_layout Standard
+A PSSM construída no alinhamento representa um perfil (
+\emph on
+profile
+\emph default
+) dos resíduos para uma família de proteínas homólogas.
+ Esse perfil contém informações sobre regiões mais conservadas e regiões
+ que apresentam maior variabilidade dos resíduos, assim como locais onde
+ ocorreram inserções e deleções.
+\end_layout
+
+\begin_layout Standard
+Como a conservação de resíduos na proteína tem relação com a estrutura,
+ por exemplo, resíduos expostos ao solvente sofrem menor pressão evolutiva
+ que resíduos não expostos ao solvente [?], a PSSM contém mais informação
+ que a simples sequência de resíduos.
+\end_layout
+
+\begin_layout Standard
+O PSIPRED é composto de duas redes neurais artificias.
+ A primeira rede neural recebe uma janela correspondente a 15 resíduos na
+ PSSM.
+ Essa rede neural possui 75 neurônios na camada oculta e 3 neurônios de
+ saída.
+ Cada neurônio de saída representa um tipo de estrutura secundária, coil,
+ hélice ou fita, e emitem valores entre 0 e 1.
+\end_layout
+
+\begin_layout Standard
+A segunda rede neural também utiliza uma janela referente a 15 resíduos
+ com 3 valores para cada resíduo.
+ Estes valores correspodem aos emitidos pela primeira rede neural.
+ A segunda rede neural possui 60 neurônios na camada oculta e 3 neurônios
+ na camada de saída.
+ Assim como na primeira rede neural, cada neurônio de saída corresponde
+ a um elemento de estrutura secundária.
+ O neurônio da camada de saída que apresentar o maior valor indica a estrutura
+ predita para o resíduo do centro da janela.
+ Portanto, para a predição da estrutura secundária de uma proteína é necessário
+ aplicar a primeira rede neural a todas as janelas possíveis e então, aplicar
+ a segunda rede neural também a todas as janelas possíveis contendo os resultado
+s da primeira rede neural.
+\end_layout
+
+\begin_layout Standard
+O PSIPRED apresentou acurácia de 78,3% (Q3) no conjunto de teste com 187
+ proteínas.
+ Essa medida foi feita em relação à estrutura secundária atribuída pelo
+ DSSP.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/psipred-method.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Método de predição de estrutura secundária PSIPRED.
+ Inicialmente a sequência de resíduos da proteína alvo é alinhada com um
+ banco de dados para a contrução de uma PSSM.
+ A primeira rede neural artificial recebe como entrada janelas de 15 resíduos
+ da PSSM e emite 3 valores entre 0 e 1 correspondentes a cada elemento de
+ estrutura secundária.
+ A segunda rede neural utiliza como entrada janelas de 15 resíduos contendo
+ os valores preditos pela rede anterior e emite 3 valores correspondentes
+ a estrutura secundária predita para o resíduo no centro da janela.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -382,20 +519,116 @@ Avaliação do desempenho
 \end_layout
 
 \begin_layout Standard
-A avaliação da acurácia da rede foi medida utilizando a métrica Q3
+A avaliação da acurácia da rede foi medida utilizando a métrica 
+\begin_inset Formula $Q_{3}$
+\end_inset
+
+.
+ O 
+\begin_inset Formula $Q_{3}$
+\end_inset
+
+ é a média dos valores de 
+\begin_inset Formula $Q_{i}$
+\end_inset
+
+ onde 
+\begin_inset Formula $i$
+\end_inset
+
+ pode ser hélice (
+\begin_inset Formula $h$
+\end_inset
+
+ ), fita (
+\begin_inset Formula $e$
+\end_inset
+
+ ) ou coil (
+\begin_inset Formula $c$
+\end_inset
+
+ ) (Equação 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:q3"
+
+\end_inset
+
+).
+ O 
+\begin_inset Formula $Q_{i}$
+\end_inset
+
+ é definido como a porcentagem de resíduos corretamente preditos no estado
+ 
+\begin_inset Formula $i$
+\end_inset
+
+ em relação ao número total de resíduos observados experimentalmente nesse
+ mesmo estado.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-explicar melhor
-\end_layout
+\begin_inset Formula 
+\begin{equation}
+Q_{3}=\frac{Q_{h}+Q_{e}+Q_{c}}{3}\label{eq:q3}
+\end{equation}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+e
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Q_{i}=\frac{VP_{i}}{Total_{i}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+onde 
+\begin_inset Formula $i$
+\end_inset
+
+ pode ser hélice (
+\begin_inset Formula $h$
+\end_inset
+
+ ), fita (
+\begin_inset Formula $e$
+\end_inset
+
+ ) ou coil (
+\begin_inset Formula $c$
+\end_inset
+
+ ), 
+\begin_inset Formula $VP_{i}$
+\end_inset
+
+ é o número de resíduos corretamente preditos para o estado 
+\begin_inset Formula $i$
+\end_inset
+
+ e 
+\begin_inset Formula $Total_{i}$
+\end_inset
+
+ é o número de resíduos observados experimentalmente no estado 
+\begin_inset Formula $i$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -587,17 +820,7 @@ key "kingma_adam:_2014"
 
 \end_inset
 
-, com os parâmetros default (alpha, beta_1, beta_2, epsilon ?)
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-preencher isso
-\end_layout
-
-\end_inset
-
-.
+ com taxa de aprendizado de 0.001.
 \end_layout
 
 \begin_layout Subsection
@@ -607,6 +830,12 @@ Rede neural que utiliza PSSM
 \begin_layout Standard
 O método de predição PSIPRED foi escolhido para testar o estado da arte
  em predição de estruturas secundárias.
+ A PSSM de cada proteína foi gerada localmente com o PSI-Blast utilizando
+ o banco de dados de sequências não redundantes (
+\emph on
+nr
+\emph default
+).
  
 \end_layout
 
@@ -634,17 +863,18 @@ Teste consenso
 \end_inset
 
 ).
- Isso ocorre independente de qual a fonte dos dados utilizado para o treinamento
- (Consenso, DSSP, STRIDE, KAKSI ou PROSS).
+ Isso ocorreu independente de qual a fonte dos dados utilizado para o treinament
+o (Consenso, DSSP, STRIDE, KAKSI ou PROSS).
 \end_layout
 
 \begin_layout Standard
 Na rede com maior acurácia, com 64 neurônicos na camada oculta e treinada
- apenas com os resíduos que apresentaram consenso, a diferença entre a acurácia
- no teste para os dados de consenso foi de 75,27%, enquanto a acurácia com
+ apenas com os resíduos que apresentaram consenso, a acurácia no conjunto
+ de teste para os dados de consenso foi de 75,27%, enquanto a acurácia com
  dados dos métodos de atribuição individuais foi de aproximadamente 68%.
  O valores da tabela abaixo correspondem a média de 5 treinamentos para
  cada rede.
+ O desvio padrão todos os casos foi inferior a 0,006.
 \end_layout
 
 \begin_layout Standard
@@ -3683,18 +3913,20 @@ o, ou seja, o conjunto é apresentadoa à rede neural 1000 vezes para que
 
 \begin_layout Standard
 Durante o treinamento, o conjunto de validação também é apresentado a rede
- para calcular a entropia cruzada.
+ para o cálculo a entropia cruzada.
  No entanto, ao contrário do conjunto de treinamento, o conjunto de validação
  não é utilizado no aprendizado, o que significa que ele não é usado para
  a otimização dos pesos.
  A comparação da entropia cruzada do conjunto de treinamento com a do conjunto
- de validação permite analisarmos se está ocorrendo um sobreajuste (
+ de validação permite analisarmos se há a ocorrência de sobreajuste (
 \emph on
 overfiting
 \emph default
 ) da rede neural para os dados de treinamento.
  Um sobreajuste indica que a rede neural está memorizando os dados de treinament
 o ao invés de aprender um padrão geral para ser aplicado à novos casos.
+ Em outras palavras, quando ocorre o sobreajuste a rede neural tem uma redução
+ da capacidade de generalização.
 \end_layout
 
 \begin_layout Standard
@@ -3786,7 +4018,8 @@ A rede neural similar ao modelo de Holley e Karplus apresentou uma maior
 \begin_inset Formula $\beta$
 \end_inset
 
-, que são formadas por fitas, muitas vezes distantes na sequência de aminoácidos.
+, as quais são formadas por fitas muitas vezes distantes na sequência de
+ aminoácidos.
  Outra possível causa da menor acurácia é o menor número, nos conjuntos
  de dados, de resíduos que compõem as fitas 
 \begin_inset Formula $\beta$
@@ -5714,723 +5947,12 @@ Tabela
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="7">
-<features booktabs="true" tabularvalignment="middle" tabularwidth="100text%">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-camada oculta
-\end_layout
-
-\end_inset
-</cell>
-<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-dados
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-entropia
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size footnotesize
-Q
-\begin_inset script subscript
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size footnotesize
-3
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size footnotesize
-Q
-\begin_inset script subscript
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size footnotesize
-C
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size footnotesize
-Q
-\begin_inset script subscript
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size footnotesize
-H
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size footnotesize
-Q
-\begin_inset script subscript
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size footnotesize
-E
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape slanted
-\size footnotesize
-(# de neurônios)
-\end_layout
-
-\end_inset
-</cell>
-<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-cruzada
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size footnotesize
-(%)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size footnotesize
-(%)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size footnotesize
-(%)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size footnotesize
-(%)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-32
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size scriptsize
-Treinamento
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0,621
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-73,5
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-74,8
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-73,1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-75,1
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="4" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size scriptsize
-Validação
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0,803
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-66,3
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-72,2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-64,94
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-59,6
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size scriptsize
-Teste
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0,727
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-69,7
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-72,8
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-67,7
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-66,4
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-64
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size scriptsize
-Treinamento
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0,557
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-77,0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-77,8
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-82,3
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-64,7
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="4" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size scriptsize
-Validação
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0,580
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-75,8
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-76,7
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-81,3
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-62,1
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size scriptsize
-Teste
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0,595
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-75,2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-75,7
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-81,8
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-61,2
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-atualizar o 64
+tamanho das estruturas para mostrar a predição de estruturas secundárias
+ descontínuas
 \end_layout
 
 \end_inset
@@ -6438,13 +5960,42 @@ atualizar o 64
 
 \end_layout
 
-\end_inset
-
-
+\begin_layout Subsection
+PSIPRED
 \end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
 
 \begin_layout Plain Layout
+Acurácia para as regiões de consenso
+\end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Acurácia geral por método de atribuicao
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+tamanho das estruturas para mostrar a continuidade das estruturas secundárias
 \end_layout
 
 \end_inset
