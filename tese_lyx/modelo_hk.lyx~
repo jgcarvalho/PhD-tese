@@ -5960,6 +5960,115 @@ tamanho das estruturas para mostrar a predição de estruturas secundárias
 
 \end_layout
 
+\begin_layout Subsubsection
+Distribuição do tamanho das estruturas secundárias
+\end_layout
+
+\begin_layout Standard
+A análise do comprimento das estruturas secundárias preditas para as proteínas
+ do conjunto de teste apresentou uma distribuição diferente da observada
+ nos métodos de atribuição (Comparação da figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-dos-comprimentos-modelo-hk"
+
+\end_inset
+
+ com 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-do-comprimento-helices"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-do-comprimento_fitas"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-do-comprimento_coil"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+A alta ocorrência de elementos de estruturas secundárias preditos com poucos
+ resíduos de comprimento é, provavelmente, uma consequência do fato da rede
+ neural fazer a predição para cada resíduo individualmente.
+ Isto implica que a estrutura secundária predita para o resíduo 
+\begin_inset Formula $r_{i}$
+\end_inset
+
+ não terá qualquer efeito nos resíduos vizinhos, anteriores ou posteriores
+ a 
+\begin_inset Formula $r_{i}$
+\end_inset
+
+.
+ Assim, apesar da alta acurácia observada na predição de hélices (
+\begin_inset Formula $Q_{H}>80\%$
+\end_inset
+
+) é possível observar que aproximadamente 50% das hélices preditas tem menos
+ de 4 resíduos, o que difere muito dos dados experimentais.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/model_hk_32_64_len_ss.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Distribuição dos comprimentos dos elementos de estrutura secundária preditos
+ por redes neurais similares ao modelo de Holley e Karplus.
+ (A) Modelo com 32 neurônios na camada oculta.
+ (B) Modelo com 64 neurônios na camada oculta.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Distribuição-dos-comprimentos-modelo-hk"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 PSIPRED
 \end_layout
@@ -5991,11 +6100,197 @@ Acurácia geral por método de atribuicao
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/psipred_q3.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/psipred_qh.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/psipred_qe.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/psipred_qc.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 tamanho das estruturas para mostrar a continuidade das estruturas secundárias
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/psipred_len_ss.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Distribuição dos comprimentos dos elementos de estrutura secundária preditas
+ utilizando o PSIPRED.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset

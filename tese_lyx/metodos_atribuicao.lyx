@@ -1960,7 +1960,7 @@ name "fig:Distribuição-do-comprimento-helices"
 \end_layout
 
 \begin_layout Standard
-As distribuições dos comprimentos das fitas apresentam mediana de 6 resíduos
+As distribuições dos comprimentos das fitas apresentam mediana de 5 resíduos
  para os quatro métodos de atribuição (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2006,6 +2006,59 @@ name "fig:Distribuição-do-comprimento_fitas"
 
 \end_inset
 
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As distribuições dos comprimentos dos coils apresentam mediana de 4 resíduos
+ para os quatro métodos de atribuição.
+ O comprimento dos coils para o DSSP e o STRIDE são muito similares, o que
+ também foi observado em fitas.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/atribuicao_len_ss_C.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Distribuição do comprimento dos coils por método de atribuição de estrutura
+ secundária.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Distribuição-do-comprimento_coil"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 

@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 import seaborn as sns
 
-DATA_PATH="/home/jgcarvalho/zeca-analyse-pos_quali/Top8000-best_hom50_pdb_chain/cba_times_mcc/rose_special_charged/run_10000"
+DATA_PATH="/home/jgcarvalho/zeca-results-analysis/zeca-analyse-pos_quali/Top8000-best_hom50_pdb_chain/cba_times_mcc/rose_special_charged/run_10000"
 
 def count_len_ss(fn, len_ss):
     with open(fn) as f:
@@ -39,6 +39,17 @@ def plot_E(len_dssp, len_stride, len_kaksi, len_pross):
     plt.ylim(ymin=0)
     # plt.xticks(x, labels)
     plt.savefig("atribuicao_len_ss_E.svg")
+    plt.show()
+
+def plot_C(len_dssp, len_stride, len_kaksi, len_pross):
+    m = ['DSSP','STRIDE','KAKSI','PROSS']
+    x = np.array(list(m))
+    plt.figure(1)
+    plt.subplot()
+    sns.boxplot(data=[np.array(len_dssp['C']),np.array(len_stride['C']),np.array(len_kaksi['C']),np.array(len_pross['C'])], palette="muted", showfliers=False)
+    plt.ylim(ymin=0)
+    # plt.xticks(x, labels)
+    plt.savefig("atribuicao_len_ss_C.svg")
     plt.show()
 
 def main():
@@ -78,7 +89,8 @@ def main():
     #     break
     # print(len_kaksi)
 
-    plot_E(len_dssp, len_stride, len_kaksi, len_pross)
-    plot_H(len_dssp, len_stride, len_kaksi, len_pross)
+    # plot_E(len_dssp, len_stride, len_kaksi, len_pross)
+    # plot_H(len_dssp, len_stride, len_kaksi, len_pross)
+    plot_C(len_dssp, len_stride, len_kaksi, len_pross)
 if __name__ == '__main__':
     main()

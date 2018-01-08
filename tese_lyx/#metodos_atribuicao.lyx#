@@ -82,9 +82,9 @@ Introdução
 \begin_layout Standard
 Os métodos computacionais de atribuição de estruturas secundárias surgiram
  com o objetivo de automatizar e reduzir a subjetividade da atribuição feita
- por cristalógrafos em estruturas resolvidas experimentalmente.
- Em geral, tais métodos buscam um conjunto de padrões estruturais que melhor
- representam a estrutura secundária atribuída por especialistas.
+ por cristalógrafos.
+ Em geral, tais métodos buscam por um conjunto de padrões estruturais capazes
+ de representar a estrutura secundária atribuída por especialistas.
 \end_layout
 
 \begin_layout Standard
@@ -1960,7 +1960,7 @@ name "fig:Distribuição-do-comprimento-helices"
 \end_layout
 
 \begin_layout Standard
-As distribuições dos comprimentos das fitas apresentam mediana de 6 resíduos
+As distribuições dos comprimentos das fitas apresentam mediana de 5 resíduos
  para os quatro métodos de atribuição (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2006,6 +2006,58 @@ name "fig:Distribuição-do-comprimento_fitas"
 
 \end_inset
 
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As distribuições dos comprimentos dos coils apresentam mediana de 4 resíduos
+ para os quatro métodos de atribuição.
+ O comprimento dos coils 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/atribuicao_len_ss_C.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Distribuição do comprimento dos coils por método de atribuição de estrutura
+ secundária.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Distribuição-do-comprimento_coil"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -2457,10 +2509,7 @@ Ao longo deste trabalho nós exploramos a utilização dos dados de cada um
  melhor método de atribuição.
  Neste contexto, melhor método de atribuição significa o que produziu os
  dados que resultaram no preditor com maior acurácia.
-\end_layout
-
-\begin_layout Standard
-
+ 
 \end_layout
 
 \end_body

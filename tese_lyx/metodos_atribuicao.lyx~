@@ -82,9 +82,9 @@ Introdução
 \begin_layout Standard
 Os métodos computacionais de atribuição de estruturas secundárias surgiram
  com o objetivo de automatizar e reduzir a subjetividade da atribuição feita
- por cristalógrafos em estruturas resolvidas experimentalmente.
- Em geral, tais métodos buscam um conjunto de padrões estruturais que melhor
- representam a estrutura secundária atribuída por especialistas.
+ por cristalógrafos.
+ Em geral, tais métodos buscam por um conjunto de padrões estruturais capazes
+ de representar a estrutura secundária atribuída por especialistas.
 \end_layout
 
 \begin_layout Standard
@@ -1960,7 +1960,7 @@ name "fig:Distribuição-do-comprimento-helices"
 \end_layout
 
 \begin_layout Standard
-As distribuições dos comprimentos das fitas apresentam mediana de 6 resíduos
+As distribuições dos comprimentos das fitas apresentam mediana de 5 resíduos
  para os quatro métodos de atribuição (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
