@@ -6074,6 +6074,40 @@ PSIPRED
 \end_layout
 
 \begin_layout Standard
+O PSIPRED apresentou uma alta acurácia na predição de estruturas secundárias
+ atingindo valores superiores aos reportados no artigo original (Q3 
+\begin_inset Formula $\simeq78\%$
+\end_inset
+
+).
+ A comparação da estrutura predita com a estrutura atribuída pelos quatro
+ métodos apresentou uma acurácia mediana de aproximadamente 85% (Figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-dos-valores-q3-psipred"
+
+\end_inset
+
+).
+ De acordo com os valores medianos, o DSSP foi o método que atribuiu a estrutura
+ secundária mais semelhante a estrutura predita.
+ Este resultado era esperado uma vez que o PSIPRED utiliza os dados do DSSP
+ como referência durante o treinamento da rede neural artificial.
+\end_layout
+
+\begin_layout Standard
+Assim como no método testado anteriormente, similar ao de Holley e Karplus,
+ a acurácia observada para as regiões de consenso apresentaram uma acurácia
+ superior.
+ Para o PSIPRED o valor mediano foi de aproximadamente 93%.
+ Considerando-se as porcentagens de 74,4% para os resíduos que apresentam
+ consenso na atribuição da estrutura secundária e 25,6% dos resíduos que
+ não apresentam consenso, podemos inferir que a acurácia para as regiões
+ de dissenso ficou na faixa de 60 a 65%.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -6119,6 +6153,16 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+Distribuição dos valores de Q3 obtidos pelo PSIPRED para cada proteína do
+ conjunto.
+ A comparação foi feita com as estruturas secundárias definidas pelos quatro
+ métodos atribuição e com as regiões de consenso entre eles.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Distribuição-dos-valores-q3-psipred"
+
+\end_inset
+
 
 \end_layout
 
@@ -6134,6 +6178,33 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+A comparação da predição para cada elemento de estrutura secundária demonstra
+ que o PSIPRED apresenta uma maior acurácia para regiões de hélice e a menor
+ acurácia é observada para as regiões de fitas (Figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-da-acurácia-qh-psipred"
+
+\end_inset
+
+ ,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-da-acurácia-qe-psipred"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-da-acurácia-qc-psipred"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -6156,6 +6227,14 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+Distribuição da acurácia obtida pelo PSIPRED na predição de hélices.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Distribuição-da-acurácia-qh-psipred"
+
+\end_inset
+
 
 \end_layout
 
@@ -6192,6 +6271,14 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+Distribuição da acurácia obtida pelo PSIPRED na predição de fitas.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Distribuição-da-acurácia-qe-psipred"
+
+\end_inset
+
 
 \end_layout
 
@@ -6229,6 +6316,14 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+Distribuição da acurácia obtida pelo PSIPRED na predição de coils.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Distribuição-da-acurácia-qc-psipred"
+
+\end_inset
+
 
 \end_layout
 
@@ -6260,6 +6355,41 @@ tamanho das estruturas para mostrar a continuidade das estruturas secundárias
 \end_layout
 
 \begin_layout Standard
+A distribuição dos comprimentos das estruturas secundárias preditas pelo
+ PSIPRED é similar a distribuição dos comprimentos observados experimentalmente
+ (Comparação da figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-dos-comprimentos-psipred"
+
+\end_inset
+
+ com 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-do-comprimento-helices"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-do-comprimento_fitas"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-do-comprimento_coil"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -6282,6 +6412,13 @@ status open
 Distribuição dos comprimentos dos elementos de estrutura secundária preditas
  utilizando o PSIPRED.
  
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Distribuição-dos-comprimentos-psipred"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6300,6 +6437,39 @@ Distribuição dos comprimentos dos elementos de estrutura secundária preditas
 
 \begin_layout Section
 Conclusão 
+\end_layout
+
+\begin_layout Standard
+A partir dos resultados deste capítulo, consideramos que a acurácia esperada
+ para a predição da estrutura secundária a partir da sequência de aminoácidos
+ fique na faixa entre 75% a 90% para os resíduos do consenso.
+\end_layout
+
+\begin_layout Standard
+O fato do treinamento da rede neural similar a de Holley e Karplus (HK)
+ com dados do consenso ter apresentado acurácia similar ou superior ao treinamen
+to com dados de qualquer um dos quatro métodos de atribuição indica que
+ podemos utilizar apenas o consenso para o treinamento de outros métodos
+ de predição.
+\end_layout
+
+\begin_layout Standard
+A diferença observada no comprimento das estruturas atribuídas em relação
+ às estruturas preditas pela rede neural HK, não foi observada para o PSIPRED.
+ Acreditamos que o fator responsável por produzir estruturas com comprimentos
+ similares ao experimental seja a utilização de uma segunda rede neural.
+ Como mencionado anteriormente, essa segunda rede neural recebe como entrada
+ três valores para cada resíduo da janela.
+ Esses valores representam os três tipos de estruturas secundárias.
+ Assim, a segunda rede neural não recebe informação direta dos aminoácidos,
+ mas apenas das estruturas secundárias.
+ Ela teria então a função de construir estruturas mais próximas as observadas
+ experimentalmente, removendo ou conectando estruturas muito curtas como
+ hélices com apenas um resíduo.
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \end_body

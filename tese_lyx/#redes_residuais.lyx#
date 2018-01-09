@@ -82,34 +82,37 @@ Introdução
 \begin_layout Standard
 As redes neurais profundas são capazes de integrar atributos de vários níveis
  de abstração de forma hierárquica.
- Isso ocorre porque cada camada oculta de neurônios aumenta o nível de abstração
- dos atributos, assim, cada camada de neurônios consegue construir atributos
- derivados das camadas anteriores.
+ Isso ocorre porque cada camada oculta de neurônios constrói atributos derivados
+ a partir da informação contida nas camadas anteriores.
 \end_layout
 
 \begin_layout Standard
-Dentre as arquiteturas de redes neurais profundas, a redes neurais convolucionai
-s profundas tem obtido grande sucesso em diversas aplicações relacionadas
- a imagem como classificação e detecção de objetos.
- Nas redes convolucionais, são utilizados neurônios que possuem conexões
+Dentre as arquiteturas de redes neurais profundas, as redes neurais convoluciona
+is tem obtido grande sucesso em diversas aplicações relacionadas a imagens,
+ como por exemplo a classificação e a detecção de objetos em fotografias.
+ 
+\end_layout
+
+\begin_layout Standard
+Nas redes convolucionais, são utilizados neurônios que possuem conexões
  locais com a camada imediatamente anterior.
  Tais neurônios são então aplicados a todos os elementos da camada anterior
  realizando uma espécie de varredura.
  Assim, um neurônio que responde a um determinado padrão local, irá responder
- a esse padrão independetemente de onde ele ocorra espacialemente.
+ a esse padrão independentemente de onde ele ocorra espacialmente.
 \end_layout
 
 \begin_layout Standard
-A propriedade de detectar padrões locais, quando combinada as múltiplas
+Essa capacidade de detectar padrões locais, quando combinada as múltiplas
  camadas das redes profundas, possibilita criarmos um modelo de predição
  com semelhanças importantes ao modelo de autômatos celulares.
  Essas semelhanças, as quais motivaram esse trabalho, são a utilização de
- padrões locais na sequência que ao longo do tempo vão se propagando ao
- longo da proteína até a formação da estrutura nativa.
+ padrões locais na sequência que, ao longo do tempo, se propagam ao longo
+ da proteína até a formação da estrutura nativa.
 \end_layout
 
 \begin_layout Standard
-Quando ambos os métodos são comparados, redes neurais convoluticionais profundas
+Quando ambos os métodos são comparados, redes neurais convolucionais profundas
  e autômatos celulares, podemos listar 
 \emph on
 a priori
@@ -120,12 +123,13 @@ a priori
 
 \begin_layout Itemize
 o modelo não exige uma pré determinação dos estados intermediários, como
- foi necessário com os autômatos celulares que necessita de estados discretos
+ foi necessário com os autômatos celulares, os quais necessitam de estados
+ discretos;
 \end_layout
 
 \begin_layout Itemize
 as redes neurais possuem métodos de treinamento bem estabelecidos, eficazes
- e eficientes
+ e eficientes.
 \end_layout
 
 \begin_layout Standard
@@ -137,7 +141,7 @@ análise da sequência temporal de eventos
 \end_layout
 
 \begin_layout Itemize
-fácil interpretação das hierárquias dos padrões ao longo da sequência
+fácil interpretação das hierarquias dos padrões ao longo da sequência
 \end_layout
 
 \begin_layout Standard
@@ -430,7 +434,8 @@ overfitting
 \emph default
 ).
  A solução encontrada de regularização foi utilizar um camada de dropout
- dentro do bloco, como utilizado por Zagoruyko e Komodakis [2017] nas Wid
+ dentro do bloco, como utilizado por Zagoruyko e Komodakis [2017] nas Wide
+ Residual Networks.
 \end_layout
 
 \begin_layout Standard
