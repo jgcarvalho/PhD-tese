@@ -80,8 +80,9 @@ Introdução
 \end_layout
 
 \begin_layout Standard
-As redes neurais profundas são capazes de integrar atributos de vários níveis
- de abstração de forma hierárquica.
+Redes neurais profundas são redes com mais de uma camada oculta de neurônios.
+ Devido ao maior número de camadas, elas são capazes de integrar atributos
+ de vários níveis de abstração de forma hierárquica.
  Isso ocorre porque cada camada oculta de neurônios constrói atributos derivados
  a partir da informação contida nas camadas anteriores.
 \end_layout
@@ -96,10 +97,46 @@ is tem obtido grande sucesso em diversas aplicações relacionadas a imagens,
 \begin_layout Standard
 Nas redes convolucionais, são utilizados neurônios que possuem conexões
  locais com a camada imediatamente anterior.
- Tais neurônios são então aplicados a todos os elementos da camada anterior
- realizando uma espécie de varredura.
+ Cada neurônio é então aplicado a camada anterior realizando uma espécie
+ de varredura.
  Assim, um neurônio que responde a um determinado padrão local, irá responder
  a esse padrão independentemente de onde ele ocorra espacialmente.
+ Isso difere das redes neurais totalmente conectadas (
+\emph on
+Fully Conected
+\emph default
+) como as utilizadas no capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ch:rede_neural_similar_hk"
+
+\end_inset
+
+ onde cada neurônio de uma camada está conectado a todos os neurônios da
+ camada anterior.
+ 
+\end_layout
+
+\begin_layout Standard
+Para uma explicação mais intuitiva, podemos pensar em uma rede neural convolucio
+nal que tenta classificar se há a ocorrência de um rosto humano em fotografias.
+ Nessa rede poderíamos ter um tipo de neurônio que iria ser responsável
+ por identificar a presença de um olho, outro tipo neurônio para um nariz
+ e outro tipo para a boca.
+ Cada neurônio estaria conectado a uma pequena região da imagem, mas o conjunto
+ de todos os neurônios do mesmo tipo estariam distribuídos cobrindo toda
+ a imagem.
+ Assim, neurônios do tipo que respondem a presença da boca emitiriam uma
+ resposta somente na região onde está a boca na fotografia.
+ O mesmo ocorreria para os demais tipos de neurônios.
+ Na camada seguinte, um tipo de neurônio capaz de identificar faces humanas
+ iria sinalizar a presença da mesma caso houvessem sinais de boca, nariz
+ e olhos
+\end_layout
+
+\begin_layout Standard
+Os neurônios de cada um dos tipos estariam conectados estaria por toda a
+ imagem, mas somente os que 
 \end_layout
 
 \begin_layout Standard
@@ -116,9 +153,9 @@ Inserir uma imagem para exemplificar
 \end_layout
 
 \begin_layout Standard
-Essa capacidade de detectar padrões locais, quando combinada as múltiplas
- camadas das redes profundas, possibilita criarmos um modelo de predição
- com semelhanças importantes ao modelo de autômatos celulares.
+A capacidade de detectar padrões locais, combinada as múltiplas camadas
+ das redes profundas, possibilita criarmos um modelo de predição com semelhanças
+ importantes ao modelo de autômatos celulares.
  Essas semelhanças, as quais motivaram esse trabalho, são a utilização de
  padrões locais na sequência que, ao longo do tempo, se propagam ao longo
  da proteína até a formação da estrutura nativa.
