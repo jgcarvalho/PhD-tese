@@ -81,8 +81,8 @@ Introdução
 
 \begin_layout Standard
 Redes neurais profundas são redes com mais de uma camada oculta de neurônios.
- Devido ao maior número de camadas, elas são capazes de integrar atributos
- de vários níveis de abstração de forma hierárquica.
+ Devido ao maior número de camadas ocultas, essas redes neurais são capazes
+ de integrar atributos de vários níveis de abstração de forma hierárquica.
  Isso ocorre porque cada camada oculta de neurônios constrói atributos derivados
  a partir da informação contida nas camadas anteriores.
 \end_layout
@@ -97,10 +97,10 @@ is tem obtido grande sucesso em diversas aplicações relacionadas a imagens,
 \begin_layout Standard
 Nas redes convolucionais, são utilizados neurônios que possuem conexões
  locais com a camada imediatamente anterior.
- Cada neurônio é então aplicado a camada anterior realizando uma espécie
- de varredura.
- Assim, um neurônio que responde a um determinado padrão local, irá responder
- a esse padrão independentemente de onde ele ocorra espacialmente.
+ Cada tipo de neurônio é então aplicado a camada anterior realizando uma
+ espécie de varredura.
+ Assim, um tipo de neurônio que responde a um determinado padrão local,
+ irá responder a esse padrão independentemente de onde ele ocorra espacialmente.
  Isso difere das redes neurais totalmente conectadas (
 \emph on
 Fully Conected
@@ -114,6 +114,31 @@ reference "ch:rede_neural_similar_hk"
 
  onde cada neurônio de uma camada está conectado a todos os neurônios da
  camada anterior.
+ 
+\end_layout
+
+\begin_layout Standard
+Para uma explicação mais intuitiva, podemos pensar em uma rede neural convolucio
+nal cujo objetivo é identificar a ocorrência de um rosto humano em fotografias.
+ Nessa rede poderíamos ter um tipo de neurônio que seria responsável por
+ identificar a presença de um olho, outro tipo neurônio para um nariz e
+ outro tipo para a boca.
+ Cada neurônio estaria conectado a uma pequena região da imagem, mas o conjunto
+ de todos os neurônios do mesmo tipo estariam distribuídos cobrindo toda
+ a imagem.
+ Assim, neurônios do tipo que respondem a presença da boca emitiriam uma
+ resposta somente na região onde há uma boca na fotografia.
+ O mesmo ocorreria para os demais tipos de neurônios.
+ Na camada seguinte, um tipo de neurônio capaz de identificar faces humanas
+ iria sinalizar a presença da mesma caso houvessem sinais de boca, nariz
+ e olhos.
+ Essa rede exemplifica a hierarquia entre as camadas e a identificação de
+ padrões mais complexos derivados de padrões mais simples.
+ Caso fosse utilizada uma rede neural totalmente conectada, mesmo utilizando
+ várias camadas ocultas, seria perdida a referência espacial.
+ Isto significa que mesmo que houvessem neurônios capazes de identificar
+ olhos, bocas e narizes, a rede não saberia interpretar se eles estariam
+ posicionados numa face ou apenas como elementos dispersos na foto.
  
 \end_layout
 
@@ -134,9 +159,10 @@ Inserir uma imagem para exemplificar
 A capacidade de detectar padrões locais, combinada as múltiplas camadas
  das redes profundas, possibilita criarmos um modelo de predição com semelhanças
  importantes ao modelo de autômatos celulares.
- Essas semelhanças, as quais motivaram esse trabalho, são a utilização de
- padrões locais na sequência que, ao longo do tempo, se propagam ao longo
- da proteína até a formação da estrutura nativa.
+ Essas semelhanças, as quais motivaram esse trabalho, são a identificação
+ de padrões locais na sequência capazes de iniciar a formação e/ou propagarem
+ essa informação ao longo da proteína até a formação da estrutura secundária
+ nativa.
 \end_layout
 
 \begin_layout Standard
@@ -161,15 +187,27 @@ as redes neurais possuem métodos de treinamento bem estabelecidos, eficazes
 \end_layout
 
 \begin_layout Standard
-Por outro lado, os autômatos celulares possuem as seguintes vantagens:
+Por outro lado, os autômatos celulares possuem a vantagem de facilitarem
+ a análise e compreensão dos padrões determinantes e de eventos de formação
+ e propagação da estrutura secundária.
 \end_layout
 
-\begin_layout Itemize
-análise da sequência temporal de eventos;
+\begin_layout Standard
+Entretanto, como demonstrado no capítulo anterior, a definição de um modelo
+ de autômatos celulares capazes de representar a estrutura secundária é
+ limitada pela dificuldade de se buscar regras que reproduzam o comportamento
+ esperado.
+ Ou seja, pela grande dificuldade imposta pelo problema inverso dos autômatos
+ celulares.
 \end_layout
 
-\begin_layout Itemize
-fácil interpretação das hierarquias dos padrões ao longo da sequência.
+\begin_layout Standard
+Nesse capítulo, exploramos a utilização de redes neurais convolucionais
+ profundas como um método alternativo ao uso de autômatos celulares.
+ É importante notar que apesar da mudança de modelo, o objetivo continua
+ ser predizer a estrutura secundária a partir da informação contida unicamente
+ na sequência de aminoácidos utilizando padrões locais que se propagam a
+ longo da sequência.
 \end_layout
 
 \begin_layout Standard
@@ -193,7 +231,7 @@ Materiais e métodos
 
 \begin_layout Standard
 Dentre as arquiteturas de redes neurais convolucionais profundas, o modelo
- que acreditamos ser o mais adequado foram os das redes neurais residuais.
+ que acreditamos ser o mais adequado são o de redes neurais residuais.
  Esse modelo, proposto inicialmente por He e colaboradores [He, 2015] facilitou
  o treinamento de redes convolucionais profundas, permitindo a construção
  de redes com até 1000 camadas de profundidade.
@@ -206,13 +244,13 @@ No modelo proposto por nós, a camada de entrada da rede utiliza a representaç�
 one hot encoding
 \emph default
 , onde cada aminoácido é representado por um vetor com 22 posições.
- Essas posições representam os 20 aminoácidos mais duas posições que represetam
- a ausência de um aminoácido anterior ou posterior aos aminoácidos
+ Essas posições representam os 20 aminoácidos mais duas posições que representam
+ a ausência de um aminoácido anterior ou posterior a sequência de resíduos
 \emph on
 .
  
 \emph default
-A utilização de códigos para a ausência de aminoácidos na posição teve como
+A utilização de códigos para a ausência de aminoácidos na posição tem como
  objetivo manter constante a somatória dos valores de entrada para as convoluçõe
 s (Figura 
 \begin_inset CommandInset ref
@@ -229,8 +267,16 @@ reference "fig:Codificação-da-sequência"
 Com o objetivo de tornar mais didática a codificação de entrada, podemos
  comparar a entrada com uma imagem, o tipo de dado mais comum para redes
  convolucionais.
- As imagens coloridas (RGB) são representadas como pixels, onde cada pixel
- tem 3 valores, os canais, para representar as cores vermelho, verde e azul.
+ As imagens coloridas (RGB) são representadas como 
+\emph on
+pixels
+\emph default
+, onde cada 
+\emph on
+pixel
+\emph default
+ tem 3 valores, chamado de canais, para representar as cores vermelho, verde
+ e azul.
  O tamanho da imagem representa os números de pixel que ela tem de largura
  e altura.
  Assim, uma imagem colorida de tamanho 800x600, tem dimensões 3x600x800
@@ -243,15 +289,15 @@ Channels, Height, Width
 
 \begin_layout Standard
 Na codificação da proteína, o número de canais é 22 representando os aminoácidos
- e ausência deles como mencionado anteriormente.
+ ou a ausência deles como mencionado anteriormente.
  Uma das dimensões representa a cadeia polipeptídica, essa dimensão tem
  tamanho 3000.
  Nessa dimensão, as primeiras 500 posições possuem o código de ausência
  de aminoácido anterior a proteína.
- A partir da 501 posição, tem início os códigos que representam a sequência
+ A partir da posição 501, tem início os códigos que representam a sequência
  de resíduos da proteína.
- Após o término da sequência, a matriz é preenchida com o código para ausência
- de aminoácidos posteriores a proteína.
+ Após o término da sequência de resíduos, a matriz é preenchida com o código
+ para ausência de aminoácidos posteriores a proteína.
  O tamanho de 3000 possibilita que, para a cadeia polipeptídica mais longa
  em nosso conjunto de dados, que possui quase 2000 resíduos, tenhamos 500
  códigos de ausência antes e depois.
@@ -315,7 +361,7 @@ A codificação inicial, no formato
 \emph on
 one hot encoding,
 \emph default
- é capaz de representar apenas se os aminoácidos são iguais ou difentes.
+ é capaz de representar apenas se os aminoácidos são iguais ou diferentes.
  Consequentemente, um Aspartato será igualmente diferente de um Glutamato
  quanto de uma Fenilalanina, mesmo sabendo que os dois primeiros possuem
  propriedades físico-químicas semelhantes.
@@ -350,7 +396,7 @@ A representação da segunda camada é mantida (residualmente) até a camada
 
 \begin_layout Standard
 É importante notar que nas camadas descritas até o momento, não há influência
- de resíduos vizinhos, dado que são utilizadas somentes convoluções 1x1.
+ de resíduos vizinhos, dado que são utilizadas somente convoluções 1x1.
 \end_layout
 
 \begin_layout Standard
