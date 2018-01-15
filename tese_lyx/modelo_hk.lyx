@@ -632,7 +632,14 @@ onde
 \end_layout
 
 \begin_layout Subsection
-Rede neural similar ao modelo de Holley e Karplus
+Rede neural similar ao modelo de Holley e Karplus 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Rede-neural-similar"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

@@ -81,8 +81,9 @@ Introdução
 
 \begin_layout Standard
 Redes neurais profundas são redes com mais de uma camada oculta de neurônios.
- Devido ao maior número de camadas ocultas, essas redes neurais são capazes
- de integrar atributos de vários níveis de abstração de forma hierárquica.
+ Devido ao maior número de camadas ocultas, as redes neurais profundas são
+ capazes de integrar atributos de vários níveis de abstração de maneira
+ hierárquica.
  Isso ocorre porque cada camada oculta de neurônios constrói atributos derivados
  a partir da informação contida nas camadas anteriores.
 \end_layout
@@ -90,13 +91,13 @@ Redes neurais profundas são redes com mais de uma camada oculta de neurônios.
 \begin_layout Standard
 Dentre as arquiteturas de redes neurais profundas, as redes neurais convoluciona
 is tem obtido grande sucesso em diversas aplicações relacionadas a imagens,
- como por exemplo a classificação e a detecção de objetos em fotografias.
+ como por exemplo, a classificação e a detecção de objetos em fotografias.
  
 \end_layout
 
 \begin_layout Standard
-Nas redes convolucionais, são utilizados neurônios que possuem conexões
- locais com a camada imediatamente anterior.
+Nas redes convolucionais são utilizados neurônios que possuem conexões locais
+ com a camada imediatamente anterior.
  Cada tipo de neurônio é então aplicado a camada anterior realizando uma
  espécie de varredura.
  Assim, um tipo de neurônio que responde a um determinado padrão local,
@@ -105,14 +106,14 @@ Nas redes convolucionais, são utilizados neurônios que possuem conexões
 \emph on
 Fully Conected
 \emph default
-) como as utilizadas no capítulo 
+), como as utilizadas no capítulo 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "ch:rede_neural_similar_hk"
 
 \end_inset
 
- onde cada neurônio de uma camada está conectado a todos os neurônios da
+, onde cada neurônio de uma camada está conectado a todos os neurônios da
  camada anterior.
  
 \end_layout
@@ -127,11 +128,11 @@ nal cujo objetivo é identificar a ocorrência de um rosto humano em fotografias
  de todos os neurônios do mesmo tipo estariam distribuídos cobrindo toda
  a imagem.
  Assim, neurônios do tipo que respondem a presença da boca emitiriam uma
- resposta somente na região onde há uma boca na fotografia.
+ resposta somente na região da imagem onde há uma boca.
  O mesmo ocorreria para os demais tipos de neurônios.
  Na camada seguinte, um tipo de neurônio capaz de identificar faces humanas
  iria sinalizar a presença da mesma caso houvessem sinais de boca, nariz
- e olhos.
+ e olhos em regiões próximas.
  Essa rede exemplifica a hierarquia entre as camadas e a identificação de
  padrões mais complexos derivados de padrões mais simples.
  Caso fosse utilizada uma rede neural totalmente conectada, mesmo utilizando
@@ -188,7 +189,7 @@ as redes neurais possuem métodos de treinamento bem estabelecidos, eficazes
 
 \begin_layout Standard
 Por outro lado, os autômatos celulares possuem a vantagem de facilitarem
- a análise e compreensão dos padrões determinantes e de eventos de formação
+ a análise e compreensão dos padrões aprendidos e de eventos de formação
  e propagação da estrutura secundária.
 \end_layout
 
@@ -269,16 +270,19 @@ Com o objetivo de tornar mais didática a codificação de entrada, podemos
  convolucionais.
  As imagens coloridas (RGB) são representadas como 
 \emph on
-pixels
+pixeis
 \emph default
 , onde cada 
 \emph on
 pixel
 \emph default
- tem 3 valores, chamado de canais, para representar as cores vermelho, verde
- e azul.
- O tamanho da imagem representa os números de pixel que ela tem de largura
- e altura.
+ contém 3 valores, chamado de canais, que representam a intensidade das
+ cores vermelho, verde e azul.
+ O tamanho da imagem corresponde ao número de 
+\emph on
+pixeis
+\emph default
+ que ela tem de largura e altura.
  Assim, uma imagem colorida de tamanho 800x600, tem dimensões 3x600x800
  (CHW - 
 \emph on
@@ -288,8 +292,8 @@ Channels, Height, Width
 \end_layout
 
 \begin_layout Standard
-Na codificação da proteína, o número de canais é 22 representando os aminoácidos
- ou a ausência deles como mencionado anteriormente.
+Na codificação da proteína, o número de canais é igual a 22 e cada um representa
+ a ocorrência de um aminoácido ou a ausência deles como mencionado anteriormente.
  Uma das dimensões representa a cadeia polipeptídica, essa dimensão tem
  tamanho 3000.
  Nessa dimensão, as primeiras 500 posições possuem o código de ausência
@@ -298,10 +302,21 @@ Na codificação da proteína, o número de canais é 22 representando os amino�
  de resíduos da proteína.
  Após o término da sequência de resíduos, a matriz é preenchida com o código
  para ausência de aminoácidos posteriores a proteína.
- O tamanho de 3000 possibilita que, para a cadeia polipeptídica mais longa
- em nosso conjunto de dados, que possui quase 2000 resíduos, tenhamos 500
- códigos de ausência antes e depois.
- A outra dimensão da matriz é igual a 1.
+ O tamanho foi pré-definido em 3000 para possibilitar que a cadeia polipeptídica
+ mais longa em nosso conjunto de dados, a qual possui quase 2000 resíduos,
+ tenha 500 códigos de ausência antes e depois.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Essa codificação permite testes com redes de até 250 blocos sem alteração
+ nos dados.
+\end_layout
+
+\end_inset
+
+ A outra dimensão da matriz é igual a 1, pois a cadeia polipeptídica é linear.
  Assim, a matriz de entrada possui dimensões 22x3000x1 (CHW).
 \end_layout
 
@@ -357,25 +372,32 @@ name "fig:Codificação-da-sequência"
 \end_layout
 
 \begin_layout Standard
-A codificação inicial, no formato 
+Através da codificação inicial da sequência no formato 
 \emph on
-one hot encoding,
+one hot encoding
 \emph default
- é capaz de representar apenas se os aminoácidos são iguais ou diferentes.
- Consequentemente, um Aspartato será igualmente diferente de um Glutamato
- quanto de uma Fenilalanina, mesmo sabendo que os dois primeiros possuem
- propriedades físico-químicas semelhantes.
- 
+ é possível apenas inferir se os aminoácidos são iguais ou diferentes.
+ Consequentemente, um Aspartato diferirá igualmente de um Glutamato como
+ de uma Fenilalanina, ou seja, essa codificação não contém similaridades
+ estruturais e/ou físico-químicas.
 \end_layout
 
 \begin_layout Standard
-Entretanto, ao invés de passarmos esse tipo de informação 
+Entretanto, ao invés de passarmos tais similaridades 
 \emph on
 a priori
 \emph default
-, optamos por utilizar como segunda camada da rede uma convolução 1x1, que
- amplia o número de canais de 22 para 32.
- Essa camada tem como objetivo, aprender uma melhor representação para os
+, optamos por utilizar como segunda camada da rede (primeira camada oculta)
+ uma convolução 1x1, que amplia o número de canais de 22 para 
+\begin_inset Formula $C$
+\end_inset
+
+, onde 
+\begin_inset Formula $C=\{8,\,16,\,32\}$
+\end_inset
+
+.
+ Essa camada tem como objetivo, aprender uma nova representação para os
  aminoácidos e assim, as similaridades entre eles (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -388,7 +410,11 @@ reference "fig:Diagrama-de-uma"
 
 \begin_layout Standard
 A representação da segunda camada é mantida (residualmente) até a camada
- final, onde outra convolução 1x1 reduz o número de canais de 32 para 3.
+ final, onde outra convolução 1x1 reduz o número de canais de 
+\begin_inset Formula $C$
+\end_inset
+
+ para 3.
  Esses 3 canais finais estão relacionados aos 3 elementos de estrutura de
  secundária e, após a aplicação da função Softmax, representam a probabilidade
  de cada um dos 3 elementos, hélice, fita e coil, para cada resíduo da proteína.
@@ -400,17 +426,21 @@ A representação da segunda camada é mantida (residualmente) até a camada
 \end_layout
 
 \begin_layout Standard
-A influência da vizinhança ocorre através dos blocos da rede residual.
+A influência da vizinhança é computada nos blocos da rede residual.
  O primeiro bloco, ou terceira camada, capta a saída da segunda camada e,
  após realizar seus cálculos, soma sua matriz de resultados a matriz de
  entrada.
- Essa matriz, alterada pelo primeiro bloco, será a entrada do segundo bloco,
+ A matriz alterada pelo primeiro bloco, será a entrada do segundo bloco,
  e assim sucessivamente.
- Após as alterações feitas pelos blocos, a camada final mencionada anteriormente
- fará a convolução 1x1 de 32 para 3 canais.
- Como mencionamos anteriormente, os resultados da segunda camada são mantidos,
- mas como são alterados pelos blocos, eles são mantidos apenas residualmente
- e por isso a rede é chamada de rede residual.
+ Após as alterações feitas pelos blocos, a camada final, descrita anteriormente,
+ fará a convolução 1x1 de 
+\begin_inset Formula $C$
+\end_inset
+
+ para 3 canais.
+ Como descrito, os resultados da segunda camada são mantidos, no entanto,
+ eles são alterados pelos blocos, ou seja, eles são mantidos apenas residualment
+e e por isso essa arquitetura de rede neural é chamada de rede residual.
 \end_layout
 
 \begin_layout Standard
@@ -433,11 +463,37 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Diagrama de uma rede neural residual utilizada neste trabalho.
+Diagrama da rede neural residual utilizada neste trabalho.
  A entrada da rede consiste na sequência de resíduos de uma proteína no
  formato 
 \emph on
 one-hot encoding.
+ 
+\emph default
+Para facilitar, apenas dois blocos estão
+\emph on
+ 
+\emph default
+representados
+\emph on
+ 
+\emph default
+e 
+\begin_inset Formula $C$
+\end_inset
+
+=32 canais
+\emph on
+ 
+\emph default
+(ou filtros)
+\emph on
+.
+ 
+\emph default
+No trabalho foram testadas redes com 4, 11 ou 21 blocos e 8, 16 ou 32 canais.
+
+\emph on
  
 \begin_inset CommandInset label
 LatexCommand label
@@ -464,11 +520,21 @@ name "fig:Diagrama-de-uma"
 
 \begin_layout Standard
 A proposta original para as redes residuais utilizam uma função de ativação
- não linear do tipo ReLU (Rectified Linear Unit) ao longo do caminho residual
- [He, 2015].
- Dentro do bloco são utilizados em sequência, uma convolução 3x3, uma camada
- de batch normalization, um ReLU, outra convolução 3x3 e outra camada de
- batch normalization (Figura 
+ não linear do tipo ReLU (
+\emph on
+Rectified Linear Unit
+\emph default
+) [?] ao longo do caminho residual [He, 2015].
+ Dentro do bloco são utilizados, em sequência, uma convolução 3x3, uma camada
+ de 
+\emph on
+batch normalization
+\emph default
+ [?], um ReLU, outra convolução 3x3 e outra camada de
+\emph on
+ batch normalization 
+\emph default
+(Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Blocos"
@@ -491,25 +557,38 @@ reference "fig:Blocos"
 \end_layout
 
 \begin_layout Standard
-No entanto, durante alguns testes preliminares na fase de construção do
- nosso modelo demonstravam uma queda de desempenho com a utilização da camada
- de batch normalization (resultados não mostrados).
- Acreditamos que o motivo disso seja a influência que das regiões com códigos
+No entanto, alguns testes preliminares na fase de construção do nosso modelo
+ demonstravam uma queda de desempenho com a utilização da camada de 
+\emph on
+batch normalization
+\emph default
+ (resultados não mostrados).
+ Acreditamos que o motivo disso seja a influência das regiões com códigos
  que representam a ausência de resíduos possam ter no código dos aminoácidos
  e, uma vez que as cadeias polipeptídicas tem tamanhos diferentes para proteínas
  diferentes, essa influência possivelmente não é constante.
 \end_layout
 
 \begin_layout Standard
-Entretanto, a retirada da camada de batch normalization tornava as redes
- testadas mais suscetível ao sobreajuste (
+Por outro lado, a retirada da camada de 
+\emph on
+batch normalization
+\emph default
+ tornava as redes testadas mais suscetível ao sobreajuste (
 \emph on
 overfitting
 \emph default
 ).
- A solução encontrada de regularização foi utilizar um camada de dropout
- dentro do bloco, como utilizado por Zagoruyko e Komodakis [2017] nas Wide
- Residual Networks.
+ A solução encontrada de regularização foi utilizar um camada de 
+\emph on
+dropout 
+\emph default
+[?] dentro do bloco, como utilizado por Zagoruyko e Komodakis [2017] nas
+ 
+\emph on
+Wide Residual Networks
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -547,13 +626,56 @@ name "fig:Blocos"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Número de blocos e canais
+\end_layout
+
+\begin_layout Standard
+O número de blocos define a profundidade da rede e, consequentemente, o
+ tamanho da vizinhança, em número de resíduos, que irá influenciar na predição
+ da estrutura secundária de cada resíduo.
+\end_layout
+
+\begin_layout Standard
+A utilização de 4 blocos determina que a predição da estrutura secundária
+ de cada resíduo utilizará a informação contida numa janela de 17 resíduos
+ da proteína 
+\begin_inset Formula $(4\times4+1)$
+\end_inset
+
+, sendo 8 resíduos anteriores e 8 resíduos posteriores.
+ A rede com onze blocos utilizará a informação contida em uma janela de
+ 45 resíduos 
+\begin_inset Formula $(11\times4+1)$
+\end_inset
+
+ e com 21 blocos, a informação em uma janela de 85 resíduos 
+\begin_inset Formula $(21\times4+1)$
+\end_inset
+
+.
+ Ou seja, a medida que o número de blocos aumenta, resíduos mais distantes
+ na sequência proteica irão influenciar na predição da estrutura secundária
+ local.
+\end_layout
+
+\begin_layout Standard
+O número de canais tem relação com a capacidade de representar a informação
+ local.
+ Assim, os canais tem função similar ao número de neurônios da camada oculta
+ no modelo de rede similar à de Holley e Karplus (Subseção 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Rede-neural-similar"
+
+\end_inset
+
+) e similar ao número de estados de transição do autômato celulares.
 \end_layout
 
 \begin_layout Section
