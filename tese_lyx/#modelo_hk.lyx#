@@ -632,7 +632,14 @@ onde
 \end_layout
 
 \begin_layout Subsection
-Rede neural similar ao modelo de Holley e Karplus
+Rede neural similar ao modelo de Holley e Karplus 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Rede-neural-similar"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6022,6 +6029,19 @@ A alta ocorrência de elementos de estruturas secundárias preditos com poucos
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+grafi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -6459,8 +6479,13 @@ A diferença observada no comprimento das estruturas atribuídas em relação
  Acreditamos que o fator responsável por produzir estruturas com comprimentos
  similares ao experimental seja a utilização de uma segunda rede neural.
  Como mencionado anteriormente, essa segunda rede neural recebe como entrada
- os três valores para cada resíduo.
- Esses valores representam  que estrutura secundária 
+ três valores para cada resíduo da janela.
+ Esses valores representam os três tipos de estruturas secundárias.
+ Assim, a segunda rede neural não recebe informação direta dos aminoácidos,
+ mas apenas das estruturas secundárias.
+ Ela teria então a função de construir estruturas mais próximas as observadas
+ experimentalmente, removendo ou conectando estruturas muito curtas como
+ hélices com apenas um resíduo.
 \end_layout
 
 \end_body

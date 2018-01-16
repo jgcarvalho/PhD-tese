@@ -678,8 +678,73 @@ reference "subsec:Rede-neural-similar"
 ) e similar ao número de estados de transição do autômato celulares.
 \end_layout
 
+\begin_layout Subsection
+Treinamento
+\end_layout
+
+\begin_layout Standard
+Cada rede neural foi treinada por 1000 épocas utilizando o algoritmo de
+ aprendizado Adam 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "kingma_adam:_2014"
+
+\end_inset
+
+ com taxa de aprendizado de 0.001.
+\end_layout
+
 \begin_layout Section
 Resultados
+\end_layout
+
+\begin_layout Subsection
+Análise do treinamento
+\end_layout
+
+\begin_layout Subsection
+Distribuição do tamanho das estruturas secundárias preditas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/model_resnet_len_ss.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Similaridade entre aminoácidos
 \end_layout
 
 \begin_layout Section

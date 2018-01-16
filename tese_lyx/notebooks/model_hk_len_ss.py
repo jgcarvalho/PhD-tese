@@ -7,7 +7,7 @@ import matplotlib.gridspec as gridspec
 import seaborn as sns
 
 # DATA_PATH="/home/jgcarvalho/zeca-analyse-pos_quali/Top8000-best_hom50_pdb_chain/cba_times_mcc/rose_special_charged/run_10000"
-DATA_PATH = "/home/jgcarvalho/cnnss/pytorch/model_HK/results_64"
+DATA_PATH = "/home/jgcarvalho/cnnss/pytorch/model_resnet/results_21_32"
 
 def count_len_ss(ss, len_ss):
     # with open(fn) as f:
@@ -48,9 +48,9 @@ def plot(len_model_hk):
     plt.figure(1)
     plt.subplot()
     sns.boxplot(data=[np.array(len_model_hk['H']),np.array(len_model_hk['E']),np.array(len_model_hk['C'])], palette="muted", showfliers=False)
-    plt.ylim(ymin=0)
-    # plt.xticks(x, labels)
-    # plt.savefig("model_hk_len_ss.svg")
+    plt.ylim(ymin=0, ymax=31)
+    # plt.xticks(x, m)
+    plt.savefig("model_resnet_21_32_len_ss.svg")
     plt.show()
 
 def main():
