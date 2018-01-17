@@ -5968,6 +5968,47 @@ tamanho das estruturas para mostrar a predição de estruturas secundárias
 \end_layout
 
 \begin_layout Subsubsection
+Distribuição da acurácia por proteína
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/model_hk_q_ss.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
 Distribuição do tamanho das estruturas secundárias
 \end_layout
 
@@ -6026,6 +6067,19 @@ A alta ocorrência de elementos de estruturas secundárias preditos com poucos
 
 ) é possível observar que aproximadamente 50% das hélices preditas tem menos
  de 4 resíduos, o que difere muito dos dados experimentais.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+grafico gerado com model_hk_len_ss.py
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

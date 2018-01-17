@@ -104,7 +104,7 @@ Nas redes convolucionais são utilizados neurônios que possuem conexões locais
  irá responder a esse padrão independentemente de onde ele ocorra espacialmente.
  Isso difere das redes neurais totalmente conectadas (
 \emph on
-Fully Conected
+Fully Connected
 \emph default
 ), como as utilizadas no capítulo 
 \begin_inset CommandInset ref
@@ -700,6 +700,60 @@ Resultados
 
 \begin_layout Subsection
 Análise do treinamento
+\end_layout
+
+\begin_layout Subsection
+Distribuição da acurácia
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+grafico gerado com model_resnet_q_ss.py
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/model_resnet_q_ss.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
