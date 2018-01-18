@@ -1,0 +1,2804 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass classicthesis
+\use_default_options true
+\maintain_unincluded_children false
+\language brazilian
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command biber
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language swedish
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes true
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\author -1589230395 "Paulo S. L. de Oliveira"
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Métodos de atribuição de estrutura secundária
+\end_layout
+
+\begin_layout Section
+Introdução
+\end_layout
+
+\begin_layout Standard
+Os métodos computacionais de atribuição de estruturas secundárias surgiram
+ com o objetivo de automatizar e reduzir a subjetividade da atribuição 
+\change_inserted -1589230395 1516108435
+manuais feitas durante o processo de resolução de esttuturas experimentalmente
+\change_deleted -1589230395 1516108439
+feita por
+\change_unchanged
+ 
+\change_deleted -1589230395 1516108390
+cristalógrafos
+\change_unchanged
+.
+ Em geral, tais métodos buscam por um conjunto de padrões estruturais capazes
+ de representar a estrutura secundária atribuída por especialistas.
+\change_inserted -1589230395 1516108519
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516108528
+Clarifificar esta frase
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+Entretanto, como a atribuição feita por diferentes especialistas pode diferir
+ devido ao uso de padrões subjetivos e, sobretudo, pela dificuldade de seleciona
+r parâmetros objetivos que reproduzam a atribuição feita por especialistas,
+ os métodos computacionais apresentam variações entre si.
+\end_layout
+
+\begin_layout Standard
+Diferentes autores sugerem a impossibilidade de se eleger qual o melhor
+ método, uma vez que todos estão corretos segundo os princípios adotados
+ por eles 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kabsch_dictionary_1983,colloch_comparison_1993,frishman_knowledge-based_1995,zhang_secondary_2015"
+
+\end_inset
+
+.
+ Assim, métodos que utilizam a informação da estrutura secundária de proteínas,
+ como os métodos de predição de estruturas secundárias, acabaram optando,
+ possivelmente de forma natural, por escolherem um método de atribuição
+ como padrão.
+ Consequentemente, podemos observar o método DSSP como o mais utilizado
+ como padrão de referência.
+ 
+\end_layout
+
+\begin_layout Standard
+Nesse trabalho, nós decidimos comparar quatro métodos de atribuição que
+ utilizam diferentes parâmetros para classificar elementos de estrutura
+ secundária.
+ O objetivo disso foi entender como a atribuição varia entre os métodos
+ 
+\change_deleted -1589230395 1516108687
+e assim, avaliar qual informação deveríamos utilizar e analisar ao longo
+ do trabalho.
+
+\change_inserted -1589230395 1516108742
+ e como isso afeta a sensibilidade e especificidade de étodos de predição
+ de estrutura secundária.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+DSSP
+\end_layout
+
+\begin_layout Standard
+Em 1983, Kabsch e Sander publicaram o algoritmo de atribuição de estruturas
+ secundárias de proteínas que viria a ser o mais utilizado até os dias atuais,
+ o DSSP (
+\emph on
+Dictionary of Protein Secondary Structure
+\emph default
+)
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kabsch_dictionary_1983"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+No trabalho, os autores afirmam que a atribuição de estruturas secundárias
+ a partir das coordenadas atômicas de estruturas proteicas é um problema
+ de reconhecimento de padrões.
+ Nesse contexto, eles optaram por identificar esses padrões através de ligações
+ de hidrogênio entre átomos da cadeia principal.
+ 
+\end_layout
+
+\begin_layout Standard
+A utilização das ligações de hidrogênio da cadeia principal ao invés de
+ ângulos 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ ou de posições relativas de 
+\begin_inset Formula $C_{\alpha}$
+\end_inset
+
+ foi justificada pela simplicidade.
+ A presença, ou ausência, de ligações de hidrogênio poderiam ser avaliadas
+ por um simples critério energético, enquanto que outras características
+ precisariam do ajuste numérico de um número maior de parâmetros.
+ 
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+Na época havia um pouco mais de 100 estruturas depositadas no 
+\emph on
+Protein Data Bank
+\emph default
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+O DSSP define as ligações de hidrogênio utilizando um modelo eletrostático.
+ Nesse modelo, uma ligação de hidrogênio 
+\begin_inset Formula $HB$
+\end_inset
+
+ ocorrerá se, e somente se, a energia 
+\begin_inset Formula $E$
+\end_inset
+
+ for menor que 
+\begin_inset Formula $-0.5kcal/mol$
+\end_inset
+
+.
+ Para o cálculo são utilizadas as cargas parciais 
+\begin_inset Formula $+q_{1},-q_{1}$
+\end_inset
+
+ nos átomos 
+\begin_inset Formula $C$
+\end_inset
+
+ e 
+\begin_inset Formula $O$
+\end_inset
+
+, e 
+\begin_inset Formula $-q_{2},+q_{2}$
+\end_inset
+
+ nos átomos 
+\begin_inset Formula $N$
+\end_inset
+
+ e 
+\begin_inset Formula $H$
+\end_inset
+
+, onde 
+\begin_inset Formula $q_{1}=0.42e$
+\end_inset
+
+ e 
+\begin_inset Formula $q_{2}=0.20e$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+E<-0.5kcal/mol\implies HB=\text{Verdade}\intertext{onde}E=q_{1}q_{2}(1/r(ON)+1/r(CH)-1/r(OH)-1/r(CN))*f\label{eq:dssp_energy}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Na equação 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dssp_energy"
+
+\end_inset
+
+, 
+\begin_inset Formula $r(AB)$
+\end_inset
+
+ é a distância interatômica entre A e B em ångström e o fator dimensional
+ 
+\begin_inset Formula $f=332$
+\end_inset
+
+.
+ 
+\change_inserted -1589230395 1516108936
+q1.q2 são cargas parciais dos aceitadores/doadores ...
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516108961
+descreva todos os parâmetros da equação
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+Os autores afirmam que, por este modelo, uma boa ligação de hidrogênio teria
+ aproximadamente 
+\begin_inset Formula $-3kcal/mol$
+\end_inset
+
+.
+ Assim, a escolha do limiar como
+\begin_inset Formula $-0.5kcal/mol$
+\end_inset
+
+ torna o modelo mais tolerante a erros nas coordenadas atômicas e a ligações
+ de hidrogênios bifurcadas 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kabsch_dictionary_1983"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Uma vez definido o modelo para identificar ligações de hidrogênio, elas
+ são procuradas e anotadas na cadeia polipeptídica em duas classes ou padrões
+ elementares: (1) padrão
+\emph on
+ n-Turn
+\emph default
+ e (2) padrão 
+\emph on
+Bridge
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+O padrão 
+\emph on
+n-Turn
+\emph default
+, onde 
+\begin_inset Formula $n\in\{3,4,5\}$
+\end_inset
+
+, apresentam uma ligação de hidrogênio entre o 
+\begin_inset Formula $CO$
+\end_inset
+
+ do resíduo 
+\begin_inset Formula $i$
+\end_inset
+
+ e o 
+\begin_inset Formula $NH$
+\end_inset
+
+ do resíduo 
+\begin_inset Formula $i+n$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\textit{n-Turn}\impliedby HB(i,\,i+n),\,n\in\{3,\,4,\,5\}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+O padrão 
+\emph on
+Bridge
+\emph default
+ pode ocorrer de duas formas, a paralela e a antiparalela.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\textit{Paralela}\impliedby[HB(i-1,j)\land HB(j,i+1)]\lor[HB(j-1,i)\land HB(i,j+1)]\\
+\textit{Antiparalela}\impliedby[HB(i,j)\land HB(j,i)]\lor[HB(i-1,j+1)\land HB(j-1,i+1)]
+\end{gather}
+
+\end_inset
+
+
+\change_inserted -1589230395 1516109063
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516109078
+Coloque um esquema para isso 
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+Sendo que as sequências 
+\begin_inset Formula $i-1,i,i+1$
+\end_inset
+
+ e 
+\begin_inset Formula $j-1,j,j+1$
+\end_inset
+
+ não apresentam sobreposição (
+\emph on
+overlap
+\emph default
+) de resíduos entre si.
+\end_layout
+
+\begin_layout Standard
+As ocorrências dos padrões elementares 
+\emph on
+n-Turn
+\emph default
+ e 
+\emph on
+Bridge
+\emph default
+ ao longo da cadeia polipeptídica são utilizadas para a atribuição dos elementos
+ de estrutura secundária.
+ Como exemplos, repetições consecutivas do padrão 
+\emph on
+4-Turn
+\emph default
+ indicam a ocorrência de uma hélice 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, enquanto resíduos consecutivos com padrão 
+\emph on
+Bridge
+\emph default
+ formam uma fita de uma folha 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+No trabalho, os autores mencionam que o algoritmo proposto produz hélices
+ mais curtas, com um resíduo a menos em cada extremidade da hélice, em relação
+ a anotação seguindo as regras da IUPAC.
+ Outra característica do algoritmo é que hélices que apresentem algumas
+ ligações de hidrogênio ausentes, são mantidas como uma hélice única ao
+ invés de múltiplas hélices com 
+\emph on
+kinks
+\emph default
+.
+ O mesmo ocorre com resíduos que formam 
+\emph on
+bulges
+\emph default
+ em fitas, sendo os mesmos anotados como parte integrante da fita.
+ 
+\end_layout
+
+\begin_layout Subsection
+STRIDE
+\end_layout
+
+\begin_layout Standard
+O método de atribuição de estrutura secundárias STRIDE foi desenvolvido
+ com o objetivo de reproduzir, com o máximo de acurácia possível, 
+\change_inserted -1589230395 1516109355
+à 
+\change_deleted -1589230395 1516109351
+a
+\change_unchanged
+ anotação
+\change_inserted -1589230395 1516109348
+ manual
+\change_deleted -1589230395 1516109341
+ humana feita por cristalógrafos
+\change_unchanged
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "frishman_knowledge-based_1995"
+
+\end_inset
+
+.
+ No método são utilizados como critérios tanto as energias de ligações de
+ hidrogênio quanto a propensão dos ângulos torcionais 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ da cadeia polipeptídica.
+\end_layout
+
+\begin_layout Standard
+A energia das ligações de hidrogênio são calculadas de acordo com a seguinte
+ função: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E_{hb}=E_{r}*E_{t}*E_{p}\label{eq:hb_stride}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Onde 
+\begin_inset Formula $E_{r}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:stride_er"
+
+\end_inset
+
+) é o termo de distância, 
+\begin_inset Formula $E_{p}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:stride_ep"
+
+\end_inset
+
+) e 
+\begin_inset Formula $E_{t}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:stride_et"
+
+\end_inset
+
+) descrevem as propriedades direcionais da ligação de hidrogênio.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E_{r}=\frac{-3E_{m}r_{m}⁸}{r^{8}}+\frac{-4E_{m}r_{m}⁶}{r^{6}}\label{eq:stride_er}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Onde 
+\begin_inset Formula $r$
+\end_inset
+
+ é a distância entre o nitrogênio 
+\begin_inset Formula $N$
+\end_inset
+
+ e o oxigênio 
+\begin_inset Formula $O$
+\end_inset
+
+ da cadeia principal de resíduos diferentes, 
+\begin_inset Formula $E_{m}=-2,8\,kcal/mol$
+\end_inset
+
+ e 
+\begin_inset Formula $r_{m}=3,0\,\text{Å.}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Os termos angulares são representados pelas seguintes funções:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E_{p}=\cos\text{²p}\label{eq:stride_ep}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+e
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E_{t}=\begin{cases}
+(0.9+0.1\sin2t_{i})\cos t_{0} & 0<t_{i}<90\text{°}\\
+K_{1}(K_{2}-\cos²t_{i})³\cos t_{0} & 90\text{°}<t_{i}<110\text{°}\\
+0 & t_{i}>110\text{°}
+\end{cases}\label{eq:stride_et}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+onde 
+\begin_inset Formula $K_{1}=0,9/cos^{6}110°$
+\end_inset
+
+, 
+\begin_inset Formula $K_{2}=cos^{2}110\text{°}$
+\end_inset
+
+e os ângulos 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ e 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ são, respectivamente, os desvios angulares da ligação de hidrogênio.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+inserir a figura para mostrar r p ti t0
+\end_layout
+
+\end_inset
+
+
+\change_inserted -1589230395 1516109379
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516109382
+concordo
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+A propensão dos ângulos torcionais para hélices 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ e fitas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ são calculadas respectivamente como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P_{i}^{\alpha}=\begin{cases}
+\frac{N_{i}^{\alpha}}{N_{i}^{total}} & se\,-180\text{°}<\Psi<10\text{°\,}e\,-120\text{°}<\Phi<45\text{°}\\
+0 & caso\,contrário
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+e
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P_{i}^{\beta}=\begin{cases}
+\frac{N_{i}^{\beta}}{N_{i}^{total}} & se\,-180\text{°}<\Psi<0\text{°\,e\,-180\text{°}<\Phi<-120\text{°}\,}ou\,45\text{°}<\Phi<180\text{°}\\
+0 & caso\,contrário
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+onde 
+\begin_inset Formula $N_{i}^{\alpha}$
+\end_inset
+
+ e 
+\begin_inset Formula $N_{i}^{\beta}$
+\end_inset
+
+ são, respectivamente, os números de resíduos definidos como hélice e fita
+ em um quadrante 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ de dimensões 20°
+\begin_inset Formula $\times$
+\end_inset
+
+20°, e 
+\begin_inset Formula $N_{i}^{total}$
+\end_inset
+
+ é o número total de resíduos nesse quadrante.
+\end_layout
+
+\begin_layout Standard
+A hélice mínima é definida por duas ligações de hidrogênio consecutivas,
+ ou seja, entre resíduos 
+\begin_inset Formula $k,k+4$
+\end_inset
+
+ e 
+\begin_inset Formula $k+1,k+5$
+\end_inset
+
+, utilizando a função:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E_{hb}^{k,k+4}\left(1+W_{1}^{\alpha}+W_{2}^{\alpha}\frac{P_{k}^{\alpha}+P_{k+4}^{\alpha}}{2}\right)<T_{1}^{\alpha}\label{eq:h_s1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Caso a condição seja verdadeira, os resíduos centrais 
+\begin_inset Formula $k+1,k+2,k+3\,e\,k+4$
+\end_inset
+
+ são classificados como hélice.
+ Já os resíduos 
+\begin_inset Formula $k,k+5$
+\end_inset
+
+ serão classificados como hélice se respeitarem as condições adicionais:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P_{k}^{\alpha}<T_{2}^{\alpha}\label{eq:h_s2}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+P_{k+5}^{\alpha}<T_{3}^{\alpha}\label{eq:h_s3}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nas funções 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:h_s1"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:h_s2"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:h_s3"
+
+\end_inset
+
+, 
+\begin_inset Formula $W_{1}^{\alpha}$
+\end_inset
+
+, 
+\begin_inset Formula $W_{2}^{\alpha}$
+\end_inset
+
+, 
+\begin_inset Formula $T_{1}^{\alpha}$
+\end_inset
+
+, 
+\begin_inset Formula $T_{2}^{\alpha}$
+\end_inset
+
+ e 
+\begin_inset Formula $T_{3}^{\alpha}$
+\end_inset
+
+ são pesos e limites empíricos que foram otimizados.
+\end_layout
+
+\begin_layout Standard
+A folha 
+\begin_inset Formula $\beta$
+\end_inset
+
+ mínima é definida por duas ligações de hidrogênio consecutivas através
+ das seguintes funções:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{cases}
+E_{hb1}\left(1+W_{1}^{\beta}+W_{2}^{\beta}.CONF_{Antiparalela}\right)<T_{Antiparalela}^{\beta}\\
+E_{hb2}\left(1+W_{1}^{\beta}+W_{2}^{\beta}.CONF_{Antiparalela}\right)<T_{Antiparalela}^{\beta}
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{cases}
+E_{hb1}\left(1+W_{1}^{\beta}+W_{2}^{\beta}.CONF_{Paralela}\right)<T_{Paralela}^{\beta}\\
+E_{hb2}\left(1+W_{1}^{\beta}+W_{2}^{\beta}.CONF_{Paralela}\right)<T_{Paralela}^{\beta}
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+onde 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+CONF=\frac{P_{Int1}^{\beta}+P_{Int2}^{\beta}}{2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $W_{1}^{\beta}$
+\end_inset
+
+,
+\begin_inset Formula $W_{2}^{\beta}$
+\end_inset
+
+, 
+\begin_inset Formula $T_{Paralela}^{\beta}$
+\end_inset
+
+, 
+\begin_inset Formula $T_{Antiparalela}^{\beta}$
+\end_inset
+
+ são pesos e limites empíricos que foram otimizados.
+\end_layout
+
+\begin_layout Standard
+A otimização dos pesos foi realizada de forma a aumentar a acurácia (
+\begin_inset Formula $Q_{3}$
+\end_inset
+
+) entre a atribuição feita pelo método e a atribuição
+\change_deleted -1589230395 1516109426
+ feita por cristalógrafos
+\change_inserted -1589230395 1516109429
+manual
+\change_unchanged
+.
+ Utilizando 223 proteínas, os autores definiram os seguintes valores: 
+\begin_inset Formula $W_{1}^{\alpha}=W_{2}^{\alpha}=1$
+\end_inset
+
+, 
+\begin_inset Formula $T_{1}^{\alpha}=230.0$
+\end_inset
+
+, 
+\begin_inset Formula $T_{2}^{\alpha}$
+\end_inset
+
+ e 
+\begin_inset Formula $T_{3}^{\alpha}=0.06$
+\end_inset
+
+, 
+\begin_inset Formula $W_{1}^{\beta}=W_{2}^{\beta}=0.2$
+\end_inset
+
+, 
+\begin_inset Formula $T_{Paralela}^{\beta}=-240.0$
+\end_inset
+
+ e 
+\begin_inset Formula $T_{Antiparalela}^{\beta}=-310.0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+KAKSI
+\end_layout
+
+\begin_layout Standard
+KAKSI é um método de atribuição de estruturas secundárias proposto por Martin
+ e colaboradores 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "martin_protein_2005"
+
+\end_inset
+
+.
+ Esse método foi desenvolvido utilizando padrões de distâncias entre carbonos
+ alfa 
+\begin_inset Formula $(C_{\alpha})$
+\end_inset
+
+ e de ângulos 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A heurística de atribuição de estrutura secundárias busca primeiramente
+ por hélices, sendo que um resíduo é classificado como hélice se respeitar
+ os critérios de distâncias entre 
+\begin_inset Formula $C_{\alpha}$
+\end_inset
+
+ 
+\series bold
+ou
+\series default
+ os critérios de ângulos 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+.
+ Em seguida, é feito a classificação dos resíduos em fitas.
+ Somente os resíduos não-hélice podem ser classificados em fitas, e para
+ tal, eles precisam repeitar os critérios de distância entre 
+\begin_inset Formula $C_{\alpha}$
+\end_inset
+
+ 
+\series bold
+e
+\series default
+ os critérios de ângulos 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Critérios para classificação de hélices:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Distância entre 
+\begin_inset Formula $C_{\alpha}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Todas as distâncias entre 
+\begin_inset Formula $C_{\alpha}$
+\end_inset
+
+ em uma janela de seis resíduos [i, i+5] precisam estar dentro do intervalo
+\begin_inset Formula $[M_{\alpha}-\varepsilon_{H}\times SD_{\alpha},M_{\alpha}+\varepsilon_{H}\times SD_{\alpha}]$
+\end_inset
+
+, onde 
+\begin_inset Formula $M_{\alpha}$
+\end_inset
+
+ e 
+\begin_inset Formula $SD_{\alpha}$
+\end_inset
+
+ são respectivamente a média e o desvio padrão observado em hélices 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Ângulos 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Todos os pares de ângulos 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ em uma janela de quatro resíduos precisam satisfazer as condições: 
+\begin_inset Formula $\Phi<0\text{°}$
+\end_inset
+
+ e 
+\begin_inset Formula $-90\text{°}<\Psi<60\text{°}$
+\end_inset
+
+.
+ Além disso, ao menos um par de ângulos precisa estar em uma região densamente
+ povoada, com densidade
+\begin_inset Formula $>\sigma_{H}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Critérios para classificação de folhas:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Distância entre 
+\begin_inset Formula $C_{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Todos as distâncias entre 
+\begin_inset Formula $C_{\alpha}$
+\end_inset
+
+ em duas janelas de três resíduos precisam estar no intervalo 
+\begin_inset Formula $[M_{\beta}-\varepsilon_{b}\times SD_{\beta},M_{\beta}+\varepsilon_{b}\times SD_{\beta}]$
+\end_inset
+
+, onde 
+\begin_inset Formula $M_{\beta}$
+\end_inset
+
+ e 
+\begin_inset Formula $SD_{\beta}$
+\end_inset
+
+ são respectivamente a média e o desvio padrão observado em folhas 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Ângulos 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Cada par de ângulos 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ presente na zona povoada de resíduos em folhas
+\begin_inset Formula $\beta$
+\end_inset
+
+ incrementa um contador em 1.
+ Quando um resíduo central da janela apresenta 
+\begin_inset Formula $-120\text{°}<\Psi<50\text{°}$
+\end_inset
+
+ (fora da região de fitas), o contador é reiniciado em zero.
+ Esse critério é satisfeito se o contator 
+\begin_inset Formula $\geq\sigma_{b}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+Além dos critérios acima, há outros para detecção de 
+\emph on
+kink
+\emph default
+ em hélices e um critério de correção de segmentos, que altera um resíduo
+ para o estado de coil quando ocorre continuidade de segmentos hélice-fita,
+ ou fita-hélice, tornando as hélices 1 resíduo menor.
+\end_layout
+
+\begin_layout Standard
+Os vários parâmetros necessários ao método foram ajustados empiricamente
+ utilizando um conjunto de 2880 domínios estruturais, com identidade sequencial
+ inferior à 40%, resolvidos por cristalografia e com resolução superior
+ a 2.25Å.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+% Distance criterion for β-sheets (C3).
+ All the Cα distances in % two sliding windows of length w3 (here w3 = 3)
+ must be in % the interval [Mβ - εb × SDβ; Mβ + εb × SDβ].
+ Mβ and SDβ represent the mean and standard deviation of Cα distance % distribut
+ions in β-sheets.
+\end_layout
+
+\begin_layout Plain Layout
+% Angle criterion for β-sheets (C4).
+ For each (Φ/Ψ) angle % pair falling in the populated zone of the Ramachandran
+ % map (density > 0), we increment a counter score(sheet) by % 1.
+ If a (Φ/Ψ) angle pair of the central residue of a sliding % window verifies
+ -120° < Ψ < 50°, then score(sheet) is reset % to zero.
+ The final score(sheet) must be greater or equal to σ
+\end_layout
+
+\begin_layout Plain Layout
+% Contiguous segments correction, criterion (C5).
+ If a helix % and a strand are adjacent, a coil is introduced in between,
+ % shortening the helix by one residue.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+PROSS
+\end_layout
+
+\begin_layout Standard
+PROSS é um método de atribuição de estruturas secundárias que utiliza somente
+ os ângulos torcionais 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ da cadeia principal.
+ Originalmente, cada resíduo era classificado em um mesoestado (
+\emph on
+mesostate
+\emph default
+) de acordo com o valor de seus ângulos torcionais 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "srinivasan_physical_1999,gong_does_2005"
+
+\end_inset
+
+.
+ Cada mesoestado equivale a um quadrante de dimensões 60°
+\begin_inset Formula $\times$
+\end_inset
+
+60°, totalizando 36 mesoestados possíveis (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pross_coarse"
+
+\end_inset
+
+).
+ Em seguida, cada resíduo é classificado em hélice 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, fita 
+\begin_inset Formula $\beta$
+\end_inset
+
+, volta 
+\begin_inset Formula $\beta$
+\end_inset
+
+, P
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+II 
+\end_layout
+
+\end_inset
+
+ou coil de acordo com um conjunto de regras.
+ São elas:
+\end_layout
+
+\begin_layout Enumerate
+Hélices
+\begin_inset Formula $\alpha$
+\end_inset
+
+: Uma região é identificada como hélice se houverem 5 ou mais resíduos contínuos
+ no conjunto de mesoestados {O, P}.
+\end_layout
+
+\begin_layout Enumerate
+Fita 
+\begin_inset Formula $\beta$
+\end_inset
+
+: Uma região é definida como fita se houverem 3 ou mais resíduos contínuos
+ no conjunto de mesoestados {L, G, F, A, R, M}.
+\end_layout
+
+\begin_layout Enumerate
+Volta 
+\begin_inset Formula $\beta$
+\end_inset
+
+: São definidos como voltas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ todos os pares de dipeptídeos com combinações no conjunto {OO, OP, OJ,
+ PO, PP, PJ, JO, JP, JJ, Mo, Mp, Mj, Ro, Rp, Rj, oo, op, oj, po, pp, pj,
+ jo, jp, jj, mO, mP, mJ, rO, rP, rJ}.
+\end_layout
+
+\begin_layout Enumerate
+P
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+II 
+\end_layout
+
+\end_inset
+
+: Resíduos que não foram classificados como fita, mas que estão no conjunto
+ {M, R} são categorizados como poliprolina II.
+\end_layout
+
+\begin_layout Enumerate
+Coil: Todos os outros resíduos não classificados como hélices 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, fitas 
+\begin_inset Formula $\beta$
+\end_inset
+
+, voltas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ ou P
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+II 
+\end_layout
+
+\end_inset
+
+são classificados como coil.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/pross_coarse.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mesoestados 60°
+\begin_inset Formula $\times$
+\end_inset
+
+60° para descrever os resíduos de acordo com os ângulos torcionais 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pross_coarse"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Posteriormente, outra versão do método PROSS passou a utilizar 144 mesoestados
+ com área 30°
+\begin_inset Formula $\times$
+\end_inset
+
+30° (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pross_fine"
+
+\end_inset
+
+).
+ As regras continuaram sendo estabelecidas de forma semelhante a feita anteriorm
+ente, mas utilizando estados mais específicos.
+ Por exemplo:
+\end_layout
+
+\begin_layout Enumerate
+Hélices
+\begin_inset Formula $\alpha$
+\end_inset
+
+: Uma região é identificada como hélice se houverem 5 ou mais resíduos contínuos
+ no conjunto de mesoestados {De, Df, Ed, Ee, Ef, Fe}.
+\end_layout
+
+\begin_layout Enumerate
+Fita 
+\begin_inset Formula $\beta$
+\end_inset
+
+: Uma região é definida como fita se houverem 3 ou mais resíduos contínuos
+ no conjunto de mesoestados {Bj, Bk, Bl, Cj, Ck, Cl, Dj, Dk, Dl}.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/pross_fine.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mesoestados 30°
+\begin_inset Formula $\times$
+\end_inset
+
+30° para descrever os resíduos de acordo com os ângulos torcionais 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pross_fine"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Segundo os autores, a utilização somente dos ângulos torcionais da cadeia
+ principal apresenta a vantagem de representar, corretamente, as fitas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ como estruturas secundárias 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "srinivasan_physical_1999"
+
+\end_inset
+
+.
+ Métodos como o DSSP, ao utilizarem ligações de hidrogênio, acabam definindo
+ as folhas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ como estruturas secundárias, as quais, no contexto físico, seriam mais
+ apropriadamente classificadas como estruturas terciárias.
+
+\change_inserted -1589230395 1516111255
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516111281
+Esse método é muito bom KISS keep it simple and stupid
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Section
+Materiais e Métodos
+\end_layout
+
+\begin_layout Subsection
+Conjunto de dados
+\end_layout
+
+\begin_layout Standard
+O conjunto de proteínas utilizado ao longo deste trabalho foi obtido do
+ banco de dados 
+\begin_inset Quotes sld
+\end_inset
+
+TOP8000-best-hom50
+\begin_inset Quotes srd
+\end_inset
+
+ (atualizado em 2015).
+ Esse banco de dados é organizado pelo Richardson Lab da Universidade de
+ Duke e está disponível em 
+\begin_inset CommandInset href
+LatexCommand href
+name "github.com/rlabduke/reference_data"
+target "https://github.com/rlabduke/reference_data/tree/master/Top8000"
+
+\end_inset
+
+.
+ A estruturas proteicas do banco de dados estão separadas por cadeias e
+ atendem aos seguintes critérios:
+\end_layout
+
+\begin_layout Itemize
+Resolução 
+\begin_inset Formula $<$
+\end_inset
+
+ 2,0Å
+\end_layout
+
+\begin_layout Itemize
+MolProbity score 
+\begin_inset Formula $<$
+\end_inset
+
+ 2,0
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\leq$
+\end_inset
+
+5% dos resíduos apresentando comprimentos de ligação anormais (
+\begin_inset Formula $>4\sigma$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\leq$
+\end_inset
+
+5% dos resíduos apresentando ângulos de ligação anormais (
+\begin_inset Formula $>4\sigma$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\leq$
+\end_inset
+
+5% dos resíduos com desvios anormais do 
+\begin_inset Formula $C_{\beta}$
+\end_inset
+
+ (
+\begin_inset Formula $>0,25\text{Å}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+identidade sequencial entre elas 
+\begin_inset Formula $<$
+\end_inset
+
+50% (HOM50)
+\end_layout
+
+\begin_layout Standard
+A estrutura secundária dessas proteínas foram atribuídas pelos métodos DSSP,
+ STRIDE, KAKSI e PROSS.
+ Proteínas que possuíam resíduos indeterminados na sequência de aminoácidos
+ ou que apresentaram algum erro de execução durante a atribuição da estrutura
+ secundária por algum dos quatro métodos foram removidas do conjunto.
+ 
+\end_layout
+
+\begin_layout Standard
+O conjunto de dados final é composto por 6749 cadeias polipeptídicas das
+ 7233 presentes no banco de dados 
+\begin_inset Quotes sld
+\end_inset
+
+TOP8000-best-hom50
+\begin_inset Quotes srd
+\end_inset
+
+.
+\change_inserted -1589230395 1516111524
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516111543
+Essa frase abaixo vai para os resultados, eu imagino?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Diferentemente de vários métodos publicados de predição de estrutura secundária
+ que utilizaram os resultados de atribuição provenientes de apenas um método,
+ comumente o DSSP, nós optamos por utilizar os resultados de um consenso
+ entre quatro métodos.
+ Consequentemente, é importante analisar como esses métodos diferem entre
+ si.
+\end_layout
+
+\begin_layout Plain Layout
+As análises a seguir foram feitas entre os resíduos de 6749 proteínas do
+ banco de dados Top8000-HOM50 que tiveram estrutura secundária atribuída
+ por todos os métodos.
+ Isso excluí 5,19% dos resíduos que não tiveram a estrutura secundária atribuída
+ por não terem sido visualizados na estrutura experimental e 0,05% dos resíduos
+ que não tiveram sua estrutura atribuída por um ou mais programas devido
+ à possíveis falhas dos programas.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Notamos que, entre os quatro métodos de atribuição analisados, há a ocorrência
+ de uma variação considerável entre as estruturas secundárias atribuídas
+ para cada resíduo.
+ A figura 
+\backslash
+ref{fig:comparacao_metodos_atribuicao} demonstra a similaridade observada
+ entre os métodos.
+ Como esperado, a maior similaridade é observada entre os métodos DSSP e
+ STRIDE, uma vez que o último é inspirado no primeiro.
+ Entretanto, a similaridade entre os demais métodos encontra-se na faixa
+ entre 83% e 85%.
+ A porcentagem de resíduos que apresentaram consenso entre os quatro métodos
+ foi de apenas 74,43%.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Resultados 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:cap1-resultados"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A comparação das estruturas secundárias atribuídas pelos métodos DSSP, STRIDE,
+ KAKSI e PROSS demonstrou que há diferenças significativas entre eles.
+ Aproximadamente 24% dos 1,7 milhão de resíduos que presentes no conjunto
+ de dados não apresentaram consenso na estrutura secundária atribuída pelos
+ quatro métodos (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Estrutura-secundária-atribuída"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Quantos resíduos tem atribuição igual entre os métodos e quantos são diferentes?
+ Não visualizados? Erros? SCRIPT: atribuicao_count_res.py
+\end_layout
+
+\end_inset
+
+
+\change_inserted -1589230395 1516111608
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516111621
+Concordo!!!
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/atribuicao_count_res.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Estrutura secundária 
+\change_deleted -1589230395 1516111673
+atribuída
+\change_inserted -1589230395 1516111685
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516111673
+atribuída
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+Atribuida por qual método ?
+\change_unchanged
+ aos resíduos das proteínas do conjunto de dados.
+ Entre os resíduos que apresentaram consenso entre os métodos, aproximadamente
+ 29,5% foram classificados como hélices (H); 14,5% como fitas (E); 26,5%
+ como coils (C).
+ 24,2% não apresentam consenso entre os quatro métodos de atribuição (Dissenso);
+ 5,2% são resíduos não visualizados na estrutura atômica resolvida e 0,04%
+ dos resíduos não tiveram a estrutura secundária atribuída por todos os
+ quatro métodos (Erro*).
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Estrutura-secundária-atribuída"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As similaridades obtidas pela comparação pareada dos métodos de atribuição
+ indicam que, com exceção do DSSP x STRIDE, aproximadamente 85% dos resíduos
+ apresentam consenso entre dois métodos (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Similaridade-atribuiçao"
+
+\end_inset
+
+).
+ Considerando a comparação conjunta dos quatro métodos que demonstra consenso
+ em 74,4% dos resíduos podemos inferir que as posições de dissenso variam
+ entre os métodos.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/comparacao_metodos_atribuicao.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Similaridade entre as estruturas secundárias atribuídas para cada resíduo
+ entre os quatro métodos de atribuição de estruturas secundárias: DSSP,
+ STRIDE, KAKSI e PROSS.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Similaridade-atribuiçao"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Características das estruturas secundárias atribuídas
+\end_layout
+
+\begin_layout Standard
+Em relação ao número de estruturas secundárias atribuídas, o DSSP atribuiu
+ o maior número de hélices, 
+\change_deleted -1589230395 1516111927
+~67 mil
+\change_inserted -1589230395 1516111927
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516111943
+~67 mil Melhor usar percentualo
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+.
+ Esse valor é apenas 5,7% maior que o número atribuído pelo STRIDE, mas
+ 31,6% maior que o KAKSI e 42% maior que o atribuído pelo PROSS.
+ Quanto as fitas, o método que atribuiu o maior número foi o STRIDE 
+\change_deleted -1589230395 1516111956
+~68mil.
+\change_inserted -1589230395 1516111956
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516111956
+~68mil.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ O número de fitas atribuídas por cada método apresentou uma variação menor
+ que as hélices.
+ O número de fitas atribuídas pelo DSSP foi apenas 0,03% menor, pelo PROSS,
+ 0,3% menor e pelo KAKSI, 0,5% menor (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Número-de-estruturas"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Qual a variação no número de estruturas secundarias? SCRIPT atribuicao_n_ss.py
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/atribuicao_n_ss.pdf
+	width 100line%
+
+\end_inset
+
+
+\change_inserted -1589230395 1516111980
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516111839
+Coloque em porcentagem esse gráfico.
+ vale a pena colocar uma tabela simples mostrando que propriedades são usadas
+ por cada método de atribuição.
+ 
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516111985
+Concordo!!
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Número de estruturas secundárias atribuídas pelos métodos DSSP, STRIDE,
+ KAKSI e PROSS.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Número-de-estruturas"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A distribuição do comprimento das estruturas secundárias também difere entre
+ os métodos de atribuição.
+ A mediana do comprimento das hélices atribuídas pelo DSSP é de 8 resíduos,
+ 9 no STRIDE, 10 no PROSS e de 12 resíduos no KAKSI (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-do-comprimento-helices"
+
+\end_inset
+
+).
+ Hélices mais curtas são mais frequentes tanto no DSSP quanto no STRIDE.
+ Caso duas ou mais hélices curtas sejam unidas e anotadas como uma hélice
+ longa por outros métodos, teríamos um menor número de hélices.
+ Isso explicaria, ao menos parcialmente, o fato dos métodos KAKSI e PROSS
+ anotarem um menor número de hélices (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Número-de-estruturas"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SCRIPT: atribuicao_len_ss.py
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/atribuicao_len_ss_H.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Distribuição do comprimento de hélices por método de atribuição de estrutura
+ secundária.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Distribuição-do-comprimento-helices"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As distribuições dos comprimentos das fitas apresentam mediana de 5 resíduos
+ para os quatro métodos de atribuição (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-do-comprimento_fitas"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/atribuicao_len_ss_E.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Distribuição do comprimento de fitas por método de atribuição de estrutura
+ secundária.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Distribuição-do-comprimento_fitas"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As distribuições dos comprimentos dos coils apresentam mediana de 4 resíduos
+ para os quatro métodos de atribuição.
+ O comprimento dos coils para o DSSP e o STRIDE são muito similares, o que
+ também foi observado em fitas.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/atribuicao_len_ss_C.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Distribuição do comprimento dos coils por método de atribuição de estrutura
+ secundária.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Distribuição-do-comprimento_coil"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Características dos dissensos
+\end_layout
+
+\begin_layout Standard
+O número de dissensos observados nas proteínas apresenta uma relação linear
+ com o comprimento da cadeia polipeptídica.
+ Assim, em média, aproximadamente 25% dos resíduos não apresentam consenso
+ entre os métodos de atribuição analisados (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:comprimento_x_dissenso"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Há relação entre o número de resíduos dissensos vs tamanho da estrutura?
+ * Proteinas mais curtas ou mais longas são mais variáveis? SCRIPT: not_consensu
+s_VS_length.py OUTLIER PDB ID: 3Q23 1.8A
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/not_consensus_vs_length.pdf
+	width 100line%
+
+\end_inset
+
+
+\change_inserted -1589230395 1516189002
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516189029
+Curiosamente 3Q23 é uma proteína rica em helices
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relação entre o número de dissensos e o comprimento da cadeia polipeptídica.
+ Distribuição da fração de resíduos que não apresentaram consenso (dissensos)
+ por proteína.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:comprimento_x_dissenso"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Na comparação entre as estruturas secundárias atribuídas para cada resíduo,
+ quatro tipos de dissensos podem ocorrer.
+ O tipo 
+\begin_inset Formula $H\leftrightarrow C$
+\end_inset
+
+, onde o resíduo é anotado como hélice por alguns métodos e fita por outros,
+ e da mesma forma os tipos 
+\begin_inset Formula $E\leftrightarrow C$
+\end_inset
+
+, 
+\begin_inset Formula $H\leftrightarrow E$
+\end_inset
+
+ e 
+\begin_inset Formula $H\leftrightarrow C\leftrightarrow E$
+\end_inset
+
+.
+ A análise dos dissensos demonstrou que os dois tipos dominantes são 
+\begin_inset Formula $H\leftrightarrow C$
+\end_inset
+
+, com 48,7%, e 
+\begin_inset Formula $E\leftrightarrow C$
+\end_inset
+
+, com 50,5%, totalizando 99,2% dos casos de dissenso.
+ Dos demais tipos, 
+\begin_inset Formula $H\leftrightarrow E$
+\end_inset
+
+ ocorre 0,1% e 
+\begin_inset Formula $H\leftrightarrow C\leftrightarrow E$
+\end_inset
+
+ ocorre em 0,7% dos casos (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Proporção-dos-quatro"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Quantos resíduos apresentam o dissenso: - helice/fita - helice/coil - fita/coil
+ - helice/fita/coil * Isso mostra os principais problemas SCRIPT: tipos_de_disse
+nso.py
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/tipos_de_dissenso.pdf
+	width 100line%
+
+\end_inset
+
+
+\change_inserted -1589230395 1516189133
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516189147
+Achei essa figura redundante
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Proporção dos quatro tipos de dissensos que os resíduos podem apresentar.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Proporção-dos-quatro"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Outra característica analisada é a região relativa onde as regiões de dissenso
+ ocorrem.
+ Para isso, definimos 9 tipos de regiões que diferem pelo tipo de estrutura
+ secundária que precede e sucede o dissenso.
+ Por exemplo, 
+\begin_inset Formula $C?H$
+\end_inset
+
+ é um dissenso antecedido por um coil e sucedido por uma hélice, o que indicaria
+ que há variações em relação ao resíduo que inicia a hélice.
+ 
+\end_layout
+
+\begin_layout Standard
+Notamos que a maioria dos dissensos ocorre em regiões de transição entre
+ coil e as estruturas secundárias hélice ou fita.
+ Assim, os tipos mais frequentes foram 
+\begin_inset Formula $C?E$
+\end_inset
+
+, 
+\begin_inset Formula $E?C$
+\end_inset
+
+, 
+\begin_inset Formula $H?C$
+\end_inset
+
+ e 
+\begin_inset Formula $C?H$
+\end_inset
+
+ (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ocorrências-de-dissensos"
+
+\end_inset
+
+).
+ Isso indica que os métodos de atribuição tem pouca precisão em anotar onde
+ começam e terminam as estruturas secundárias.
+\end_layout
+
+\begin_layout Standard
+Os tipos 
+\begin_inset Formula $E?H$
+\end_inset
+
+ e 
+\begin_inset Formula $H?E$
+\end_inset
+
+ foram pouco frequentes, o que era esperado uma vez que a transição entre
+ esses dois tipos de estruturas costumam ocorrer pelo intermédio de regiões
+ de coil.
+ 
+\end_layout
+
+\begin_layout Standard
+O tipo 
+\begin_inset Formula $C?C$
+\end_inset
+
+ também apresentou um grande número de ocorrências.
+ Isso indica que alguns métodos de atribuição podem falhar na atribuição
+ de regiões inteiras de estruturas secundárias, por exemplo, ignorando a
+ presença de uma hélice inteira ou de uma fita.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Onde ocorrem a falta de consenso? * Se for entre resíduos com o mesmo tipo
+ de estrutura há separação/união da estrutura * Se for entre resíduos com
+ diferentes tipos de estrutura há encurtamento/elongamento da estrutura
+ * Pode ainda ser no inicio/fim da cadeia SCRIPT dissenso_eventos.py
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/dissenso_eventos.svg
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ocorrências de dissensos por região relativa à estrutura secundária precedente
+ e sucedente.
+ Ex.
+ C?H indica uma região de dissenso imediatamente posterior a um coil e anterior
+ a uma hélice.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ocorrências-de-dissensos"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A frequência relativa dos aminoácidos em regiões de dissenso mostrou que
+ o resíduo mais comum nessas regiões é a glicina.
+ Acreditamos que um dos motivos seja a maior variação dos ângulos 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ e 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ que esse resíduo pode apresentar, fato que poderia dificultar a atribuição
+ da estrutura secundária por métodos que utilizam tais ângulos, como o PROSS,
+ ou a posição relativa de carbonos alfa, como o KAKSI.
+\end_layout
+
+\begin_layout Standard
+Em relação aos aminoácidos hidrofóbicos, parece haver uma menor tendência
+ deles ocorrerem em regiões de dissenso.
+ É possível que a maior frequência desses aminoácidos em regiões internas
+ da estrutura proteica limite a variabilidade dos estados conformacionais
+ e apresente ligações de hidrogênio mais próximas ao padrão ideal.
+ Isso poderia explicar um maior consenso na atribuição da estrutura secundária
+ por diferentes métodos.
+\end_layout
+
+\begin_layout Standard
+Observamos ainda uma maior frequência do aspartato (D) em relação ao glutamato
+ (E) e da asparagina (N) em relação à glutamina (Q).
+ Essas diferenças podem estar relacionadas à maior propensão do aspartato
+ e da asparagina em relação ao glutamato e à glutamina nos inícios e finais
+ de hélice (
+\emph on
+helix capping
+\emph default
+) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "aurora_helix_1998,doig_n-_1995"
+
+\end_inset
+
+ e inícios e finais de fitas (
+\emph on
+beta-sheet capping
+\emph default
+) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "farzadfard_beta-sheet_2008"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Quais aminoácidos sofrem maior variação entre os métodos? * normalizar pelo
+ número de aminoácidos de cada tipo * removendo residuos nao visualizados
+ no cristal.
+ SCRIPT dissenso_x_aminoacido.py 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/dissenso_aminoacido.svg
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Frequência dos aminoácidos em regiões de dissenso.
+ A frequência foi normalizada pelo número total de ocorrências do aminoácido
+ nas proteínas do conjunto de dados.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conclusão
+\end_layout
+
+\begin_layout Standard
+Uma das etapas iniciais no desenvolvimento de métodos de predição de estrutura
+ secundária é a preparação dos dados de referência.
+ Parte dessa preparação consiste na atribuição da estrutura secundária em
+ proteínas com estrutura atômica resolvida.
+ Em geral, trabalhos da literatura costumam utilizar o método DSSP como
+ padrão.
+ Entretanto, a diferença observada entre as atribuições de estrutura secundária
+ efetuadas por diferentes métodos computacionais indica que essa etapa pode
+ ser importante para o desenvolvimento de preditores com maior acurácia.
+\end_layout
+
+\begin_layout Standard
+Ao longo deste trabalho nós exploramos a utilização dos dados de cada um
+ dos quatro métodos citados e sua influência no treinamento de preditores.
+ Como veremos adiante, a utilização apenas de resíduos que apresentam consenso
+ na atribuição resulta em preditores com acurácia maior ou semelhante ao
+ melhor método de atribuição.
+ Neste contexto, melhor método de atribuição significa o que produziu os
+ dados que resultaram no preditor com maior acurácia.
+ 
+\end_layout
+
+\end_body
+\end_document
