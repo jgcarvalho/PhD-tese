@@ -692,6 +692,14 @@ key "kingma_adam:_2014"
 \end_inset
 
  com taxa de aprendizado de 0.001.
+ O valor do 
+\emph on
+Dropout
+\emph default
+ nos blocos é de 0,3.
+ Esse valor indica uma probabilidade de 30% dos valores serem alterados
+ para zero.
+ 
 \end_layout
 
 \begin_layout Section
@@ -700,6 +708,10 @@ Resultados
 
 \begin_layout Subsection
 Análise do treinamento
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Subsection

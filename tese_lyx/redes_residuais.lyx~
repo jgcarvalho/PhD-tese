@@ -104,7 +104,7 @@ Nas redes convolucionais são utilizados neurônios que possuem conexões locais
  irá responder a esse padrão independentemente de onde ele ocorra espacialmente.
  Isso difere das redes neurais totalmente conectadas (
 \emph on
-Fully Conected
+Fully Connected
 \emph default
 ), como as utilizadas no capítulo 
 \begin_inset CommandInset ref
@@ -692,6 +692,14 @@ key "kingma_adam:_2014"
 \end_inset
 
  com taxa de aprendizado de 0.001.
+ O valor do 
+\emph on
+Dropout
+\emph default
+ nos blocos é de 0,3.
+ Esse valor indica uma probabilidade de 30% dos valores serem alterados
+ para zero.
+ 
 \end_layout
 
 \begin_layout Section
