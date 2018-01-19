@@ -81,10 +81,20 @@ Introdução
 
 \begin_layout Standard
 Os métodos computacionais de atribuição de estruturas secundárias surgiram
- com o objetivo de automatizar e reduzir a subjetividade da atribuição feita
- por cristalógrafos.
+ com o objetivo de automatizar e reduzir a subjetividade da atribuição manual
+ feita durante o processo de resolução experimental de estruturas.
  Em geral, tais métodos buscam por um conjunto de padrões estruturais capazes
  de representar a estrutura secundária atribuída por especialistas.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Clarifificar esta frase
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -119,8 +129,7 @@ Nesse trabalho, nós decidimos comparar quatro métodos de atribuição que
  utilizam diferentes parâmetros para classificar elementos de estrutura
  secundária.
  O objetivo disso foi entender como a atribuição varia entre os métodos
- e assim, avaliar qual informação deveríamos utilizar e analisar ao longo
- do trabalho.
+ e como isso afeta a acurácia dos métodos de predição de estrutura secundária.
 \end_layout
 
 \begin_layout Subsection
@@ -369,6 +378,19 @@ Bridge
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Coloque um esquema para isso 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Sendo que as sequências 
 \begin_inset Formula $i-1,i,i+1$
 \end_inset
@@ -440,7 +462,7 @@ STRIDE
 \begin_layout Standard
 O método de atribuição de estrutura secundárias STRIDE foi desenvolvido
  com o objetivo de reproduzir, com o máximo de acurácia possível, a anotação
- humana feita por cristalógrafos 
+ manual 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "frishman_knowledge-based_1995"
@@ -866,7 +888,7 @@ A otimização dos pesos foi realizada de forma a aumentar a acurácia (
 \begin_inset Formula $Q_{3}$
 \end_inset
 
-) entre a atribuição feita pelo método e a atribuição feita por cristalógrafos.
+) entre a atribuição feita pelo método e a atribuição manual.
  Utilizando 223 proteínas, os autores definiram os seguintes valores: 
 \begin_inset Formula $W_{1}^{\alpha}=W_{2}^{\alpha}=1$
 \end_inset
@@ -1662,8 +1684,8 @@ name "sec:cap1-resultados"
 \begin_layout Standard
 A comparação das estruturas secundárias atribuídas pelos métodos DSSP, STRIDE,
  KAKSI e PROSS demonstrou que há diferenças significativas entre eles.
- Aproximadamente 24% dos 1,7 milhão de resíduos que presentes no conjunto
- de dados não apresentaram consenso na estrutura secundária atribuída pelos
+ Aproximadamente 24% dos 1,7 milhão de resíduos presentes no conjunto de
+ dados não apresentaram consenso na estrutura secundária atribuída pelos
  quatro métodos (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2006,6 +2028,59 @@ name "fig:Distribuição-do-comprimento_fitas"
 
 \end_inset
 
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As distribuições dos comprimentos dos coils apresentam mediana de 4 resíduos
+ para os quatro métodos de atribuição.
+ O comprimento dos coils para o DSSP e o STRIDE são muito similares, o que
+ também foi observado em fitas.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/atribuicao_len_ss_C.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Distribuição do comprimento dos coils por método de atribuição de estrutura
+ secundária.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Distribuição-do-comprimento_coil"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 

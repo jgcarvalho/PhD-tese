@@ -87,6 +87,225 @@ Materiais e métodos
 Autômato celular
 \end_layout
 
+\begin_layout Subsubsection
+Modelo inicial 
+\end_layout
+
+\begin_layout Standard
+O autômato celular inicialmente proposto possui 24 estados discretos.
+ Esses estados correspondem aos 20 aminoácidos, aos 3 elementos de estruturas
+ secundárias (hélice, fita e coil) e mais um estado que indica o início/fim
+ da cadeia polipeptídica (estado=#).
+ A vizinhança deste autômato celular é igual a 1 (r=1), o que indica que
+ as regras de transição são dependentes dos dois vizinhos mais próximos,
+ um a esquerda e um a direita.
+ Cada transição pode ocorrer para apenas quatro estados, sendo 3 estados
+ que representam os elementos de estrutura secundária e um que representa
+ o resíduo presente naquela posição da cadeia polipeptídica.
+ Logo, temos que o total de elementos na regra desse autômato é 
+\begin_inset Formula $24^{3}$
+\end_inset
+
+ ou 13824, dos quais 24 são elementos estáticos.
+ Os elementos estáticos correspondem a células no estado # que não transitam
+ para estados diferentes dele mesmo, permanecendo nesse estado durante toda
+ a evolução do autômato.
+ Assim temos 
+\begin_inset Formula $4^{24^{3}-24}$
+\end_inset
+
+ regras possíveis para esse autômato celular (Figura 3).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/ca_rule_scheme.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Esquema da regra simples
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Modelos estendidos
+\end_layout
+
+\begin_layout Standard
+Uma das limitações do modelo proposto inicialmente é a perda de informação
+ que ocorre durante a evolução do autômato celular quando as células transitam
+ de estados correspondentes aos aminoácidos para estados que representam
+ elementos de estruturas secundárias.
+ Por exemplo, quando uma lisina evolui para uma hélice, o estado de hélice
+ não possui mais a informação sobre qual aminoácido havia naquela posição.
+ Acreditamos que essa perda de informação possa ser um fator crítico para
+ o modelo.
+ Consequentemente, avaliamos modelos alternativos que pudessem manter essa
+ informação.
+ 
+\end_layout
+
+\begin_layout Standard
+Uma possibilidade seria manter a informação do resíduo juntamente com o
+ elemento de estrutura secundária.
+ Esse modelo teria 20 estados para os aminoácidos, 20 estados para hélices
+ (um estado diferente para cada aminoácido), 20 estados para fitas e 20
+ estados para coils, além do estado de início/fim da cadeia polipeptídica,
+ totalizando 81 estados.
+ Cada regra para esse autômato celular teria 
+\begin_inset Formula $81^{3}$
+\end_inset
+
+ ou 531441 elementos, o que seria aproximadamente 38 vezes maior que uma
+ regra do modelo proposto inicialmente, resultando em um aumento significativo
+ da complexidade e, consequentemente, da dificuldade na busca por regras
+ que reproduzam o padrão desejado.
+ Esse aumento de complexidade impossibilitou ....
+\end_layout
+
+\begin_layout Standard
+Assim, a alternativa escolhida foi utilizar características dos aminoácidos
+ que mantivessem parcialmente a informação do resíduo durante a evolução
+ do autômato celular, mas sem resultar em um aumento tão elevado do número
+ de regras em relação ao modelo inicial.
+ O primeiro modelo concebido que atende esses requisitos utiliza as característi
+cas de hidrofobicidade dos aminoácidos.
+ Isso resulta em modelo com 27 estados, sendo 2 estados para cada um dos
+ 3 elementos de estrutura secundária, mais os 20 aminoácidos e o início/fim
+ da cadeia polipeptídica.
+ No total, a regra deste autômato celular é formada por 273 , ou 19683,
+ elementos, sendo aproximadamente 1,42 vezes maior que a regra do modelo
+ inicial.
+\end_layout
+
+\begin_layout Standard
+Além deste modelo estendido, dois outros modelos foram utilizados.
+ Um deles adicionando estados para diferenciar glicinas e prolinas, e outro
+ acrescentando estados para diferenciar resíduos com cargas positivas e
+ negativas assim como glicinas e prolinas.
+ Ambos utilizam também a hidrofobicidade dos demais resíduos.
+ As regras para esses modelos apresentam respectivamente 333 e 393 elementos,
+ o que corresponde a um aumento aproximado de 2,6 e 4,3 vezes em relação
+ ao modelo inicial (Tabela 2).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+tabela 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A motivação para o uso da hidrofobicidade dos resíduos foi influenciada
+ por trabalhos de Hecht e colaboradores [52, 53] que examinaram a influência
+ de padrões periódicos de hidrofobicidade nas sequências proteicas e sua
+ relação com elementos de estruturas secundárias, concluindo que alguns
+ padrões apresentam preferência por hélices α enquanto outros apresentam
+ preferência por fitas β [53].
+\end_layout
+
+\begin_layout Standard
+Em todos os modelos estendidos cada elemento da regra continua com a possibilida
+de de transitar para apenas 4 estados, sendo um dos 3 elementos de estrutura
+ secundária ou o resíduo encontrado naquela posição da cadeia polipeptídica.
+\end_layout
+
+\begin_layout Subsubsection
+Busca de regras de transição utilizando algoritmo de estimação de distribuição
+ (EDA)
+\end_layout
+
+\begin_layout Standard
+A busca por regras de um autômato celular que reproduzam um padrão específico,
+ conhecido como problema inverso, é um problema de otimização.
+ Na literatura, esse problema é normalmente abordado utilizando meta-heurísticas
+ como algoritmos genéticos ou têmpera simulada (
+\emph on
+simulated annealing
+\emph default
+).
+ Neste trabalho optamos por utilizar o Algoritmo de Estimação de Distribuição
+ (EDA).
+ Os fatores que determinaram a utilização desse algoritmo foram a facilidade
+ de implementação do EDA de forma distribuída e o menor número de parâmetros
+ em relação à algoritmos genéticos.
+\end_layout
+
+\begin_layout Standard
+No EDA distribuído implementado neste trabalho cada elemento da regra do
+ autômato celular, com exceção dos elementos onde a célula apresenta o estado
+ início/fim da cadeia polipeptídica (estado=#), tem a mesma probabilidade
+ inicial (p = 0, 25) para cada um dos 4 estados de transição.
+ As probabilidades dos elementos da regra de transição são distribuídas
+ pelo nó mestre para os nós escravos.
+ Os nós escravos utilizam as probabilidades recebidas para gerar c > 2 regras
+ candidatas.
+ As regras candidatas são então utilizadas para evoluir o autômato celular
+ por t passos.
+ Após a evolução, um valor de 
+\emph on
+fitness
+\emph default
+ é atribuído a cada regra.
+ Em seguida, é realizado um torneio entre as regras candidatas geradas em
+ cada nó escravo e a regra com maior pontuação (
+\emph on
+fitness
+\emph default
+) é enviada ao nó mestre.
+ Ao receber as n/c regras vencedoras, onde n é o tamanho da população do
+ EDA, o nó mestre atualiza a probabilidade e começa a distribuí-la para
+ os nós escravos, iniciando assim a geração T + 1 do EDA.
+ A otimização termina após um número específicos de gerações ou quando as
+ probabilidades convergem.
+\end_layout
+
+\begin_layout Subsubsection*
+Função de pontuação dos indivíduos (Função de
+\emph on
+ fitness
+\emph default
+)
+\end_layout
+
+\begin_layout Subsection
+Busca de regras 
+\end_layout
+
 \begin_layout Standard
 
 \end_layout

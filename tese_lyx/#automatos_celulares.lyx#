@@ -265,6 +265,47 @@ simulated annealing
  em relação à algoritmos genéticos.
 \end_layout
 
+\begin_layout Standard
+No EDA distribuído implementado neste trabalho cada elemento da regra do
+ autômato celular, com exceção dos elementos onde a célula apresenta o estado
+ início/fim da cadeia polipeptídica (estado=#), tem a mesma probabilidade
+ inicial (p = 0, 25) para cada um dos 4 estados de transição.
+ As probabilidades dos elementos da regra de transição são distribuídas
+ pelo nó mestre para os nós escravos.
+ Os nós escravos utilizam as probabilidades recebidas para gerar c > 2 regras
+ candidatas.
+ As regras candidatas são então utilizadas para evoluir o autômato celular
+ por t passos.
+ Após a evolução, um valor de 
+\emph on
+fitness
+\emph default
+ é atribuído a cada regra.
+ Em seguida, é realizado um torneio entre as regras candidatas geradas em
+ cada nó escravo e a regra com maior pontuação (
+\emph on
+fitness
+\emph default
+) é enviada ao nó mestre.
+ Ao receber as n/c regras vencedoras, onde n é o tamanho da população do
+ EDA, o nó mestre atualiza a probabilidade e começa a distribuí-la para
+ os nós escravos, iniciando assim a geração T + 1 do EDA.
+ A otimização termina após um número específicos de gerações ou quando as
+ probabilidades convergem.
+\end_layout
+
+\begin_layout Subsubsection*
+Função de pontuação dos indivíduos (Função de
+\emph on
+ fitness
+\emph default
+)
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
 \begin_layout Subsection
 Busca de regras 
 \end_layout
