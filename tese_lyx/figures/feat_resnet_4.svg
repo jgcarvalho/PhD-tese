@@ -72,7 +72,7 @@
     <g
        style="stroke-linecap:butt;stroke-linejoin:round"
        id="axes_2"
-       transform="matrix(1.25,0,0,1.25,-160.28571,-15.352081)">
+       transform="matrix(1.25,0,0,1.25,-160.28571,-31.352081)">
       <g
          style="stroke-linecap:butt;stroke-linejoin:round"
          id="patch_3">
@@ -210,7 +210,7 @@
     <g
        style="stroke-linecap:butt;stroke-linejoin:round"
        id="axes_4"
-       transform="matrix(1.25,0,0,1.25,587.14286,18.647919)">
+       transform="matrix(1.25,0,0,1.25,587.14286,2.647919)">
       <g
          style="stroke-linecap:butt;stroke-linejoin:round"
          id="patch_5">
@@ -484,7 +484,7 @@
     <g
        style="stroke-linecap:butt;stroke-linejoin:round"
        id="axes_2-2"
-       transform="matrix(1.25,0,0,1.25,-158.28571,239.21935)">
+       transform="matrix(1.25,0,0,1.25,-158.28571,223.21935)">
       <g
          style="stroke-linecap:butt;stroke-linejoin:round"
          id="patch_3-9">
@@ -622,7 +622,7 @@
     <g
        style="stroke-linecap:butt;stroke-linejoin:round"
        id="axes_2-1"
-       transform="matrix(1.25,0,0,1.25,-156.28571,556.64792)">
+       transform="matrix(1.25,0,0,1.25,-156.28571,540.64792)">
       <g
          style="stroke-linecap:butt;stroke-linejoin:round"
          id="patch_3-2">
@@ -759,7 +759,7 @@
     </g>
     <g
        id="g17062"
-       transform="translate(442.68172,-82.285721)"
+       transform="translate(442.68172,-98.285721)"
        style="stroke-linecap:butt;stroke-linejoin:round">
       <text
          sodipodi:linespacing="125%"
@@ -1004,7 +1004,7 @@
     </g>
     <g
        id="g17653"
-       transform="translate(445.91051,-116.28571)"
+       transform="translate(445.91051,-132.28571)"
        style="stroke-linecap:butt;stroke-linejoin:round">
       <text
          sodipodi:linespacing="125%"
@@ -1249,7 +1249,7 @@
     </g>
     <g
        id="g18660"
-       transform="translate(449.78145,450.85714)"
+       transform="translate(449.78145,434.85714)"
        style="stroke-linecap:butt;stroke-linejoin:round">
       <g
          id="g18702"
@@ -1499,7 +1499,7 @@
     </g>
     <g
        id="g16722"
-       transform="matrix(1.0005754,0,0,0.10938891,441.84466,290.05656)"
+       transform="matrix(1.0005754,0,0,0.10938891,441.84466,274.05656)"
        style="stroke-linecap:butt;stroke-linejoin:round">
       <g
          transform="matrix(1.25,0,0,1.2311587,-602.85714,-498.15116)"
@@ -3364,7 +3364,7 @@
     </g>
     <g
        id="g17108"
-       transform="matrix(1.0004529,0,0,0.21786826,446.07046,492.0115)"
+       transform="matrix(1.0004529,0,0,0.21786826,446.07046,476.0115)"
        style="stroke-linecap:butt;stroke-linejoin:round">
       <g
          transform="matrix(1.25,0,0,1.25,-604.28572,-133.35208)"
@@ -6434,7 +6434,7 @@
     </g>
     <g
        id="g17699"
-       transform="matrix(1.0003022,0,0,0.40821424,453.14892,660.05509)"
+       transform="matrix(1.0003022,0,0,0.40821424,453.14892,644.05509)"
        style="stroke-linecap:butt;stroke-linejoin:round">
       <g
          transform="matrix(1.25,0,0,1.25,-608.5714,188.07649)"
@@ -11954,18 +11954,18 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="381.85345"
-       y="42.362202"
+       y="26.362202"
        id="text18772"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan18774"
          style="font-size:27.5px;stroke-linecap:butt;stroke-linejoin:round"
          x="381.85345"
-         y="42.362202">Rede Residual - 4 Blocos</tspan></text>
+         y="26.362202">Rede Residual - 4 Blocos</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-578.48987"
+       x="-562.48987"
        y="4.0603814"
        id="text18776"
        sodipodi:linespacing="125%"
@@ -11973,12 +11973,12 @@
          sodipodi:role="line"
          id="tspan18778"
          style="font-size:27.5px;stroke-linecap:butt;stroke-linejoin:round"
-         x="-578.48987"
+         x="-562.48987"
          y="4.0603814">Canais</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-293.34879"
+       x="-277.34879"
        y="64.854111"
        id="text18780"
        sodipodi:linespacing="125%"
@@ -11986,12 +11986,12 @@
          sodipodi:role="line"
          id="tspan18782"
          style="font-size:27.5px;stroke-linecap:butt;stroke-linejoin:round"
-         x="-293.34879"
+         x="-277.34879"
          y="64.854111">8</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-580.00006"
+       x="-564.00006"
        y="64.854111"
        id="text18780-0"
        sodipodi:linespacing="125%"
@@ -11999,12 +11999,12 @@
          sodipodi:role="line"
          id="tspan18782-5"
          style="font-size:27.5px;stroke-linecap:butt;stroke-linejoin:round"
-         x="-580.00006"
+         x="-564.00006"
          y="64.854111">16</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-954.59802"
+       x="-938.59802"
        y="64.854111"
        id="text18780-6"
        sodipodi:linespacing="125%"
@@ -12012,7 +12012,7 @@
          sodipodi:role="line"
          id="tspan18782-7"
          style="font-size:27.5px;stroke-linecap:butt;stroke-linejoin:round"
-         x="-954.59802"
+         x="-938.59802"
          y="64.854111">32</tspan></text>
   </g>
 </svg>
