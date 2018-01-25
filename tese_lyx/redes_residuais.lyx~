@@ -5958,7 +5958,44 @@ reference "fig:resnet-21-cluster"
 \end_inset
 
 .
+ A seguir explicitamos algumas dessas características.
+\end_layout
+
+\begin_layout Standard
+As redes demonstraram um clara tendência em separar os aminoácidos prolina
+ e glicina dos demais.
+ Somente nas redes b11-c32 e b21-c32 que apresentaram sobreajuste a glicina
+ se aproxima de outros resíduos.
+ A distinção dos aminoácidos prolina e glicina é interessante devido as
+ características estruturais dos mesmo.
+ Na prolina, a maior restrição dos ângulos torcionais da cadeia principal
+ e a ausência de um hidrogênio ligado ao nitrogênio restringem sua ocorrência
+ em elementos de estrutura secundária.
+ Na glicina, a ausência de cadeia lateral amplia os possíveis estados conformaci
+onais reduzindo as restrições dos ângulos torcionais.
+ Tais características são únicas desses dois resíduos, e portanto, diferente
+ dos outros 18 aminoácidos.
+\end_layout
+
+\begin_layout Standard
+O agrupamento apresentou ainda a tendência de separar aminoácidos com cadeias
+ laterais polares e apolares.
  
+\end_layout
+
+\begin_layout Standard
+No grupo dos apolares ocorreu a formação de subgrupos como: (1) isoleucina
+ (I) e valina (V); (2) fenilalanina (F), tirosina (Y) e triptofano (W);
+ (3) cisteína (C), metionina (M) e leucina (L).
+ 
+\end_layout
+
+\begin_layout Standard
+No grupo dos polares, há a formação de subgrupos como serina (S) e treonina
+ (T) e de carregados positivamente, lisina (K) e arginina (R).
+ Os carregados negativamente, aspartato (D) e glutamato (E) aparecem próximos
+ em alguns grupos, mas em outros ocorre um agrupamento de aspartato (D)
+ com asparagina (N) e de glutamato (E) com glutamina (Q).
 \end_layout
 
 \begin_layout Standard
@@ -6095,13 +6132,7 @@ Conclusão
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "cha:template"
 
-\end_inset
-
-Ibis redibis numquam peribis in bello.
 \end_layout
 
 \end_body

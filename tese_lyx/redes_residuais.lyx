@@ -5978,7 +5978,24 @@ onais reduzindo as restrições dos ângulos torcionais.
 \end_layout
 
 \begin_layout Standard
+O agrupamento apresentou ainda a tendência de separar aminoácidos com cadeias
+ laterais polares e apolares.
+ 
+\end_layout
 
+\begin_layout Standard
+No grupo dos apolares ocorreu a formação de subgrupos como: (1) isoleucina
+ (I) e valina (V); (2) fenilalanina (F), tirosina (Y) e triptofano (W);
+ (3) cisteína (C), metionina (M) e leucina (L).
+ 
+\end_layout
+
+\begin_layout Standard
+No grupo dos polares, há a formação de subgrupos como serina (S) e treonina
+ (T) e de carregados positivamente, lisina (K) e arginina (R).
+ Os carregados negativamente, aspartato (D) e glutamato (E) aparecem próximos
+ em alguns grupos, mas em outros ocorre um agrupamento de aspartato (D)
+ com asparagina (N) e de glutamato (E) com glutamina (Q).
 \end_layout
 
 \begin_layout Standard
@@ -6115,13 +6132,16 @@ Conclusão
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "cha:template"
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+terminar as análises do autômato celular para comparar
+\end_layout
 
 \end_inset
 
-Ibis redibis numquam peribis in bello.
+
 \end_layout
 
 \end_body
