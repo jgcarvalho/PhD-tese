@@ -5994,7 +5994,8 @@ No grupo dos apolares ocorreu a formação de subgrupos como: (1) isoleucina
 No grupo dos polares, há a formação de subgrupos como serina (S) e treonina
  (T) e de carregados positivamente, lisina (K) e arginina (R).
  Os carregados negativamente, aspartato (D) e glutamato (E) aparecem próximos
- em alguns grupos, mas em outros oc 
+ em alguns grupos, mas em outros ocorre um agrupamento de aspartato (D)
+ com asparagina (N) e de glutamato (E) com glutamina (Q).
 \end_layout
 
 \begin_layout Standard
@@ -6126,18 +6127,171 @@ name "fig:resnet-21-cluster"
 
 \end_layout
 
+\begin_layout Subsection
+Análise do processo de predição
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/steps-good-pred-3eodA.pdf
+	height 100theight%
+	rotateAngle 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/resnet-steps-good-pred-3eodA.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/steps-bad-pred-1nxmA.pdf
+	height 100theight%
+	rotateAngle 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/resnet-steps-bad-pred-1nxmA.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Conclusão
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "cha:template"
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+terminar as análises do autômato celular para comparar
+\end_layout
 
 \end_inset
 
-Ibis redibis numquam peribis in bello.
+
 \end_layout
 
 \end_body

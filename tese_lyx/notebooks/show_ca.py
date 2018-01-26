@@ -3,6 +3,46 @@
 PATH='/home/jgcarvalho/zeca-results-analysis/zeca-analyse-pos_quali/Top8000-best_hom50_pdb_chain/cba/rose_special_charged/run_10000/tmp/'
 FILE='2ccqA'
 
+header = """
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-family: "Courier New";
+}
+th, td {
+    padding: 0px;
+    text-align: center;    
+}
+.h {
+	background: red;
+}
+.e {
+	background: yellow;
+}
+.c {
+	background: green;
+}
+.r {
+	font-weight: bold;
+}
+.
+</style>
+</head>
+<body>
+
+<table>
+"""
+
+footer = """
+</table>
+</body>
+</html>
+"""
+print(header)
 c = 0
 with open(PATH+FILE) as f:
     f.readline()
@@ -22,6 +62,6 @@ with open(PATH+FILE) as f:
 
         print('</tr>')
         c += 1
-        if c > 5:
+        if c > 15:
             break
-        
+print(footer)

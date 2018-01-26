@@ -7,7 +7,7 @@ import matplotlib.gridspec as gridspec
 import seaborn as sns
 
 # DATA_PATH="/home/jgcarvalho/zeca-analyse-pos_quali/Top8000-best_hom50_pdb_chain/cba_times_mcc/rose_special_charged/run_10000"
-DATA_PATH = "/home/jgcarvalho/cnnss/pytorch/model_HK/results_32"
+DATA_PATH = "/home/jgcarvalho/cnnss/pytorch/model_resnet/results_21_16"
 
 def count_len_ss(ss, len_ss):
     # with open(fn) as f:
@@ -44,20 +44,27 @@ def q_count(pred_ss, true_ss, q_dict):
 
     v = 0.0
     q3 = 0.0
+    qh = 0.0
+    qe = 0.0
+    qc = 0.0
     if n_h > 0:
         q_dict['QH'].append(t_h/n_h) 
-        q3 += t_h/n_h
+        qh = t_h/n_h
+        q3 += qh
         v += 1.0
     if n_e > 0:
         q_dict['QE'].append(t_e/n_e) 
-        q3 += t_e/n_e
+        qe = t_e/n_e
+        q3 += qe
         v += 1.0
     if n_c > 0:
-        q_dict['QC'].append(t_c/n_c) 
-        q3 += t_c/n_c
+        q_dict['QC'].append(t_c/n_c)
+        qc = t_c/n_c 
+        q3 += qc
         v += 1.0
 
-    q_dict['Q3'].append(q3/v) 
+    q_dict['Q3'].append(q3/v)
+    print(q3/v,qh,qe,qc) 
 
 
 def plot(q):
@@ -78,11 +85,13 @@ def main():
         f.readline()
         lines = f.readlines()
         for i in range(0,len(lines),3):
-            print(lines[i+1])
-            # count_len_ss(lines[i+1], len_model_hk)
-            q_count(lines[i+1],lines[i+2], q_model_resnet)
-    print(q_model_resnet)
-    plot(q_model_resnet)
+            if i == 1596:
+                print(lines[i])
+                print(i, end=' '),
+                # count_len_ss(lines[i+1], len_model_hk)
+                q_count(lines[i+1],lines[i+2], q_model_resnet)
+    # print(q_model_resnet)
+    # plot(q_model_resnet)
 
    
 
