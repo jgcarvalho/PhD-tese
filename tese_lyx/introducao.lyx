@@ -75,6 +75,42 @@
 Introdução
 \end_layout
 
+\begin_layout Section
+Proteínas
+\end_layout
+
+\begin_layout Standard
+As proteínas estão envolvidas em diversas funções biológicas como suporte
+ estrutural, catálise, transporte e regulação.
+\end_layout
+
+\begin_layout Section
+Organização estrutural
+\end_layout
+
+\begin_layout Standard
+A estrutura proteica é classificada em quatro níveis: a estrutura primária,
+ secundária, terciária e quaternária.
+ 
+\end_layout
+
+\begin_layout Standard
+A estrutura primária corresponde a sequência de aminoácidos da cadeia polipeptíd
+ica.
+\end_layout
+
+\begin_layout Standard
+A estrutura secundária consiste em padrões locais que são determinados pelas
+ ligações de hidrôgênio entre átomos da cadeia principal ou pelos ângulos
+ torcionais PHI e PSI.
+ Há dois tipos básicos de estrutura secundária: a ALPHA-hélice e a folha-BETA.
+ Um outro tipo, chamado coil, indica a ausência de padrões regulares 
+\end_layout
+
+\begin_layout Section
+Processo de enovelamento
+\end_layout
+
 \begin_layout Standard
 O problema do enovelamento de proteínas é a questão de como são formadas
  ou organizadas suas estruturas atômicas tridimensionais.
@@ -168,6 +204,14 @@ s proteicas continua uma área de grande interesse científico, tanto como
  na utilização da informação estrutural para responder diversas questões
  biológicas com diversas aplicações práticas como o desenvolvimento de novos
  medicamentos e a engenharia de proteínas [8].
+\end_layout
+
+\begin_layout Subsection
+Formação das ALPHA-hélices
+\end_layout
+
+\begin_layout Subsection
+Formação das folhas-BETA
 \end_layout
 
 \end_body

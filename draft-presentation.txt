@@ -1,0 +1,77 @@
+Boa tarde, meu nome é José Geraldo. Eu sou analista de bioinformática no Laboratorio Nacional de Biociencias (LNBio), em Campinas, e também aluno de doutorado do programa. 
+
+Quando eu enviei o resumo para este workshop, nós estavamos trabalhando em novo método de predição de estrutura secundária utilizando redes neurais residuais. Mas como isso ainda estava em andamento, o resumo mencionava apenas o método baseado autômatos celulares.
+
+Então, vou fazer uma alteração no título para "Autômatos celulares e redes neurais residuais: desenvolvimento de dois métodos de predição de estrutura secundária proteica a partir de sua sequência de aminoácidos" e portanto irei incluir esses novos resultados nessa apresentação.
+
+O que são proteinas?
+
+Resumo sobre estruturas proteicas
+Importancia das estruturas proteicas
+
+Como consequencia dessa importancia de se conhecer as estruturas proteicas e da dificuldade de obte-las experimentalmente. Sugiu um grande leque de métodos computacionais que tem como objetivo, obter informações estruturais, ou a estrutura em si, a partir da sequência de aminoácidos.
+
+Não cabe mencioná-los agora.
+
+Uma classe desses métodos busca obter, ou predizer, a estrutura secundária. Ele não é um método fim, no sentido de que ele não nos dá a estrutura atomica da proteina. Mas ele é um método meio, no sentido que a informação que ele fornece pode ser utilizada para facilitar a obtençao da estrutura atomica ou mesmo outras informacoes estruturais.
+
+Em geral, esses métodos de predição de estrutura secundária utilizam técnicas de aprendizado de máquina. Portanto, são metodos que são treinados em estruturas conhecidas, onde eles aprendem os padrões que ocorrem, para depois serem aplicados a novos casos. Casos em que se tem a sequencia de aminoácidos, mas não se sabe a estrutura secundária.
+
+Dois desses métodos que vou mencionar como exemplos, são a rede neural artifical proposta por Holley e Karplus em 1989. E o PSIPRED, que representa o estado da arte em predição de estruturas secundárias.
+
+A rede de Holley e Karplus, que vou chamar de HK, realiza a predição diretamente da sequencia de aminoácidos. Ela utiliza como entrada uma janela de 17 resíduos da sequencia, e prediz a estrutura secundária do resíduo central. 
+
+
+
+SLIDES
+
+titulo
+
+proteinas: estrutura primaria, secundaria, terciaria, quaternaria
+
+processo de enovelamento: primeiras etapas (formação de estruturas secundarias) nucleação e propagação
+
+prediçao de estrutura secundaria: hk e psipred
+
+predição de estrutura secundaria: desempenho hk
+
+predicao de estrutura secundaria: desempenho psipred
+
+predicao de estrutura secundaria: 2 estados seq <-> ss (falta de relaçao com o processo de enovelamento)
+
+hipoteses: automatos celulares e redes neurais residuais como modelos para capazes de de descrever a dinamica de formação de estruturas secundárias
+
+automatos celulares: o que são? elementos do ac elementar
+
+automatos celulares: modelo de complexidade (emergência)
+
+autômatos celulares aplicados a estruturas secundarias: estados são a sequencia de aminoácidos
+
+autômatos celulares ss: busca de regras (algoritmo genético distribuido EDA)
+
+automatos celulares ss: dinâmica da predição 
+
+autômatos celulares ss: taxa de acerto e tamanho das estruturas
+
+rede neural residual: arquitetura, numero de camadas, acuracia na classificação de imagens
+
+rede neural residual aplicada a estruturas secundarias: arquitetura
+
+rede neural residual ss: taxa de acerto e tamanho das estruturas secundárias
+
+rede neural residual ss: estrutura de sucesso
+
+rede neural residual ss: dinâmica de predicão
+
+rede neural residual ss: PERGUNTA: Há relação entre a dinâmica de predição <-> processo de enovelamento?
+
+rede neural residual ss: dinâmica de predição caso ruim
+
+rede neural residual ss: estrutura caso ruim (dimero)
+
+rede neural residual ss: clustering codificação dos aminoácidos
+
+Agradecimentos
+
+
+

@@ -1,0 +1,173 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass classicthesis
+\use_default_options true
+\maintain_unincluded_children false
+\language brazilian
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command biber
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language swedish
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter*
+Organização da tese
+\end_layout
+
+\begin_layout Standard
+Este trabalho está organizado em 3 partes.
+ No capítulo 1 introduzimos assuntos relevantes para este trabalho, como
+ proteínas, sua organização estrutural e seu processo de enovelamento.
+\end_layout
+
+\begin_layout Standard
+A segunda parte, nomeada de Desenvolvimento, contém 4 capítulos.
+ A divisão em capítulos busca facilitar a compreensão de etapas importantes.
+ 
+\end_layout
+
+\begin_layout Standard
+No capítulo 2, Métodos de Atribuição de Estruturas Secundárias, descrevemos
+ a preparação dos dados utilizados ao longo do trabalho.
+ Tais dados consistem de um conjunto de estruturas proteicas resolvidas
+ experimentalmente e com alta qualidade, e da estrutura secundária atribuída
+ aos seus resíduos através de métodos computacionais.
+ Quatro métodos computacionais de atribuição foram utilizados e há uma breve
+ descrição de como eles funcionam.
+ Por fim, realizamos uma comparação entre os resultados das estruturas atribuída
+s por eles.
+ Como neste trabalho são utilizados métodos de aprendizado de máquina (
+\emph on
+machine learning) 
+\emph default
+e otimização, esses dados são essenciais para o treinamento dos métodos
+ de predição e para a avaliação da acurácia.
+\end_layout
+
+\begin_layout Standard
+No capítulo 3, Métodos de Referência para a Predição de Estrutura Secundária,
+ selecionamos dois métodos de predição, publicados e com alto número de
+ citações, para servirem de comparação aos métodos desenvolvidos neste trabalho.
+ 
+\end_layout
+
+\begin_layout Standard
+Um dos métodos realiza a predição da estrutura secundária utilizando diretamente
+ a sequência de aminoácidos da proteína, sendo, nesse aspecto, similar aos
+ propostos neste trabalho.
+ Esse método, baseado em redes neurais artificiais, foi proposto em 1989.
+ Na época, haviam poucas estruturas resolvidas experimentalmente para serem
+ usadas no treinamento da rede neural.
+ Assim, ao invés de utilizar a rede neural original, optamos por implementar
+ uma rede neural similar e a treinamos utilizando o nosso conjunto de dados.
+ Essa abordagem possibilitou uma comparação mais justa da capacidade preditiva
+ do método.
+ 
+\end_layout
+
+\begin_layout Standard
+O outro método escolhido, PSIPRED, representa o estado da arte na predição
+ de estruturas secundárias.
+ Assim como o método anterior, ele faz uso de redes neurais artificais.
+ Entretanto, o grande diferencial deste metódo está no uso de matrizes de
+ substituição de aminoácidos construídas através do alinhamento de proteínas
+ similares (PSSM - 
+\emph on
+Position Specific Scoring Matrix
+\emph default
+).
+ Portanto, ao invés de utilizar somente a sequência de aminoácidos de uma
+ proteína, ele obtém, através do alinhamento, informações como regiões mais
+ conservadas e substituições mais frequentes em cada posição.
+ Como essas informações tem uma relação direta com a estrutura proteica,
+ os métodos que utilizam PSSM atingem uma acurácia muito maior.
+ O PSIPRED é um método atualizado constantemente, por isso, comparamos diretamen
+te os resultados da predição no nosso conjunto de proteínas.
+\end_layout
+
+\begin_layout Standard
+O capítulo 4, Autômatos Celulares, descreve o desenvolvimento de um novo
+ método proposto por nós.
+ 
+\end_layout
+
+\begin_layout Standard
+O capítulo 5, Redes Neurais Residuais, descreve a utilização de um método
+ de aprendizado profundo (
+\emph on
+Deep Learning
+\emph default
+) como uma alternativa aos autômatos celulares.
+ Este método apresentou características que gostaríamos de observar nos
+ autômatos celulares com a vantagem de ser mais simples e rápido de treinar.
+\end_layout
+
+\begin_layout Standard
+Na última parte, que contém o capítulo 6 - Conclusão - discutimos os resultados
+ obtidos ao longo do trabalho e quais as perspectivas futuras.
+ 
+\end_layout
+
+\end_body
+\end_document
