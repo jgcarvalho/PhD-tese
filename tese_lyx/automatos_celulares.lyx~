@@ -87,6 +87,915 @@ Materiais e métodos
 Autômato celular
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand*{
+\backslash
+mystrut}{
+\backslash
+rule[-0.15
+\backslash
+baselineskip]{0pt}{0.65
+\backslash
+baselineskip}} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand*{
+\backslash
+cell}[1]{
+\backslash
+framebox{
+\backslash
+mystrut 
+\backslash
+texttt{#1}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand*{
+\backslash
+carule}[4]{
+\backslash
+cell{#1}
+\backslash
+cell{#2}
+\backslash
+cell{#3}
+\backslash
+textrightarrow 
+\backslash
+cell{#4}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A criação de modelo de autômatos celulares para serem aplicados a predição
+ de estruturas secundárias exige a definição de estados discretos do autômato.
+ Em outras palavras, precisamos definir 
+\emph on
+a priori 
+\emph default
+o conjunto de estados possíveis de cada célula do autômato celular.
+\end_layout
+
+\begin_layout Standard
+Foram testados quatro conjuntos distintos.
+ Entretanto, alguns estados são comuns entre eles.
+ Esses estados comuns correspondem aos aminoácidos e mais um estado que
+ indica o início/fim da cadeia polipeptídica.
+\end_layout
+
+\begin_layout Itemize
+Estados comuns entre os AC testados: {
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{A}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{C}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{D}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{E}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{F}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{G}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{H}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{I}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{K}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{L}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{M}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{N}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{P}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{Q}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{R}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{S}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{T}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{V}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{W}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{Y}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{
+\backslash
+#}
+\end_layout
+
+\end_inset
+
+} 
+\end_layout
+
+\begin_layout Standard
+No primeiro modelo construído acrescentamos o menor número de estados possível
+ para que o AC tivesse a capacidade de realizar a predição de estrutura
+ secundária.
+ Nesse modelo nós acrescentamos apenas quatro novos estados.
+ São eles:
+\end_layout
+
+\begin_layout Itemize
+{
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{-}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{*}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{?}
+\end_layout
+
+\end_inset
+
+}
+\end_layout
+
+\begin_layout Itemize
+{
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{-}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{*}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{?}
+\end_layout
+
+\end_inset
+
+}
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+carule{A}{A}{C}{|}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Conjunto de estados
+\end_layout
+
+\begin_layout Subsection
+Otimização do conjunto de regras 
+\end_layout
+
+\begin_layout Subsubsection
+Algoritmo de estimação de distribuição
+\end_layout
+
+\begin_layout Standard
+A busca por regras de um autômato celular que reproduzam um padrão específico,
+ conhecido como problema inverso, é um problema de otimização.
+ Na literatura, esse problema é normalmente abordado utilizando meta-heurísticas
+ como algoritmos genéticos ou têmpera simulada (
+\emph on
+simulated annealing
+\emph default
+).
+ Neste trabalho optamos por utilizar um Algoritmo de Estimação de Distribuição
+ (AED) que implementamos de forma distribuída através de modelo mestre-escravos.
+\end_layout
+
+\begin_layout Standard
+O funcionamento do algoritmo envolve os seguintes passos:
+\end_layout
+
+\begin_layout Enumerate
+Mestre envia as probabilidades para os escravos
+\end_layout
+
+\begin_layout Enumerate
+Escravos recebem as probabilidades e a utilizam para criar dois conjuntos
+ de regras candidatas 
+\end_layout
+
+\begin_layout Enumerate
+Escravos utilizam as regras candidatas para evoluir dois autômatos celulares
+\end_layout
+
+\begin_layout Enumerate
+Escravos calculam a acurácia da predição (
+\emph on
+fitness
+\emph default
+) dos dois autômatos celulares
+\end_layout
+
+\begin_layout Enumerate
+Escravos enviam o conjunto de regra vencedor para o Mestre
+\end_layout
+
+\begin_layout Enumerate
+O mestre acumula N conjunto de regras e então atualiza as probabilidades
+\end_layout
+
+\begin_layout Enumerate
+Retorna ao passo 1 ou termina se a geração final (G) foi atingida 
+\end_layout
+
+\begin_layout Standard
+A seguir descrevemos os passos em detalhes.
+\end_layout
+
+\begin_layout Subsubsection
+Probabilidades enviadas pelo mestre aos escravos
+\end_layout
+
+\begin_layout Standard
+O mestre inicia o processo enviando um probabilidade uniforme onde cada
+ um dos quatro estados de transição possíveis tem probabilidade inicial
+ de 25%.
+ Isso ocorre para cada elemento do conjunto de regras com exceção de elementos
+ cujo estado da célula central apresenta o estado de início/fim da cadeia
+ polipeptídica (estado=#).
+ Nesses elementos a probabilidade da célula continuar no mesmo estado no
+ tempo T+1 é igual a 100%, ou seja, ao longo da evolução do autômato, células
+ no estado # permanecerão no estado #.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+[ An ][ #  ][ An ] -> { _ : 0.00, * : 0.00, | : 0.00, ? : 1.00 }
+\end_layout
+
+\begin_layout Plain Layout
+
+[ #  ][ An ][ #  ] -> { _ : 0.25, * : 0.25, | : 0.25, ? : 0.25 } 
+\end_layout
+
+\begin_layout Plain Layout
+
+[ #  ][ An ][ Vn ] -> { _ : 0.25, * : 0.25, | : 0.25, ? : 0.25 } 
+\end_layout
+
+\begin_layout Plain Layout
+
+[ Sp ][ An ][ Wn ] -> { _ : 0.25, * : 0.25, | : 0.25, ? : 0.25 } 
+\end_layout
+
+\begin_layout Plain Layout
+
+[ D- ][ An ][ _n ] -> { _ : 0.25, * : 0.25, | : 0.25, ? : 0.25 } 
+\end_layout
+
+\begin_layout Plain Layout
+
+[ _p ][ An ][ *n ] -> { _ : 0.25, * : 0.25, | : 0.25, ? : 0.25 } 
+\end_layout
+
+\begin_layout Plain Layout
+
+[ #  ][ An ][ |n ] -> { _ : 0.25, * : 0.25, | : 0.25, ? : 0.25 } 
+\end_layout
+
+\begin_layout Plain Layout
+
+[ #  ][ An ][ D- ] -> { _ : 0.25, * : 0.25, | : 0.25, ? : 0.25 } 
+\end_layout
+
+\begin_layout Plain Layout
+
+[ #  ][ An ][ E- ] -> { _ : 0.25, * : 0.25, | : 0.25, ? : 0.25 } 
+\end_layout
+
+\begin_layout Plain Layout
+
+[ #  ][ An ][ Gp ] -> { _ : 0.25, * : 0.25, | : 0.25, ? : 0.25 } 
+\end_layout
+
+\begin_layout Plain Layout
+
+[ *n ][ *p ][ Hp ] -> { _ : 0.25, * : 0.25, | : 0.25, ? : 0.25 } 
+\end_layout
+
+\begin_layout Plain Layout
+
+[ #  ][ An ][ K+ ] -> { _ : 0.25, * : 0.25, | : 0.25, ? : 0.25 } 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Construção das regras pelos escravos
+\end_layout
+
+\begin_layout Standard
+Após os escravos recebem as probabilidades enviadas pelo mestre eles constroem
+ dois conjuntos de regras candidatas utilizando tais probabilidades.
+ Cada conjunto contém todos os elementos necessários para a evolução do
+ autômato.
+\end_layout
+
+\begin_layout Standard
+Um conjunto de regras é construído da seguinte forma:
+\end_layout
+
+\begin_layout Enumerate
+Para cada elemento do conjunto é gerado um número aleatório entre 0 e 1
+\end_layout
+
+\begin_layout Enumerate
+São construídos quatro intervalos utilizando as probabilidades do elemento.
+ Ex:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Se o elemento [ Sp ][ An ][ Wn ] tem probabilidades { _ : 0.25, * : 0.25,
+ | : 0.25, ? : 0.25 }.
+ São construídos os intervalos: 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+[0, 0.25], [0.25, 0.50], [0.50, 0.75], [0.75, 1.00]
+\end_layout
+
+\begin_layout Standard
+A transição será definida pelo intervalo que contiver o número aleatório.
+ Suponto que o número aleatório fosse 0.67, ele estaria contido no 3 intervalo,
+ e consequentemente esse elemento da regra seria definido como uma transição
+ para fita
+\end_layout
+
+\begin_layout Standard
+[ Sp ][ An ][ Wn ] -> [ |n ]
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+[ # ][ An ][ Hp ] -> [ An ] 
+\end_layout
+
+\begin_layout Plain Layout
+
+[ # ][ An ][ Np ] -> [ |n ] 
+\end_layout
+
+\begin_layout Plain Layout
+
+[ # ][ An ][ Qp ] -> [ *n ] 
+\end_layout
+
+\begin_layout Plain Layout
+
+[ # ][ An ][ Sp ] -> [ |n ] 
+\end_layout
+
+\begin_layout Plain Layout
+
+[ # ][ An ][ Tp ] -> [ |n ] 
+\end_layout
+
+\begin_layout Plain Layout
+
+[ # ][ An ][ Yp ] -> [ _n ] 
+\end_layout
+
+\begin_layout Plain Layout
+
+[ # ][ An ][ _p ] -> [ _n ] 
+\end_layout
+
+\begin_layout Plain Layout
+
+[ # ][ An ][ *p ] -> [ _n ] 
+\end_layout
+
+\begin_layout Plain Layout
+
+[ # ][ An ][ |p ] -> [ _n ] 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Evolução dos autômatos celulares pelos escravos
+\end_layout
+
+\begin_layout Standard
+Cada um dos dois conjunto de regras gerados pelos escravos são utilizados
+ para evoluir dois autômatos celulares por 1000 passos.
+ O estado inicial de cada autômato celular corresponde a concatenação de
+ todas as sequências de aminoácidos das proteínas.
+ Nessa concatenação, são adicionados o estado de início/fim (estado=#) entre
+ cada proteína, assim como no início e no fim da concatenação.
+ Esses estados # adicionados isolam a propagação de informação entre as
+ proteínas durante a evolução do autômato.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/ca-initial-state.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Após construção 
+\end_layout
+
+\begin_layout Standard
+recebimento das regras pelos 
+\end_layout
+
+\begin_layout Standard
+No AED distribuído implementado neste trabalho cada elemento da regra do
+ autômato celular tem probabilidade inicial de 25% para cada um dos 4 estados
+ de transição.
+ Há, no entanto, uma exceção.
+ Essa exceção ocorre em elementos da regra onde a célula central apresenta
+ o estado de início/fim da cadeia polipeptídica (estado=#).
+ 
+\end_layout
+
+\begin_layout Standard
+O AED 
+\end_layout
+
+\begin_layout Standard
+, com exceção dos elementos onde a célula apresenta o estado início/fim
+ da cadeia polipeptídica (estado=#), tem a mesma probabilidade inicial (p
+ = 0, 25) para cada um dos 4 estados de transição.
+ As probabilidades dos elementos da regra de transição são distribuídas
+ pelo nó mestre para os nós escravos.
+ Os nós escravos utilizam as probabilidades recebidas para gerar c > 2 regras
+ candidatas.
+ As regras candidatas são então utilizadas para evoluir o autômato celular
+ por t passos.
+ Após a evolução, um valor de 
+\emph on
+fitness
+\emph default
+ é atribuído a cada regra.
+ Em seguida, é realizado um torneio entre as regras candidatas geradas em
+ cada nó escravo e a regra com maior pontuação (
+\emph on
+fitness
+\emph default
+) é enviada ao nó mestre.
+ Ao receber as n/c regras vencedoras, onde n é o tamanho da população do
+ EDA, o nó mestre atualiza a probabilidade e começa a distribuí-la para
+ os nós escravos, iniciando assim a geração T + 1 do EDA.
+ A otimização termina após um número específicos de gerações ou quando as
+ probabilidades convergem.
+\end_layout
+
+\begin_layout Subsubsection
+Funções de 
+\emph on
+fitness
+\end_layout
+
 \begin_layout Subsubsection
 Modelo inicial 
 \end_layout
@@ -247,51 +1156,6 @@ de de transitar para apenas 4 estados, sendo um dos 3 elementos de estrutura
 \begin_layout Subsubsection
 Busca de regras de transição utilizando algoritmo de estimação de distribuição
  (EDA)
-\end_layout
-
-\begin_layout Standard
-A busca por regras de um autômato celular que reproduzam um padrão específico,
- conhecido como problema inverso, é um problema de otimização.
- Na literatura, esse problema é normalmente abordado utilizando meta-heurísticas
- como algoritmos genéticos ou têmpera simulada (
-\emph on
-simulated annealing
-\emph default
-).
- Neste trabalho optamos por utilizar o Algoritmo de Estimação de Distribuição
- (EDA).
- Os fatores que determinaram a utilização desse algoritmo foram a facilidade
- de implementação do EDA de forma distribuída e o menor número de parâmetros
- em relação à algoritmos genéticos.
-\end_layout
-
-\begin_layout Standard
-No EDA distribuído implementado neste trabalho cada elemento da regra do
- autômato celular, com exceção dos elementos onde a célula apresenta o estado
- início/fim da cadeia polipeptídica (estado=#), tem a mesma probabilidade
- inicial (p = 0, 25) para cada um dos 4 estados de transição.
- As probabilidades dos elementos da regra de transição são distribuídas
- pelo nó mestre para os nós escravos.
- Os nós escravos utilizam as probabilidades recebidas para gerar c > 2 regras
- candidatas.
- As regras candidatas são então utilizadas para evoluir o autômato celular
- por t passos.
- Após a evolução, um valor de 
-\emph on
-fitness
-\emph default
- é atribuído a cada regra.
- Em seguida, é realizado um torneio entre as regras candidatas geradas em
- cada nó escravo e a regra com maior pontuação (
-\emph on
-fitness
-\emph default
-) é enviada ao nó mestre.
- Ao receber as n/c regras vencedoras, onde n é o tamanho da população do
- EDA, o nó mestre atualiza a probabilidade e começa a distribuí-la para
- os nós escravos, iniciando assim a geração T + 1 do EDA.
- A otimização termina após um número específicos de gerações ou quando as
- probabilidades convergem.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -476,28 +1340,11 @@ analise de um caso de sucesso
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 analise de um fracasso
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-analise de um caso mediano
 \end_layout
 
 \end_inset

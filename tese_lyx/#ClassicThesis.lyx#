@@ -111,6 +111,30 @@ pagestyle{plain}
 
 \begin_layout Plain Layout
 
+
+\backslash
+newcommand*{
+\backslash
+mystrut}{
+\backslash
+rule[-0.1
+\backslash
+baselineskip]{0pt}{0.9
+\backslash
+baselineskip}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand*{
+\backslash
+mybox}[1]{
+\backslash
+framebox{
+\backslash
+strut #1}}
 \end_layout
 
 \end_inset

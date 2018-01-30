@@ -109,6 +109,34 @@ pagenumbering{roman}
 pagestyle{plain}
 \end_layout
 
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand*{
+\backslash
+mystrut}{
+\backslash
+rule[-0.1
+\backslash
+baselineskip]{0pt}{0.8
+\backslash
+baselineskip}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand*{
+\backslash
+mybox}[1]{
+\backslash
+framebox{
+\backslash
+strut #1}}
+\end_layout
+
 \end_inset
 
 
@@ -366,6 +394,16 @@ Introdução
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
+filename "cap0.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
 filename "introducao.lyx"
 
 \end_inset
@@ -439,6 +477,16 @@ Errem omnium ea per, pro congue populo ornatus cu, ex qui dicant nemore
 
 \begin_layout Part
 Conclusão
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "conclusao.lyx"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

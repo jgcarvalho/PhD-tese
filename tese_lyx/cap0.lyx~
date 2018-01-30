@@ -77,8 +77,8 @@ Organização da tese
 
 \begin_layout Standard
 Este trabalho está organizado em 3 partes.
- No capítulo 1 introduzimos assuntos relevantes para este trabalho, como
- proteínas, sua organização estrutural e seu processo de enovelamento.
+ No capítulo 1 fazemos uma introdução sobre proteínas, sua organização estrutura
+l e o processo de enovelamento.
 \end_layout
 
 \begin_layout Standard
@@ -99,11 +99,7 @@ No capítulo 2, Métodos de Atribuição de Estruturas Secundárias, descrevemos
 s por eles.
  Como neste trabalho são utilizados métodos de aprendizado de máquina (
 \emph on
-machine 
-\emph default
-learning
-\emph on
-) 
+machine learning) 
 \emph default
 e otimização, esses dados são essenciais para o treinamento dos métodos
  de predição e para a avaliação da acurácia.

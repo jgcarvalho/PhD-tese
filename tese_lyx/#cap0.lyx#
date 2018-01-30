@@ -77,7 +77,8 @@ Organização da tese
 
 \begin_layout Standard
 Este trabalho está organizado em 3 partes.
- No capítulo 1 introduzimos assuntos relevantes 
+ No capítulo 1 fazemos uma introdução sobre proteínas, sua organização estrutura
+l e o processo de enovelamento.
 \end_layout
 
 \begin_layout Standard
@@ -96,13 +97,9 @@ No capítulo 2, Métodos de Atribuição de Estruturas Secundárias, descrevemos
  descrição de como eles funcionam.
  Por fim, realizamos uma comparação entre os resultados das estruturas atribuída
 s por eles.
- Como neste trabalhos são utilizados métodos de aprendizado de máquina (
+ Como neste trabalho são utilizados métodos de aprendizado de máquina (
 \emph on
-machine 
-\emph default
-learning
-\emph on
-) 
+machine learning) 
 \emph default
 e otimização, esses dados são essenciais para o treinamento dos métodos
  de predição e para a avaliação da acurácia.
@@ -118,11 +115,11 @@ No capítulo 3, Métodos de Referência para a Predição de Estrutura Secundár
 \begin_layout Standard
 Um dos métodos realiza a predição da estrutura secundária utilizando diretamente
  a sequência de aminoácidos da proteína, sendo, nesse aspecto, similar aos
- propostos neste trabalho.
+ métodos propostos neste trabalho.
  Esse método, baseado em redes neurais artificiais, foi proposto em 1989.
  Na época, haviam poucas estruturas resolvidas experimentalmente para serem
  usadas no treinamento da rede neural.
- Assim, ao invés de utilizar a rede neural original, optamos por implementar
+ Assim, ao invés de utilizarmos a rede neural original, optamos por implementar
  uma rede neural similar e a treinamos utilizando o nosso conjunto de dados.
  Essa abordagem possibilitou uma comparação mais justa da capacidade preditiva
  do método.
@@ -132,8 +129,8 @@ Um dos métodos realiza a predição da estrutura secundária utilizando diretam
 \begin_layout Standard
 O outro método escolhido, PSIPRED, representa o estado da arte na predição
  de estruturas secundárias.
- Assim como o método anterior, ele faz uso de redes neurais artificais.
- Entretanto, o grande diferencial deste metódo está no uso de matrizes de
+ Assim como o método anterior, ele faz uso de redes neurais artificiais.
+ Entretanto, o grande diferencial deste método está no uso de matrizes de
  substituição de aminoácidos construídas através do alinhamento de proteínas
  similares (PSSM - 
 \emph on
@@ -144,15 +141,26 @@ Position Specific Scoring Matrix
  proteína, ele obtém, através do alinhamento, informações como regiões mais
  conservadas e substituições mais frequentes em cada posição.
  Como essas informações tem uma relação direta com a estrutura proteica,
- os métodos que utilizam PSSM atingem uma acurácia muito maior.
- O PSIPRED é um método atualizado constantemente, por isso, comparamos diretamen
-te os resultados da predição no nosso conjunto de proteínas.
+ os métodos que utilizam PSSM atingem uma acurácia maior.
+ O PSIPRED é um método atualizado frequentemente e por isso, comparamos
+ diretamente os resultados da predição no nosso conjunto de proteínas.
 \end_layout
 
 \begin_layout Standard
 O capítulo 4, Autômatos Celulares, descreve o desenvolvimento de um novo
- método proposto por nós.
- 
+ método de predição de estruturas secundárias utilizando autômatos celulares.
+ A busca de um conjunto de regras para os autômatos celulares, conhecido
+ como 
+\begin_inset Quotes sld
+\end_inset
+
+Problema Inverso
+\begin_inset Quotes srd
+\end_inset
+
+, foi realizada utilizando um algoritmo de estimação de distribuição (AED,
+ em inglês EDA).
+ Essa busca tem como objetivo encontrar
 \end_layout
 
 \begin_layout Standard
