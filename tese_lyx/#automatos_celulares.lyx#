@@ -75,6 +75,64 @@
 Autômatos celulares
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand*{
+\backslash
+mystrut}{
+\backslash
+rule[-0.15
+\backslash
+baselineskip]{0pt}{0.65
+\backslash
+baselineskip}} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand*{
+\backslash
+cell}[1]{
+\backslash
+framebox{
+\backslash
+mystrut 
+\backslash
+texttt{#1}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand*{
+\backslash
+carule}[4]{
+\backslash
+cell{#1}
+\backslash
+cell{#2}
+\backslash
+cell{#3}
+\backslash
+textrightarrow
+\backslash
+cell{#4}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Introdução
 \end_layout
@@ -84,11 +142,1125 @@ Materiais e métodos
 \end_layout
 
 \begin_layout Subsection
-Autômato celular
+Autômatos celulares
 \end_layout
 
 \begin_layout Standard
-A criação de modelo de autômatos celulares para serem aplicados a predição
+Neste trabalho foram utilizados autômatos celulares (AC) unidimensionais
+ com vizinhança 1.
+ Assim, o conjunto de regras são formadas por elementos do tipo:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+carule{a}{c}{p}{c'}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Onde 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{c}
+\end_layout
+
+\end_inset
+
+ é a célula central, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{a}
+\end_layout
+
+\end_inset
+
+ a célula anterior, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{p}
+\end_layout
+
+\end_inset
+
+ a célula posterior e 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{c'}
+\end_layout
+
+\end_inset
+
+ é a célula central no tempo imediatamente posterior (
+\emph on
+t
+\emph default
++1).
+ 
+\end_layout
+
+\begin_layout Standard
+O número de elementos no conjunto de regras depende do número de estados
+ possíveis 
+\begin_inset Formula $S$
+\end_inset
+
+ para as células 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{a}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{c}
+\end_layout
+
+\end_inset
+
+ e 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{p}
+\end_layout
+
+\end_inset
+
+.
+ Como o número de estados é igual para as três células temos que o número
+ de elementos é 
+\begin_inset Formula $n(S)^{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+O espaço do conjunto de regras possíveis depende também dos estados possíveis
+ em 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{c'}
+\end_layout
+
+\end_inset
+
+.
+ Considerando esses estados como 
+\begin_inset Formula $S'$
+\end_inset
+
+, temos que o espaço do conjunto de regras possíveis é 
+\begin_inset Formula $n(S')^{n(S)^{3}}$
+\end_inset
+
+.
+ É importante notar que 
+\begin_inset Formula $S\neq S'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Primeiro iremos descrever os estados 
+\begin_inset Formula $S$
+\end_inset
+
+, pois nesse trabalho testamos quatro modelos diferentes de autômatos celulares
+ que diferem justamente pelos estados 
+\begin_inset Formula $S$
+\end_inset
+
+ utilizados.
+\end_layout
+
+\begin_layout Standard
+Alguns estados são comuns entre os quatro modelos.
+ Esses estados comuns correspondem aos aminoácidos e a um estado que indica
+ o início/fim da cadeia polipeptídica.
+ São eles:
+\end_layout
+
+\begin_layout Itemize
+Estados 
+\begin_inset Formula $S$
+\end_inset
+
+ comuns entre os AC testados: {
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{A}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{C}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{D}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{E}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{F}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{G}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{H}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{I}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{K}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{L}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{M}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{N}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{P}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{Q}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{R}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{S}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{T}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{V}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{W}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{Y}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{
+\backslash
+#}
+\end_layout
+
+\end_inset
+
+} 
+\end_layout
+
+\begin_layout Standard
+No primeiro modelo construído acrescentamos o menor número de estados possíveis
+ para que o AC tivesse a capacidade de realizar a predição de estruturas
+ secundárias.
+ Assim, nesse modelo nós acrescentamos apenas três novos estados, os quais,
+ representam os elementos de estruturas secundária hélice, fita e coil.
+ São eles, respectivamente:
+\end_layout
+
+\begin_layout Itemize
+Estados 
+\begin_inset Formula $S$
+\end_inset
+
+ adicionados para o primeiro modelo: {
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{*}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{_}
+\end_layout
+
+\end_inset
+
+}
+\end_layout
+
+\begin_layout Standard
+Portanto, no primeiro modelo temos 
+\begin_inset Formula $n(S)=24$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Nos demais três modelos nós adicionamos uma informação que indica o contexto
+ do elemento de estrutura secundária.
+ Esse contexto está relacionado a uma característica do resíduo presente
+ na sequência na mesma posição em que encontra-se o elemento de estrutura
+ secundária.
+\end_layout
+
+\begin_layout Standard
+O segundo modelo utiliza dois contextos.
+ São eles:
+\end_layout
+
+\begin_layout Enumerate
+Polar (p) que representa o contexto de resíduos polares: {D, E, H, K, N,
+ Q, 
+\end_layout
+
+\begin_layout Enumerate
+Apolar (n) que representa o contexo de resíduos apolares: {
+\end_layout
+
+\begin_layout Standard
+Assim, são adicionados 6 estados ao segundo modelo.
+ Esses estados correspondem aos três elementos de estrutura secundária em
+ dois contextos diferentes.
+ São eles:
+\end_layout
+
+\begin_layout Itemize
+Estados 
+\begin_inset Formula $S$
+\end_inset
+
+ adicionados para o segundo modelo: {
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{*p}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{*n}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|p}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|n}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{-p}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{-n}
+\end_layout
+
+\end_inset
+
+}
+\end_layout
+
+\begin_layout Standard
+Que representam, respectivamente: hélice polar, hélice apolar, fita polar,
+ fita apolar, coil polar e coil apolar.
+ Assim, nesse modelo temos 
+\begin_inset Formula $n(S)=27$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+No terceiro modelo foram acrescentados dois novos contextos aos já utilizados
+ no segundo modelo.
+ Esses contextos representam os resíduos prolina e glicina.
+ Consequentemente, os contextos utilizados no terceiro modelo são:
+\end_layout
+
+\begin_layout Enumerate
+Polar (p) que representa o contexto de resíduos polares: {D, E, H, K, N,
+ Q, 
+\end_layout
+
+\begin_layout Enumerate
+Apolar (n) que representa o contexo de resíduos apolares: {
+\end_layout
+
+\begin_layout Enumerate
+Prolina (P) que representa apenas o resíduo prolina
+\end_layout
+
+\begin_layout Enumerate
+Glicina (G) que representa apenas o resíduo glicina
+\end_layout
+
+\begin_layout Standard
+E os estados:
+\end_layout
+
+\begin_layout Itemize
+Estados 
+\begin_inset Formula $S$
+\end_inset
+
+ adicionados para o terceiro modelo: {
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{*p}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{*n}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{*P}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{*G}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|p}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|n}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|P}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|G}
+\end_layout
+
+\end_inset
+
+,
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{_p}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{_n}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{_P}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{_G}
+\end_layout
+
+\end_inset
+
+}
+\end_layout
+
+\begin_layout Standard
+Neste modelo temos 
+\begin_inset Formula $n(S)=33$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+No quarto modelo foram adicionados outros dois contextos aos utilizados
+ no terceiro modelo.
+ Eles representam os resíduos carregados positivamente e negativamente.
+ Então os contextos neste modelo são:
+\end_layout
+
+\begin_layout Enumerate
+Polar (p) que representa o contexto de resíduos polares: D, E, H, K, N,
+ Q, 
+\end_layout
+
+\begin_layout Enumerate
+Apolar (n) que representa o contexo de resíduos apolares: 
+\end_layout
+
+\begin_layout Enumerate
+Prolina (P) que representa apenas o resíduo prolina
+\end_layout
+
+\begin_layout Enumerate
+Glicina (G) que representa apenas o resíduo glicina
+\end_layout
+
+\begin_layout Enumerate
+Positivos (+) que representa o contexto dos resíduos K e R
+\end_layout
+
+\begin_layout Enumerate
+Negativos (-) que representa o contexto dos resíduos D e E
+\end_layout
+
+\begin_layout Standard
+Portanto, temos neste modelo a adição dos seguintes estados: 
+\end_layout
+
+\begin_layout Itemize
+Estados 
+\begin_inset Formula $S$
+\end_inset
+
+ adicionados para o terceiro modelo: {
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{*p}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{*n}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{*P}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{*G}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{*+}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{*-}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|p}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|n}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|P}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|G}
+\end_layout
+
+\end_inset
+
+,
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|P}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|+}
+\end_layout
+
+\end_inset
+
+,
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{--}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{-n}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{-P}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{-G}
+\end_layout
+
+\end_inset
+
+}
+\end_layout
+
+\begin_layout Standard
+O desenvolvimento de autômatos celulares para serem aplicados a predição
  de estruturas secundárias exige a definição de estados discretos do autômato.
  Em outras palavras, precisamos definir 
 \emph on
@@ -99,22 +1271,166 @@ o conjunto de estados possíveis de cada célula do autômato celular.
 
 \begin_layout Standard
 Foram testados quatro conjuntos distintos.
- Entretanto, alguns estados são comuns entre eles.
- Esses estados comuns correspondem aos aminoácidos e mais um estado que
- indica o início/fim da cadeia polipeptídica.
-\end_layout
+ Entretanto, e um estado que indica que o estado anterior permace inalterado,
+ ou seja, o estado da célula no tempo 
+\emph on
+t
+\emph default
++1 é igual ao estado no tempo 
+\emph on
+t
+\emph default
+.
 
-\begin_layout Itemize
-Estados comuns entre os AC testados: 
-\begin_inset Formula $\left\{ \boxed{\mathtt{A}},\boxed{\mathtt{C}},\boxed{\mathtt{D}},\boxed{\mathtt{E}},\boxed{\mathtt{F}},\boxed{\mathtt{G}},\boxed{\mathtt{H}},\boxed{\mathtt{I}},\boxed{\mathtt{K}},\boxed{\mathtt{L}},\boxed{\mathtt{M}},\boxed{\mathtt{N}},\boxed{\mathtt{P}},\boxed{\mathtt{Q}},\boxed{\mathtt{R}},\boxed{\mathtt{S}},\boxed{\mathtt{T}},\boxed{\mathtt{V}},\boxed{\mathtt{W}},\boxed{\mathtt{Y}},\boxed{\mathtt{\#}}\right\} $
-\end_inset
-
-
+\emph on
+ 
 \end_layout
 
 \begin_layout Standard
-No primeiro modelo construído acrescentamos o menor número de estados possível
- para que o AC fosse capaz de realizar a predição 
+O estado 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{
+\backslash
+#}
+\end_layout
+
+\end_inset
+
+ representa o início/fim da cadeia polipeptídica
+\end_layout
+
+\begin_layout Standard
+No primeiro modelo construído acrescentamos o menor número de estados possíveis
+ para que o AC tivesse a capacidade de realizar a predição de estruturas
+ secundárias.
+ Nesse modelo nós acrescentamos apenas quatro novos estados.
+ São eles:
+\end_layout
+
+\begin_layout Itemize
+{
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{*}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{-}
+\end_layout
+
+\end_inset
+
+,}
+\end_layout
+
+\begin_layout Standard
+Os estados anteriores correspondem, respectivamente, a α-hélice, a folha
+ β, a coil 
+\end_layout
+
+\begin_layout Itemize
+{
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{-}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{*}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{?}
+\end_layout
+
+\end_inset
+
+}
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+carule{A}{A}{C}{|}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
