@@ -137,6 +137,54 @@ cell{#4}}
 Introdução
 \end_layout
 
+\begin_layout Standard
+Os autômatos celulares (AC) foram inventados na década de 40 por John von
+ Neumann baseando-se em sugestões de seu colega, o matemático Stanislaw
+ Ulam [39].
+ Autômatos celulares são modelos matemáticos para representar sistemas complexos
+ e consistem num conjunto de células discretas espacialmente.
+ Cada uma dessas células estão em um estado dentre um conjunto finito de
+ estados possíveis.
+ Os autômatos celulares evoluem paralelamente, ou seja, o estado de cada
+ célula evolui de maneira síncrona em passos discretos de tempo.
+ Essa evolução ocorre de acordo com regras simples e determinísticas.
+ A evolução dos AC produz complexidade a partir do efeito cooperativo de
+ elementos simples - as regras e as células - tratando-se portanto de uma
+ complexidade emergente, que surge globalmente no sistema a partir de regras
+ simples, locais e determinísticas [40].
+ 
+\end_layout
+
+\begin_layout Standard
+Autômatos celulares tem sido utilizados em diversos campos de pesquisa como
+ por exemplo na modelagem de sistemas: (1) biológicos, desde eventos intracelula
+res, como redes de interação proteicas, até estudo de populações; (2) químicos,
+ na modelagem cinética de sistemas moleculares e no crescimento de cristais;
+ (3) físicos, para o estudos sistemas dinâmicos, desde a interação entre
+ partículas até o agrupamento de galáxias [41].
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+No entanto, não há na literatura artigos que mencionem a sua utilização
+ na predição de enovelamentos proteicos.
+ Apesar disso, acreditamos tratar-se de um modelo promissor.
+ Mencionar a aplicação de AC na prediççao de SS
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Autômatos celulares elementares
+\end_layout
+
 \begin_layout Section
 Materiais e métodos
 \end_layout
@@ -148,7 +196,14 @@ Autômatos celulares
 \begin_layout Standard
 Neste trabalho foram utilizados autômatos celulares (AC) unidimensionais
  com vizinhança 1.
- Assim, o conjunto de regras são formadas por elementos do tipo:
+ Nesse aspecto, eles são semelhantes aos autômatos celulares elementares.
+ Entretanto, a principal diferença ocorre nos estados possíveis de cada
+ célula.
+ 
+\end_layout
+
+\begin_layout Standard
+O conjunto de regras são formadas por elementos do tipo:
 \end_layout
 
 \begin_layout Itemize
@@ -330,22 +385,7 @@ Primeiro iremos descrever os estados
 \begin_layout Standard
 Alguns estados são comuns entre os quatro modelos.
  Esses estados comuns correspondem aos aminoácidos e a um estado que indica
- o início/fim da cadeia polipeptídica (
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-cell{
-\backslash
-#}
-\end_layout
-
-\end_inset
-
-).
+ o início/fim da cadeia polipeptídica.
  São eles:
 \end_layout
 
@@ -633,6 +673,27 @@ cell{
 \end_layout
 
 \begin_layout Standard
+onde 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{
+\backslash
+#}
+\end_layout
+
+\end_inset
+
+ corresponde ao estado de início/fim da cadeia polipeptídica.
+ Para os estados que representam aminoácidos, utilizamos o código de uma
+ letra.
+\end_layout
+
+\begin_layout Standard
 No primeiro modelo construído acrescentamos o menor número de estados possíveis
  para que o AC tivesse a capacidade de realizar a predição de estruturas
  secundárias.
@@ -703,8 +764,7 @@ Portanto, no primeiro modelo temos
 Nos demais três modelos nós adicionamos uma informação que indica o contexto
  do elemento de estrutura secundária.
  Esse contexto está relacionado a uma característica do resíduo presente
- na sequência na mesma posição em que encontra-se o elemento de estrutura
- secundária.
+ na mesma posição em que encontra-se o elemento de estrutura secundária.
 \end_layout
 
 \begin_layout Standard
@@ -713,12 +773,13 @@ O segundo modelo utiliza dois contextos.
 \end_layout
 
 \begin_layout Enumerate
-Polar (p) que representa o contexto de resíduos polares: {D, E, H, K, N,
- Q, 
+Polar (p) que representa o contexto de resíduos polares: D, E, G, H, K,
+ N, P, Q, R, S, T, Y
 \end_layout
 
 \begin_layout Enumerate
-Apolar (n) que representa o contexo de resíduos apolares: {
+Apolar (n) que representa o contexto de resíduos apolares: A, C, F, I, L,
+ M, V, W
 \end_layout
 
 \begin_layout Standard
@@ -836,12 +897,13 @@ No terceiro modelo foram acrescentados dois novos contextos aos já utilizados
 \end_layout
 
 \begin_layout Enumerate
-Polar (p) que representa o contexto de resíduos polares: {D, E, H, K, N,
- Q, 
+Polar (p) que representa o contexto de resíduos polares: D, E, H, K, N,
+ Q, R, S, T, Y
 \end_layout
 
 \begin_layout Enumerate
-Apolar (n) que representa o contexo de resíduos apolares: {
+Apolar (n) que representa o contexto de resíduos apolares: A, C, F, I, L,
+ M, V, W
 \end_layout
 
 \begin_layout Enumerate
@@ -1044,12 +1106,13 @@ No quarto modelo foram adicionados outros dois contextos aos utilizados
 \end_layout
 
 \begin_layout Enumerate
-Polar (p) que representa o contexto de resíduos polares: D, E, H, K, N,
- Q, 
+Polar (p) que representa o contexto de resíduos polares: H, N, Q, S, T,
+ Y
 \end_layout
 
 \begin_layout Enumerate
-Apolar (n) que representa o contexo de resíduos apolares: 
+Apolar (n) que representa o contexto de resíduos apolares: A, C, F, I, L,
+ M, V, W
 \end_layout
 
 \begin_layout Enumerate
@@ -1323,11 +1386,893 @@ E
 \end_layout
 
 \begin_layout Standard
+Os estados possíveis de 
+\begin_inset Formula $S'$
+\end_inset
+
+ são apenas quatro em todos os modelos testados.
+ São eles: 
+\end_layout
+
+\begin_layout Itemize
+Estados 
+\begin_inset Formula $S'$
+\end_inset
+
+ : {
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{*}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{
+\backslash
+_}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{?}
+\end_layout
+
+\end_inset
+
+}
+\end_layout
+
+\begin_layout Standard
+Esses estados representam, respectivamente, uma transição para o estado
+ de hélice, uma transição para fita, transição para coil e a permanência
+ no estado anterior, ou seja, não há mudança de estado.
+\end_layout
+
+\begin_layout Standard
+Nos três modelos onde utilizamos a informação do contexto, o mesmo é adicionado
+ após a transição de estado.
+ Por exemplo, supondo um elemento de regra como:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+carule{F}{V}{T}{|}
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
-\begin_layout Subsubsection
-Conjunto de estados
+\begin_layout Standard
+O estado 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{V}
+\end_layout
+
+\end_inset
+
+ no tempo 
+\emph on
+t
+\emph default
+, irá ser alterado para 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|}
+\end_layout
+
+\end_inset
+
+ no tempo 
+\emph on
+t
+\emph default
++1.
+ No entanto, considerando o contexto apolar do resíduo V, o estado da célula
+ será alterado para 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{|n}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Após essa descrição dos estados é possível calcularmos o número de elementos
+ da regra e o espaço de regras possíveis (Tabela .
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="14" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+AC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Contextos
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Elementos por regra
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Regras possíveis
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $24^{3}=13824$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4^{13824}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Polar (p)
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+27
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $27^{3}=19683$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4^{19683}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Apolar (n)
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Polar (p)
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+33
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $33^{3}=35937$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4^{35937}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Apolar (n)
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Prolina (P)
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Glicina (G)
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Polar (p)
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+39
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $39^{3}=59319$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4^{59319}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Apolar (n)
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Prolina (P)
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Glicina (G)
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Positivos (+)
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Negativos (-)
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Subsection
@@ -1348,7 +2293,7 @@ simulated annealing
 \emph default
 ).
  Neste trabalho optamos por utilizar um Algoritmo de Estimação de Distribuição
- (AED) que implementamos de forma distribuída através de modelo mestre-escravos.
+ (AED) que implementamos de forma distribuída através do modelo mestre-escravos.
 \end_layout
 
 \begin_layout Standard
@@ -1381,7 +2326,8 @@ Escravos enviam o conjunto de regra vencedor para o Mestre
 \end_layout
 
 \begin_layout Enumerate
-O mestre acumula N conjunto de regras e então atualiza as probabilidades
+O mestre acumula N conjunto de regras vencedoras e então atualiza as probabilida
+des
 \end_layout
 
 \begin_layout Enumerate
@@ -1402,10 +2348,62 @@ O mestre inicia o processo enviando um probabilidade uniforme onde cada
  de 25%.
  Isso ocorre para cada elemento do conjunto de regras com exceção de elementos
  cujo estado da célula central apresenta o estado de início/fim da cadeia
- polipeptídica (estado=#).
+ polipeptídica (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{#}
+\end_layout
+
+\end_inset
+
+).
  Nesses elementos a probabilidade da célula continuar no mesmo estado no
- tempo T+1 é igual a 100%, ou seja, ao longo da evolução do autômato, células
- no estado # permanecerão no estado #.
+ tempo T+1 é igual a 100%.
+ Consequentemente, todo elemento da regra que tiver o estado 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{#}
+\end_layout
+
+\end_inset
+
+ na célula central terá a transição definida como 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{?}
+\end_layout
+
+\end_inset
+
+ e permanecerão no estado 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{#}
+\end_layout
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -1522,7 +2520,8 @@ Um conjunto de regras é construído da seguinte forma:
 \end_layout
 
 \begin_layout Enumerate
-Para cada elemento do conjunto é gerado um número aleatório entre 0 e 1
+Para cada elemento do conjunto de regras é gerado um número aleatório entre
+ 0 e 1
 \end_layout
 
 \begin_layout Enumerate
@@ -1550,7 +2549,19 @@ A transição será definida pelo intervalo que contiver o número aleatório.
 \end_layout
 
 \begin_layout Standard
-[ Sp ][ An ][ Wn ] -> [ |n ]
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+carule{S}{A}{W}{|}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -1643,13 +2654,38 @@ Evolução dos autômatos celulares pelos escravos
 
 \begin_layout Standard
 Cada um dos dois conjunto de regras gerados pelos escravos são utilizados
- para evoluir dois autômatos celulares por 1000 passos.
+ para evoluir dois autômatos celulares por 100 passos.
  O estado inicial de cada autômato celular corresponde a concatenação de
  todas as sequências de aminoácidos das proteínas.
- Nessa concatenação, são adicionados o estado de início/fim (estado=#) entre
- cada proteína, assim como no início e no fim da concatenação.
- Esses estados # adicionados isolam a propagação de informação entre as
- proteínas durante a evolução do autômato.
+ Nessa concatenação, são adicionados o estado de início/fim (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{#}
+\end_layout
+
+\end_inset
+
+) entre cada proteína, assim como no início e no fim da concatenação.
+ Esses estados 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{#}
+\end_layout
+
+\end_inset
+
+ adicionados isolam a propagação de informação entre as proteínas durante
+ a evolução do autômato.
 \end_layout
 
 \begin_layout Standard
@@ -1680,243 +2716,204 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-Após construção 
+\begin_layout Subsubsection
+Cálculo da acurácia dos dois conjunto de regras pelo escravo
 \end_layout
 
 \begin_layout Standard
-recebimento das regras pelos 
-\end_layout
-
-\begin_layout Standard
-No AED distribuído implementado neste trabalho cada elemento da regra do
- autômato celular tem probabilidade inicial de 25% para cada um dos 4 estados
- de transição.
- Há, no entanto, uma exceção.
- Essa exceção ocorre em elementos da regra onde a célula central apresenta
- o estado de início/fim da cadeia polipeptídica (estado=#).
+Após construção e a evolução dos dois autômatos pelos escravo são calculados
+ a acurácia dos dois conjuntos de regras.
+ A medida de acurácia é utilizada como o 
+\emph on
+fitness 
+\emph default
+do conjunto de regras.
+ Há, então, um torneio entre os dois conjuntos de regras e o vencedor é
+ enviado para o mestre.
  
 \end_layout
 
 \begin_layout Standard
-O AED 
+Inicialmente utilizamos uma medida da acurácia como:
 \end_layout
 
 \begin_layout Standard
-, com exceção dos elementos onde a célula apresenta o estado início/fim
- da cadeia polipeptídica (estado=#), tem a mesma probabilidade inicial (p
- = 0, 25) para cada um dos 4 estados de transição.
- As probabilidades dos elementos da regra de transição são distribuídas
- pelo nó mestre para os nós escravos.
- Os nós escravos utilizam as probabilidades recebidas para gerar c > 2 regras
- candidatas.
- As regras candidatas são então utilizadas para evoluir o autômato celular
- por t passos.
- Após a evolução, um valor de 
-\emph on
-fitness
-\emph default
- é atribuído a cada regra.
- Em seguida, é realizado um torneio entre as regras candidatas geradas em
- cada nó escravo e a regra com maior pontuação (
-\emph on
-fitness
-\emph default
-) é enviada ao nó mestre.
- Ao receber as n/c regras vencedoras, onde n é o tamanho da população do
- EDA, o nó mestre atualiza a probabilidade e começa a distribuí-la para
- os nós escravos, iniciando assim a geração T + 1 do EDA.
- A otimização termina após um número específicos de gerações ou quando as
- probabilidades convergem.
-\end_layout
-
-\begin_layout Subsubsection
-Funções de 
-\emph on
-fitness
-\end_layout
-
-\begin_layout Subsubsection
-Modelo inicial 
-\end_layout
-
-\begin_layout Standard
-O autômato celular inicialmente proposto possui 24 estados discretos.
- Esses estados correspondem aos 20 aminoácidos, aos 3 elementos de estruturas
- secundárias (hélice, fita e coil) e mais um estado que indica o início/fim
- da cadeia polipeptídica (estado=#).
- A vizinhança deste autômato celular é igual a 1 (r=1), o que indica que
- as regras de transição são dependentes dos dois vizinhos mais próximos,
- um a esquerda e um a direita.
- Cada transição pode ocorrer para apenas quatro estados, sendo 3 estados
- que representam os elementos de estrutura secundária e um que representa
- o resíduo presente naquela posição da cadeia polipeptídica.
- Logo, temos que o total de elementos na regra desse autômato é 
-\begin_inset Formula $24^{3}$
-\end_inset
-
- ou 13824, dos quais 24 são elementos estáticos.
- Os elementos estáticos correspondem a células no estado # que não transitam
- para estados diferentes dele mesmo, permanecendo nesse estado durante toda
- a evolução do autômato.
- Assim temos 
-\begin_inset Formula $4^{24^{3}-24}$
-\end_inset
-
- regras possíveis para esse autômato celular (Figura 3).
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figures/ca_rule_scheme.pdf
-	width 100line%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Esquema da regra simples
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Modelos estendidos
-\end_layout
-
-\begin_layout Standard
-Uma das limitações do modelo proposto inicialmente é a perda de informação
- que ocorre durante a evolução do autômato celular quando as células transitam
- de estados correspondentes aos aminoácidos para estados que representam
- elementos de estruturas secundárias.
- Por exemplo, quando uma lisina evolui para uma hélice, o estado de hélice
- não possui mais a informação sobre qual aminoácido havia naquela posição.
- Acreditamos que essa perda de informação possa ser um fator crítico para
- o modelo.
- Consequentemente, avaliamos modelos alternativos que pudessem manter essa
- informação.
+Essa medida inicial foi utilizada para avaliar o desempenho dos quatro modelos
+ de autômatos celulares testados.
  
 \end_layout
 
 \begin_layout Standard
-Uma possibilidade seria manter a informação do resíduo juntamente com o
- elemento de estrutura secundária.
- Esse modelo teria 20 estados para os aminoácidos, 20 estados para hélices
- (um estado diferente para cada aminoácido), 20 estados para fitas e 20
- estados para coils, além do estado de início/fim da cadeia polipeptídica,
- totalizando 81 estados.
- Cada regra para esse autômato celular teria 
-\begin_inset Formula $81^{3}$
-\end_inset
-
- ou 531441 elementos, o que seria aproximadamente 38 vezes maior que uma
- regra do modelo proposto inicialmente, resultando em um aumento significativo
- da complexidade e, consequentemente, da dificuldade na busca por regras
- que reproduzam o padrão desejado.
- Esse aumento de complexidade impossibilitou ....
+Posteriormente, decidimos avaliar outras métricas de acurácia para tentar
+ melhorar a capacidade preditiva do modelo vencedor.
+ Essas outras métricas testadas foram o CBA, MCC e o CE.
 \end_layout
 
 \begin_layout Standard
-Assim, a alternativa escolhida foi utilizar características dos aminoácidos
- que mantivessem parcialmente a informação do resíduo durante a evolução
- do autômato celular, mas sem resultar em um aumento tão elevado do número
- de regras em relação ao modelo inicial.
- O primeiro modelo concebido que atende esses requisitos utiliza as característi
-cas de hidrofobicidade dos aminoácidos.
- Isso resulta em modelo com 27 estados, sendo 2 estados para cada um dos
- 3 elementos de estrutura secundária, mais os 20 aminoácidos e o início/fim
- da cadeia polipeptídica.
- No total, a regra deste autômato celular é formada por 273 , ou 19683,
- elementos, sendo aproximadamente 1,42 vezes maior que a regra do modelo
- inicial.
-\end_layout
 
-\begin_layout Standard
-Além deste modelo estendido, dois outros modelos foram utilizados.
- Um deles adicionando estados para diferenciar glicinas e prolinas, e outro
- acrescentando estados para diferenciar resíduos com cargas positivas e
- negativas assim como glicinas e prolinas.
- Ambos utilizam também a hidrofobicidade dos demais resíduos.
- As regras para esses modelos apresentam respectivamente 333 e 393 elementos,
- o que corresponde a um aumento aproximado de 2,6 e 4,3 vezes em relação
- ao modelo inicial (Tabela 2).
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-tabela 2
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-A motivação para o uso da hidrofobicidade dos resíduos foi influenciada
- por trabalhos de Hecht e colaboradores [52, 53] que examinaram a influência
- de padrões periódicos de hidrofobicidade nas sequências proteicas e sua
- relação com elementos de estruturas secundárias, concluindo que alguns
- padrões apresentam preferência por hélices α enquanto outros apresentam
- preferência por fitas β [53].
-\end_layout
-
-\begin_layout Standard
-Em todos os modelos estendidos cada elemento da regra continua com a possibilida
-de de transitar para apenas 4 estados, sendo um dos 3 elementos de estrutura
- secundária ou o resíduo encontrado naquela posição da cadeia polipeptídica.
 \end_layout
 
 \begin_layout Subsubsection
-Busca de regras de transição utilizando algoritmo de estimação de distribuição
- (EDA)
+Atualização das probabilidades do EDA no mestre
 \end_layout
 
-\begin_layout Subsubsection*
-Função de pontuação dos indivíduos (Função de
-\emph on
- fitness
-\emph default
-)
+\begin_layout Standard
+Após o mestre receber 
+\begin_inset Formula $N/2$
+\end_inset
+
+ (
+\begin_inset Formula $N$
+\end_inset
+
+ população do EDA) conjunto de regras dos escravos as probabilidades dos
+ elementos são atualizadas.
+ Esse procedimento é realizado observando-se a frequência das transições
+ para cada elemento.
+ Por exemplo:
 \end_layout
 
-\begin_layout Subsection
-Busca de regras 
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+carule{A}{A}{A}{*}
+\end_layout
+
+\end_inset
+
+ = 3000
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+carule{A}{A}{A}{|}
+\end_layout
+
+\end_inset
+
+ = 500
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+carule{A}{A}{A}{
+\backslash
+_}
+\end_layout
+
+\end_inset
+
+ = 1000
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+carule{A}{A}{A}{?}
+\end_layout
+
+\end_inset
+
+ = 500
+\end_layout
+
+\begin_layout Standard
+Considerando 
+\begin_inset Formula $N/2$
+\end_inset
+
+ igual a 5000, temos que a nova probabilidade para esse elemento será:
+\end_layout
+
+\begin_layout Itemize
+[ An ][ An ][ An ] -> { _ : 0.60, * : 0.10, | : 0.20, ? : 0.10 }
+\end_layout
+
+\begin_layout Standard
+Após as probabilidades de todos os elementos serem calculadas, elas passam
+ a serem enviadas para os escravos para que esses comecem a gerar novas
+ regras candidatas.
+\end_layout
+
+\begin_layout Subsubsection
+Detalhes do procedimento 
+\end_layout
+
+\begin_layout Standard
+O método de otimização e os autômatos celulares foram implementados na linguagem
+ Go.
+ A comunicação entre o mestre e os escravos ocorrem por chamadas de procedimento
+ remotos (RPC).
+ Os programas foram executados no cluster de computação de alto desempenho
+ EMU-2 (adquirido pelo 
+\begin_inset Quotes eld
+\end_inset
+
+Programa de Equipamento Multiusuário da FAPESP-2009
+\begin_inset Quotes erd
+\end_inset
+
+, 2009/53853-5, localizado no Centro Internacional de Pesquisa e Ensino
+ do Hospital A.
+ C.
+ Camargo em São Paulo).
+ A execução utilizando 320 cores de processamento demora aproximadamente
+ 10 dias.
+\end_layout
+
+\begin_layout Standard
+Parâmetros utilizados
+\end_layout
+
+\begin_layout Itemize
+População do EDA: 
+\begin_inset Formula $N=10000$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Número de gerações do EDA: 
+\begin_inset Formula $G=1000$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Número de gerações do AC: 
+\begin_inset Formula $T=100$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1925,6 +2922,14 @@ Busca de regras
 
 \begin_layout Section
 Resultados
+\end_layout
+
+\begin_layout Subsection
+Seleção do modelo de autômato celular
+\end_layout
+
+\begin_layout Subsection
+Análise da predição de estruturas secundárias
 \end_layout
 
 \begin_layout Standard

@@ -75,6 +75,483 @@
 Introdução
 \end_layout
 
+\begin_layout Standard
+O problema do enovelamento de proteínas é a questão de como são formadas
+ ou organizadas suas estruturas atômicas tridimensionais.
+ Essa questão surgiu no final da década de 50, logo após a resolução atômica
+ da primeira estrutura proteica por Kendrew e colaboradores 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kendrew_three-dimensional_1958"
+
+\end_inset
+
+ (1958), trabalho no qual se observou experimentalmente, segundo o próprio
+ autor, uma complexidade maior que as antecipadas pelas teorias da época
+ sobre estruturas proteicas.
+ Posteriormente, Anfinsen (1973) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "anfinsen_principles_1973"
+
+\end_inset
+
+ realizou experimentos que demonstraram que a ribonuclease poderia ser reversame
+nte desnaturada/renaturada in vitro, e que em condições desnaturantes, tanto
+ a estrutura quanto a função eram perdidas, no entanto, ambas eram recuperadas
+ ao retornarem à condições fisiológicas.
+ A conclusão foi que, apesar da grande complexidade observada, as proteínas
+ se auto-organizavam estruturalmente, assim sendo, apenas a informação contida
+ em sua sequência de aminoácidos seria suficiente para definir sua estrutura
+ e que esta determinaria a sua função.
+ A explicação de Anfinsen para esta autoorganização estrutural foi dada
+ através da hipótese termodinâmica, a qual postula que em condições fisiológicas
+ a população proteica atinge um mínimo de energia livre de Gibbs no seu
+ estado nativo (Rose et al., 2006) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "rose_backbone-based_2006"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dessa forma, devido ao princípio da relação estrutura ↔ função e a resultados
+ experimentais que demonstraram que a estrutura é determinada pela sequência
+ de aminoácidos, diversos trabalhos buscaram prever a estrutura de uma proteína
+ a partir da sua sequência de resíduos.
+ Alguns dos primeiros trabalhos a discutir uma forma de predição foram publicado
+s por Levinthal (1968; 1969) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "levinthal_are_1968,levinthal_how_1969"
+
+\end_inset
+
+ nos quais o autor menciona que o número de 2 configurações estruturais
+ possíveis para uma cadeia polipeptídica é imenso, sendo impossível explorar
+ todas as conformações possíveis para se determinar qual sua estrutura nativa,
+ ou de menor energia.
+ Apesar disso, as proteínas são capazes de se enovelarem espontaneamente
+ e adotar a conformação nativa rapidamente, numa escala de segundos ou menos.
+ Esta observação ficou popularmente conhecida como Paradoxo de Levinthal.
+ Entretanto, Levinthal não considerou isso como um resultado absurdo, mas
+ baseou-se nessa análise para concluir que um mecanismo aleatório para o
+ enovelamento não seria válido 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ben-naim_levinthals_2012"
+
+\end_inset
+
+ (Ben-Naim, 2012).
+ Segundo Levinthal 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "levinthal_how_1969"
+
+\end_inset
+
+(1969), uma possível explicação para a eficiência observada no processo
+ seria a formação rápida de interações locais que acelerariam e guiariam
+ o enovelamento:
+\end_layout
+
+\begin_layout Quotation
+We feel that protein folding is speeded and guided by the rapid formation
+ of local interactions, which then determine the further folding of the
+ peptide.
+\end_layout
+
+\begin_layout Standard
+Apesar da sugestão de Levinthal para explicar um possível mecanismo de enovelame
+nto ter sido publicado há 45 anos, o desafio de se prever as estruturas
+ tridimensionais das proteínas a partir de suas sequências de aminoácidos,
+ mesmo obtendo grande progresso no últimos anos, ainda permanece sem uma
+ solução definitiva (Moult et al., 2014)
+\begin_inset CommandInset citation
+LatexCommand citep
+key "moult_critical_2014"
+
+\end_inset
+
+, sendo os métodos experimentais, mais especificamente, os métodos de cristalogr
+afia de proteínas por difração de raios-X e o de ressonância magnética nuclear,
+ ainda a principal forma de se obter um modelo estrutural com resolução
+ atômica.
+ Métodos experimentais de resolução da estrutura proteica apresentam diversas
+ dificuldades técnicas.
+ Para a cristalografia por difração de raios-X é necessária a obtenção de
+ proteína em alto grau de pureza e a obtenção de monocristais, que muitas
+ vezes é o fator limitante do processo.
+ Por outro lado, a ressonância magnética nuclear 3 exige concentrações bastante
+ altas de proteína purificada de meios com diferentes isótopos e ainda,
+ existe limitação quanto ao tamanho da proteína analisada.
+ Essas limitações experimentais são evidenciadas pela disparidade entre
+ o número de estruturas resolvidas experimentalmente (~98 mil depositadas
+ no PDB) e o número de proteínas com sequência de aminoácido conhecidas
+ (~53 milhões depositadas no UniProtKB/TrEMBL – dados de 02/2014).
+ Dessa forma, a busca por métodos computacionais capazes de prever estruturas
+ proteicas continua uma área de grande interesse científico, tanto como
+ uma forma de se conhecer melhor o mecanismo de enovelamento como também
+ na utilização da informação estrutural para responder diversas questões
+ biológicas e desenvolver novos medicamentos (Baker e Sali, 2001) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "baker_protein_2001"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Os métodos computacionais desenvolvidos e utilizados para construir modelos
+ estruturais das proteínas podem ser classificados em dois tipos: (1) modelagem
+ comparativa e (2) modelagem ab initio ou de novo, sendo considerados ab
+ initio os métodos que não utilizam informações provenientes de proteínas
+ com estruturas similares ao invés de apenas métodos que utilizem informação
+ de carácter exclusivamente físico (Helles, 2008) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "helles_comparative_2008"
+
+\end_inset
+
+.
+ Dentre os métodos de predição estrutural ab initio, os que tem apresentado
+ melhor desempenho são os que utilizam uma técnica de montagem de fragmentos
+ (fragment assembly) como o I-Tasser (Zhang, 2008) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "zhang_i-tasser_2008"
+
+\end_inset
+
+ e o Rosetta (Rohl et al., 2004) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "rohl_protein_2004"
+
+\end_inset
+
+.
+ Esses métodos utilizam fragmentos extraídos de proteínas com estrutura
+ resolvida experimentalmente, os quais posteriormente são reunidos de acordo
+ com a sequência de aminoácidos da proteína a qual se deseja construir um
+ modelo.
+ A utilização de fragmentos tem como objetivo acelerar a busca pelo modelo
+ correto, entretanto, este ainda é um método caro computacionalmente e informaçõ
+es como a predição da estrutura secundária e de contatos não-locais entre
+ resíduos são comumente utilizadas para restringir o número de 4 fragmentos
+ a serem testados, consequentemente reduzindo o espaço de busca e acelerando
+ um pouco mais a modelagem da estrutura (Helles, 2008) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "helles_comparative_2008"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A outra categoria de métodos de modelagem, a modelagem comparativa, necessita
+ que estruturas similares à da proteína que se deseja modelar tenham sido
+ previamente resolvidas experimentalmente.
+ Os métodos de modelagem comparativa baseiam-se no princípio de que em proteínas
+ homólogas a estrutura é mais conservada do que a sequência de aminoácidos.
+ Sendo assim, proteínas que tenham uma identidade entre as sequências maior
+ que 30% e que por isso apresentam evidência de que são homólogas, podem
+ ser modeladas caso uma delas tenha estrutura resolvida (Marti-Renom et
+ al., 2000) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "marti-renom_comparative_2000"
+
+\end_inset
+
+.
+ Isso não significa que proteínas com identidade sequencial menor que 30%
+ não possam apresentar estruturas tridimensionais similares, entretanto,
+ a identificação dessas proteínas homólogas e o alinhamento entre as sequências,
+ ambos passos essenciais durante a modelagem comparativa, tornam-se mais
+ suscetíveis a erros (Marti-Renom et al., 2000) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "marti-renom_comparative_2000"
+
+\end_inset
+
+.
+ Na tentativa de contornar tal deficiência dos métodos de modelagem comparativa
+ foram desenvolvidos métodos que buscam identificar proteínas com estruturas
+ similares, mas baixa identidade sequencial (< 30%), chamados de métodos
+ de reconhecimento de enovelamento, os quais englobam métodos de comparação
+ sequência-estrutura e métodos de alinhavamento (threading) (Dunbrack, 2006)
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "dunbrack_sequence_2006"
+
+\end_inset
+
+.
+ O diferencial desses métodos em relação ao simples alinhamento entre sequências
+ primárias está na utilização de informações estrutural, como por exemplo,
+ estrutura secundária, exposição ao solvente, entre outros, para descrever
+ o ambiente em que o resíduo se encontra na proteína.
+ Esses ambientes alteram os padrões de substituições de aminoácidos como
+ demonstrado por Overington e colaboradores (1990) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "overington_tertiary_1990"
+
+\end_inset
+
+.
+ Consequentemente, a utilização desses ambientes na 5 construção de matrizes
+ de substituição ou nos métodos de alinhavamento, permite uma estimativa
+ da estrutura tridimensional conhecida que melhor acomoda a sequência de
+ aminoácidos da proteína que se deseja modelar.
+\end_layout
+
+\begin_layout Standard
+Outro argumento que justifica a aplicação de tal método é a existência aparente
+ de um número finito de enovelamentos adotados pelas proteínas, o qual alguns
+ autores estimam ser entre 1.000 e 10.000 (Chothia, 1992; Coulson e Moult,
+ 2002) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "chothia_proteins._1992,coulson_unifold_2002"
+
+\end_inset
+
+.
+ Portanto, com o aumento do número de estruturas resolvidas, acredita-se
+ que futuramente esses enovelamentos estarão completamente representados
+ nos bancos de dados, possibilitando a modelagem de um número cada vez maior
+ de proteínas (Kolodny et al., 2013) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kolodny_universe_2013"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Os métodos de modelagem comparativa não fornecem informação sobre o caminho,
+ ou mesmo o mecanismo, de enovelamento da proteína, pois baseiam-se apenas
+ na estrutura nativa para a construção do modelo (Helles, 2008) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "helles_comparative_2008"
+
+\end_inset
+
+.
+ Essas informações sobre o caminho de enovelamento podem ser importantes
+ para melhorar a predição de estruturas terciárias como pode ser observado
+ no trabalho de Giri e colaboradores (2012) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "giri_folding_2012"
+
+\end_inset
+
+.
+ Neste trabalho eles analisaram experimentalmente o enovelamento de proteínas
+ com alta identidade entre as sequências (30%, 77% e 88%), mas que, mesmo
+ com esta alta identidade, possuem topologias diferentes e notaram que as
+ diferenças entre as topologias surgem logo no início do processo de enovelament
+o.
+ Proteínas como essa, caso fossem modeladas comparativamente, provavelmente
+ resultariam em modelos estruturais incorretos, o que a princípio poderia
+ ser evitado com alguns métodos ab initio, como por exemplo os baseados
+ em dinâmica molecular, ou por algum outro 6 método capaz de obter informações
+ sobre estágios intermediários do enovelamento a partir da sequência.
+\end_layout
+
+\begin_layout Standard
+A hipótese termodinâmica, apesar de explicar o enovelamento, também não
+ fornece informações sobre qual o mecanismo de enovelamento adotado pelas
+ cadeias polipeptídicas na transição entre os estados desenovelado e nativo
+ (Rose et al., 2006) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "rose_backbone-based_2006"
+
+\end_inset
+
+.
+ Consequentemente, diversos mecanismos de enovelamento foram propostos (Dill
+ e Chan, 1997; Dill et al., 2008; Dill e Maccallum, 2012) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "dill_levinthal_1997,dill_protein_2008,dill_protein-folding_2012"
+
+\end_inset
+
+.
+ De maneira geral, esses mecanismos podem se distinguir em dois tipos: hierárqui
+co e não-hierárquico.
+ Num mecanismo hierárquico de enovelamento, acredita-se que o processo se
+ inicia com estruturas que são formadas localmente na sequência e que comumente
+ apresentem baixa estabilidade.
+ A interação entre essas estruturas locais produziriam estruturas intermediárias
+, com complexidade crescente e maior estabilidade, até atingir a conformação
+ nativa.
+ Diferentemente, num mecanismo de enovelamento não-hierárquico, as interações
+ não locais não apenas estabilizariam as estruturas locais, mas seriam as
+ responsáveis por determiná- las (Baldwin e Rose, 1999a) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "baldwin_is_1999"
+
+\end_inset
+
+.
+ Não há na literatura um consenso sobre qual tipo de mecanismo – hierárquico
+ ou não-hierárquico – descreve com maior fidelidade o enovelamento proteico,
+ uma vez que há evidências experimentais e de simulação computacional que,
+ ora sustentam um mecanismo, ora outro (Baldwin e Rose, 1999b; a; Daggett
+ e Fersht, 2003) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "baldwin_is_1999-1,daggett_is_2003"
+
+\end_inset
+
+.
+ Devido a essas evidências, alguns autores propõem que, na realidade, ambos
+ os mecanismos possam ocorrer, sendo portanto, não apenas a estrutura proteica,
+ mas também o processo de enovelamento, determinados pela sequência de aminoácid
+os (Daggett e Fersht, 2003) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "daggett_is_2003"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dentre as evidências que apontam para um mecanismo de enovelamento hierárquico
+ estão estudos de proteínas como a alfa-lactabulmina, a apo-mioglobina,
+ a RNase H, a barnase e o citocromo c, onde análises do processo de enovelamento
+ indicam que ocorre uma rápida formação de estrutura secundária semelhante
+ a observada na proteína nativa (native-like) e que a mesma é estabilizada
+ em estruturas intermediárias (molten globules), ou seja, antes da proteína
+ atingir sua conformação nativa (Baldwin e Rose, 1999a) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "baldwin_is_1999"
+
+\end_inset
+
+.
+ Outras evidências que sugerem a existência de um mecanismo hierárquico
+ são os padrões na sequência de aminoácidos que ocorrem imediatamente após
+ as extremidades N e C terminal de hélices α (Harper e Rose, 1993; Aurora,
+ Srinivasan e Rose, 1994; Aurora et al., 1997; Baldwin e Rose, 1999a) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "harper_helix_1993,aurora_rules_1994,aurora_local_1997,baldwin_is_1999"
+
+\end_inset
+
+ e fitas β (Colloc'h e Cohen, 1991)
+\begin_inset CommandInset citation
+LatexCommand citep
+key "colloch_beta-breakers:_1991"
+
+\end_inset
+
+, os quais acredita-se que atuem como sinais de término ou “parada” desses
+ elementos de estrutura secundária.
+ Outros trabalhos ainda demonstram que há preferência de algumas trincas
+ de aminoácidos por determinadas conformações e estruturas secundárias (Betancou
+rt e Skolnick, 2004; Otaki et al., 2010) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "betancourt_local_2004,otaki_secondary_2010"
+
+\end_inset
+
+, sendo que algumas trincas, interessantemente, não foram observadas uma
+ única vez em alguns tipos de estruturas secundárias das proteínas analisadas
+ (Otaki et al., 2010)
+\begin_inset CommandInset citation
+LatexCommand citep
+key "otaki_secondary_2010"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Alguns trabalhos de simulação computacional (Abagyan e Totrov, 1994; Pedersen
+ e Moult, 1997) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "abagyan_biased_1994,pedersen_protein_1997"
+
+\end_inset
+
+ também identificaram que algumas sequências peptídicas, correspondentes
+ a pequenas regiões de proteínas, apresentam maior propensão a adotar uma
+ estrutura secundária, ou mesmo uma conformação, similar a observada na
+ estrutura nativa da proteína original.
+ Posteriormente, Srinivasan e Rose (1999) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "srinivasan_physical_1999"
+
+\end_inset
+
+ realizaram simulações para demonstrar que essas propensões por estruturas
+ secundárias surgiam de impedimentos estéricos entre os átomos de resíduos
+ consecutivos na sequência e que essas estruturas correspondem a estrutura
+ 8 secundária de estados intermediários da proteína, sendo por vezes conservada
+ na estrutura nativa e em outras, alterada devido a interações não locais.
+\end_layout
+
+\begin_layout Standard
+Esses resultados observados na literatura sugerem ser possível um algoritmo
+ para o reconhecimento de enovelamentos proteicos construído a partir de
+ um método que recapitule a formação de estruturas locais durante o processo
+ de enovelamento das proteínas.
+ A princípio, um método com estas características permitiria não apenas
+ identificar proteínas que tenham uma conformação nativa similar, mas uma
+ identidade sequencial baixa, assim como os métodos atuais de reconhecimento
+ de enovelamentos proteicos, mas possivelmente apresentar sensibilidade
+ suficiente para evitar que proteínas com considerável identidade sequencial
+ e entretanto baixa similaridade estrutural, como as observadas no trabalho
+ de Giri e colaboradores (2012) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "giri_folding_2012"
+
+\end_inset
+
+, sejam incorretamente modeladas por comparação (Helles, 2008) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "helles_comparative_2008"
+
+\end_inset
+
+.
+ Acreditamos que um método com tais características possa ser desenvolvido
+ utilizando autômatos celulares.
+\end_layout
+
 \begin_layout Section
 Proteínas
 \end_layout
