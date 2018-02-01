@@ -2754,10 +2754,6 @@ Posteriormente, decidimos avaliar outras métricas de acurácia para tentar
  Essas outras métricas testadas foram o CBA, MCC e o CE.
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Subsubsection
 Atualização das probabilidades do EDA no mestre
 \end_layout
@@ -2928,10 +2924,6 @@ Resultados
 Seleção do modelo de autômato celular
 \end_layout
 
-\begin_layout Subsection
-Análise da predição de estruturas secundárias
-\end_layout
-
 \begin_layout Standard
 \begin_inset Note Note
 status open
@@ -2943,6 +2935,57 @@ Analise dos modelos de AC (selecao do modelo estendido)
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+A capacidade dos quatro modelos de autômatos celulares foram testadas num
+ conjunto reduzido de proteínas.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/chamel_errors_ca.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Análise da predição de estruturas secundárias
+\end_layout
+
+\begin_layout Standard
+O modelo quatro de autômato celular foi aplicado ao 
 \end_layout
 
 \begin_layout Standard
@@ -2966,7 +3009,8 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename figures/ca_q3_func_fit.pdf
+	filename figures/zeca-q3.pdf
+	width 100line%
 
 \end_inset
 
@@ -3002,7 +3046,82 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename figures/ca_qh_qe_qc_func_fit.pdf
+	filename figures/zeca-qh.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/zeca-qe.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/zeca-qc.pdf
+	width 100line%
 
 \end_inset
 

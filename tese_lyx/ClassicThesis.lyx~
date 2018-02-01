@@ -49,7 +49,7 @@
 \use_package undertilde 1
 \cite_engine basic
 \cite_engine_type default
-\biblio_style plainnat
+\biblio_style unsrt
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -111,30 +111,6 @@ pagestyle{plain}
 
 \begin_layout Plain Layout
 
-
-\backslash
-newcommand*{
-\backslash
-mystrut}{
-\backslash
-rule[-0.1
-\backslash
-baselineskip]{0pt}{0.8
-\backslash
-baselineskip}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-newcommand*{
-\backslash
-mybox}[1]{
-\backslash
-framebox{
-\backslash
-strut #1}}
 \end_layout
 
 \end_inset
@@ -456,6 +432,10 @@ filename "redes_residuais.lyx"
 \end_layout
 
 \begin_layout Part Introduction (ClassicThesis)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Lorem ipsum at nusquam appellantur his, ut eos erant homero concludaturque.
  Albucius appellantur deterruisset id eam, vivendum partiendo dissentiet
  ei ius.
@@ -473,6 +453,11 @@ Errem omnium ea per, pro congue populo ornatus cu, ex qui dicant nemore
  Mea menandri mediocrem dissentiet cu, ex nominati imperdiet nec, sea odio
  duis vocent ei.
  Tempor everti appareat cu ius, ridens audiam an qui.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Part

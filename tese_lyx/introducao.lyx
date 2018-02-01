@@ -43,7 +43,7 @@
 \use_package undertilde 1
 \cite_engine natbib
 \cite_engine_type numerical
-\biblio_style plainnat
+\biblio_style unsrtnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait

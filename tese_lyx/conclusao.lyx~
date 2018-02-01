@@ -72,102 +72,11 @@
 \begin_body
 
 \begin_layout Chapter
-Introdução
+Conclusão
 \end_layout
 
 \begin_layout Standard
-O problema do enovelamento de proteínas é a questão de como são formadas
- ou organizadas suas estruturas atômicas tridimensionais.
- Essa questão surgiu no final da década de 50, logo após a resolução atômica
- da primeira estrutura proteica por Kendrew e colaboradores [1], trabalho
- no qual se observou experimentalmente, segundo o próprio autor, uma complexidad
-e maior que as antecipadas pelas teorias da época sobre estruturas proteicas.
-\end_layout
 
-\begin_layout Standard
-Posteriormente, Anfinsen [2] realizou experimentos que demonstraram que
- a ribonuclease poderia ser reversamente desnaturada/renaturada in vitro,
- e que em condições desnaturantes, tanto a estrutura quanto a função eram
- perdidas.
- No entanto, ambas eram recuperadas ao retornarem a condições fisiológicas.
- 
-\end_layout
-
-\begin_layout Standard
-A conclusão foi que, apesar da grande complexidade observada, as proteínas
- se auto-organizavam estruturalmente.
- Assim, apenas a informação contida em sua sequência de aminoácidos seria
- suficiente para definir sua estrutura e que esta determinaria a sua função.
- A explicação de Anfinsen para esta auto-organização estrutural foi dada
- através da hipótese termodinâmica, a qual postula que em condições fisiológicas
- a população proteica atinge um mínimo de energia livre de Gibbs no seu
- estado nativo [3].
-\end_layout
-
-\begin_layout Standard
-Devido ao princípio da relação estrutura ↔ função e aos resultados experimentais
- que demonstraram que a estrutura é determinada pela sequência de aminoácidos,
- diversos trabalhos buscaram prever a estrutura de uma proteína a partir
- da sua sequência de resíduos.
- Alguns dos primeiros trabalhos a discutir uma forma de predição foram publicado
-s por Levinthal [4, 5].
- Nestes trabalhos o autor afirma que o número de configurações estruturais
- possíveis para uma cadeia polipeptídica é imenso e que impossível explorar
- todas as conformações para encontrar sua estrutura nativa.
- Entretanto, as proteínas são capazes de se enovelarem espontaneamente e
- adotar a conformação nativa numa escala de segundos ou menos.
- Esta observação ficou popularmente conhecida como Paradoxo de Levinthal.
-\end_layout
-
-\begin_layout Standard
-Levinthal não considerou isso como um resultado absurdo, mas baseou-se nessa
- análise para concluir que um mecanismo aleatório para o enovelamento não
- seria válido [6].
- Segundo Levinthal [4], uma possível explicação para a eficiência observada
- no processo seria a formação rápida de interações locais que acelerariam
- e guiariam o enovelamento:
-\end_layout
-
-\begin_layout Quotation
-We feel that protein folding is speeded and guided by the rapid formation
- of local interactions, which then determine the further folding of the
- peptide.
-\end_layout
-
-\begin_layout Standard
-Apesar da sugestão de Levinthal para explicar um possível mecanismo de enovelame
-nto ter sido publicado há 45 anos, o desafio de se prever as estruturas
- tridimensionais das proteínas a partir de suas sequências de aminoácidos,
- mesmo obtendo grande progresso no últimos anos, ainda permanece sem uma
- solução definitiva [7].
- Assim, métodos experimentais, mais especificamente, os métodos de cristalografi
-a de proteínas por difração de raios-X e o de ressonância magnética nuclear,
- são as principais forma de se obter um modelo estrutural com resolução
- atômica.
-\end_layout
-
-\begin_layout Standard
-No entanto, métodos experimentais de resolução da estrutura proteica apresentam
- diversas dificuldades técnicas.
- Por exemplo, na cristalografia por difração de raios-X é necessária a obtenção
- de proteína em alto grau de pureza e a formação de monocristais, que muitas
- vezes são fatores limitantes do processo.
- Por outro lado, a ressonância magnética nuclear exige altas concentrações
- de proteína purificada em meios com diferentes isótopos, além de possuir
- uma limitação quanto ao tamanho da proteína analisada.
- Essas limitações experimentais são evidenciadas pela disparidade entre
- o número de estruturas resolvidas experimentalmente (≈ 115 mil depositadas
- no PDB) e o número de proteínas com sequência de aminoácido conhecidas
- (≈ 67 milhões depositadas no UniProtKB/TrEMBL – dados de 09/2016).
-\end_layout
-
-\begin_layout Standard
-Consequentemente, a busca por métodos computacionais capazes de prever estrutura
-s proteicas continua uma área de grande interesse científico, tanto como
- uma forma de se conhecer melhor o mecanismo de enovelamento como também
- na utilização da informação estrutural para responder diversas questões
- biológicas com diversas aplicações práticas como o desenvolvimento de novos
- medicamentos e a engenharia de proteínas [8].
 \end_layout
 
 \end_body

@@ -1623,6 +1623,21 @@ TOP8000-best-hom50
 \end_inset
 
 .
+ Nos capítulos seguintes, nos são desenvolvidos métodos de predição utilizando
+ redes neurais artificiais e autômatos celulares, esse conjunto foi divido
+ em três subconjuntos:
+\end_layout
+
+\begin_layout Itemize
+Subconjunto de treinamento: 5000 proteínas
+\end_layout
+
+\begin_layout Itemize
+Subconjunto de validação: 500 proteínas
+\end_layout
+
+\begin_layout Itemize
+Subconjunto de teste: 1249 proteínas
 \end_layout
 
 \begin_layout Standard
@@ -1861,6 +1876,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+c
 \begin_inset Graphics
 	filename figures/atribuicao_n_ss.pdf
 	width 100line%
