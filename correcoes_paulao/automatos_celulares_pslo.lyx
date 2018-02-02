@@ -62,11 +62,12 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author -1589230395 "Paulo S. L. de Oliveira"
 \end_header
 
 \begin_body
@@ -142,16 +143,64 @@ Os autômatos celulares (AC) foram inventados na década de 40 por John von
  Neumann baseando-se em sugestões de seu colega, o matemático Stanislaw
  Ulam [39].
  Autômatos celulares são modelos matemáticos para representar sistemas complexos
- e consistem num conjunto de células discretas espacialmente.
- Cada uma dessas células estão em um estado dentre um conjunto finito de
- estados possíveis.
+ 
+\change_inserted -1589230395 1517513978
+que
+\change_deleted -1589230395 1517513976
+e
+\change_unchanged
+ consistem num conjunto de células 
+\change_inserted -1589230395 1517513923
+espacialmente 
+\change_unchanged
+discretas 
+\change_deleted -1589230395 1517513919
+espacialmente
+\change_inserted -1589230395 1517514088
+,
+\change_deleted -1589230395 1517514149
+.
+\change_inserted -1589230395 1517514171
+sendo que 
+\change_deleted -1589230395 1517514173
+ C
+\change_inserted -1589230395 1517514175
+c
+\change_unchanged
+ada uma dessas células 
+\change_deleted -1589230395 1517514202
+estão em um 
+\change_inserted -1589230395 1517514209
+representam um 
+\change_unchanged
+estado 
+\change_inserted -1589230395 1517514217
+possível 
+\change_deleted -1589230395 1517514222
+dentre
+\change_inserted -1589230395 1517514240
+de um sistema, dentro de
+\change_unchanged
+ um conjunto finito de estados possíveis.
  Os autômatos celulares evoluem paralelamente, ou seja, o estado de cada
- célula evolui de maneira síncrona em passos discretos de tempo.
- Essa evolução ocorre de acordo com regras simples e determinísticas.
+ célula evolui de maneira síncrona em passos discretos de tempo
+\change_deleted -1589230395 1517578682
+.
+ Essa evolução ocorre 
+\change_unchanged
+de acordo com regras simples
+\change_inserted -1589230395 1517578750
+, locais
+\change_unchanged
+ e determinísticas.
  A evolução dos AC produz complexidade a partir do efeito cooperativo de
  elementos simples - as regras e as células - tratando-se portanto de uma
- complexidade emergente, que surge globalmente no sistema a partir de regras
- simples, locais e determinísticas [40].
+ complexidade emergente
+\change_deleted -1589230395 1517578770
+, que surge globalmente no sistema a partir de regras simples, locais e
+ determinísticas 
+\change_unchanged
+[40].
  
 \end_layout
 
@@ -2260,6 +2309,24 @@ Negativos (-)
 \end_inset
 
 
+\change_inserted -1589230395 1517579916
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517579927
+Zé não esqueça da legenda
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -2363,7 +2430,31 @@ cell{#}
 
 ).
  Nesses elementos a probabilidade da célula continuar no mesmo estado no
- tempo T+1 é igual a 100%.
+ tempo
+\change_deleted -1589230395 1517580082
+ T
+\change_inserted -1589230395 1517580084
+t
+\change_unchanged
++1
+\change_inserted -1589230395 1517580089
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517580097
+Por consistência
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ é igual a 100%.
  Consequentemente, todo elemento da regra que tiver o estado 
 \begin_inset ERT
 status open
@@ -2492,6 +2583,24 @@ status open
 
 \end_inset
 
+
+\change_inserted -1589230395 1517580111
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517580114
+Legenda
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -2637,6 +2746,24 @@ status open
 \end_inset
 
 
+\change_inserted -1589230395 1517580224
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517580236
+Legenda
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -2736,22 +2863,28 @@ do conjunto de regras.
  Há, então, um torneio entre os dois conjuntos de regras e o vencedor é
  enviado para o mestre.
  
-\end_layout
+\change_inserted -1589230395 1517580304
 
-\begin_layout Standard
-Inicialmente utilizamos como medida da acurácia o próprio Q
-\begin_inset script subscript
+\begin_inset Note Note
+status open
 
 \begin_layout Plain Layout
-3
+
+\change_inserted -1589230395 1517580323
+Vc usa o Q3 como mediada de acuraçia aqui?
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
-.
- Para o cálculo, o estado de estrutura secundária mais frequente para cada
- resíduo foi considerado como o resultado da predição para o resíduo.
- 
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+Inicialmente utilizamos uma medida da acurácia como:
 \end_layout
 
 \begin_layout Standard
@@ -2763,119 +2896,7 @@ Essa medida inicial foi utilizada para avaliar o desempenho dos quatro modelos
 \begin_layout Standard
 Posteriormente, decidimos avaliar outras métricas de acurácia para tentar
  melhorar a capacidade preditiva do modelo vencedor.
- Essas outras métricas testadas foram o CBA (
-\emph on
-Class Balance Accuracy
-\emph default
-) , MCC (
-\emph on
-Matthews correlation coefficient
-\emph default
-) e a CE (
-\emph on
-Cross Entropy
-\emph default
-).
-\end_layout
-
-\begin_layout Standard
-CBA é definido como:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-CBA=\frac{\sum_{i}^{k}\frac{c_{ii}}{\max(c_{i.},c_{.i})}}{k}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Onde 
-\begin_inset Formula $C^{k}$
-\end_inset
-
- é uma matriz de confusão.
-\end_layout
-
-\begin_layout Standard
-MCC é definido como:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-MCC=\frac{TP\times TN-FP\times FN}{\sqrt{(TP+FP)(TP+FN)(TN+FP)(TN+FN)}}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-para aplicá-lo a um problema com múltiplas classes, nós utilizamos: 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-TP & = & TP_{H}+TP_{E}+TP_{C}\\
-TN & = & TN_{H}+TN_{E}+TN_{C}\\
-TP & = & FP_{H}+FP_{E}+FP_{C}\\
-FN & = & FN_{H}+FN_{E}+FN_{C}
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-E a entropia cruzada por resíduo é (
-\begin_inset Formula $CE_{r}$
-\end_inset
-
-):
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-CE_{r}=-\sum_{i}p(\hat{y})\ln(y)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-onde 
-\begin_inset Formula $\hat{y}$
-\end_inset
-
- é probabilidade observada experimentalmente para estrutura secundária de
- um resíduo da proteína.
- Ou seja, ela será 1 para o elemento de estrutura secundária atribuído.
- 
-\begin_inset Formula $y$
-\end_inset
-
- será a frequência dos estados de estrutura secundária durante a evolução
- do AC.
- A 
-\begin_inset Formula $CE$
-\end_inset
-
- final é a média das 
-\begin_inset Formula $CE_{r}$
-\end_inset
-
- calculadas para cada resíduo que apresentou consenso da estrutura secundária.
+ Essas outras métricas testadas foram o CBA, MCC e o CE.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3004,8 +3025,13 @@ Programa de Equipamento Multiusuário da FAPESP-2009
  do Hospital A.
  C.
  Camargo em São Paulo).
- A execução utilizando 320 cores de processamento demora aproximadamente
- 10 dias.
+ A execução utilizando 320 
+\change_deleted -1589230395 1517580363
+cores
+\change_inserted -1589230395 1517580367
+núcleos
+\change_unchanged
+ de processamento demora aproximadamente 10 dias.
 \end_layout
 
 \begin_layout Standard
@@ -3109,113 +3135,37 @@ Análise da predição de estruturas secundárias
 \end_layout
 
 \begin_layout Standard
-As análises da capacidade de predição de estruturas secundárias foram realizadas
- para o modelo quatro dos autômatos celulares testados, o qual utiliza os
- contextos polar, apolar, glicina, prolina, positivo e negativo.
-\end_layout
+O modelo quatro de autômato celular foi aplicado ao 
+\change_inserted -1589230395 1517580663
 
-\begin_layout Standard
-Na otimização das regras do AC utilizando o subconjunto de treinamento nós
- utilizamos como funções de 
-\emph on
-fitness 
-\emph default
-as métricas CBA, MCC e CE.
- Essas métricas foram utilizadas pois notamos que o uso direto do Q
-\begin_inset script subscript
-
-\begin_layout Plain Layout
-3
-\end_layout
-
-\end_inset
-
- não era eficaz no treinamento com classes desbalanceadas.
-\end_layout
-
-\begin_layout Standard
-Durante o treinamento por 1000 gerações do EDA não foi observada convergência
- da população.
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-discutir melhor
-\end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figures/zeca-treinamento.pdf
-	width 100line%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-O AC treinado utilizando como função de 
-\emph on
-fitness 
-\emph default
-o CBA foi o que apresentou a melhor acurácia, tanto para o subconjunto de
- treinamento quanto para o de teste.
- Entretanto, a acurácia média do modelo foi de apenas 62,6% (Q
-\begin_inset script subscript
-
-\begin_layout Plain Layout
-3
-\end_layout
-
-\end_inset
-
-) para o conjunto de teste.
- A entropia cruzada (CE) e o MCC obtiveram menor acurácia, 53,4% e 51,1%,
- respectivamente.
-\end_layout
-
-\begin_layout Standard
+\change_inserted -1589230395 1517580827
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-62,2 51,1 53,4
+
+\change_inserted -1589230395 1517580848
+Qdo terminar me avise
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -3258,39 +3208,39 @@ status open
 \end_inset
 
 
-\end_layout
+\change_inserted -1589230395 1517580836
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-A acurácia na predição de hélices (Q
-\begin_inset script subscript
-
-\begin_layout Plain Layout
-H
-\end_layout
-
-\end_inset
-
-) foi maior no modelo treinado utilizando a entropia cruzada, com valor
- próximo a 73,6%.
- O treinamento com CBA apresentou acurácia de 66,7% e o com MCC, acurácia
- de 60,5%.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-66,7 60,5 73,6
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -3336,34 +3286,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-A acurácia para hélices (Q
-\begin_inset script subscript
-
-\begin_layout Plain Layout
-E
-\end_layout
-
-\end_inset
-
-) foi de 52,2% para o modelo treinado com CBA, 37,8% para o treinado com
- MCC e 21% para o treinado com CE.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-52,2 37,8 21,0
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -3391,31 +3313,8 @@ status open
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-A acurácia na predição de coil (Q
-\begin_inset script subscript
-
 \begin_layout Plain Layout
-C
-\end_layout
 
-\end_inset
-
-) foi de 69,0% no modelo treinado utilizando CBA, 67,6% no que utilizou
- CE e 53,1% utilizando MCC.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-69,0 53,1 67,6
 \end_layout
 
 \end_inset
@@ -3451,42 +3350,13 @@ status open
 
 \end_layout
 
-\end_inset
-
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
-Além da baixa acurácia, as estruturas secundárias preditas pelos autômatos
- celulares apresentaram comprimentos inferiores aos observados em estruturas
- secundárias de proteínas com estrutura resolvida.
- A mediana de hélices foi de apenas 4 resíduos enquanto que a mediana esperada
- seria entre 8 e 12 resíduos (Figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Distribuição-do-comprimento-helices"
-
 \end_inset
 
-).
- Fitas e coils apresentam, respectivamente, medianas de 3 e 4 resíduos para
- o AC treinado com CBA.
- O esperado nestes casos seriam 5 resíduos para fitas e 4 resíduos para
- coils (Figuras 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Distribuição-do-comprimento_fitas"
 
-\end_inset
-
- e
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Distribuição-do-comprimento_coil"
-
-\end_inset
-
-).
 \end_layout
 
 \begin_layout Standard
@@ -3540,54 +3410,11 @@ status open
 \end_layout
 
 \begin_layout Standard
-Através da observação da evolução do autômato celular treinado com CBA notamos
- que há uma rápida convergência ou estabilidade dos estados.
- Ao proporNós esperavamos 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 analise de um caso de sucesso
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figures/ca-good-pred-2ccqA.pdf
-	width 100line%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -3608,49 +3435,18 @@ analise de um fracasso
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figures/ca-bad-pred-2rldD.pdf
-	width 100line%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Conclusão
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:template"
 
+\end_inset
+
+Ibis redibis numquam peribis in bello.
 \end_layout
 
 \end_body

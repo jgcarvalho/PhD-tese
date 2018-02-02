@@ -83,8 +83,9 @@ Introdução
 Os métodos computacionais de atribuição de estruturas secundárias surgiram
  com o objetivo de automatizar e reduzir a subjetividade da atribuição manual
  feita durante o processo de resolução experimental de estruturas.
- Em geral, tais métodos buscam por um conjunto de padrões estruturais capazes
- de representar a estrutura secundária atribuída por especialistas.
+ Em geral, tais métodos buscam por um conjunto de padrões estruturais, como
+ distâncias e ângulos entre átomos, capazes de representar a estrutura secundári
+a atribuída por especialistas.
 \begin_inset Note Note
 status open
 
@@ -99,9 +100,9 @@ Clarifificar esta frase
 
 \begin_layout Standard
 Entretanto, como a atribuição feita por diferentes especialistas pode diferir
- devido ao uso de padrões subjetivos e, sobretudo, pela dificuldade de seleciona
-r parâmetros objetivos que reproduzam a atribuição feita por especialistas,
- os métodos computacionais apresentam variações entre si.
+ devido ao uso de padrões subjetivos e, sobretudo, pela dificuldade ao se
+ selecionar parâmetros objetivos que reproduzam a atribuição feita por especiali
+stas, os métodos computacionais apresentam variações entre si.
 \end_layout
 
 \begin_layout Standard
@@ -271,9 +272,12 @@ reference "eq:dssp_energy"
 \begin_inset Formula $r(AB)$
 \end_inset
 
- é a distância interatômica entre A e B em ångström e o fator dimensional
- 
-\begin_inset Formula $f=332$
+ é a distância interatômica entre A e B em ångström e 
+\begin_inset Formula $f$
+\end_inset
+
+ é o fator dimensional 
+\begin_inset Formula $f=332\text{Å}kcal/(e^{2}mol)$
 \end_inset
 
 .
@@ -565,7 +569,7 @@ Onde
 \end_inset
 
  e 
-\begin_inset Formula $r_{m}=3,0\,\text{Å.}$
+\begin_inset Formula $r_{m}=3,0\text{Å}.$
 \end_inset
 
 
@@ -1023,7 +1027,8 @@ Todas as distâncias entre
 \begin_inset Formula $SD_{\alpha}$
 \end_inset
 
- são respectivamente a média e o desvio padrão observado em hélices 
+ são, respectivamente, a distância média e o desvio padrão observado em
+ hélices 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -1103,7 +1108,8 @@ Todos as distâncias entre
 \begin_inset Formula $SD_{\beta}$
 \end_inset
 
- são respectivamente a média e o desvio padrão observado em folhas 
+ são, respectivamente, a distância média e o desvio padrão observado em
+ folhas 
 \begin_inset Formula $\beta$
 \end_inset
 
@@ -1168,38 +1174,6 @@ Os vários parâmetros necessários ao método foram ajustados empiricamente
  inferior à 40%, resolvidos por cristalografia e com resolução superior
  a 2.25Å.
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-% Distance criterion for β-sheets (C3).
- All the Cα distances in % two sliding windows of length w3 (here w3 = 3)
- must be in % the interval [Mβ - εb × SDβ; Mβ + εb × SDβ].
- Mβ and SDβ represent the mean and standard deviation of Cα distance % distribut
-ions in β-sheets.
-\end_layout
-
-\begin_layout Plain Layout
-% Angle criterion for β-sheets (C4).
- For each (Φ/Ψ) angle % pair falling in the populated zone of the Ramachandran
- % map (density > 0), we increment a counter score(sheet) by % 1.
- If a (Φ/Ψ) angle pair of the central residue of a sliding % window verifies
- -120° < Ψ < 50°, then score(sheet) is reset % to zero.
- The final score(sheet) must be greater or equal to σ
-\end_layout
-
-\begin_layout Plain Layout
-% Contiguous segments correction, criterion (C5).
- If a helix % and a strand are adjacent, a coil is introduced in between,
- % shortening the helix by one residue.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -1514,7 +1488,14 @@ Materiais e Métodos
 \end_layout
 
 \begin_layout Subsection
-Conjunto de dados
+Conjunto de dados 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Conjunto-de-dados"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1613,6 +1594,67 @@ A estrutura secundária dessas proteínas foram atribuídas pelos métodos DSSP,
 \end_layout
 
 \begin_layout Standard
+O DSSP e o STRIDE classificam os resíduos em oito categorias.
+ Nós realizamos o agrupamento dessas categorias em três: hélice (H), fita
+ (E) e coil (C).
+ O modo de agrupamento foi o seguinte:
+\end_layout
+
+\begin_layout Itemize
+Hélices: H (hélice 
+\begin_inset Formula $\alpha$
+\end_inset
+
+), G (hélice 
+\begin_inset Formula $3_{10}$
+\end_inset
+
+) e I (hélice 
+\begin_inset Formula $\pi$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+Fitas: E (fita)
+\end_layout
+
+\begin_layout Itemize
+Coil: S (curva), B (ponte 
+\begin_inset Formula $\beta$
+\end_inset
+
+), T (volta) e C (coil) 
+\end_layout
+
+\begin_layout Standard
+O PROSS classifica os resíduos em 5 categorias.
+ Elas foram agrupadas como:
+\end_layout
+
+\begin_layout Itemize
+Hélices: H (hélices)
+\end_layout
+
+\begin_layout Itemize
+Fitas: E (Fitas)
+\end_layout
+
+\begin_layout Itemize
+Coil: T (volta), P (
+\begin_inset Formula $P_{II}$
+\end_inset
+
+) e C (coil)
+\end_layout
+
+\begin_layout Standard
+O KAKSI classifica os resíduos apenas nas três categorias (hélice, fita
+ e coil) e, por isso, não foi necessário um reagrupamento.
+\end_layout
+
+\begin_layout Standard
 O conjunto de dados final é composto por 6749 cadeias polipeptídicas das
  7233 presentes no banco de dados 
 \begin_inset Quotes sld
@@ -1623,11 +1665,30 @@ TOP8000-best-hom50
 \end_inset
 
 .
+ 
+\end_layout
+
+\begin_layout Standard
+Nos capítulos seguintes, descrevemos o desenvolvido de métodos de predição
+ utilizando redes neurais artificiais e autômatos celulares.
+ Para o desenvolvimento o conjunto foi divido em três subconjuntos:
+\end_layout
+
+\begin_layout Itemize
+Subconjunto de treinamento: 5000 proteínas
+\end_layout
+
+\begin_layout Itemize
+Subconjunto de validação: 500 proteínas
+\end_layout
+
+\begin_layout Itemize
+Subconjunto de teste: 1249 proteínas
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Diferentemente de vários métodos publicados de predição de estrutura secundária
@@ -1736,7 +1797,8 @@ Estrutura secundária atribuída aos resíduos das proteínas do conjunto de
  29,5% foram classificados como hélices (H); 14,5% como fitas (E); 26,5%
  como coils (C).
  24,2% não apresentam consenso entre os quatro métodos de atribuição (Dissenso);
- 5,2% são resíduos não visualizados na estrutura atômica resolvida e 0,04%
+ 5,2% são resíduos não visualizados na estrutura atômica resolvida, mas
+ presentes na sequência da proteína analisada experimentalmente e 0,04%
  dos resíduos não tiveram a estrutura secundária atribuída por todos os
  quatro métodos (Erro*).
 \begin_inset CommandInset label
@@ -1769,9 +1831,9 @@ reference "fig:Similaridade-atribuiçao"
 \end_inset
 
 ).
- Considerando a comparação conjunta dos quatro métodos que demonstra consenso
- em 74,4% dos resíduos podemos inferir que as posições de dissenso variam
- entre os métodos.
+ Considerando a comparação conjunta dos quatro métodos, a qual apresenta
+ consenso para 74,4% dos resíduos, podemos inferir que as posições de dissenso
+ variam entre os métodos.
 \end_layout
 
 \begin_layout Standard

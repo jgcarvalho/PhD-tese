@@ -42,8 +42,8 @@
 \use_package stmaryrd 1
 \use_package undertilde 1
 \cite_engine natbib
-\cite_engine_type numerical
-\biblio_style unsrtnat
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -62,11 +62,13 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author -1589230395 "Paulo S. L. de Oliveira"
+\author -1478677931 "Jose Geraldo de Carvalho Pereira"
 \end_header
 
 \begin_body
@@ -93,13 +95,17 @@ Introdução
 Neste capítulo analisamos o resultado de dois métodos que utilizam redes
  neurais para a predição da estrutura secundária.
  A diferença entre os métodos está sobretudo nos dados de entrada.
- Enquanto em um deles a predição é realizada a partir da sequência de aminoácido
-s das proteínas, no outro é realizada a partir de uma matriz de substituição
- específica por posição (PSSM - 
-\emph on
-Position Specific Scoring Matrix
-\emph default
-) produzida pelo PSI-BLAST 
+ Enquanto um deles 
+\change_deleted -1589230395 1516293792
+realizada
+\change_unchanged
+ a predição 
+\change_inserted -1589230395 1516293833
+é realizada 
+\change_unchanged
+a partir da sequência de aminoácidos das proteínas, o outro utiliza uma
+ matriz de substituição específica por posição (PSSM) produzida pelo PSI-BLAST
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "altschul_gapped_1997"
@@ -113,13 +119,12 @@ key "altschul_gapped_1997"
 \end_layout
 
 \begin_layout Standard
-O método que utiliza apenas a sequência de aminoácidos como entrada foi
- proposto em 1989, época em que havia em torno de apenas 350 estruturas
- disponíveis.
- Assim, um dos objetivos desse capítulo foi avaliar qual acurácia poderia
- ser atingida por um método similar utilizando um conjunto de dados maior.
- Isso nos fornece uma medida de acurácia mais justa para ser usada na comparação
- com os métodos propostos neste trabalho.
+Como o método que utiliza apenas a sequência de aminoácidos como entrada
+ foi proposto em 1989, o objetivo desse capítulo foi avaliar qual a acurácia
+ que poderia ser atingida por um método similar utilizando um conjunto de
+ dados maior.
+ Isso nos fornece um acurácia de referência para ser comparada aos métodos
+ propostos neste trabalho.
 \end_layout
 
 \begin_layout Standard
@@ -142,8 +147,8 @@ key "qian_predicting_1988"
 
  foram possivelmente os primeiros a publicarem um trabalho utilizando redes
  neurais artificiais para a predição da estrutura secundária de proteínas.
- Segundo os autores, a inspiração surgiu de um trabalho que aplicava redes
- neurais artificiais na conversão de texto em fonemas (
+ Segundo os autores, a inspiração surgiu de um trabalho que utilizava redes
+ neurais artificiais para converter texto em fonemas (
 \shape italic
 text-to-speech
 \shape default
@@ -162,7 +167,11 @@ A melhor arquitetura testada por eles consistia de duas redes neurais em
  sequência.
  A primeira recebia como entrada 13 resíduos da sequência polipeptídica
  e como saída emitia 3 valores no intervalo entre 0 e 1 correspondentes
- aos elementos de estrutura secundária, coil, hélice e fita.
+ aos elementos de estrutura secundária
+\change_deleted -1589230395 1516293969
+,
+\change_unchanged
+ coil, hélice e fita.
  Cada resíduo foi codificado em um vetor binário com 21 elementos representando
  os 20 aminoácidos e um elemento indicando a ausência de aminoácidos.
 \end_layout
@@ -176,7 +185,7 @@ A segunda rede neural recebia como entrada os valores de saída da rede anterior
 \end_layout
 
 \begin_layout Standard
-Os autores exploraram ainda a utilização de uma camada oculta de neurônios,
+Os autores exploraram também a utilização de uma camada oculta de neurônios,
  mas esta, apesar de diminuir o erro de classificação durante o treinamento,
  foi incapaz de reduzir o erro no conjunto de teste.
 \end_layout
@@ -189,7 +198,7 @@ l, apesar de superior aos métodos anteriores, foi decepcionante.
  de entrada, precisaria ser considerada na predição.
  Caso isso fosse confirmado, eles acreditavam que seriam necessários novos
  métodos para considerar esses efeitos.
- Eles concluíram o trabalho com a hipótese de que um banco de dados maior
+ Eles concluem o trabalho com a hipótese de que um banco de dados maior
  de proteínas homólogas poderia possibilitar que uma rede neural artificial
  aprendesse a equivalência dos aminoácidos em diferentes contextos na proteína.
 \end_layout
@@ -264,13 +273,13 @@ key "chandonia_importance_1996"
 
 .
  A rede neural utiliza como entrada uma janela de 17 aminoácidos da proteína,
- cada um codificado em um vetor binário de tamanho 21 (20 aa + 1 posição
- que indica ausência de aminoácidos).
+ cada um codificado em um vetor de tamanho 21 (20 aa + 1 posição que indica
+ ausência de aminoácidos).
  Na camada oculta foram testadas várias configurações, diferindo entre si
  pelo número de neurônios.
- A camada de saída possuía 2 neurônios, uma representando a saída para hélice
- e outro para fita.
- Todos os neurônios possuíam funções de ativação sigmoide.
+ A camada de saída possuía 2 neurônios, um representando a saída para hélice
+ e outro para fitas.
+ Todos os neurônios possuiam funções de ativação sigmóide.
  Os rótulos de treinamento foram 
 \begin_inset Formula $(1,0)\rightarrow hélice,\,(0,1)\rightarrow fita,\,(0,0)\rightarrow coil$
 \end_inset
@@ -344,7 +353,7 @@ key "qian_predicting_1988"
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Nesse capítulo, analisamos o desempenho de uma rede neural artificial similar
@@ -365,14 +374,27 @@ Redes neurais para a predição a partir da matriz de substituição específica
 \end_layout
 
 \begin_layout Standard
-Em 1999, Jones 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "jones_protein_1999"
+Em 1999, Jones
+\change_deleted -1589230395 1516294449
+ [?] 
+\change_inserted -1589230395 1516294449
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516294449
+ [?] 
+\change_unchanged
+
+\end_layout
 
 \end_inset
 
- publicou o método de predição PSIPRED.
+
+\change_unchanged
+publicou o método de predição PSIPRED.
  O principal diferencial desse método em relação ao método de Holley e Karplus
  
 \begin_inset CommandInset citation
@@ -381,14 +403,34 @@ key "holley_protein_1989"
 
 \end_inset
 
- foi a utilização de matrizes de substituição específica por posição (
-\emph on
-Position Specific Scoring Matrix
-\emph default
- - PSSM) ou 
+ foi a utilização de matrizes de substituição específica por posição (PSSM)
+\change_inserted -1589230395 1516294561
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516294639
+Zé cite o nome estendido em inglês e depois a tradução na primeira vez
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ ou 
+\change_deleted -1589230395 1516294708
+
 \emph on
 profile
+\change_inserted -1589230395 1516294711
+
 \emph default
+perfil
+\change_unchanged
 .
 \end_layout
 
@@ -416,12 +458,25 @@ key "altschul_gapped_1997"
  No PSI-Blast, o primeiro alinhamento entre a sequência da proteína alvo
  e as proteínas de um banco de dados é feito utilizando uma matriz de substituiç
 ão de aminoácidos como por exemplo a BLOSUM62 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "henikoff_amino_1992"
+\change_deleted -1589230395 1516294442
+[?]
+\change_inserted -1589230395 1516294442
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516294442
+[?]
+\change_unchanged
+
+\end_layout
 
 \end_inset
 
+
+\change_unchanged
 .
  Na etapa seguinte, as proteínas com maior similaridade nesse primeiro alinhamen
 to são utilizadas para a construção de uma nova matriz de substituição.
@@ -432,22 +487,19 @@ to são utilizadas para a construção de uma nova matriz de substituição.
  utilizados para atualizar as probabilidades da PSSM.
  Esse processo é iterativo e ocorre por um número definido de passos ou
  até os resultados convergirem, isto é, quando não forem encontradas novas
- proteínas nos resultados do alinhamento com o banco de dados 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "altschul_gapped_1997"
-
-\end_inset
-
-.
+ proteínas nos resultados do alinhamento com o banco de dados.
 \end_layout
 
 \begin_layout Standard
-A PSSM construída no alinhamento representa um perfil (
+A PSSM construída no alinhamento representa um perfil 
+\change_deleted -1589230395 1516294722
+(
 \emph on
 profile
 \emph default
-) dos resíduos para uma família de proteínas homólogas.
+)
+\change_unchanged
+ dos resíduos para uma família de proteínas homólogas.
  Esse perfil contém informações sobre regiões mais conservadas e regiões
  que apresentam maior variabilidade dos resíduos, assim como locais onde
  ocorreram inserções e deleções.
@@ -456,20 +508,15 @@ profile
 \begin_layout Standard
 Como a conservação de resíduos na proteína tem relação com a estrutura,
  por exemplo, resíduos expostos ao solvente sofrem menor pressão evolutiva
- que resíduos não expostos.
- Assim, por conter indiretamente a informação do ambiente de cada resíduo,
- a PSSM contém mais informação que a simples sequência de resíduos.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-melhorar essa frase
-\end_layout
-
-\end_inset
-
-
+ que resíduos não expostos
+\change_deleted -1589230395 1516294792
+ ao solvente [?]
+\change_unchanged
+, a PSSM contém mais informação que a simples sequência de resíduos
+\change_inserted -1589230395 1516294824
+, pois leva em conta essas diferenças de ambiente
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Standard
@@ -478,15 +525,39 @@ O PSIPRED é composto de duas redes neurais artificias.
  PSSM.
  Essa rede neural possui 75 neurônios na camada oculta e 3 neurônios de
  saída.
- Cada neurônio de saída representa um tipo de estrutura secundária, coil,
- hélice ou fita, e emitem valores entre 0 e 1.
+ Cada neurônio de saída representa um tipo de estrutura secundária
+\change_inserted -1589230395 1516294866
+ entre 
+\change_deleted -1589230395 1516294864
+,
+\change_unchanged
+ coil, hélice ou fita, e emitem valores entre 0 e 1.
+
+\change_inserted -1589230395 1516294931
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516294956
+Zé esses valores são probabilidades? São complementares?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 A segunda rede neural também utiliza uma janela referente a 15 resíduos
  com 3 valores para cada resíduo.
- Estes valores correspondem aos emitidos pela primeira rede neural.
- Esta segunda rede neural possui 60 neurônios na camada oculta e 3 neurônios
+ Estes valores correspodem aos emitidos pela primeira rede neural.
+ A segunda rede neural possui 60 neurônios na camada oculta e 3 neurônios
  na camada de saída.
  Assim como na primeira rede neural, cada neurônio de saída corresponde
  a um elemento de estrutura secundária.
@@ -500,9 +571,18 @@ s da primeira rede neural.
 
 \begin_layout Standard
 O PSIPRED apresentou acurácia de 78,3% (Q3) no conjunto de teste com 187
- proteínas.
- Essa medida foi calculada comparando a estrutura secundária predita com
- a atribuída pelo DSSP.
+ proteínas
+\change_deleted -1589230395 1516295055
+.
+ Essa medida foi feita em
+\change_inserted -1589230395 1516295065
+utilizando como referência 
+\change_deleted -1589230395 1516295069
+ relação à
+\change_inserted -1589230395 1516295069
+a
+\change_unchanged
+ estrutura secundária atribuída pelo DSSP.
  
 \end_layout
 
@@ -578,18 +658,18 @@ A avaliação da acurácia da rede foi medida utilizando a métrica
 \end_inset
 
  pode ser hélice (
-\begin_inset Formula $H$
+\begin_inset Formula $h$
 \end_inset
 
-), fita (
-\begin_inset Formula $E$
+ ), fita (
+\begin_inset Formula $e$
 \end_inset
 
-) ou coil (
-\begin_inset Formula $C$
+ ) ou coil (
+\begin_inset Formula $c$
 \end_inset
 
-) (Equação 
+ ) (Equação 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:q3"
@@ -613,7 +693,7 @@ reference "eq:q3"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Q_{3}=\frac{Q_{H}+Q_{E}+Q_{C}}{3}\label{eq:q3}
+Q_{3}=\frac{Q_{h}+Q_{e}+Q_{c}}{3}\label{eq:q3}
 \end{equation}
 
 \end_inset
@@ -642,18 +722,18 @@ onde
 \end_inset
 
  pode ser hélice (
-\begin_inset Formula $H$
+\begin_inset Formula $h$
 \end_inset
 
-), fita (
-\begin_inset Formula $E$
+ ), fita (
+\begin_inset Formula $e$
 \end_inset
 
-) ou coil (
-\begin_inset Formula $C$
+ ) ou coil (
+\begin_inset Formula $c$
 \end_inset
 
-), 
+ ), 
 \begin_inset Formula $VP_{i}$
 \end_inset
 
@@ -704,8 +784,7 @@ vazia
 \end_inset
 
  N ou C terminal.
- A representação dessas posições vazias é necessária para a predição dos
- primeiros e últimos oito resíduos.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -727,6 +806,24 @@ f(x)=\frac{1}{1+e^{-x}}\label{eq:sigmoid_function}
 
 \end_inset
 
+
+\change_inserted -1589230395 1516295381
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516295387
+O que é x?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -753,7 +850,25 @@ reference "eq:softmax_function"
  Assim, os valores de saída da rede neural representam as probabilidades
  dos elementos de estrutura secundária (hélice, fita e coil) do resíduo
  central da janela de 17 aminoácidos.
+
+\change_inserted -1589230395 1516295298
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516295331
+Como fica a predição para os 17 primeiros residuos e 17 últimos?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -764,6 +879,24 @@ f(x_{i})=\frac{e^{x_{i}}}{\sum_{j=i}^{N}e^{x_{j}}}\label{eq:softmax_function}
 
 \end_inset
 
+
+\change_inserted -1589230395 1516295457
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516295492
+O que são x, i, j e N? 
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -776,11 +909,8 @@ reference "eq:cross_entropy"
 
 \end_inset
 
-) como função de custo, ao invés da função de erro quadrático médio (
-\emph on
-Mean squared error
-\emph default
- - MSE) utilizado no trabalho original.
+) como função de custo, ao invés da função de erro quadrático médio (MSE)
+ utilizado no trabalho original.
 \begin_inset Formula 
 \begin{equation}
 H(p,q)=-\sum_{i}p_{i}\log q_{i}\label{eq:cross_entropy}
@@ -789,32 +919,27 @@ H(p,q)=-\sum_{i}p_{i}\log q_{i}\label{eq:cross_entropy}
 \end_inset
 
 
+\change_inserted -1589230395 1516295508
+
 \end_layout
 
 \begin_layout Standard
-Na equação da entropia cruzada (Eq.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:cross_entropy"
+
+\change_inserted -1589230395 1516295518
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516295558
+que frquencias são p e q? i é indice da janela ou do resíduo?
+\end_layout
 
 \end_inset
 
-) 
-\begin_inset Formula $i$
-\end_inset
 
- são as três classes (hélice, fita e coil) para cada resíduo, 
-\begin_inset Formula $p$
-\end_inset
+\change_unchanged
 
- é a probabilidade observada, a qual será 1 para a classe atribuída ao resíduo,
- e 
-\begin_inset Formula $q$
-\end_inset
-
- é a probabilidade predita pela rede neural para a classe.
- 
 \end_layout
 
 \begin_layout Standard
@@ -862,8 +987,33 @@ A principal diferença encontra-se na camada de saída onde foram utilizados
 \begin_layout Standard
 O conjunto de dados contendo informação da estrutura secundária de 6800
  proteínas foi divido em 3 subconjuntos: (1) treinamento com 5000 proteínas,
- (2) validação com 500 proteínas e (3) teste com 1249 proteínas.
+ (2) validação com 300 proteínas e (
+\change_inserted -1589230395 1516295649
+3
+\change_deleted -1589230395 1516295647
+2
+\change_unchanged
+) teste com 1500 proteínas.
  
+\change_inserted -1589230395 1516295666
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516295701
+Por que vc biparticionou o conjunto de teste? Não seria melhor fazer um
+ bootstrap?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -914,18 +1064,12 @@ O método de predição PSIPRED foi escolhido para testar o estado da arte
 \emph on
 nr
 \emph default
-).
+)
+\change_inserted -1589230395 1516295825
+(REF?)
+\change_unchanged
+.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Qual ref? psi pred e psiblast
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -933,14 +1077,7 @@ Resultados
 \end_layout
 
 \begin_layout Subsection
-Rede neural similar ao modelo de Holley e Karplus 
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Rede-neural-hk"
-
-\end_inset
-
-
+Rede neural similar ao modelo de Holley e Karplus
 \end_layout
 
 \begin_layout Subsubsection
@@ -948,11 +1085,19 @@ Influência da atribuição na predição
 \end_layout
 
 \begin_layout Standard
-Os resultados demonstraram que os resíduos que apresentam consenso entre
- os métodos de atribuição de estrutura secundária são preditos com maior
- acurácia independentemente do método de atribuição utilizado durante o
- treinamento (Consenso, DSSP, STRIDE, KAKSI ou PROSS) (Tabela abaixo, coluna
+Os resultado
+\change_inserted -1589230395 1516295834
+s
+\change_unchanged
+ demonstraram que os resíduos que apresentam consenso entre os métodos de
+ atribuição de estrutura secundária são preditos com maior acurácia (Tabela
  
+\change_inserted -1589230395 1516295913
+XXX
+\change_deleted -1589230395 1516295908
+abaixo
+\change_unchanged
+, coluna 
 \begin_inset Quotes sld
 \end_inset
 
@@ -960,27 +1105,71 @@ Teste consenso
 \begin_inset Quotes srd
 \end_inset
 
-) 
+)
+\change_deleted -1589230395 1516295932
+.
+ Isso ocorreu 
+\change_unchanged
+independente
+\change_inserted -1589230395 1516295939
+mente
+\change_unchanged
+ 
+\change_deleted -1589230395 1516295968
+de qual a fonte dos dados
+\change_inserted -1589230395 1516295981
+do método de atribuição 
+\change_deleted -1589230395 1516295983
+ 
+\change_unchanged
+utilizado 
+\change_deleted -1589230395 1516295989
+para
+\change_inserted -1589230395 1516295992
+durante
+\change_unchanged
+ o treinamento (Consenso, DSSP, STRIDE, KAKSI ou PROSS).
+\end_layout
+
+\begin_layout Standard
+Na rede com maior acurácia, com 64 neurôni
+\change_inserted -1589230395 1516296009
+os
+\change_deleted -1589230395 1516296006
+cos
+\change_unchanged
+ na camada oculta e treinada apenas com os resíduos que apresentaram consenso,
+ a acurácia no conjunto de teste para os dados de consenso foi de 75,27%,
+ enquanto a acurácia com dados dos métodos de atribuição individuais foi
+ de aproximadamente 68%.
+ O valores da tabela abaixo correspondem a média de 
+\change_inserted -1589230395 1516296033
+cinco
+\change_deleted -1589230395 1516296031
+5
+\change_unchanged
+ treinamentos para cada rede.
+ O desvio padrão todos os casos foi inferior a 0,006.
+
+\change_inserted -1589230395 1516296070
+ 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-resolver label e legenda
+
+\change_inserted -1589230395 1516296118
+Parece que o tamanho do conjunto de treinamento nunca foi um problema no
+ final das contas desde os primórdios kkkk!!
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
-.
-\end_layout
 
-\begin_layout Standard
-Na rede com maior acurácia, com 64 neurônios na camada oculta e treinada
- apenas com os resíduos que apresentaram consenso, a acurácia no conjunto
- de teste para os dados de consenso foi de 75,27%, enquanto a acurácia em
- relação aos métodos de atribuição individuais foi de aproximadamente 68%.
- O valores da tabela abaixo correspondem a média de cinco treinamentos para
- cada rede.
- O desvio padrão para todos os casos foi inferior a 0,006.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -3961,19 +4150,42 @@ PROSS
 \end_inset
 
 
+\change_inserted -1589230395 1516296599
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1589230395 1516297823
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516297837
+Coloque uma legenda na tabela.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 Considerando que 74,4% dos resíduos apresentam consenso entre os métodos
- de atribuição de estrutura secundária (ver seção 
+ de atribuição de estrutura secundária atribuida (ver seção 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:cap1-resultados"
 
 \end_inset
 
-) e uma acurácia na predição próxima 75% para os mesmos, é possível estimar
- a acurácia média para as regiões de dissenso como próxima a 48%.
+), é possível estimar a acurácia para as regiões de dissenso como próxima
+ a 48%.
 \end_layout
 
 \begin_layout Standard
@@ -3993,34 +4205,49 @@ Q_{3}dissenso\simeq0,476
 \end_inset
 
 
-\end_layout
+\change_inserted -1589230395 1516297354
 
-\begin_layout Standard
-É interessante notar que a predição utilizando somente os dados em que há
- consenso apresentou maior acurácia para o método de predição PROSS do que
- para os demais métodos de atribuição.
- Entretanto, quando a rede neural é treinada com os dados de atribuição
- do PROSS, a rede neural apresenta a menor acurácia para os resíduos com
- consenso.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-\begin_inset Quotes sld
-\end_inset
 
-Se PROSS X PROSS chega a 70% esse método explicaria melhor o dissenso?
-\begin_inset Quotes srd
-\end_inset
+\change_inserted -1589230395 1516297409
+Ze como vc calculo Q3 do dissenso? de onde vem o valor 0,75?
+\change_unchanged
 
- Para pensar...
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+É interessante notar que a predição utilizando somente dados de consenso
+ apresenta maior acurácia para o método de predição PROSS, do que para os
+ demais métodos de atribuição.
+ Entretanto, quando a rede neural é treinada com os dados de atribuição
+ do PROSS, a rede neural apresenta a menor acurácia para os resíduos com
+ consenso.
+
+\change_inserted -1589230395 1516297581
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516297626
+Se PROSS X PROSS chega a 70% esse método explicaria melhor o dissenso?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -4031,9 +4258,21 @@ Análise do treinamento
 \begin_layout Standard
 Analisamos a influência do número de neurônios na camada oculta durante
  o treinamento por 1000 épocas.
- Cada época corresponde à utilização de todos os dados do conjunto de treinament
-o, ou seja, o conjunto é apresentado à rede neural 1000 vezes para que os
- pesos, ou parâmetros, sejam otimizados buscando a redução da entropia cruzada.
+ Cada época corresponde 
+\change_deleted -1589230395 1516297654
+a 
+\change_inserted -1589230395 1516297661
+à 
+\change_unchanged
+utilização de todos os dados do conjunto de treinamento, ou seja, o conjunto
+ é apresentado
+\change_inserted -1589230395 1516297674
+ 
+\change_deleted -1589230395 1516297676
+a
+\change_unchanged
+ à rede neural 1000 vezes para que os pesos, ou parâmetros, sejam otimizados
+ buscando a redução da entropia cruzada.
 \end_layout
 
 \begin_layout Standard
@@ -4052,6 +4291,24 @@ overfiting
 o ao invés de aprender um padrão geral para ser aplicado à novos casos.
  Em outras palavras, quando ocorre o sobreajuste a rede neural tem uma redução
  da capacidade de generalização.
+\change_inserted -1589230395 1516297775
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516297793
+Ainda não entendi porque não se usa bootstrap??
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -4066,38 +4323,30 @@ reference "fig:Treinamento-das-redes"
  uma maior diferença entre a entropia cruzada no conjunto de treinamento
  e o conjunto de validação.
  Notamos ainda que a entropia cruzada próxima a época 1000 apresenta uma
- tendência de continuar diminuindo e, consequentemente, uma tendência em
- aumentar a diferença da entropia cruzada entre os conjuntos.
+ tendência de redução e, consequentemente, uma tendência em aumentar a diferença
+ da entropia entre os conjuntos.
  Esse fato, juntamente com a semelhança entre os valores de entropia cruzada
  para o conjunto de validação nas redes com 32, 64 e 128 neurônios, são
  fortes indicativos da ocorrência de sobreajuste na rede com 128 neurônios
  na camada oculta.
  
-\end_layout
+\change_deleted -1478677931 1517604381
 
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-\begin_inset Quotes sld
-\end_inset
 
-A tendência de aumento começa bem antes por volta da época 400.
-\begin_inset Quotes srd
-\end_inset
+\change_inserted -1589230395 1516298008
+A tendência de aumento começa bem antes por volta da época 400 
+\change_unchanged
 
- O problema é que há a tendência dela continuar em queda, se ela fosse menor,
- mas estivesse estável (como a 64) não haveria problema.
- Quando ela continua caindo, a entropia do conjunto de validação e de teste
- tende a seguir no sentido oposto, ou seja, aumentar.
- O maior problema do sobreajuste não é aprender muito os dados de treinamento,
- mas desaprender o resto.
- Aí há perda de generalização.
 \end_layout
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -4163,23 +4412,36 @@ A rede neural similar ao modelo de Holley e Karplus apresentou uma maior
 \begin_inset Formula $\beta$
 \end_inset
 
- foi observada em outros trabalhos 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-[?]
-\end_layout
-
-\end_inset
-
-.
- Entre as causas sugeridas para a menor acurácia está dependência de resíduos
- distantes na formação de folhas 
+ foi observada em outros trabalhos [?].
+ Entre as causas sugeridas para a menor acurácia está a 
+\change_deleted -1589230395 1516298102
+caractística não
+\change_inserted -1589230395 1516298115
+ dependência de
+\change_unchanged
+ 
+\change_inserted -1589230395 1516298128
+resíduos distantes 
+\change_deleted -1589230395 1516298132
+local da
+\change_inserted -1589230395 1516298134
+na
+\change_unchanged
+ formação de folhas 
 \begin_inset Formula $\beta$
 \end_inset
 
-, fator que não é considerado num método que utiliza janelas de entrada.
+
+\change_inserted -1589230395 1516298199
+, fator que não é considerado no método de janelas de entrada
+\change_deleted -1589230395 1516298170
+, as quais
+\change_unchanged
+ 
+\change_deleted -1589230395 1516298159
+são formadas por fitas muitas vezes distantes na sequência de aminoácidos
+\change_unchanged
+.
  Outra possível causa da menor acurácia é o menor número, nos conjuntos
  de dados, de resíduos que compõem as fitas 
 \begin_inset Formula $\beta$
@@ -4211,8 +4473,8 @@ status open
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
-<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -4285,6 +4547,30 @@ Q
 
 \shape smallcaps
 \size footnotesize
+C
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size footnotesize
+Q
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size footnotesize
 H
 \end_layout
 
@@ -4310,30 +4596,6 @@ Q
 \shape smallcaps
 \size footnotesize
 E
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size footnotesize
-Q
-\begin_inset script subscript
-
-\begin_layout Plain Layout
-
-\shape smallcaps
-\size footnotesize
-C
 \end_layout
 
 \end_inset
@@ -4478,29 +4740,29 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
+72,6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 74,8
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \size footnotesize
 50,1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-72,6
 \end_layout
 
 \end_inset
@@ -4556,29 +4818,29 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
+72,5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 73,9
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \size footnotesize
 51,0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-72,5
 \end_layout
 
 \end_inset
@@ -4634,29 +4896,29 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
+72,8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 74,0
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \size footnotesize
 50,5
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-72,8
 \end_layout
 
 \end_inset
@@ -4714,29 +4976,29 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
+73,5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 76,5
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \size footnotesize
 55,2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-73,5
 \end_layout
 
 \end_inset
@@ -4792,29 +5054,29 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
+73,8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 74,5
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \size footnotesize
 57,8
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-73,8
 \end_layout
 
 \end_inset
@@ -4870,29 +5132,29 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
+74,2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 76,3
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \size footnotesize
 55,9
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-74,2
 \end_layout
 
 \end_inset
@@ -4950,29 +5212,29 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
+75,5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 79,3
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \size footnotesize
 58,7
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-75,5
 \end_layout
 
 \end_inset
@@ -5028,29 +5290,29 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
+74,6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 79,9
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \size footnotesize
 57,8
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-74,6
 \end_layout
 
 \end_inset
@@ -5106,7 +5368,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-79,0
+75,1
 \end_layout
 
 \end_inset
@@ -5117,7 +5379,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-58,2
+79,0
 \end_layout
 
 \end_inset
@@ -5128,7 +5390,7 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
-75,1
+58,2
 \end_layout
 
 \end_inset
@@ -5186,6 +5448,17 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
+76,1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 80,4
 \end_layout
 
@@ -5198,17 +5471,6 @@ Treinamento
 
 \size footnotesize
 61,3
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-76,1
 \end_layout
 
 \end_inset
@@ -5264,6 +5526,17 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
+76,9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 79,0
 \end_layout
 
@@ -5276,17 +5549,6 @@ Validação
 
 \size footnotesize
 61,5
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-76,9
 \end_layout
 
 \end_inset
@@ -5342,6 +5604,17 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
+76,4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 81,0
 \end_layout
 
@@ -5354,17 +5627,6 @@ Teste
 
 \size footnotesize
 60,8
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-76,4
 \end_layout
 
 \end_inset
@@ -5422,6 +5684,17 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
+76,9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 81,3
 \end_layout
 
@@ -5434,17 +5707,6 @@ Treinamento
 
 \size footnotesize
 63,2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-76,9
 \end_layout
 
 \end_inset
@@ -5500,6 +5762,17 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
+76,7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 81,2
 \end_layout
 
@@ -5512,17 +5785,6 @@ Validação
 
 \size footnotesize
 60,7
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-76,7
 \end_layout
 
 \end_inset
@@ -5578,6 +5840,17 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
+76,3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 81,8
 \end_layout
 
@@ -5590,17 +5863,6 @@ Teste
 
 \size footnotesize
 61,1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-76,3
 \end_layout
 
 \end_inset
@@ -5658,6 +5920,17 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
+77,8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 82,3
 \end_layout
 
@@ -5670,17 +5943,6 @@ Treinamento
 
 \size footnotesize
 64,7
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-77,8
 \end_layout
 
 \end_inset
@@ -5736,6 +5998,17 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
+76,7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 81,3
 \end_layout
 
@@ -5748,17 +6021,6 @@ Validação
 
 \size footnotesize
 62,1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-76,7
 \end_layout
 
 \end_inset
@@ -5814,6 +6076,17 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
+75,7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 81,8
 \end_layout
 
@@ -5826,17 +6099,6 @@ Teste
 
 \size footnotesize
 61,2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-75,7
 \end_layout
 
 \end_inset
@@ -5894,6 +6156,17 @@ Treinamento
 \begin_layout Plain Layout
 
 \size footnotesize
+79,0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 83,2
 \end_layout
 
@@ -5906,17 +6179,6 @@ Treinamento
 
 \size footnotesize
 66,4
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-79,0
 \end_layout
 
 \end_inset
@@ -5972,6 +6234,17 @@ Validação
 \begin_layout Plain Layout
 
 \size footnotesize
+74,9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 81,1
 \end_layout
 
@@ -5984,17 +6257,6 @@ Validação
 
 \size footnotesize
 63,9
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-74,9
 \end_layout
 
 \end_inset
@@ -6050,6 +6312,17 @@ Teste
 \begin_layout Plain Layout
 
 \size footnotesize
+75,7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 80,8
 \end_layout
 
@@ -6066,17 +6339,6 @@ Teste
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-75,7
-\end_layout
-
-\end_inset
-</cell>
 </row>
 </lyxtabular>
 
@@ -6089,12 +6351,6 @@ Teste
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:Tab-hk-ac-ss"
-
-\end_inset
-
 Tabela
 \end_layout
 
@@ -6119,47 +6375,6 @@ status open
 \begin_layout Plain Layout
 tamanho das estruturas para mostrar a predição de estruturas secundárias
  descontínuas
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Distribuição da acurácia por proteína
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figures/model_hk_q_ss.pdf
-	width 100line%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -6255,6 +6470,45 @@ status open
 \end_inset
 
 
+\change_inserted -1589230395 1516635826
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516636117
+Tb seria importante ver essa distribuição para o PSIPRED ou verificar se
+ eles comentam algo no paper deles.
+ Já vi na figura abaixo
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516635629
+Z´e tem como plotar acuracia por tamanho dos elementos de SS? Por ex.
+ gostaria de saber se uma helice predita de tamanho 5 bate com uma helice
+ de tamanho 5 real.
+ No outro oposto fazer a msm analise com helice preditas de 20 aa qtos foram
+ corretamente preditos.
+ 
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -6290,7 +6544,36 @@ name "fig:Distribuição-dos-comprimentos-modelo-hk"
 \end_layout
 
 \begin_layout Subsection
+
+\change_inserted -1589230395 1516636194
+Comparação de nossa rede neural com a rede neural implementada em 
+\change_unchanged
 PSIPRED
+\change_inserted -1589230395 1516636205
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516636241
+Era mais ou menos isso que vc quer mostrar?
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516636320
+Acho que faria mais sentido então colocar os resultados de nosso HK pareados
+ com PSIPRED para as 5 formas de atribuição? 
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -6678,7 +6961,26 @@ A diferença observada no comprimento das estruturas atribuídas em relação
  às estruturas preditas pela rede neural HK, não foi observada para o PSIPRED.
  Acreditamos que o fator responsável por produzir estruturas com comprimentos
  similares ao experimental seja a utilização de uma segunda rede neural.
- Como mencionado anteriormente, essa segunda rede neural recebe como entrada
+ 
+\change_inserted -1589230395 1516636452
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516636506
+Na minha maneira de ver tanto HK como PSIPRED sofrem igualmente com esses
+ problemas!!!
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+Como mencionado anteriormente, essa segunda rede neural recebe como entrada
  três valores para cada resíduo da janela.
  Esses valores representam os três tipos de estruturas secundárias.
  Assim, a segunda rede neural não recebe informação direta dos aminoácidos,
@@ -6686,6 +6988,49 @@ A diferença observada no comprimento das estruturas atribuídas em relação
  Ela teria então a função de construir estruturas mais próximas as observadas
  experimentalmente, removendo ou conectando estruturas muito curtas como
  hélices com apenas um resíduo.
+\change_inserted -1589230395 1516636674
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516636797
+Zé isso não ficou tão claro para mim.
+ Uma sugestão seria você cria as conclusoes como uma uma lista para cada
+ uma comparacoes testadas.
+ Por ex.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516636803
+para a acuraçia HK funcionaou assim e PSIPRED XXX.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516636842
+Para o comprimento dos elementos de SS preditos HK teve desempenho XX enquanto
+ PSIPRED YY
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1516636899
+Para a comparação de metodos de atribuição tanto HK como PSIPRED desempenham
+ melhor com O CONSENSO
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_body

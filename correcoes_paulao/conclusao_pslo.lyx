@@ -1,0 +1,279 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass classicthesis
+\use_default_options true
+\maintain_unincluded_children false
+\language brazilian
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command biber
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language swedish
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Discussão
+\end_layout
+
+\begin_layout Section
+Diferentes métodos de atribuição de estrutura secundária aplicados ao conjunto
+ de treinamento interferem com os resultados de algoritmos de predição
+\end_layout
+
+\begin_layout Standard
+Uma das etapas iniciais no desenvolvimento de métodos de predição de estrutura
+ secundária é a preparação dos dados de referência.
+ Parte dessa preparação consiste na atribuição da estrutura secundária em
+ proteínas com estrutura atômica resolvida.
+ Em geral, trabalhos da literatura costumam utilizar o método DSSP como
+ padrão.
+ Entretanto, a diferença observada entre as atribuições de estrutura secundária
+ efetuadas por diferentes métodos computacionais indica que essa etapa pode
+ ser importante para o desenvolvimento de preditores com maior acurácia.
+\end_layout
+
+\begin_layout Standard
+Ao longo deste trabalho nós exploramos a utilização dos dados de cada um
+ dos quatro métodos citados e sua influência no treinamento de preditores.
+ Como veremos adiante, a utilização apenas de resíduos que apresentam consenso
+ na atribuição resulta em preditores com acurácia maior ou semelhante ao
+ melhor método de atribuição.
+ Neste contexto, melhor método de atribuição significa o que produziu os
+ dados que resultaram no preditor com maior acurácia.
+ 
+\end_layout
+
+\begin_layout Standard
+entre os quatro métodos de atribuição analisados, há a ocorrência de uma
+ variação considerável entre as estruturas secundárias atribuídas para cada
+ resíduo.
+ A figura 
+\backslash
+ref{fig:comparacao_metodos_atribuicao} demonstra a similaridade observada
+ entre os métodos.
+ Como esperado, a maior similaridade é observada entre os métodos DSSP e
+ STRIDE, uma vez que o último é inspirado no primeiro.
+ Entretanto, a similaridade entre os demais métodos encontra-se na faixa
+ entre 83% e 85%.
+ A porcentagem de resíduos que apresentaram consenso entre os quatro métodos
+ foi de apenas 74,43%.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Joguei aqui algumas das frases d capitulo de metodos de atribuição para
+ ca.
+ Tiramos a seção de conclusoes de lá 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Autômatos celulares para a predição de estruturas secundárias
+\end_layout
+
+\begin_layout Standard
+Ao propormos a utilização de autômatos celulares para a predição de estruturas
+ secundárias nosso objetivo era observar indícios de como a estrutura secundária
+ poderia se organizar a partir da sequência de aminoácidos.
+ Entretanto, durante o desenvolvimento do método, diversos problemas foram
+ sendo enfrentados, alguns dos quais, não haviam sido previstos por nós.
+\end_layout
+
+\begin_layout Standard
+O primeiro obstáculo era a dificuldade em se resolver o problema inverso
+ dos autômatos celulares.
+ Esse desafio já era de nosso conhecimento por ser algo discutido na literatura.
+ Ganguly e colaboradores 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ganguly_survey_2003"
+
+\end_inset
+
+ escreveram:
+\end_layout
+
+\begin_layout Quote
+The inverse problem of deducing the local rules from a given global behavior
+ is extremely difficult.
+ There have been some efforts, with limited success, to build the attractor
+ basin according to a given design specification (...) most popular methodology
+ to address the inverse problem of mapping the global behavior to local
+ CA rules are based on evolutionary computation techniques namely genetic
+ algorithms and simulated annealing.
+\end_layout
+
+\begin_layout Standard
+Esse problema foi enfrentado por nós com a implementação de um algoritmo
+ de estimação de distribuição (EDA) de forma distribuída, possibilitando
+ a utilização de infraestrutura de computação de alto desempenho.
+ Consequentemente, isso aumentou a eficiência no processo de otimização
+ das regras assim como possibilitou o aumento no número de proteínas em
+ nosso conjunto de treinamento.
+\end_layout
+
+\begin_layout Standard
+Outro problema observado foi a definição de estados do AC.
+ Nossa abordagem inicial foi utilizar cada resíduo como um estado e adicionar
+ quatro estados: um para hélice, um para fita, um para coil e mais um para
+ início/fim da sequência.
+ Acreditávamos que caso não obtivéssemos sucesso em encontrar regras com
+ esses estados a origem do problema seria o enorme espaço de regras possíveis,
+ o qual já havíamos calculado: XXXX
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mencione esse valor aqui!
+\end_layout
+
+\end_inset
+
+.
+ Com isso, chegamos a planejar uma possível redução do número de estados,
+ agrupando aminoácidos com características estruturais e físico-químicas
+ similares em um mesmo estado.
+\end_layout
+
+\begin_layout Standard
+Entretanto, durante o trabalho, notamos que os quatro estados adicionados
+ não seriam suficientes.
+ Ao observarmos que uma célula, ao evoluir de um estado representando um
+ aminoácido para um estado representando uma estrutura secundária, perdia
+ toda a informação sobre o resíduo naquela posição, percebemos que precisaríamos
+ acrescentar mais estados.
+ 
+\end_layout
+
+\begin_layout Standard
+A solução proposta para isso foi manter parcialmente a informação do resíduo
+ através do uso do que chamamos 
+\begin_inset Quotes sld
+\end_inset
+
+contexto
+\begin_inset Quotes srd
+\end_inset
+
+.
+ Iniciamos com apenas dois contextos, polar e apolar.
+ Acreditamos que esses dois contextos auxiliariam o AC na formação de hélices
+ e fitas com características anfipáticas.
+ Com o uso de contextos observamos uma melhora na capacidade preditiva do
+ AC.
+ Isso nos levou a explorar outras características dos resíduos como contextos.
+ Primeiro, tornamos glicinas e prolinas dois novos contextos e então, adicionamo
+s outros dois, para resíduos carregados, positivos e negativos.
+\end_layout
+
+\begin_layout Standard
+Os contextos melhoraram a capacidade dos ACs na formação de estruturas secundári
+as, no entanto, também tornaram a busca por regras ainda mais difícil.
+\end_layout
+
+\begin_layout Standard
+A definição de uma métrica para a acurácia e a forma de como calculá-la
+ na evolução do autômato também nos trouxeram dificuldades.
+ A melhor métrica testada foi o CBA (
+\emph on
+Class Balance Accuracy
+\emph default
+), o qual foi desenvolvido para problemas com classes desbalanceadas, caso
+ das estruturas secundárias.
+ Em relação a forma de calculá-la para o AC, haviam diversas possibilidades,
+ cada uma com vantagens e desvantagens.
+ Poderíamos predefinir um número finito de evoluções do AC e calcular a
+ acurácia na última geração.
+ No entanto, observamos que o AC podia apresentar um padrão de oscilação
+ entre estados durante a evolução.
+ Testamos ampliar a medida para um intervalo de gerações até finalmente
+ decidirmos utilizar todas as gerações do AC.
+\end_layout
+
+\begin_layout Standard
+É possível que essa última decisão tenha conduzido o autômato celular a
+ produzir padrões quase uniformes como os observados.
+ Padrões onde as células evoluem para algum estado de estrutura secundária
+ logo na primeira geração e, na maioria das vezes, permanecem até a última
+ geração.
+ 
+\end_layout
+
+\begin_layout Standard
+Apesar dos resultados não atingirem nossas expectativas, a motivação inicial
+ de utilizar autômatos celulares para observarmos, dinamicamente, a predição
+ das estruturas secundárias, nos levaram a buscar métodos que tivessem essa
+ mesma capacidade.
+ Encontramos esse potencial em redes neurais profundas.
+\end_layout
+
+\begin_layout Section
+Redes neurais profundas
+\end_layout
+
+\end_body
+\end_document

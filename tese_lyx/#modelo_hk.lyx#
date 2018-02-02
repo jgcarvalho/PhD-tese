@@ -42,8 +42,8 @@
 \use_package stmaryrd 1
 \use_package undertilde 1
 \cite_engine natbib
-\cite_engine_type authoryear
-\biblio_style plainnat
+\cite_engine_type numerical
+\biblio_style unsrtnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -93,9 +93,13 @@ Introdução
 Neste capítulo analisamos o resultado de dois métodos que utilizam redes
  neurais para a predição da estrutura secundária.
  A diferença entre os métodos está sobretudo nos dados de entrada.
- Enquanto um deles realizada a predição a partir da sequência de aminoácidos
- das proteínas, o outro utiliza uma matriz de substituição específica por
- posição (PSSM) produzida pelo PSI-BLAST 
+ Enquanto em um deles a predição é realizada a partir da sequência de aminoácido
+s das proteínas, no outro é realizada a partir de uma matriz de substituição
+ específica por posição (PSSM - 
+\emph on
+Position Specific Scoring Matrix
+\emph default
+) produzida pelo PSI-BLAST 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "altschul_gapped_1997"
@@ -109,12 +113,13 @@ key "altschul_gapped_1997"
 \end_layout
 
 \begin_layout Standard
-Como o método que utiliza apenas a sequência de aminoácidos como entrada
- foi proposto em 1989, o objetivo desse capítulo foi avaliar qual a acurácia
- que poderia ser atingida por um método similar utilizando um conjunto de
- dados maior.
- Isso nos fornece um acurácia de referência para ser comparada aos métodos
- propostos neste trabalho.
+O método que utiliza apenas a sequência de aminoácidos como entrada foi
+ proposto em 1989, época em que havia em torno de apenas 350 estruturas
+ disponíveis.
+ Assim, um dos objetivos desse capítulo foi avaliar qual acurácia poderia
+ ser atingida por um método similar utilizando um conjunto de dados maior.
+ Isso nos fornece uma medida de acurácia mais justa para ser usada na comparação
+ com os métodos propostos neste trabalho.
 \end_layout
 
 \begin_layout Standard
@@ -137,8 +142,8 @@ key "qian_predicting_1988"
 
  foram possivelmente os primeiros a publicarem um trabalho utilizando redes
  neurais artificiais para a predição da estrutura secundária de proteínas.
- Segundo os autores, a inspiração surgiu de um trabalho que utilizava redes
- neurais artificiais para converter texto em fonemas (
+ Segundo os autores, a inspiração surgiu de um trabalho que aplicava redes
+ neurais artificiais na conversão de texto em fonemas (
 \shape italic
 text-to-speech
 \shape default
@@ -171,7 +176,7 @@ A segunda rede neural recebia como entrada os valores de saída da rede anterior
 \end_layout
 
 \begin_layout Standard
-Os autores exploraram também a utilização de uma camada oculta de neurônios,
+Os autores exploraram ainda a utilização de uma camada oculta de neurônios,
  mas esta, apesar de diminuir o erro de classificação durante o treinamento,
  foi incapaz de reduzir o erro no conjunto de teste.
 \end_layout
@@ -184,7 +189,7 @@ l, apesar de superior aos métodos anteriores, foi decepcionante.
  de entrada, precisaria ser considerada na predição.
  Caso isso fosse confirmado, eles acreditavam que seriam necessários novos
  métodos para considerar esses efeitos.
- Eles concluem o trabalho com a hipótese de que um banco de dados maior
+ Eles concluíram o trabalho com a hipótese de que um banco de dados maior
  de proteínas homólogas poderia possibilitar que uma rede neural artificial
  aprendesse a equivalência dos aminoácidos em diferentes contextos na proteína.
 \end_layout
@@ -259,13 +264,13 @@ key "chandonia_importance_1996"
 
 .
  A rede neural utiliza como entrada uma janela de 17 aminoácidos da proteína,
- cada um codificado em um vetor de tamanho 21 (20 aa + 1 posição que indica
- ausência de aminoácidos).
+ cada um codificado em um vetor binário de tamanho 21 (20 aa + 1 posição
+ que indica ausência de aminoácidos).
  Na camada oculta foram testadas várias configurações, diferindo entre si
  pelo número de neurônios.
- A camada de saída possuía 2 neurônios, um representando a saída para hélice
- e outro para fitas.
- Todos os neurônios possuiam funções de ativação sigmóide.
+ A camada de saída possuía 2 neurônios, uma representando a saída para hélice
+ e outro para fita.
+ Todos os neurônios possuíam funções de ativação sigmoide.
  Os rótulos de treinamento foram 
 \begin_inset Formula $(1,0)\rightarrow hélice,\,(0,1)\rightarrow fita,\,(0,0)\rightarrow coil$
 \end_inset
@@ -339,7 +344,7 @@ key "qian_predicting_1988"
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Nesse capítulo, analisamos o desempenho de uma rede neural artificial similar
@@ -360,7 +365,14 @@ Redes neurais para a predição a partir da matriz de substituição específica
 \end_layout
 
 \begin_layout Standard
-Em 1999, Jones [?] publicou o método de predição PSIPRED.
+Em 1999, Jones 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "jones_protein_1999"
+
+\end_inset
+
+ publicou o método de predição PSIPRED.
  O principal diferencial desse método em relação ao método de Holley e Karplus
  
 \begin_inset CommandInset citation
@@ -369,8 +381,11 @@ key "holley_protein_1989"
 
 \end_inset
 
- foi a utilização de matrizes de substituição específica por posição (PSSM)
- ou 
+ foi a utilização de matrizes de substituição específica por posição (
+\emph on
+Position Specific Scoring Matrix
+\emph default
+ - PSSM) ou 
 \emph on
 profile
 \emph default
@@ -400,7 +415,14 @@ key "altschul_gapped_1997"
 .
  No PSI-Blast, o primeiro alinhamento entre a sequência da proteína alvo
  e as proteínas de um banco de dados é feito utilizando uma matriz de substituiç
-ão de aminoácidos como por exemplo a BLOSUM62 [?].
+ão de aminoácidos como por exemplo a BLOSUM62 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "henikoff_amino_1992"
+
+\end_inset
+
+.
  Na etapa seguinte, as proteínas com maior similaridade nesse primeiro alinhamen
 to são utilizadas para a construção de uma nova matriz de substituição.
  No entanto, essa segunda matriz tem probabilidades específicas para os
@@ -410,7 +432,14 @@ to são utilizadas para a construção de uma nova matriz de substituição.
  utilizados para atualizar as probabilidades da PSSM.
  Esse processo é iterativo e ocorre por um número definido de passos ou
  até os resultados convergirem, isto é, quando não forem encontradas novas
- proteínas nos resultados do alinhamento com o banco de dados.
+ proteínas nos resultados do alinhamento com o banco de dados 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "altschul_gapped_1997"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -427,8 +456,20 @@ profile
 \begin_layout Standard
 Como a conservação de resíduos na proteína tem relação com a estrutura,
  por exemplo, resíduos expostos ao solvente sofrem menor pressão evolutiva
- que resíduos não expostos ao solvente [?], a PSSM contém mais informação
- que a simples sequência de resíduos.
+ que resíduos não expostos.
+ Assim, por conter indiretamente a informação do ambiente de cada resíduo,
+ a PSSM contém mais informação que a simples sequência de resíduos.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+melhorar essa frase
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -444,8 +485,8 @@ O PSIPRED é composto de duas redes neurais artificias.
 \begin_layout Standard
 A segunda rede neural também utiliza uma janela referente a 15 resíduos
  com 3 valores para cada resíduo.
- Estes valores correspodem aos emitidos pela primeira rede neural.
- A segunda rede neural possui 60 neurônios na camada oculta e 3 neurônios
+ Estes valores correspondem aos emitidos pela primeira rede neural.
+ Esta segunda rede neural possui 60 neurônios na camada oculta e 3 neurônios
  na camada de saída.
  Assim como na primeira rede neural, cada neurônio de saída corresponde
  a um elemento de estrutura secundária.
@@ -460,8 +501,8 @@ s da primeira rede neural.
 \begin_layout Standard
 O PSIPRED apresentou acurácia de 78,3% (Q3) no conjunto de teste com 187
  proteínas.
- Essa medida foi feita em relação à estrutura secundária atribuída pelo
- DSSP.
+ Essa medida foi calculada comparando a estrutura secundária predita com
+ a atribuída pelo DSSP.
  
 \end_layout
 
@@ -537,18 +578,18 @@ A avaliação da acurácia da rede foi medida utilizando a métrica
 \end_inset
 
  pode ser hélice (
-\begin_inset Formula $h$
+\begin_inset Formula $H$
 \end_inset
 
- ), fita (
-\begin_inset Formula $e$
+), fita (
+\begin_inset Formula $E$
 \end_inset
 
- ) ou coil (
-\begin_inset Formula $c$
+) ou coil (
+\begin_inset Formula $C$
 \end_inset
 
- ) (Equação 
+) (Equação 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:q3"
@@ -572,7 +613,7 @@ reference "eq:q3"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Q_{3}=\frac{Q_{h}+Q_{e}+Q_{c}}{3}\label{eq:q3}
+Q_{3}=\frac{Q_{H}+Q_{E}+Q_{C}}{3}\label{eq:q3}
 \end{equation}
 
 \end_inset
@@ -601,18 +642,18 @@ onde
 \end_inset
 
  pode ser hélice (
-\begin_inset Formula $h$
+\begin_inset Formula $H$
 \end_inset
 
- ), fita (
-\begin_inset Formula $e$
+), fita (
+\begin_inset Formula $E$
 \end_inset
 
- ) ou coil (
-\begin_inset Formula $c$
+) ou coil (
+\begin_inset Formula $C$
 \end_inset
 
- ), 
+), 
 \begin_inset Formula $VP_{i}$
 \end_inset
 
@@ -663,7 +704,8 @@ vazia
 \end_inset
 
  N ou C terminal.
- 
+ A representação dessas posições vazias é necessária para a predição dos
+ primeiros e últimos oito resíduos.
 \end_layout
 
 \begin_layout Standard
@@ -711,6 +753,7 @@ reference "eq:softmax_function"
  Assim, os valores de saída da rede neural representam as probabilidades
  dos elementos de estrutura secundária (hélice, fita e coil) do resíduo
  central da janela de 17 aminoácidos.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -733,8 +776,11 @@ reference "eq:cross_entropy"
 
 \end_inset
 
-) como função de custo, ao invés da função de erro quadrático médio (MSE)
- utilizado no trabalho original.
+) como função de custo, ao invés da função de erro quadrático médio (
+\emph on
+Mean squared error
+\emph default
+ - MSE) utilizado no trabalho original.
 \begin_inset Formula 
 \begin{equation}
 H(p,q)=-\sum_{i}p_{i}\log q_{i}\label{eq:cross_entropy}
@@ -743,6 +789,32 @@ H(p,q)=-\sum_{i}p_{i}\log q_{i}\label{eq:cross_entropy}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Na equação da entropia cruzada (Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:cross_entropy"
+
+\end_inset
+
+) 
+\begin_inset Formula $i$
+\end_inset
+
+ são as três classes (hélice, fita e coil) para cada resíduo, 
+\begin_inset Formula $p$
+\end_inset
+
+ é a probabilidade observada, a qual será 1 para a classe atribuída ao resíduo,
+ e 
+\begin_inset Formula $q$
+\end_inset
+
+ é a probabilidade predita pela rede neural para a classe.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -790,7 +862,7 @@ A principal diferença encontra-se na camada de saída onde foram utilizados
 \begin_layout Standard
 O conjunto de dados contendo informação da estrutura secundária de 6800
  proteínas foi divido em 3 subconjuntos: (1) treinamento com 5000 proteínas,
- (2) validação com 300 proteínas e (2) teste com 1500 proteínas.
+ (2) validação com 500 proteínas e (3) teste com 1249 proteínas.
  
 \end_layout
 
@@ -844,6 +916,16 @@ nr
 \emph default
 ).
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Qual ref? psi pred e psiblast
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -851,7 +933,14 @@ Resultados
 \end_layout
 
 \begin_layout Subsection
-Rede neural similar ao modelo de Holley e Karplus
+Rede neural similar ao modelo de Holley e Karplus 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Rede-neural-hk"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -859,9 +948,11 @@ Influência da atribuição na predição
 \end_layout
 
 \begin_layout Standard
-Os resultado demonstraram que os resíduos que apresentam consenso entre
+Os resultados demonstraram que os resíduos que apresentam consenso entre
  os métodos de atribuição de estrutura secundária são preditos com maior
- acurácia (Tabela abaixo, coluna 
+ acurácia independentemente do método de atribuição utilizado durante o
+ treinamento (Consenso, DSSP, STRIDE, KAKSI ou PROSS) (Tabela abaixo, coluna
+ 
 \begin_inset Quotes sld
 \end_inset
 
@@ -869,19 +960,27 @@ Teste consenso
 \begin_inset Quotes srd
 \end_inset
 
-).
- Isso ocorreu independente de qual a fonte dos dados utilizado para o treinament
-o (Consenso, DSSP, STRIDE, KAKSI ou PROSS).
+) 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+resolver label e legenda
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-Na rede com maior acurácia, com 64 neurônicos na camada oculta e treinada
+Na rede com maior acurácia, com 64 neurônios na camada oculta e treinada
  apenas com os resíduos que apresentaram consenso, a acurácia no conjunto
- de teste para os dados de consenso foi de 75,27%, enquanto a acurácia com
- dados dos métodos de atribuição individuais foi de aproximadamente 68%.
- O valores da tabela abaixo correspondem a média de 5 treinamentos para
+ de teste para os dados de consenso foi de 75,27%, enquanto a acurácia em
+ relação aos métodos de atribuição individuais foi de aproximadamente 68%.
+ O valores da tabela abaixo correspondem a média de cinco treinamentos para
  cada rede.
- O desvio padrão todos os casos foi inferior a 0,006.
+ O desvio padrão para todos os casos foi inferior a 0,006.
 \end_layout
 
 \begin_layout Standard
@@ -3866,15 +3965,15 @@ PROSS
 
 \begin_layout Standard
 Considerando que 74,4% dos resíduos apresentam consenso entre os métodos
- de atribuição de estrutura secundária atribuida (ver seção 
+ de atribuição de estrutura secundária (ver seção 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:cap1-resultados"
 
 \end_inset
 
-), é possível estimar a acurácia para as regiões de dissenso como próxima
- a 48%.
+) e uma acurácia na predição próxima 75% para os mesmos, é possível estimar
+ a acurácia média para as regiões de dissenso como próxima a 48%.
 \end_layout
 
 \begin_layout Standard
@@ -3897,12 +3996,32 @@ Q_{3}dissenso\simeq0,476
 \end_layout
 
 \begin_layout Standard
-É interessante notar que a predição utilizando somente dados de consenso
- apresenta maior acurácia para o método de predição PROSS, do que para os
- demais métodos de atribuição.
+É interessante notar que a predição utilizando somente os dados em que há
+ consenso apresentou maior acurácia para o método de predição PROSS do que
+ para os demais métodos de atribuição.
  Entretanto, quando a rede neural é treinada com os dados de atribuição
  do PROSS, a rede neural apresenta a menor acurácia para os resíduos com
  consenso.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Quotes sld
+\end_inset
+
+Se PROSS X PROSS chega a 70% esse método explicaria melhor o dissenso?
+\begin_inset Quotes srd
+\end_inset
+
+ Para pensar...
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -3912,10 +4031,9 @@ Análise do treinamento
 \begin_layout Standard
 Analisamos a influência do número de neurônios na camada oculta durante
  o treinamento por 1000 épocas.
- Cada época corresponde a utilização de todos os dados do conjunto de treinament
-o, ou seja, o conjunto é apresentadoa à rede neural 1000 vezes para que
- os pesos, ou parâmetros, sejam otimizados buscando a redução da entropia
- cruzada.
+ Cada época corresponde à utilização de todos os dados do conjunto de treinament
+o, ou seja, o conjunto é apresentado à rede neural 1000 vezes para que os
+ pesos, ou parâmetros, sejam otimizados buscando a redução da entropia cruzada.
 \end_layout
 
 \begin_layout Standard
@@ -3948,13 +4066,39 @@ reference "fig:Treinamento-das-redes"
  uma maior diferença entre a entropia cruzada no conjunto de treinamento
  e o conjunto de validação.
  Notamos ainda que a entropia cruzada próxima a época 1000 apresenta uma
- tendência de redução e, consequentemente, uma tendência em aumentar a diferença
- da entropia entre os conjuntos.
+ tendência de continuar diminuindo e, consequentemente, uma tendência em
+ aumentar a diferença da entropia cruzada entre os conjuntos.
  Esse fato, juntamente com a semelhança entre os valores de entropia cruzada
  para o conjunto de validação nas redes com 32, 64 e 128 neurônios, são
  fortes indicativos da ocorrência de sobreajuste na rede com 128 neurônios
  na camada oculta.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Quotes sld
+\end_inset
+
+A tendência de aumento começa bem antes por volta da época 400.
+\begin_inset Quotes srd
+\end_inset
+
+ O problema é que há a tendência dela continuar em queda, se ela fosse menor,
+ mas estivesse estável (como a 64) não haveria problema.
+ Quando ela continua caindo, a entropia do conjunto de validação e de teste
+ tende a seguir no sentido oposto, ou seja, aumentar.
+ O maior problema do sobreajuste não é aprender muito os dados de treinamento,
+ mas desaprender o resto.
+ Aí há perda de generalização.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4020,13 +4164,13 @@ A rede neural similar ao modelo de Holley e Karplus apresentou uma maior
 \end_inset
 
  foi observada em outros trabalhos [?].
- Entre as causas sugeridas para a menor acurácia está a caractística não
- local da formação de folhas 
+ Entre as causas sugeridas para a menor acurácia está dependência de resíduos
+ distantes na formação de folhas 
 \begin_inset Formula $\beta$
 \end_inset
 
-, as quais são formadas por fitas muitas vezes distantes na sequência de
- aminoácidos.
+, fator que não é considerado num método que utiliza janelas de entradadas
+ quais são formadas por fitas muitas vezes distantes na sequência de aminoácidos.
  Outra possível causa da menor acurácia é o menor número, nos conjuntos
  de dados, de resíduos que compõem as fitas 
 \begin_inset Formula $\beta$
@@ -5936,6 +6080,12 @@ Teste
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Tab-hk-ac-ss"
+
+\end_inset
+
 Tabela
 \end_layout
 

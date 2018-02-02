@@ -3649,49 +3649,5 @@ status open
 Conclusão
 \end_layout
 
-\begin_layout Standard
-Ao propormos a utilização de autômatos celulares para a predição de estruturas
- secundárias nosso objetivo era observar indícios de como a estrutura secundária
- poderia se organizar a partir da sequência de aminoácidos.
- Entretanto, durante o desenvolvimento do método, diversos problemas foram
- sendo enfrentados, alguns dos quais, não haviam sido previstos por nós.
-\end_layout
-
-\begin_layout Standard
-O primeiro obstáculo era a dificuldade em se resolver o problema inverso
- dos autômatos celulares.
- Esse desafio já era de nosso conhecimento por ser algo discutido na literatura.
- Ganguly e colaboradores 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "ganguly_survey_2003"
-
-\end_inset
-
- escreveram:
-\end_layout
-
-\begin_layout Quote
-The inverse problem of deducing the local rules from a given global behavior
- is extremely difficult.
- There have been some efforts, with limited success, to build the attractor
- basin according to a given design specification (...) most popular methodology
- to address the inverse problem of mapping the global behavior to local
- CA rules are based on evolutionary computation techniques namely genetic
- algorithms and simulated annealing.
-\end_layout
-
-\begin_layout Standard
-Esse problema foi enfrentado com a implementação de um algoritmo de estimação
- de distribuição (EDA) de forma distribuída, possibilitando a utilização
- de infraestrutura de computação de alto desempenho.
- Consequentemente, isso possibilitou o aumento no número de proteínas em
- nosso conjunto de treinamento.
-\end_layout
-
-\begin_layout Standard
-Um dos problemas 
-\end_layout
-
 \end_body
 \end_document
