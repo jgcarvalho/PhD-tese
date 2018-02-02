@@ -41,9 +41,9 @@
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
-\biblio_style unsrt
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style unsrtnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -118,10 +118,13 @@ key "rose_backbone-based_2006"
 \end_layout
 
 \begin_layout Standard
-Dessa forma, devido ao princípio da relação estrutura ↔ função e a resultados
- experimentais que demonstraram que a estrutura é determinada pela sequência
- de aminoácidos, diversos trabalhos buscaram prever a estrutura de uma proteína
- a partir da sua sequência de resíduos.
+Dessa forma, devido ao princípio da relação estrutura 
+\begin_inset Formula $\leftrightarrow$
+\end_inset
+
+ função e a resultados experimentais que demonstraram que a estrutura é
+ determinada pela sequência de aminoácidos, diversos trabalhos buscaram
+ prever a estrutura de uma proteína a partir da sua sequência de resíduos.
  Alguns dos primeiros trabalhos a discutir uma forma de predição foram publicado
 s por Levinthal (1968; 1969) 
 \begin_inset CommandInset citation
@@ -553,10 +556,14 @@ key "helles_comparative_2008"
 \end_layout
 
 \begin_layout Section
+\begin_inset Note Note
+status open
+
+\begin_layout Section
 Proteínas
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 As proteínas estão envolvidas em diversas funções biológicas como suporte
  estrutural, catálise, transporte e regulação.
 \end_layout
@@ -565,18 +572,18 @@ As proteínas estão envolvidas em diversas funções biológicas como suporte
 Organização estrutural
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 A estrutura proteica é classificada em quatro níveis: a estrutura primária,
  secundária, terciária e quaternária.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 A estrutura primária corresponde a sequência de aminoácidos da cadeia polipeptíd
 ica.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 A estrutura secundária consiste em padrões locais que são determinados pelas
  ligações de hidrôgênio entre átomos da cadeia principal ou pelos ângulos
  torcionais PHI e PSI.
@@ -588,7 +595,7 @@ A estrutura secundária consiste em padrões locais que são determinados pelas
 Processo de enovelamento
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 O problema do enovelamento de proteínas é a questão de como são formadas
  ou organizadas suas estruturas atômicas tridimensionais.
  Essa questão surgiu no final da década de 50, logo após a resolução atômica
@@ -597,7 +604,7 @@ O problema do enovelamento de proteínas é a questão de como são formadas
 e maior que as antecipadas pelas teorias da época sobre estruturas proteicas.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Posteriormente, Anfinsen [2] realizou experimentos que demonstraram que
  a ribonuclease poderia ser reversamente desnaturada/renaturada in vitro,
  e que em condições desnaturantes, tanto a estrutura quanto a função eram
@@ -606,7 +613,7 @@ Posteriormente, Anfinsen [2] realizou experimentos que demonstraram que
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 A conclusão foi que, apesar da grande complexidade observada, as proteínas
  se auto-organizavam estruturalmente.
  Assim, apenas a informação contida em sua sequência de aminoácidos seria
@@ -617,7 +624,7 @@ A conclusão foi que, apesar da grande complexidade observada, as proteínas
  estado nativo [3].
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Devido ao princípio da relação estrutura ↔ função e aos resultados experimentais
  que demonstraram que a estrutura é determinada pela sequência de aminoácidos,
  diversos trabalhos buscaram prever a estrutura de uma proteína a partir
@@ -632,7 +639,7 @@ s por Levinthal [4, 5].
  Esta observação ficou popularmente conhecida como Paradoxo de Levinthal.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Levinthal não considerou isso como um resultado absurdo, mas baseou-se nessa
  análise para concluir que um mecanismo aleatório para o enovelamento não
  seria válido [6].
@@ -647,7 +654,7 @@ We feel that protein folding is speeded and guided by the rapid formation
  peptide.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Apesar da sugestão de Levinthal para explicar um possível mecanismo de enovelame
 nto ter sido publicado há 45 anos, o desafio de se prever as estruturas
  tridimensionais das proteínas a partir de suas sequências de aminoácidos,
@@ -659,7 +666,7 @@ a de proteínas por difração de raios-X e o de ressonância magnética nuclear
  atômica.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 No entanto, métodos experimentais de resolução da estrutura proteica apresentam
  diversas dificuldades técnicas.
  Por exemplo, na cristalografia por difração de raios-X é necessária a obtenção
@@ -674,7 +681,7 @@ No entanto, métodos experimentais de resolução da estrutura proteica apresent
  (≈ 67 milhões depositadas no UniProtKB/TrEMBL – dados de 09/2016).
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Consequentemente, a busca por métodos computacionais capazes de prever estrutura
 s proteicas continua uma área de grande interesse científico, tanto como
  uma forma de se conhecer melhor o mecanismo de enovelamento como também
@@ -689,6 +696,11 @@ Formação das ALPHA-hélices
 
 \begin_layout Subsection
 Formação das folhas-BETA
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

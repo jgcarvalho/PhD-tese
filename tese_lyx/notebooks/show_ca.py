@@ -1,7 +1,7 @@
 
 
 PATH='/home/jgcarvalho/zeca-results-analysis/zeca-analyse-pos_quali/Top8000-best_hom50_pdb_chain/cba/rose_special_charged/run_10000/tmp/'
-FILE='2ccqA'
+FILE='2rldD'
 
 header = """
 <!DOCTYPE html>

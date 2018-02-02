@@ -2739,7 +2739,19 @@ do conjunto de regras.
 \end_layout
 
 \begin_layout Standard
-Inicialmente utilizamos uma medida da acurácia como:
+Inicialmente utilizamos como medida da acurácia o próprio Q
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+.
+ Para o cálculo, o estado de estrutura secundária mais frequente para cada
+ resíduo foi considerado como o resultado da predição para o resíduo.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2751,7 +2763,119 @@ Essa medida inicial foi utilizada para avaliar o desempenho dos quatro modelos
 \begin_layout Standard
 Posteriormente, decidimos avaliar outras métricas de acurácia para tentar
  melhorar a capacidade preditiva do modelo vencedor.
- Essas outras métricas testadas foram o CBA, MCC e o CE.
+ Essas outras métricas testadas foram o CBA (
+\emph on
+Class Balance Accuracy
+\emph default
+) , MCC (
+\emph on
+Matthews correlation coefficient
+\emph default
+) e a CE (
+\emph on
+Cross Entropy
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+CBA é definido como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+CBA=\frac{\sum_{i}^{k}\frac{c_{ii}}{\max(c_{i.},c_{.i})}}{k}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Onde 
+\begin_inset Formula $C^{k}$
+\end_inset
+
+ é uma matriz de confusão.
+\end_layout
+
+\begin_layout Standard
+MCC é definido como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+MCC=\frac{TP\times TN-FP\times FN}{\sqrt{(TP+FP)(TP+FN)(TN+FP)(TN+FN)}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+para aplicá-lo a um problema com múltiplas classes, nós utilizamos: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+TP & = & TP_{H}+TP_{E}+TP_{C}\\
+TN & = & TN_{H}+TN_{E}+TN_{C}\\
+TP & = & FP_{H}+FP_{E}+FP_{C}\\
+FN & = & FN_{H}+FN_{E}+FN_{C}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+E a entropia cruzada por resíduo é (
+\begin_inset Formula $CE_{r}$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+CE_{r}=-\sum_{i}p(\hat{y})\ln(y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+onde 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+ é probabilidade observada experimentalmente para estrutura secundária de
+ um resíduo da proteína.
+ Ou seja, ela será 1 para o elemento de estrutura secundária atribuído.
+ 
+\begin_inset Formula $y$
+\end_inset
+
+ será a frequência dos estados de estrutura secundária durante a evolução
+ do AC.
+ A 
+\begin_inset Formula $CE$
+\end_inset
+
+ final é a média das 
+\begin_inset Formula $CE_{r}$
+\end_inset
+
+ calculadas para cada resíduo que apresentou consenso da estrutura secundária.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2924,16 +3048,106 @@ Resultados
 Seleção do modelo de autômato celular
 \end_layout
 
-\begin_layout Subsection
-Análise da predição de estruturas secundárias
-\end_layout
-
 \begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 Analise dos modelos de AC (selecao do modelo estendido) 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A capacidade dos quatro modelos de autômatos celulares foram testadas num
+ conjunto reduzido de proteínas.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/chamel_errors_ca.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Análise da predição de estruturas secundárias
+\end_layout
+
+\begin_layout Standard
+As análises da capacidade de predição de estruturas secundárias foram realizadas
+ para o modelo quatro dos autômatos celulares testados, o qual utiliza os
+ contextos polar, apolar, glicina, prolina, positivo e negativo.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/zeca-treinamento.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -2962,7 +3176,8 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename figures/ca_q3_func_fit.pdf
+	filename figures/zeca-q3.pdf
+	width 100line%
 
 \end_inset
 
@@ -2998,7 +3213,82 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename figures/ca_qh_qe_qc_func_fit.pdf
+	filename figures/zeca-qh.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/zeca-qe.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/zeca-qc.pdf
+	width 100line%
 
 \end_inset
 
@@ -3090,11 +3380,85 @@ analise de um caso de sucesso
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/ca-good-pred-2ccqA.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 analise de um fracasso
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/ca-bad-pred-2rldD.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset

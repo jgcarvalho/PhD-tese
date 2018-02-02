@@ -2739,7 +2739,19 @@ do conjunto de regras.
 \end_layout
 
 \begin_layout Standard
-Inicialmente utilizamos uma medida da acurácia como:
+Inicialmente utilizamos como medida da acurácia o próprio Q
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+.
+ Para o cálculo, o estado de estrutura secundária mais frequente para cada
+ resíduo foi considerado como o resultado da predição para o resíduo.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2751,7 +2763,119 @@ Essa medida inicial foi utilizada para avaliar o desempenho dos quatro modelos
 \begin_layout Standard
 Posteriormente, decidimos avaliar outras métricas de acurácia para tentar
  melhorar a capacidade preditiva do modelo vencedor.
- Essas outras métricas testadas foram o CBA, MCC e o CE.
+ Essas outras métricas testadas foram o CBA (
+\emph on
+Class Balance Accuracy
+\emph default
+) , MCC (
+\emph on
+Matthews correlation coefficient
+\emph default
+) e a CE (
+\emph on
+Cross Entropy
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+CBA é definido como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+CBA=\frac{\sum_{i}^{k}\frac{c_{ii}}{\max(c_{i.},c_{.i})}}{k}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Onde 
+\begin_inset Formula $C^{k}$
+\end_inset
+
+ é uma matriz de confusão.
+\end_layout
+
+\begin_layout Standard
+MCC é definido como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+MCC=\frac{TP\times TN-FP\times FN}{\sqrt{(TP+FP)(TP+FN)(TN+FP)(TN+FN)}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+para aplicá-lo a um problema com múltiplas classes, nós utilizamos: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+TP & = & TP_{H}+TP_{E}+TP_{C}\\
+TN & = & TN_{H}+TN_{E}+TN_{C}\\
+TP & = & FP_{H}+FP_{E}+FP_{C}\\
+FN & = & FN_{H}+FN_{E}+FN_{C}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+E a entropia cruzada por resíduo é (
+\begin_inset Formula $CE_{r}$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+CE_{r}=-\sum_{i}p(\hat{y})\ln(y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+onde 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+ é probabilidade observada experimentalmente para estrutura secundária de
+ um resíduo da proteína.
+ Ou seja, ela será 1 para o elemento de estrutura secundária atribuído.
+ 
+\begin_inset Formula $y$
+\end_inset
+
+ será a frequência dos estados de estrutura secundária durante a evolução
+ do AC.
+ A 
+\begin_inset Formula $CE$
+\end_inset
+
+ final é a média das 
+\begin_inset Formula $CE_{r}$
+\end_inset
+
+ calculadas para cada resíduo que apresentou consenso da estrutura secundária.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2985,7 +3109,114 @@ Análise da predição de estruturas secundárias
 \end_layout
 
 \begin_layout Standard
-O modelo quatro de autômato celular foi aplicado ao 
+As análises da capacidade de predição de estruturas secundárias foram realizadas
+ para o modelo quatro dos autômatos celulares testados, o qual utiliza os
+ contextos polar, apolar, glicina, prolina, positivo e negativo.
+\end_layout
+
+\begin_layout Standard
+Na otimização das regras do AC utilizando o subconjunto de treinamento nós
+ utilizamos como funções de 
+\emph on
+fitness 
+\emph default
+as métricas CBA, MCC e CE.
+ Essas métricas foram utilizadas pois notamos que o uso direto do Q
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+ não era eficaz no treinamento com classes desbalanceadas.
+\end_layout
+
+\begin_layout Standard
+Durante o treinamento por 1000 gerações do EDA não foi observada convergência
+ da população.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+discutir melhor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/zeca-treinamento.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+O AC treinado utilizando como função de 
+\emph on
+fitness 
+\emph default
+o CBA foi o que apresentou a melhor acurácia, tanto para o subconjunto de
+ treinamento quanto para o de teste.
+ Entretanto, a acurácia média do modelo foi de apenas 62,6% (Q
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+) para o conjunto de teste.
+ A entropia cruzada (CE) e o MCC obtiveram menor acurácia, 53,4% e 51,1%,
+ respectivamente.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+62,2 51,1 53,4
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3039,6 +3270,35 @@ status open
 \end_layout
 
 \begin_layout Standard
+A acurácia na predição de hélices (Q
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+H
+\end_layout
+
+\end_inset
+
+) foi maior no modelo treinado utilizando a entropia cruzada, com valor
+ próximo a 73,6%.
+ O treinamento com CBA apresentou acurácia de 66,7% e o com MCC, acurácia
+ de 60,5%.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+66,7 60,5 73,6
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -3076,6 +3336,34 @@ status open
 \end_layout
 
 \begin_layout Standard
+A acurácia para hélices (Q
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+E
+\end_layout
+
+\end_inset
+
+) foi de 52,2% para o modelo treinado com CBA, 37,8% para o treinado com
+ MCC e 21% para o treinado com CE.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+52,2 37,8 21,0
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -3103,8 +3391,31 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+A acurácia na predição de coil (Q
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+
+) foi de 69,0% no modelo treinado utilizando CBA, 67,6% no que utilizou
+ CE e 53,1% utilizando MCC.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+69,0 53,1 67,6
 \end_layout
 
 \end_inset
@@ -3140,13 +3451,42 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Além da baixa acurácia, as estruturas secundárias preditas pelos autômatos
+ celulares apresentaram comprimentos inferiores aos observados em estruturas
+ secundárias de proteínas com estrutura resolvida.
+ A mediana de hélices foi de apenas 4 resíduos enquanto que a mediana esperada
+ seria entre 8 e 12 resíduos (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-do-comprimento-helices"
+
+\end_inset
+
+).
+ Fitas e coils apresentam, respectivamente, medianas de 3 e 4 resíduos para
+ o AC treinado com CBA.
+ O esperado nestes casos seriam 5 resíduos para fitas e 4 resíduos para
+ coils (Figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-do-comprimento_fitas"
+
+\end_inset
+
+ e
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-do-comprimento_coil"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -3200,11 +3540,54 @@ status open
 \end_layout
 
 \begin_layout Standard
+Através da observação da evolução do autômato celular treinado com CBA notamos
+ que há uma rápida convergência ou estabilidade dos estados.
+ Ao proporNós esperavamos 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 analise de um caso de sucesso
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/ca-good-pred-2ccqA.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -3225,18 +3608,49 @@ analise de um fracasso
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/ca-bad-pred-2rldD.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Conclusão
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "cha:template"
 
-\end_inset
-
-Ibis redibis numquam peribis in bello.
 \end_layout
 
 \end_body
