@@ -86,7 +86,14 @@ Redes neurais com mais de uma camada oculta de neurônios são chamadas de
  capazes de integrar atributos de vários níveis de abstração de maneira
  hierárquica.
  Isso ocorre porque cada camada oculta de neurônios constrói atributos derivados
- a partir da informação contida nas camadas anteriores [?livro].
+ a partir da informação contida nas camadas anteriores 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "goodfellow_deep_2016"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -205,12 +212,21 @@ Por outro lado, os autômatos celulares possuem a vantagem de facilitar a
 \end_layout
 
 \begin_layout Standard
-Entretanto, como demonstrado no capítulo anterior, a definição de um modelo
- de autômatos celulares capazes de representar a estrutura secundária é
- limitada pela dificuldade de se buscar regras que reproduzam o comportamento
- esperado.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+INCLUIR NA DISCUSSÃO Entretanto, como demonstrado no capítulo anterior,
+ a definição de um modelo de autômatos celulares capazes de representar
+ a estrutura secundária é limitada pela dificuldade de se buscar regras
+ que reproduzam o comportamento esperado.
  Ou seja, pela grande dificuldade imposta pelo problema inverso dos autômatos
  celulares.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -227,9 +243,13 @@ Nesse capítulo, exploramos a utilização de redes neurais convolucionais
 status open
 
 \begin_layout Plain Layout
-Deep networks naturally integrate low/mid/high- level features [50] and
- classifiers in an end-to-end multi- layer fashion, and the “levels” of
- features can be enriched by the number of stacked layers (depth).
+SUGESTÃO PAULAO Nesse capítulo, mostramos a implementação de  redes neurais
+ convolucionais profundas para a predição de estrutura secundárias de proteínas.
+ Isto permitirá a comparação  com o uso de autômatos celulares para o mesmo
+ fim, desde que ambos permitem a propagação de padrões locais ao longo de
+ uma cadeia de estados iniciais.
+ É importante notar que apesar da mudança de modelo, o objetivo continua
+ ser predizer .
 \end_layout
 
 \end_inset
@@ -328,6 +348,16 @@ Na codificação da proteína, o número de canais é igual a 22 e cada um repre
 status open
 
 \begin_layout Plain Layout
+EXPLICAR o pq de 500
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Essa codificação permite testes com redes de até 250 blocos sem alteração
  nos dados.
 \end_layout
@@ -395,7 +425,7 @@ Através da codificação inicial da sequência no formato
 one hot encoding
 \emph default
  é possível apenas inferir se os aminoácidos são iguais ou diferentes.
- Consequentemente, um Aspartato diferirá igualmente de um Glutamato como
+ Consequentemente, um aspartato diferirá igualmente de um glutamato como
  de uma Fenilalanina, ou seja, essa codificação não contém qualquer informação
  sobre similaridades estruturais e/ou físico-químicas.
 \end_layout
@@ -437,6 +467,28 @@ A representação da segunda camada é mantida (residualmente) até a camada
  Os 3 canais finais estão relacionados aos 3 elementos de estrutura de secundári
 a e, após a aplicação da função Softmax, representam a probabilidade de
  cada um dos 3 elementos, hélice, fita e coil, para cada resíduo da proteína.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+O conceito clássico de convolução é valido neste caso? da wikipedia:
+\begin_inset Quotes erd
+\end_inset
+
+convolution is a mathematical operation on two functions (f and g) to produce
+ a third function, that is typically viewed as a modified version of one
+ of the original functions, giving the integral of the pointwise multiplication
+ of the two functions as a function of the amount that one of the original
+ functions is translated
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6277,8 +6329,17 @@ status open
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Conclusão
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

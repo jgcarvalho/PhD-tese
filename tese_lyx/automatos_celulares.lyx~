@@ -2798,7 +2798,7 @@ reference "fig:eda-prob"
 
 \end_inset
 
-onde cada um dos quatro estados de transição possíveis tem probabilidade
+) onde cada um dos quatro estados de transição possíveis tem probabilidade
  inicial de 25%.
  Isso ocorre para cada elemento do conjunto de regras com exceção de elementos
  cujo estado da célula central apresenta o estado de início/fim da cadeia
@@ -2810,7 +2810,9 @@ status open
 
 
 \backslash
-cell{#}
+cell{
+\backslash
+#}
 \end_layout
 
 \end_inset
@@ -2830,7 +2832,9 @@ status open
 
 
 \backslash
-cell{#}
+cell{
+\backslash
+#}
 \end_layout
 
 \end_inset
@@ -2856,7 +2860,9 @@ status open
 
 
 \backslash
-cell{#}
+cell{
+\backslash
+#}
 \end_layout
 
 \end_inset
@@ -3152,7 +3158,9 @@ status open
 
 
 \backslash
-cell{#}
+cell{
+\backslash
+#}
 \end_layout
 
 \end_inset
@@ -3166,7 +3174,9 @@ status open
 
 
 \backslash
-cell{#}
+cell{
+\backslash
+#}
 \end_layout
 
 \end_inset
@@ -3339,6 +3349,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
 <features tabularvalignment="middle">
@@ -3937,7 +3948,7 @@ Seleção do modelo de autômato celular
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4158,7 +4169,7 @@ da pelas redes HK (
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4171,7 +4182,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4254,7 +4265,7 @@ reference "fig:ac4-qh"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4339,7 +4350,7 @@ reference "fig:Estrutura-secundária-atribuída"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4409,7 +4420,7 @@ C
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4505,7 +4516,7 @@ reference "fig:Distribuição-do-comprimento_coil"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4612,7 +4623,7 @@ Entretanto, a baixa acurácia obtida pelo AC 4 em conjunto com a estabilidade
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4695,7 +4706,7 @@ Peptide-N(4)-(N-acetyl-beta-glucosaminyl) asparagine amidase
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4739,11 +4750,11 @@ Evolução do AC4 com a regra otimizada por EDA utilizando CBA como função
 fitness.
  
 \emph default
-O domínio PUB da proteína 
+A proteína sem função descrita
 \emph on
-Peptide-N(4)-(N-acetyl-beta-glucosaminyl) asparagine amidase 
+ 
 \emph default
-(PDB ID: 2CCQ) apresentou uma das maiores acurácias com 
+(PDB ID: 2RLD) apresentou uma das maiores acurácias com 
 \begin_inset Formula $Q_{3}=30\%$
 \end_inset
 
@@ -4774,7 +4785,7 @@ Peptide-N(4)-(N-acetyl-beta-glucosaminyl) asparagine amidase
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout

@@ -41,8 +41,8 @@
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
+\cite_engine natbib
+\cite_engine_type numerical
 \biblio_style plainnat
 \use_bibtopic false
 \use_indices false
@@ -62,11 +62,13 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author -1589230395 "Paulo S. L. de Oliveira"
+\author -1478677931 "Jose Geraldo de Carvalho Pereira"
 \end_header
 
 \begin_body
@@ -86,14 +88,31 @@ Redes neurais com mais de uma camada oculta de neurônios são chamadas de
  capazes de integrar atributos de vários níveis de abstração de maneira
  hierárquica.
  Isso ocorre porque cada camada oculta de neurônios constrói atributos derivados
- a partir da informação contida nas camadas anteriores 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "goodfellow_deep_2016"
+ a partir da informação contida nas camadas anteriores
+\change_inserted -1478677931 1517698315
+ 
+\change_unchanged
+ 
+\change_deleted -1589230395 1517327290
+[?livro].
+\change_inserted -1589230395 1517327290
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517327290
+[?livro].
+\change_unchanged
+
+\end_layout
 
 \end_inset
 
-.
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -212,30 +231,71 @@ Por outro lado, os autômatos celulares possuem a vantagem de facilitar a
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -1589230395 1517327636
+Entretanto, como demonstrado no capítulo anterior, a definição de um modelo
+ de autômatos celulares capazes de representar a estrutura secundária é
+ limitada pela dificuldade de se buscar regras que reproduzam o comportamento
+ esperado.
+ Ou seja, pela grande dificuldade imposta pelo problema inverso dos autômatos
+ celulares.
+\change_inserted -1589230395 1517327636
+
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-INCLUIR NA DISCUSSÃO Entretanto, como demonstrado no capítulo anterior,
- a definição de um modelo de autômatos celulares capazes de representar
- a estrutura secundária é limitada pela dificuldade de se buscar regras
- que reproduzam o comportamento esperado.
+
+\change_inserted -1589230395 1517327673
+Zé essa frase cabe melhor na discussão: Entretanto, como demonstrado no
+ capítulo anterior, a definição de um modelo de autômatos celulares capazes
+ de representar a estrutura secundária é limitada pela dificuldade de se
+ buscar regras que reproduzam o comportamento esperado.
  Ou seja, pela grande dificuldade imposta pelo problema inverso dos autômatos
  celulares.
+ 
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-Nesse capítulo, exploramos a utilização de redes neurais convolucionais
- profundas como um método alternativo ao uso de autômatos celulares.
+Nesse capítulo, 
+\change_deleted -1589230395 1517327733
+exploramos
+\change_inserted -1589230395 1517327747
+mostramos a implementação de 
+\change_deleted -1589230395 1517327752
+ a utilização de
+\change_unchanged
+ redes neurais convolucionais profundas 
+\change_inserted -1589230395 1517327901
+para a predição de estrutura secundárias de proteínas.
+ Isto permitirá a comparação 
+\change_deleted -1589230395 1517327922
+como um método alternativo a
+\change_inserted -1589230395 1517327926
+ com 
+\change_unchanged
+o uso de autômatos celulares
+\change_inserted -1589230395 1517328047
+ para o mesmo fim, desde que ambos permitem a propagação de padrões locais
+ ao longo de uma cadeia de estados iniciais
+\change_unchanged
+.
  É importante notar que apesar da mudança de modelo, o objetivo continua
- ser predizer a estrutura secundária a partir da informação contida unicamente
- na sequência de aminoácidos utilizando padrões locais que se propagam a
- longo da sequência.
+ ser predizer 
+\change_deleted -1589230395 1517327850
+a estrutura secundária a partir da informação contida unicamente na sequência
+ de aminoácidos utilizando padrões locais que se propagam a longo da sequência.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -243,13 +303,9 @@ Nesse capítulo, exploramos a utilização de redes neurais convolucionais
 status open
 
 \begin_layout Plain Layout
-SUGESTÃO PAULAO Nesse capítulo, mostramos a implementação de  redes neurais
- convolucionais profundas para a predição de estrutura secundárias de proteínas.
- Isto permitirá a comparação  com o uso de autômatos celulares para o mesmo
- fim, desde que ambos permitem a propagação de padrões locais ao longo de
- uma cadeia de estados iniciais.
- É importante notar que apesar da mudança de modelo, o objetivo continua
- ser predizer .
+Deep networks naturally integrate low/mid/high- level features [50] and
+ classifiers in an end-to-end multi- layer fashion, and the “levels” of
+ features can be enriched by the number of stacked layers (depth).
 \end_layout
 
 \end_inset
@@ -334,8 +390,26 @@ Na codificação da proteína, o número de canais é igual a 22 e cada um repre
  a ocorrência de um aminoácido ou a ausência deles como mencionado anteriormente.
  Uma das dimensões representa a cadeia polipeptídica e foi definida com
  tamanho 3000.
- Nessa dimensão, as primeiras 500 posições possuem o código de ausência
- de aminoácido anterior a proteína.
+ Nessa dimensão, as primeiras 500 posições
+\change_inserted -1589230395 1517407868
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517407906
+Zé poderia explicar melhor.
+ Eu não entendi a origem do #500
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ possuem o código de ausência de aminoácido anterior a proteína.
  A partir da posição 501, tem início os códigos que representam a sequência
  de resíduos da proteína.
  Após o término da sequência de resíduos, a matriz é preenchida com o código
@@ -415,9 +489,26 @@ Através da codificação inicial da sequência no formato
 one hot encoding
 \emph default
  é possível apenas inferir se os aminoácidos são iguais ou diferentes.
- Consequentemente, um Aspartato diferirá igualmente de um Glutamato como
- de uma Fenilalanina, ou seja, essa codificação não contém qualquer informação
- sobre similaridades estruturais e/ou físico-químicas.
+ Consequentemente, um 
+\change_inserted -1589230395 1517408013
+a
+\change_deleted -1589230395 1517408013
+A
+\change_unchanged
+spartato diferirá igualmente de um 
+\change_inserted -1589230395 1517408018
+g
+\change_deleted -1589230395 1517408017
+G
+\change_unchanged
+lutamato como de uma 
+\change_inserted -1589230395 1517408022
+f
+\change_deleted -1589230395 1517408021
+F
+\change_unchanged
+enilalanina, ou seja, essa codificação não contém qualquer informação sobre
+ similaridades estruturais e/ou físico-químicas.
 \end_layout
 
 \begin_layout Standard
@@ -449,7 +540,37 @@ reference "fig:Diagrama-de-uma"
 
 \begin_layout Standard
 A representação da segunda camada é mantida (residualmente) até a camada
- final, onde outra convolução 1x1 reduz o número de canais de 
+ final, onde outra convolução
+\change_inserted -1589230395 1517408703
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517408749
+O conceito clássico de convolução é valido neste caso? da wikipedia:
+\begin_inset Quotes erd
+\end_inset
+
+convolution is a mathematical operation on two functions (f and g) to produce
+ a third function, that is typically viewed as a modified version of one
+ of the original functions, giving the integral of the pointwise multiplication
+ of the two functions as a function of the amount that one of the original
+ functions is translated
+\begin_inset Quotes erd
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ 1x1 reduz o número de canais de 
 \begin_inset Formula $C$
 \end_inset
 
@@ -465,7 +586,25 @@ a e, após a aplicação da função Softmax, representam a probabilidade de
 \end_layout
 
 \begin_layout Standard
-A influência da vizinhança é computada nos blocos da rede residual.
+A influência da vizinhança é computada nos blocos da rede residual
+\change_inserted -1589230395 1517408850
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517408872
+Esta rede é representada na figura abaixo?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+.
  O primeiro bloco, ou terceira camada, recebe a saída da segunda camada
  e, após realizar seus cálculos, soma sua matriz de resultados a matriz
  de entrada.
@@ -489,6 +628,27 @@ reference "fig:Diagrama-de-uma"
  residualmente.
  Por essa características essa arquitetura de rede neural é chamada de rede
  residual.
+\change_inserted -1589230395 1517409004
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517409114
+Zé para mim nao fica claro se a rede residual é um subtipo da convolucional
+ ou uma redee paralela.
+ Talvez seja melhor trabalhar um pouco mais nestes parágrafos para clarificar
+ estas coisas para alguém mais da banca que não seja conhecedor de NNs 
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -557,16 +717,142 @@ name "fig:Diagrama-de-uma"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -1589230395 1517409552
+Em cada bloco são utilizados,em sequência, uma convolução 3x3, uma camada
+ de 
+\emph on
+batch normalization
+\emph default
+ [?], um ReLU, outra convolução 3x3, outra camada de
+\emph on
+ batch normalization
+\emph default
+ e um camada de 
+\emph on
+dropout 
+\emph default
+[?] para reduzir sobreajuste (
+\emph on
+overfitting
+\emph default
+)(Zagoruyko e Komodakis [2017] nas 
+\emph on
+Wide Residual Networks
+\emph default
+).
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517409589
+Essa é minha sugestão para os métodos, as outras frases são movidas para
+ a discussão
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1589230395 1517409180
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517409216
+Zé Para mim isso tudo já é discussão dos resultado: A proposta original
+ para as redes residuais utilizam uma função de ativação não linear do tipo
+ ReLU (
+\emph on
+Rectified Linear Unit
+\emph default
+) [?] ao longo do caminho residual [He, 2015].
+ Dentro do bloco são utilizados, em sequência, uma convolução 3x3, uma camada
+ de 
+\emph on
+batch normalization
+\emph default
+ [?], um ReLU, outra convolução 3x3 e outra camada de
+\emph on
+ batch normalization 
+\emph default
+(Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Blocos"
+
+\end_inset
+
+ a).
+ Posteriormente He e colaboradores [He, 2016] testaram diversas variações
+ dos blocos e notaram que a alteração da ordem das camadas e a mudança da
+ função de ativação do caminho residual para dentro do bloco melhoraram
+ o desempenho da rede residual (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Blocos"
+
+\end_inset
+
+ b).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517409255
+No entanto, alguns testes preliminares na fase de construção do nosso modelo
+ demonstravam uma queda de desempenho com a utilização da camada de 
+\emph on
+batch normalization
+\emph default
+ (resultados não mostrados).
+ Acreditamos que o motivo disso seja a influência das regiões com códigos
+ que representam a ausência de resíduos possam ter no código dos aminoácidos
+ e, uma vez que as cadeias polipeptídicas tem tamanhos diferentes para proteínas
+ diferentes, essa influência possivelmente não é constante.Por outro lado,
+ a retirada da camada de 
+\emph on
+batch normalization
+\emph default
+ tornava as redes testadas mais suscetível ao sobreajuste (
+\emph on
+overfitting
+\emph default
+).
+ A solução encontrada de regularização foi utilizar um camada de 
+\emph on
+dropout 
+\emph default
+[?] dentro do bloco, como utilizado por Zagoruyko e Komodakis [2017] nas
+ 
+\emph on
+Wide Residual Networks
+\emph default
+.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted -1589230395 1517409180
 A proposta original para as redes residuais utilizam uma função de ativação
  não linear do tipo ReLU (
 \emph on
@@ -605,6 +891,8 @@ reference "fig:Blocos"
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -1589230395 1517409180
 No entanto, alguns testes preliminares na fase de construção do nosso modelo
  demonstravam uma queda de desempenho com a utilização da camada de 
 \emph on
@@ -615,9 +903,13 @@ batch normalization
  que representam a ausência de resíduos possam ter no código dos aminoácidos
  e, uma vez que as cadeias polipeptídicas tem tamanhos diferentes para proteínas
  diferentes, essa influência possivelmente não é constante.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -1589230395 1517409240
 Por outro lado, a retirada da camada de 
 \emph on
 batch normalization
@@ -637,6 +929,8 @@ dropout
 Wide Residual Networks
 \emph default
 .
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -710,6 +1004,26 @@ A utilização de 4 blocos determina que a predição da estrutura secundária
  Ou seja, a medida que o número de blocos aumenta, resíduos mais distantes
  na sequência proteica irão influenciar na predição da estrutura secundária
  local.
+\change_inserted -1589230395 1517409667
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517409744
+Zé: aqui vale a pena vc colocar aquela figura que vc me explicou como ocorre
+ a plicação da convolução de cada bloco, caminhando pelo resulatdo da primeira
+ camada.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -773,7 +1087,26 @@ Análise do treinamento
 \begin_layout Standard
 O treinamento das redes residuais demonstrou que tanto o aumento do número
  de blocos quanto o aumento do número de canais reduz o erro no conjunto
- de dados de treinamento.
+ de dados de treinamento
+\change_inserted -1589230395 1517409809
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517409882
+Quanto isso muda com a quantidade e didiversidade do training set.
+ Se vc fizesse um bootstrap do TS vc esperaria mudança nos resultados? 
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+.
  Entretanto, nas redes com 11 e 21 blocos, a utilização de 32 canais (ou
  filtros) tornou a rede susceptível ao sobreajuste (
 \emph on
@@ -857,6 +1190,25 @@ status open
 \end_inset
 
 
+\change_inserted -1589230395 1517409973
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517410096
+Impressão minha ou a validação para 32 canais foi bem pior que o treinamento
+ de canais
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -896,6 +1248,24 @@ status open
 \end_inset
 
 
+\change_inserted -1589230395 1517410037
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517410104
+Muito bizarro esse comportamento de 32 cansis?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -913,6 +1283,24 @@ name "fig:resnet_21_treinamento"
 
 \end_inset
 
+
+\change_inserted -1589230395 1517410144
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517410152
+Falta legenda da figura
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -5752,6 +6140,25 @@ name "tab:resnet-atribuicao"
 \end_inset
 
 
+\change_inserted -1589230395 1517410618
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517410672
+Zé Não se esqueça da legenda da figura.
+ Talvez pudesse fazer um highlight das celulas com melhores valores 
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -5761,6 +6168,24 @@ name "tab:resnet-atribuicao"
 
 \begin_layout Subsection
 Distribuição da acurácia
+\change_inserted -1589230395 1517410746
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517410806
+Os boxplots tem a mesma informação da tabela da seçaõ 1.3.2?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -5801,6 +6226,24 @@ status open
 
 \end_inset
 
+
+\change_inserted -1589230395 1517410860
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517410863
+Legenda
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -5917,6 +6360,24 @@ name "fig:resnet-comp-ss"
 
 \end_inset
 
+
+\change_inserted -1589230395 1517410872
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517410876
+Legenda
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -6093,6 +6554,25 @@ name "fig:resnet-11-cluster"
 \end_inset
 
 
+\change_inserted -1589230395 1517414465
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1589230395 1517414508
+Zé dificil não achar esses resultados fantasticos.
+ È uma detecção de padrão fora de série!
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -6136,155 +6616,29 @@ name "fig:resnet-21-cluster"
 \end_inset
 
 
-\end_layout
+\change_inserted -1589230395 1517414601
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Análise do processo de predição
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename figures/steps-good-pred-3eodA.pdf
-	height 100theight%
-	rotateAngle 90
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
+\change_inserted -1589230395 1517414840
+Colocar WFY juntos ofrmando cluster com MLIV é muito inteligente.
+ Os carregados juntos.
+ Prolina na raiz da aŕvore é relamente foda.
+ Espetacular! espero que a banca enxergue da mesma maneira kkkk Curiosamente
+ essa escala é muito parecida coma escala que uso no GA dos anticorpos.
+ Eu deixo todas as cargas do msm lado idependente de serem positivas ou
+ negativas kkk
+\change_unchanged
 
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figures/resnet-steps-good-pred-3eodA.png
-	width 100line%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figures/steps-bad-pred-1nxmA.pdf
-	height 100theight%
-	rotateAngle 90
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figures/resnet-steps-bad-pred-1nxmA.png
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
+\change_unchanged
 
 \end_layout
 

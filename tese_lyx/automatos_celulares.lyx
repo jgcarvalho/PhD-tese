@@ -2798,7 +2798,7 @@ reference "fig:eda-prob"
 
 \end_inset
 
-onde cada um dos quatro estados de transição possíveis tem probabilidade
+) onde cada um dos quatro estados de transição possíveis tem probabilidade
  inicial de 25%.
  Isso ocorre para cada elemento do conjunto de regras com exceção de elementos
  cujo estado da célula central apresenta o estado de início/fim da cadeia
@@ -2810,7 +2810,9 @@ status open
 
 
 \backslash
-cell{#}
+cell{
+\backslash
+#}
 \end_layout
 
 \end_inset
@@ -2830,7 +2832,9 @@ status open
 
 
 \backslash
-cell{#}
+cell{
+\backslash
+#}
 \end_layout
 
 \end_inset
@@ -2856,7 +2860,9 @@ status open
 
 
 \backslash
-cell{#}
+cell{
+\backslash
+#}
 \end_layout
 
 \end_inset
@@ -3152,7 +3158,9 @@ status open
 
 
 \backslash
-cell{#}
+cell{
+\backslash
+#}
 \end_layout
 
 \end_inset
@@ -3166,7 +3174,9 @@ status open
 
 
 \backslash
-cell{#}
+cell{
+\backslash
+#}
 \end_layout
 
 \end_inset
@@ -3339,6 +3349,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
 <features tabularvalignment="middle">
@@ -3348,7 +3359,7 @@ status open
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3357,7 +3368,7 @@ status open
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3366,7 +3377,7 @@ status open
 
 \end_inset
 </cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3395,7 +3406,7 @@ Observados
 </cell>
 </row>
 <row>
-<cell multirow="3" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
+<cell multirow="3" alignment="center" valignment="top" topline="true" rightline="true" rotate="90" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3404,7 +3415,7 @@ Preditos
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3413,7 +3424,7 @@ Preditos
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3422,7 +3433,7 @@ H
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3431,7 +3442,7 @@ E
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3451,7 +3462,7 @@ C
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3460,7 +3471,7 @@ H
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3472,7 +3483,7 @@ H
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3484,7 +3495,7 @@ H
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3507,7 +3518,7 @@ H
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3516,7 +3527,7 @@ E
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3528,7 +3539,7 @@ E
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3540,7 +3551,7 @@ E
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3563,7 +3574,7 @@ E
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3572,7 +3583,7 @@ C
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3584,7 +3595,7 @@ C
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3937,7 +3948,7 @@ Seleção do modelo de autômato celular
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4158,7 +4169,7 @@ da pelas redes HK (
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4171,7 +4182,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4254,7 +4265,7 @@ reference "fig:ac4-qh"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4339,7 +4350,7 @@ reference "fig:Estrutura-secundária-atribuída"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4409,7 +4420,7 @@ C
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4505,7 +4516,7 @@ reference "fig:Distribuição-do-comprimento_coil"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4612,7 +4623,7 @@ Entretanto, a baixa acurácia obtida pelo AC 4 em conjunto com a estabilidade
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4695,7 +4706,7 @@ Peptide-N(4)-(N-acetyl-beta-glucosaminyl) asparagine amidase
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4774,7 +4785,7 @@ A proteína sem função descrita
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout

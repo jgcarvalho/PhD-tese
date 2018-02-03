@@ -41,8 +41,8 @@
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine natbib
-\cite_engine_type numerical
+\cite_engine basic
+\cite_engine_type default
 \biblio_style plainnat
 \use_bibtopic false
 \use_indices false
@@ -86,7 +86,14 @@ Redes neurais com mais de uma camada oculta de neurônios são chamadas de
  capazes de integrar atributos de vários níveis de abstração de maneira
  hierárquica.
  Isso ocorre porque cada camada oculta de neurônios constrói atributos derivados
- a partir da informação contida nas camadas anteriores [?livro].
+ a partir da informação contida nas camadas anteriores 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "goodfellow_deep_2016"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -205,12 +212,21 @@ Por outro lado, os autômatos celulares possuem a vantagem de facilitar a
 \end_layout
 
 \begin_layout Standard
-Entretanto, como demonstrado no capítulo anterior, a definição de um modelo
- de autômatos celulares capazes de representar a estrutura secundária é
- limitada pela dificuldade de se buscar regras que reproduzam o comportamento
- esperado.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+INCLUIR NA DISCUSSÃO Entretanto, como demonstrado no capítulo anterior,
+ a definição de um modelo de autômatos celulares capazes de representar
+ a estrutura secundária é limitada pela dificuldade de se buscar regras
+ que reproduzam o comportamento esperado.
  Ou seja, pela grande dificuldade imposta pelo problema inverso dos autômatos
  celulares.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -227,9 +243,13 @@ Nesse capítulo, exploramos a utilização de redes neurais convolucionais
 status open
 
 \begin_layout Plain Layout
-Deep networks naturally integrate low/mid/high- level features [50] and
- classifiers in an end-to-end multi- layer fashion, and the “levels” of
- features can be enriched by the number of stacked layers (depth).
+SUGESTÃO PAULAO Nesse capítulo, mostramos a implementação de  redes neurais
+ convolucionais profundas para a predição de estrutura secundárias de proteínas.
+ Isto permitirá a comparação  com o uso de autômatos celulares para o mesmo
+ fim, desde que ambos permitem a propagação de padrões locais ao longo de
+ uma cadeia de estados iniciais.
+ É importante notar que apesar da mudança de modelo, o objetivo continua
+ ser predizer .
 \end_layout
 
 \end_inset
@@ -323,6 +343,16 @@ Na codificação da proteína, o número de canais é igual a 22 e cada um repre
  O tamanho foi pré-definido em 3000 para possibilitar que a cadeia polipeptídica
  mais longa em nosso conjunto de dados, a qual possui quase 2000 resíduos,
  tenha 500 códigos de ausência antes e depois.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+EXPLICAR o pq de 500
+\end_layout
+
+\end_inset
+
  
 \begin_inset Note Note
 status open
