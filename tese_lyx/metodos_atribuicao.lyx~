@@ -2581,10 +2581,14 @@ Frequência dos aminoácidos em regiões de dissenso.
 \end_layout
 
 \begin_layout Section
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Section
 Conclusão
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Uma das etapas iniciais no desenvolvimento de métodos de predição de estrutura
  secundária é a preparação dos dados de referência.
  Parte dessa preparação consiste na atribuição da estrutura secundária em
@@ -2596,7 +2600,7 @@ Uma das etapas iniciais no desenvolvimento de métodos de predição de estrutur
  ser importante para o desenvolvimento de preditores com maior acurácia.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Ao longo deste trabalho nós exploramos a utilização dos dados de cada um
  dos quatro métodos citados e sua influência no treinamento de preditores.
  Como veremos adiante, a utilização apenas de resíduos que apresentam consenso
@@ -2605,6 +2609,11 @@ Ao longo deste trabalho nós exploramos a utilização dos dados de cada um
  Neste contexto, melhor método de atribuição significa o que produziu os
  dados que resultaram no preditor com maior acurácia.
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

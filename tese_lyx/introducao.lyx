@@ -41,8 +41,8 @@
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine natbib
-\cite_engine_type numerical
+\cite_engine basic
+\cite_engine_type default
 \biblio_style unsrtnat
 \use_bibtopic false
 \use_indices false
@@ -1089,11 +1089,20 @@ key "srinivasan_physical_1999"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Os resultados observados na literatura sugerem a possibilidade do desenvolviment
 o de um algoritmo de predição de estruturas secundárias que recapitule a
  formação dessas estruturas locais durante o processo de enovelamento das
  proteínas.
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

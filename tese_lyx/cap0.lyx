@@ -41,8 +41,8 @@
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine natbib
-\cite_engine_type numerical
+\cite_engine basic
+\cite_engine_type default
 \biblio_style plainnat
 \use_bibtopic false
 \use_indices false
@@ -77,8 +77,8 @@ Organização da tese
 
 \begin_layout Standard
 Este trabalho está organizado em 3 partes.
- No capítulo 1 fazemos uma introdução sobre proteínas, sua organização estrutura
-l e o processo de enovelamento.
+ No capítulo 1 fazemos uma introdução sobre a organização estrutural de
+ proteínas e seu processo de enovelamento.
 \end_layout
 
 \begin_layout Standard
@@ -172,14 +172,15 @@ O capítulo 5, Redes Neurais Residuais, descreve a utilização de um método
 Deep Learning
 \emph default
 ) como uma alternativa aos autômatos celulares.
- Este método apresentou características que gostaríamos de observar nos
- autômatos celulares com a vantagem de ser mais simples e rápido de treinar.
- 
+ Este método apresentou melhor acurácia que os autômatos celulares e conservou
+ características que gostaríamos de observar nos autômatos celulares com
+ a vantagem de ser mais simples e rápido de treinar.
 \end_layout
 
 \begin_layout Standard
-Na última parte, que contém o capítulo 6 - Conclusão - discutimos os resultados
- obtidos ao longo do trabalho e quais as nossas perspectivas futuras.
+Na última parte, que contém o capítulo 6 - Discussão - e 7 - Conclusão -
+ discutimos os resultados obtidos ao longo do trabalho, nossas conclusões
+ e quais as perspectivas futuras.
  
 \end_layout
 

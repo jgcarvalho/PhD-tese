@@ -118,7 +118,7 @@ key "rose_backbone-based_2006"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Greyedout
 status collapsed
 
 \begin_layout Plain Layout
@@ -215,7 +215,7 @@ o:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Greyedout
 status collapsed
 
 \begin_layout Plain Layout
@@ -318,7 +318,7 @@ key "baker_protein_2001"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Greyedout
 status collapsed
 
 \begin_layout Plain Layout
@@ -438,7 +438,7 @@ key "helles_comparative_2008"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Greyedout
 status collapsed
 
 \begin_layout Plain Layout
@@ -578,7 +578,7 @@ key "kolodny_universe_2013"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Greyedout
 status collapsed
 
 \begin_layout Plain Layout
@@ -707,7 +707,7 @@ de novo
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Greyedout
 status collapsed
 
 \begin_layout Plain Layout
@@ -811,7 +811,7 @@ key "daggett_is_2003"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Greyedout
 status collapsed
 
 \begin_layout Plain Layout
@@ -950,7 +950,7 @@ key "otaki_secondary_2010"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Greyedout
 status collapsed
 
 \begin_layout Plain Layout
@@ -1053,7 +1053,7 @@ key "srinivasan_physical_1999"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Greyedout
 status collapsed
 
 \begin_layout Plain Layout
@@ -1089,6 +1089,10 @@ key "srinivasan_physical_1999"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Os resultados observados na literatura sugerem a possibilidade do desenvolviment
 o de um algoritmo de predição de estruturas secundárias que recapitule a
  formação dessas estruturas locais durante o processo de enovelamento das
@@ -1096,8 +1100,26 @@ o de um algoritmo de predição de estruturas secundárias que recapitule a
  
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+É necessário incluir os objetivos e explicar melhor a motivação
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
 status collapsed
 
 \begin_layout Plain Layout
@@ -1132,7 +1154,7 @@ key "helles_comparative_2008"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Greyedout
 status collapsed
 
 \begin_layout Plain Layout

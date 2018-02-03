@@ -41,8 +41,8 @@
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine natbib
-\cite_engine_type numerical
+\cite_engine basic
+\cite_engine_type default
 \biblio_style plainnat
 \use_bibtopic false
 \use_indices false
@@ -207,6 +207,10 @@ Apesar dos resultados não atingirem nossas expectativas, a motivação inicial
 
 \begin_layout Section
 Redes neurais profundas
+\end_layout
+
+\begin_layout Chapter
+Conclusão
 \end_layout
 
 \end_body

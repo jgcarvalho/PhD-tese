@@ -77,8 +77,8 @@ Organização da tese
 
 \begin_layout Standard
 Este trabalho está organizado em 3 partes.
- No capítulo 1 fazemos uma introdução sobre proteínas, sua organização estrutura
-l e o processo de enovelamento.
+ No capítulo 1 fazemos uma introdução sobre a organização estrutural de
+ proteínas e seu processo de enovelamento.
 \end_layout
 
 \begin_layout Standard
@@ -115,11 +115,11 @@ No capítulo 3, Métodos de Referência para a Predição de Estrutura Secundár
 \begin_layout Standard
 Um dos métodos realiza a predição da estrutura secundária utilizando diretamente
  a sequência de aminoácidos da proteína, sendo, nesse aspecto, similar aos
- propostos neste trabalho.
+ métodos propostos neste trabalho.
  Esse método, baseado em redes neurais artificiais, foi proposto em 1989.
  Na época, haviam poucas estruturas resolvidas experimentalmente para serem
  usadas no treinamento da rede neural.
- Assim, ao invés de utilizar a rede neural original, optamos por implementar
+ Assim, ao invés de utilizarmos a rede neural original, optamos por implementar
  uma rede neural similar e a treinamos utilizando o nosso conjunto de dados.
  Essa abordagem possibilitou uma comparação mais justa da capacidade preditiva
  do método.
@@ -129,8 +129,8 @@ Um dos métodos realiza a predição da estrutura secundária utilizando diretam
 \begin_layout Standard
 O outro método escolhido, PSIPRED, representa o estado da arte na predição
  de estruturas secundárias.
- Assim como o método anterior, ele faz uso de redes neurais artificais.
- Entretanto, o grande diferencial deste metódo está no uso de matrizes de
+ Assim como o método anterior, ele faz uso de redes neurais artificiais.
+ Entretanto, o grande diferencial deste método está no uso de matrizes de
  substituição de aminoácidos construídas através do alinhamento de proteínas
  similares (PSSM - 
 \emph on
@@ -141,15 +141,28 @@ Position Specific Scoring Matrix
  proteína, ele obtém, através do alinhamento, informações como regiões mais
  conservadas e substituições mais frequentes em cada posição.
  Como essas informações tem uma relação direta com a estrutura proteica,
- os métodos que utilizam PSSM atingem uma acurácia muito maior.
- O PSIPRED é um método atualizado constantemente, por isso, comparamos diretamen
-te os resultados da predição no nosso conjunto de proteínas.
+ os métodos que utilizam PSSM atingem uma acurácia maior.
+ O PSIPRED é um método atualizado frequentemente e por isso, comparamos
+ diretamente os resultados da predição no nosso conjunto de proteínas.
 \end_layout
 
 \begin_layout Standard
 O capítulo 4, Autômatos Celulares, descreve o desenvolvimento de um novo
- método proposto por nós.
- 
+ método de predição de estruturas secundárias utilizando autômatos celulares.
+ A busca de um conjunto de regras para os autômatos celulares, conhecido
+ como 
+\begin_inset Quotes sld
+\end_inset
+
+Problema Inverso
+\begin_inset Quotes srd
+\end_inset
+
+, foi realizada utilizando um algoritmo de estimação de distribuição (AED,
+ em inglês EDA).
+ Essa busca tem como objetivo encontrar um conjunto de regras capaz de reproduzi
+r o padrão de elementos de estrutura secundária a partir da sequência de
+ aminoácidos.
 \end_layout
 
 \begin_layout Standard
@@ -159,13 +172,15 @@ O capítulo 5, Redes Neurais Residuais, descreve a utilização de um método
 Deep Learning
 \emph default
 ) como uma alternativa aos autômatos celulares.
- Este método apresentou características que gostaríamos de observar nos
- autômatos celulares com a vantagem de ser mais simples e rápido de treinar.
+ Este método apresentou melhor acurácia que os autômatos celulares e conservou
+ características que gostaríamos de observar nos autômatos celulares com
+ a vantagem de ser mais simples e rápido de treinar.
 \end_layout
 
 \begin_layout Standard
-Na última parte, que contém o capítulo 6 - Conclusão - discutimos os resultados
- obtidos ao longo do trabalho e quais as perspectivas futuras.
+Na última parte, que contém o capítulo 6 - Discussão - e 7 - Conclusão -
+ discutimos os resultados obtidos ao longo do trabalho, nossas conclusões
+ e quais as perspectivas futuras.
  
 \end_layout
 

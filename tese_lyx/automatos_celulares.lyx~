@@ -41,8 +41,8 @@
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine natbib
-\cite_engine_type numerical
+\cite_engine basic
+\cite_engine_type default
 \biblio_style plainnat
 \use_bibtopic false
 \use_indices false
@@ -147,21 +147,20 @@ s.
 \end_layout
 
 \begin_layout Standard
-No primeiro modelo testado tais estados representavam apenas um dos três
- elementos de estrutura secundária, hélice, fita ou coil.
- Nos demais modelos, os estados que representam a estrutura secundária conserva,
- parcialmente, a informação do resíduo que originou a estrutura secundária.
+No primeiro modelo testado tais estados representam apenas um dos três elementos
+ de estrutura secundária, hélice, fita ou coil.
+ Nos demais modelos, os estados que representam a estrutura secundária conservam
+, parcialmente, a informação do resíduo que originou a estrutura secundária.
 \end_layout
 
 \begin_layout Standard
 A construção de autômatos celulares que reproduzam um padrão desejado implica
- na busca por um conjunto de regras capaz de conduzir a evolução do AC de
- um estado inicial, conhecido, até um estado final, também conhecido.
+ na busca por um conjunto de regras capazes de conduzir a evolução do AC
+ de um estado inicial, conhecido, até um estado final, também conhecido.
  Neste trabalho, o estado inicial é a sequência de resíduos da proteína
  e o estado final, sua estrutura secundária.
  Essa busca por um conjunto de regras, chamada de problema inverso, é um
- problema de otimização.
- O método utilizado para buscar estas regras foi um algoritmo de estimação
+ problema de otimização e para isso foi utilizado um algoritmo de estimação
  de distribuição (EDA - 
 \emph on
 Estimation of distribution algorithm
@@ -185,15 +184,14 @@ key "mitchell_complexity:_2009"
 .
  Autômatos celulares são modelos matemáticos para representar sistemas complexos
  que consistem num conjunto de células espacialmente discretas.
- Cada uma dessas células estão em um estado dentre um conjunto finito de
- estados possíveis.
+ Cada uma das células estão em um estado dentre um conjunto finito de estados
+ possíveis.
  Os autômatos celulares evoluem paralelamente, ou seja, o estado de cada
- célula evolui de maneira síncrona em passos discretos de tempo.
- Essa evolução ocorre de acordo com regras simples e determinísticas.
+ célula evolui de maneira síncrona em passos discretos de tempo e de acordo
+ com regras simples, locais e determinísticas.
  A evolução dos AC produz complexidade a partir do efeito cooperativo de
  elementos simples - as regras e as células - tratando-se portanto de uma
- complexidade emergente, que surge globalmente no sistema a partir de regras
- simples, locais e determinísticas 
+ complexidade emergente 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "wolfram_universality_1984"
@@ -222,19 +220,26 @@ key "ganguly_survey_2003"
 \end_layout
 
 \begin_layout Subsection
-Autômatos celulares elementares
+Autômatos celulares elementares 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:ace"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 O tipo mais simples de AC são os autômatos celulares elementares (ACE).
- Devido a sua simplicidade e semelhança com os modelos propostos neste trabalho,
- acreditamos que explicá-los nesta introdução seja útil para facilitar uma
- melhor compreensão.
+ Devido a sua simplicidade e a semelhança com os modelos propostos neste
+ trabalho, acreditamos que explicá-los nesta introdução seja útil para facilitar
+ uma melhor compreensão.
 \end_layout
 
 \begin_layout Standard
-Os ACE possuem espaço unidimensional, o qual pode ser representado por um
- conjunto linear de células (Figura 
+Os ACE possuem espaço unidimensional, o qual pode ser representado como
+ um conjunto linear de células (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:ace-espaco"
@@ -373,7 +378,7 @@ t
 \emph on
 t 
 \emph default
-e também do estado das duas células vizinha: uma a esquerda e uma a direita
+e também dos estados das duas células vizinhas: uma a esquerda e uma a direita
  (r=1).
 \end_layout
 
@@ -426,10 +431,15 @@ regra 110
 \begin_inset Formula $2^{8}$
 \end_inset
 
- (256) regras possíveis.
- Essas regras diferem pelos estados 
+ (256) regras possíveis, pois há dois estados possíveis para cada um dos
+ 8 elementos.
+ As regras diferem entre si pelos estados 
 \emph on
-t+1.
+t+1 
+\emph default
+dos elementos
+\emph on
+.
 \end_layout
 
 \end_inset
@@ -586,7 +596,7 @@ Autômatos celulares
 Neste trabalho foram utilizados autômatos celulares (AC) unidimensionais
  com vizinhança 1.
  Nesse aspecto, eles são semelhantes aos autômatos celulares elementares.
- Entretanto, a principal diferença ocorre nos estados possíveis de cada
+ Entretanto, a principal diferença ocorre nos estados possíveis para cada
  célula.
  
 \end_layout
@@ -719,7 +729,7 @@ cell{p}
 
 .
  Como o número de estados é igual para as três células temos que o número
- de elementos é 
+ de elementos no conjunto de regras é 
 \begin_inset Formula $n(S)^{3}$
 \end_inset
 
@@ -751,11 +761,18 @@ cell{c'}
 \end_inset
 
 .
- É importante notar que 
+ É importante notar que no nosso modelo 
 \begin_inset Formula $S\neq S'$
 \end_inset
 
-.
+, enquanto que nos ACE (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:ace"
+
+\end_inset
+
+) ambos são iguais a 2.
 \end_layout
 
 \begin_layout Standard
@@ -1157,7 +1174,16 @@ Nos demais três modelos nós adicionamos uma informação que indica o contexto
 \end_layout
 
 \begin_layout Standard
-O segundo modelo utiliza dois contextos.
+O segundo modelo utiliza dois contextos para representar a hidrofobicidade.
+ A separação dos resíduos polares e apolares seguiu a proposta por Rose
+ e colaboradores 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rose_hydrophobicity_1985"
+
+\end_inset
+
+.
  São eles:
 \end_layout
 
@@ -1269,8 +1295,8 @@ _n}
 \end_layout
 
 \begin_layout Standard
-Que representam, respectivamente: hélice polar, hélice apolar, fita polar,
- fita apolar, coil polar e coil apolar.
+Os quais representam, respectivamente: hélice polar, hélice apolar, fita
+ polar, fita apolar, coil polar e coil apolar.
  Assim, nesse modelo temos 
 \begin_inset Formula $n(S)=27$
 \end_inset
@@ -1848,12 +1874,20 @@ cell{?}
 \begin_layout Standard
 Esses estados representam, respectivamente, uma transição para o estado
  de hélice, uma transição para fita, transição para coil e a permanência
- no estado anterior, ou seja, não há mudança de estado.
+ no estado anterior, ou seja, representa a não mudança de estado entre 
+\emph on
+t 
+\emph default
+e 
+\emph on
+t+
+\emph default
+1.
 \end_layout
 
 \begin_layout Standard
-Nos três modelos onde utilizamos a informação do contexto, o mesmo é adicionado
- após a transição de estado.
+Nos três modelos onde foram utilizadas a informação sobre o contexto, a
+ mesmo é adicionada após a transição de estado.
  Por exemplo, supondo um elemento de regra como:
 \end_layout
 
@@ -1928,7 +1962,14 @@ cell{|n}
 
 \begin_layout Standard
 Após essa descrição dos estados é possível calcularmos o número de elementos
- da regra e o espaço de regras possíveis (Tabela .
+ da regra e o espaço de regras possíveis (Tabela 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:ac-elementos"
+
+\end_inset
+
+).
  
 \end_layout
 
@@ -2643,7 +2684,14 @@ Negativos (-)
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:ac-elementos"
 
+\end_inset
+
+ Número de elementos no conjunto de regras e número de regras possíveis
+ para os quatro modelos testados.
 \end_layout
 
 \end_inset
@@ -2680,13 +2728,23 @@ A busca por regras de um autômato celular que reproduzam um padrão específico
 \emph on
 simulated annealing
 \emph default
-).
+) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ganguly_survey_2003"
+
+\end_inset
+
+.
  Neste trabalho optamos por utilizar um Algoritmo de Estimação de Distribuição
- (AED) que implementamos de forma distribuída através do modelo mestre-escravos.
+ (EDA) que implementamos de forma distribuída através do modelo mestre-escravos.
+ No modelo mestre-escravos, um processo mestre coordena o trabalho passando
+ tarefas para os processos escravos executarem.
+ Após a execução, os escravos enviam os resultados para os mestres.
 \end_layout
 
 \begin_layout Standard
-O funcionamento do algoritmo envolve os seguintes passos:
+O funcionamento do EDA distribuído envolve os seguintes passos:
 \end_layout
 
 \begin_layout Enumerate
@@ -2720,7 +2778,8 @@ des
 \end_layout
 
 \begin_layout Enumerate
-Retorna ao passo 1 ou termina se a geração final (G) foi atingida 
+Retorna ao passo 1 ou termina se a geração final (G) do EDA foi atingida
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2732,9 +2791,15 @@ Probabilidades enviadas pelo mestre aos escravos
 \end_layout
 
 \begin_layout Standard
-O mestre inicia o processo enviando um probabilidade uniforme onde cada
- um dos quatro estados de transição possíveis tem probabilidade inicial
- de 25%.
+O mestre inicia o processo enviando um probabilidade uniforme (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:eda-prob"
+
+\end_inset
+
+onde cada um dos quatro estados de transição possíveis tem probabilidade
+ inicial de 25%.
  Isso ocorre para cada elemento do conjunto de regras com exceção de elementos
  cujo estado da célula central apresenta o estado de início/fim da cadeia
  polipeptídica (
@@ -2752,7 +2817,11 @@ cell{#}
 
 ).
  Nesses elementos a probabilidade da célula continuar no mesmo estado no
- tempo T+1 é igual a 100%.
+ tempo 
+\emph on
+t
+\emph default
++1 é igual a 100%.
  Consequentemente, todo elemento da regra que tiver o estado 
 \begin_inset ERT
 status open
@@ -2876,7 +2945,15 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:eda-prob"
 
+\end_inset
+
+Exemplo de parte dos dados da probabilidade inicial enviada pelo mestre
+ aos escravos.
+ Os escravos construirão as regras candidatas de acordo com essa informação.
 \end_layout
 
 \end_inset
@@ -2899,9 +2976,17 @@ Construção das regras pelos escravos
 
 \begin_layout Standard
 Após os escravos recebem as probabilidades enviadas pelo mestre eles constroem
- dois conjuntos de regras candidatas utilizando tais probabilidades.
- Cada conjunto contém todos os elementos necessários para a evolução do
- autômato.
+ dois conjuntos de regras candidatas utilizando tais probabilidades (Figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:regra-candidata"
+
+\end_inset
+
+).
+ Cada conjunto contém todos os elementos da regra necessários para a evolução
+ do autômato.
 \end_layout
 
 \begin_layout Standard
@@ -2934,7 +3019,7 @@ Se o elemento [ Sp ][ An ][ Wn ] tem probabilidades { _ : 0.25, * : 0.25,
 A transição será definida pelo intervalo que contiver o número aleatório.
  Suponto que o número aleatório fosse 0.67, ele estaria contido no 3 intervalo,
  e consequentemente esse elemento da regra seria definido como uma transição
- para fita
+ para fita.
 \end_layout
 
 \begin_layout Standard
@@ -3020,7 +3105,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:regra-candidata"
 
+\end_inset
+
+Exemplo contendo elementos de uma regra candidata produzido pelo escravo.
 \end_layout
 
 \end_inset
@@ -3045,7 +3136,14 @@ Evolução dos autômatos celulares pelos escravos
 Cada um dos dois conjunto de regras gerados pelos escravos são utilizados
  para evoluir dois autômatos celulares por 100 passos.
  O estado inicial de cada autômato celular corresponde a concatenação de
- todas as sequências de aminoácidos das proteínas.
+ todas as sequências de aminoácidos das proteínas (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:concat-seq"
+
+\end_inset
+
+).
  Nessa concatenação, são adicionados o estado de início/fim (
 \begin_inset ERT
 status open
@@ -3059,7 +3157,7 @@ cell{#}
 
 \end_inset
 
-) entre cada proteína, assim como no início e no fim da concatenação.
+) entre cada proteína e no início e no fim da concatenação.
  Esses estados 
 \begin_inset ERT
 status open
@@ -3097,7 +3195,17 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:concat-seq"
 
+\end_inset
+
+Concatenação da sequências de proteínas do conjunto de treinamento.
+ (A) Esquema geral da concatenação.
+ (B) Colocação de estados de ínicio/fim da sequência para impedir a troca
+ de informação entre proteínas.
+ 
 \end_layout
 
 \end_inset
@@ -3115,9 +3223,9 @@ Cálculo da acurácia dos dois conjunto de regras pelo escravo
 \end_layout
 
 \begin_layout Standard
-Após construção e a evolução dos dois autômatos pelos escravo são calculados
+Após construção e a evolução dos dois autômatos pelo escravo são calculados
  a acurácia dos dois conjuntos de regras.
- A medida de acurácia é utilizada como o 
+ A medida de acurácia é utilizada como 
 \emph on
 fitness 
 \emph default
@@ -3138,8 +3246,8 @@ Inicialmente utilizamos como medida da acurácia o próprio Q
 \end_inset
 
 .
- Para o cálculo, o estado de estrutura secundária mais frequente para cada
- resíduo foi considerado como o resultado da predição para o resíduo.
+ Para o cálculo, o estado de estrutura secundária mais frequente ao longo
+ da evolução do AC foi considerado como o resultado da predição para o resíduo.
  
 \end_layout
 
@@ -3151,20 +3259,36 @@ Essa medida inicial foi utilizada para avaliar o desempenho dos quatro modelos
 
 \begin_layout Standard
 Posteriormente, decidimos avaliar outras métricas de acurácia para tentar
- melhorar a capacidade preditiva do modelo vencedor.
+ melhorar a capacidade preditiva do modelo mais promissor.
  Essas outras métricas testadas foram o CBA (
 \emph on
 Class Balance Accuracy
 \emph default
-) , MCC (
+) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mosley_balanced_2013"
+
+\end_inset
+
+, o coeficiente de correlação de Matthews (MCC
 \emph on
-Matthews correlation coefficient
+ - Matthews correlation coefficient
 \emph default
-) e a CE (
+) e a entropia cruzada (CE
 \emph on
-Cross Entropy
+ - Cross Entropy
 \emph default
 ).
+ As duas primeiras métricas são eficientes para medir a acurácia em classes
+ desbalanceadas 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mosley_balanced_2013"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -3187,7 +3311,341 @@ Onde
 \begin_inset Formula $C^{k}$
 \end_inset
 
- é uma matriz de confusão.
+ é uma matriz de confusão e 
+\begin_inset Formula $k$
+\end_inset
+
+ representa as classes hélice, fita e coil, logo, 
+\begin_inset Formula $k=3$
+\end_inset
+
+.
+ O 
+\begin_inset Formula $"."$
+\end_inset
+
+ na equação representa todos os valores 
+\begin_inset Formula $k\neq i$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Observados
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Preditos
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+H
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+E
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+H
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $c_{1,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $c_{1,2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $c_{1,3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+E
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $c_{2,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $c_{2,2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $c_{2,3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $c_{3,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $c_{3,2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $c_{3,3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:matriz-confusao"
+
+\end_inset
+
+Matriz de confusão 
+\begin_inset Formula $C^{k}$
+\end_inset
+
+ para o cálculo do CBA.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3206,7 +3664,7 @@ MCC=\frac{TP\times TN-FP\times FN}{\sqrt{(TP+FP)(TP+FN)(TN+FP)(TN+FN)}}
 \end_layout
 
 \begin_layout Standard
-para aplicá-lo a um problema com múltiplas classes, nós utilizamos: 
+e para aplicá-lo a um problema com múltiplas classes, nós utilizamos: 
 \end_layout
 
 \begin_layout Standard
@@ -3248,8 +3706,8 @@ onde
 \end_inset
 
  é probabilidade observada experimentalmente para estrutura secundária de
- um resíduo da proteína.
- Ou seja, ela será 1 para o elemento de estrutura secundária atribuído.
+ um resíduo da proteína, a qual será 1 para o elemento de estrutura secundária
+ atribuído.
  
 \begin_inset Formula $y$
 \end_inset
@@ -3264,7 +3722,8 @@ onde
 \begin_inset Formula $CE_{r}$
 \end_inset
 
- calculadas para cada resíduo que apresentou consenso da estrutura secundária.
+ calculadas para cada resíduo que apresentou consenso na atribuição da estrutura
+ secundária.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3283,8 +3742,48 @@ Após o mestre receber
  população do EDA) conjunto de regras dos escravos as probabilidades dos
  elementos são atualizadas.
  Esse procedimento é realizado observando-se a frequência das transições
- para cada elemento.
- Por exemplo:
+ para cada elemento entre as regras vencedoras recebidas pelo mestre.
+ Por exemplo, se dentre as regras recebidas pelo mestre observarmos as seguinte
+ frequência para o elemento 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{A}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{A}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cell{A}
+\end_layout
+
+\end_inset
+
+ :
 \end_layout
 
 \begin_layout Itemize
@@ -3354,7 +3853,7 @@ carule{A}{A}{A}{?}
 \end_layout
 
 \begin_layout Standard
-Considerando 
+e considerando 
 \begin_inset Formula $N/2$
 \end_inset
 
@@ -3362,13 +3861,13 @@ Considerando
 \end_layout
 
 \begin_layout Itemize
-[ An ][ An ][ An ] -> { _ : 0.60, * : 0.10, | : 0.20, ? : 0.10 }
+[ An ][ An ][ An ] -> { _ : 0.20, * : 0.60, | : 0.10, ? : 0.10 }
 \end_layout
 
 \begin_layout Standard
-Após as probabilidades de todos os elementos serem calculadas, elas passam
- a serem enviadas para os escravos para que esses comecem a gerar novas
- regras candidatas.
+Após as probabilidades de todos os elementos serem calculadas, elas começam
+ a serem enviadas para os escravos para que esses iniciem a produção de
+ novas regras candidatas.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3419,7 +3918,7 @@ Número de gerações do EDA:
 
 \begin_layout Itemize
 Número de gerações do AC: 
-\begin_inset Formula $T=100$
+\begin_inset Formula $t=100$
 \end_inset
 
 
@@ -3453,7 +3952,24 @@ Analise dos modelos de AC (selecao do modelo estendido)
 \begin_layout Standard
 A capacidade dos quatro modelos de autômatos celulares foram testadas num
  conjunto reduzido de proteínas.
- 
+ O objetivo deste teste foi avaliar se os estados utilizados em cada modelo
+ de AC seriam capazes de predizer as estruturas secundárias com acurácia.
+ Os resultados apresentados demonstram que o primeiro modelo, o qual não
+ utiliza informação sobre o contexto, falhou a predizer estruturas menos
+ frequentes como as fitas e coils (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:capacidade-acs"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Os outros três modelos, os quais utilizam informação sobre o contexto, obtiveram
+ uma melhor acurácia na produção de estruturas secundárias.
+ A acurácia aumentou a medida que aumentamos os tipos de contextos utilizados.
 \end_layout
 
 \begin_layout Standard
@@ -3476,7 +3992,15 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:capacidade-acs"
 
+\end_inset
+
+Acurácia dos modelos de AC testados em um conjunto reduzido de proteínas.
+ O AC 4, o qual utiliza um maior número de contextos, apresentou maior capacidad
+e de reproduzir a estrutura secundária.
 \end_layout
 
 \end_inset
@@ -3523,8 +4047,19 @@ as métricas CBA, MCC e CE.
 \end_layout
 
 \begin_layout Standard
-Durante o treinamento por 1000 gerações do EDA não foi observada convergência
- da população.
+Durante o treinamento por 1000 gerações do EDA não foram observadas convergência
+s para a população de regras candidatas.
+ Entretanto, ao final da otimização o CBA estava aumentando a um taxa média
+ de 0,00005 por geração, o MCC 0,00015 por geração e o CE reduzindo a uma
+ taxa de 0,00002 por geração (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ac4-fitness"
+
+\end_inset
+
+).
+ 
 \begin_inset Note Note
 status open
 
@@ -3557,7 +4092,16 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ac4-fitness"
 
+\end_inset
+
+Valor médio observado durante a evolução do EDA por 1000 gerações utilizando
+ as métricas CBA, MCC e CE como 
+\emph on
+fitness.
 \end_layout
 
 \end_inset
@@ -3590,9 +4134,27 @@ o CBA foi o que apresentou a melhor acurácia, tanto para o subconjunto de
 
 \end_inset
 
-) para o conjunto de teste.
+) para o conjunto de teste (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ac4-q3"
+
+\end_inset
+
+).
  A entropia cruzada (CE) e o MCC obtiveram menor acurácia, 53,4% e 51,1%,
  respectivamente.
+ Estes valores, medidos para os resíduos que apresentaram consenso na atribuição
+ da estrutura secundária, são significativamente inferiores à acurácia apresenta
+da pelas redes HK (
+\begin_inset Formula $Q_{3}\simeq75\%$
+\end_inset
+
+) e pelo método PSIPRED (
+\begin_inset Formula $Q_{3}\simeq93\%$
+\end_inset
+
+) .
 \end_layout
 
 \begin_layout Standard
@@ -3641,7 +4203,17 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ac4-q3"
 
+\end_inset
+
+Distribuição da acurácia (
+\begin_inset Formula $Q_{3}$
+\end_inset
+
+) apresentada pelo AC 4 para proteínas do conjunto de treinamento e teste.
 \end_layout
 
 \end_inset
@@ -3671,7 +4243,14 @@ H
 ) foi maior no modelo treinado utilizando a entropia cruzada, com valor
  próximo a 73,6%.
  O treinamento com CBA apresentou acurácia de 66,7% e o com MCC, acurácia
- de 60,5%.
+ de 60,5% (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ac4-qh"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -3707,7 +4286,17 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ac4-qh"
 
+\end_inset
+
+Distribuição da acurácia na predição de hélices (
+\begin_inset Formula $Q_{H}$
+\end_inset
+
+) apresentada pelo AC 4 para proteínas do conjunto de treinamento e teste.
 \end_layout
 
 \end_inset
@@ -3736,7 +4325,17 @@ E
 
 ) foi de 52,2% para o modelo treinado com CBA, 37,8% para o treinado com
  MCC e 21% para o treinado com CE.
- 
+ Como há um menor número resíduos atribuídos a estrutura secundária fita
+ (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Estrutura-secundária-atribuída"
+
+\end_inset
+
+), isso demonstra que o CBA foi a métrica mais eficaz em nosso problema
+ com classes desbalanceadas.
+ Por outro lado, a entropia cruzada foi a menos eficaz.
 \end_layout
 
 \begin_layout Standard
@@ -3772,7 +4371,17 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ac4-qe"
 
+\end_inset
+
+Distribuição da acurácia na predição de fitas (
+\begin_inset Formula $Q_{E}$
+\end_inset
+
+) apresentada pelo AC 4 para proteínas do conjunto de treinamento e teste.
 \end_layout
 
 \end_inset
@@ -3832,7 +4441,17 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ac4-qc"
 
+\end_inset
+
+Distribuição da acurácia na predição de coils (
+\begin_inset Formula $Q_{C}$
+\end_inset
+
+) apresentada pelo AC 4 para proteínas do conjunto de treinamento e teste.
 \end_layout
 
 \end_inset
@@ -3848,7 +4467,14 @@ status open
 \begin_layout Standard
 Além da baixa acurácia, as estruturas secundárias preditas pelos autômatos
  celulares apresentaram comprimentos inferiores aos observados em estruturas
- secundárias de proteínas com estrutura resolvida.
+ secundárias de proteínas com estrutura resolvida (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ac4-comp"
+
+\end_inset
+
+).
  A mediana de hélices foi de apenas 4 resíduos enquanto que a mediana esperada
  seria entre 8 e 12 resíduos (Figura 
 \begin_inset CommandInset ref
@@ -3911,7 +4537,19 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ac4-comp"
 
+\end_inset
+
+Distribuição do comprimento de estruturas secundárias preditas para o conjunto
+ de treinamento.
+ Independentemente da métrica utilizada na otimização das regras, o AC 4
+ produziu estruturas com comprimento inferior ao observado experimentalmente
+ para as três classes de estruturas secundárias: hélice (H), fita (E) e
+ coil (C).
+ 
 \end_layout
 
 \end_inset
@@ -3928,10 +4566,49 @@ status open
 
 \end_layout
 
+\begin_layout Subsection
+Exemplos de evolução do autômato celular para predizer a estrutura secundária
+\end_layout
+
 \begin_layout Standard
-Através da observação da evolução do autômato celular treinado com CBA notamos
- que há uma rápida convergência ou estabilidade dos estados.
- Ao proporNós esperavamos 
+A observação da evolução do AC 4 treinado com CBA, o melhor modelo segundo
+ nossos resultados, indica que ocorre uma rápida convergência ou estabilidade
+ dos estados (Figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ac4-good"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ac4-bad"
+
+\end_inset
+
+).
+ Ao propormos a utilização de autômatos celulares na predição de estruturas
+ secundárias esperávamos observar a formação de padrões complexos como,
+ por exemplo, alguns poucos resíduos iniciando a formação de uma hélice
+ e os resíduos na vizinhança propagando essa informação.
+ Um padrão similar a esta descrição pode ser observado na primeira hélice
+ da Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ac4-bad"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Entretanto, a baixa acurácia obtida pelo AC 4 em conjunto com a estabilidade
+ dos estados durante a evolução do AC 4 não nos fornecem informações que
+ possam auxiliar numa melhor compreensão de processos de formação de estruturas
+ secundárias.
 \end_layout
 
 \begin_layout Standard
@@ -3967,7 +4644,40 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ac4-good"
 
+\end_inset
+
+Evolução do AC4 com a regra otimizada por EDA utilizando CBA como função
+ de 
+\emph on
+fitness.
+ 
+\emph default
+O domínio PUB da proteína 
+\emph on
+Peptide-N(4)-(N-acetyl-beta-glucosaminyl) asparagine amidase 
+\emph default
+(PDB ID: 2CCQ) apresentou uma das maiores acurácias com 
+\begin_inset Formula $Q_{3}=90,23\%$
+\end_inset
+
+, 
+\begin_inset Formula $Q_{H}=84,31\%$
+\end_inset
+
+, 
+\begin_inset Formula $Q_{E}=100\%$
+\end_inset
+
+ e 
+\begin_inset Formula $Q_{C}=86,36\%$
+\end_inset
+
+.
+ 
 \end_layout
 
 \end_inset
@@ -4017,7 +4727,36 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ac4-bad"
 
+\end_inset
+
+Evolução do AC4 com a regra otimizada por EDA utilizando CBA como função
+ de 
+\emph on
+fitness.
+ 
+\emph default
+O domínio PUB da proteína 
+\emph on
+Peptide-N(4)-(N-acetyl-beta-glucosaminyl) asparagine amidase 
+\emph default
+(PDB ID: 2CCQ) apresentou uma das maiores acurácias com 
+\begin_inset Formula $Q_{3}=30\%$
+\end_inset
+
+, 
+\begin_inset Formula $Q_{H}=60,00\%$
+\end_inset
+
+ e 
+\begin_inset Formula $Q_{C}=0\%$
+\end_inset
+
+.
+ 
 \end_layout
 
 \end_inset
@@ -4034,8 +4773,17 @@ status open
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Conclusão
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
