@@ -212,7 +212,7 @@ http://wiki.lyx.org/Bib\SpecialChar TeX
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "DirtyTitlepage.lyx"
+filename "rosto.lyx"
 
 \end_inset
 
@@ -220,6 +220,10 @@ filename "DirtyTitlepage.lyx"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset CommandInset include
 LatexCommand include
 filename "Titlepage.lyx"
@@ -229,7 +233,7 @@ filename "Titlepage.lyx"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset CommandInset include
 LatexCommand include
 filename "Titleback.lyx"
@@ -239,17 +243,31 @@ filename "Titleback.lyx"
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage cleardoublepage
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset CommandInset include
 LatexCommand include
 filename "Dedication.lyx"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -274,16 +292,25 @@ filename "Abstract.lyx"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Newpage cleardoublepage
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset CommandInset include
 LatexCommand include
 filename "Publications.lyx"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 

@@ -34,7 +34,7 @@
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 1
-\use_package esint 0
+\use_package esint 1
 \use_package mathdots 1
 \use_package mathtools 1
 \use_package mhchem 1
@@ -79,37 +79,41 @@ status open
 
 
 \backslash
-begingroup
+begin{titlepage}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-let
-\backslash
-clearpage
-\backslash
-relax
+begin{addmargin}[-10mm]{-30mm}  %%%%% symmetrical margins
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-let
-\backslash
-cleardoublepage
-\backslash
-relax
+large
 \end_layout
 
+\begin_layout Plain Layout
+
+
+\backslash
+hfill
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset ERT
 status open
 
@@ -117,28 +121,9 @@ status open
 
 
 \backslash
-pdfbookmark[1]{Abstract}{Abstract}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Chapter*
-Abstract
-\end_layout
-
-\begin_layout Standard
-Short summary of the contents in English
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
+LARGE 
 \backslash
-dots
+myUni
 \end_layout
 
 \end_inset
@@ -147,13 +132,15 @@ dots
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace vfill
+\align center
+\begin_inset VSpace medskip
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset ERT
 status open
 
@@ -161,30 +148,35 @@ status open
 
 
 \backslash
-pdfbookmark[1]{Resumo}{Resumo}
+Large 
+\backslash
+myFaculty
 \end_layout
 
 \end_inset
 
- 
-\end_layout
 
-\begin_layout Chapter*
-Resumo
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace 3cm
+\end_inset
 
-\lang ngerman
-Resumo do trabalho
+
+\end_layout
+
+\begin_layout Standard
+\align center
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-dots
+spacedlowsmallcaps{
+\backslash
+myName}
 \end_layout
 
 \end_inset
@@ -193,19 +185,29 @@ dots
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace vfill
+\align center
+\begin_inset VSpace medskip
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
+\backslash
+begingroup 
+\backslash
+color{Maroon} 
+\backslash
+spacedallcaps{
+\backslash
+myTitle} 
 \backslash
 endgroup
 \end_layout
@@ -213,6 +215,198 @@ endgroup
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset VSpace 3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset space \hspace{}
+\length 70text%
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Tese apresentada ao Programa Interunidades de Pós-Graduação em Bioinformática
+ para obtenção do Título de Doutor em Bioinformática.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace 3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Large 
+\backslash
+mySupervisor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Orientador
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Large 
+\backslash
+myProf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Co-orientador
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+myLocation
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+myTime
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{addmargin} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{titlepage}
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \end_body

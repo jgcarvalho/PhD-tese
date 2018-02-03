@@ -382,10 +382,6 @@ listoftables
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -448,14 +444,14 @@ lstlistoflistings
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset VSpace 8ex
 \end_inset
 
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -546,11 +542,6 @@ acro{UML}{Unified Modeling Language}
 
 \backslash
 end{acronym}              
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset

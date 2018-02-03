@@ -47,9 +47,9 @@
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
-\biblio_style unsrt
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style unsrtnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -240,16 +240,25 @@ filename "Titleback.lyx"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Newpage cleardoublepage
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset CommandInset include
 LatexCommand include
 filename "Dedication.lyx"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -274,16 +283,25 @@ filename "Abstract.lyx"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Newpage cleardoublepage
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset CommandInset include
 LatexCommand include
 filename "Publications.lyx"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
