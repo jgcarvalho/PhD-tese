@@ -76,10 +76,6 @@ Discussão
 \end_layout
 
 \begin_layout Section
-
-\end_layout
-
-\begin_layout Section
 Autômatos celulares para a predição de estruturas secundárias
 \end_layout
 
@@ -211,6 +207,10 @@ Apesar dos resultados não atingirem nossas expectativas, a motivação inicial
 
 \begin_layout Section
 Redes neurais profundas
+\end_layout
+
+\begin_layout Chapter
+Conclusão
 \end_layout
 
 \end_body

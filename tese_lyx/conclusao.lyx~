@@ -203,7 +203,10 @@ Apesar dos resultados não atingirem nossas expectativas, a motivação inicial
  das estruturas secundárias, nos levaram a buscar métodos que tivessem essa
  mesma capacidade.
  Encontramos esse potencial em redes neurais profundas.
- 
+\end_layout
+
+\begin_layout Section
+Redes neurais profundas
 \end_layout
 
 \end_body

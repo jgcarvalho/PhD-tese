@@ -138,9 +138,51 @@ Introdução
 \end_layout
 
 \begin_layout Standard
-Os autômatos celulares (AC) foram inventados na década de 40 por John von
- Neumann baseando-se em sugestões de seu colega, o matemático Stanislaw
- Ulam [39].
+Neste capítulo descrevemos a implementação e os resultados dos autômatos
+ celulares (AC) aplicados a predição de estruturas secundárias.
+ Foram testados quatro modelos de autômatos celulares que diferem essencialmente
+ pelos estados utilizados para representar os elementos de estruturas secundária
+s.
+ 
+\end_layout
+
+\begin_layout Standard
+No primeiro modelo testado tais estados representavam apenas um dos três
+ elementos de estrutura secundária, hélice, fita ou coil.
+ Nos demais modelos, os estados que representam a estrutura secundária conserva,
+ parcialmente, a informação do resíduo que originou a estrutura secundária.
+\end_layout
+
+\begin_layout Standard
+A construção de autômatos celulares que reproduzam um padrão desejado implica
+ na busca por um conjunto de regras capaz de conduzir a evolução do AC de
+ um estado inicial, conhecido, até um estado final, também conhecido.
+ Neste trabalho, o estado inicial é a sequência de resíduos da proteína
+ e o estado final, sua estrutura secundária.
+ Essa busca por um conjunto de regras, chamada de problema inverso, é um
+ problema de otimização.
+ O método utilizado para buscar estas regras foi um algoritmo de estimação
+ de distribuição (EDA - 
+\emph on
+Estimation of distribution algorithm
+\emph default
+), um tipo de algoritmo evolutivo.
+\end_layout
+
+\begin_layout Subsection
+Autômatos celulares
+\end_layout
+
+\begin_layout Standard
+Os autômatos celulares foram inventados na década de 40 por John von Neumann
+ baseando-se em sugestões de seu colega, o matemático Stanislaw Ulam 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "mitchell_complexity:_2009"
+
+\end_inset
+
+.
  Autômatos celulares são modelos matemáticos para representar sistemas complexos
  e consistem num conjunto de células discretas espacialmente.
  Cada uma dessas células estão em um estado dentre um conjunto finito de
@@ -151,7 +193,14 @@ Os autômatos celulares (AC) foram inventados na década de 40 por John von
  A evolução dos AC produz complexidade a partir do efeito cooperativo de
  elementos simples - as regras e as células - tratando-se portanto de uma
  complexidade emergente, que surge globalmente no sistema a partir de regras
- simples, locais e determinísticas [40].
+ simples, locais e determinísticas 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "wolfram_universality_1984"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -161,19 +210,70 @@ Autômatos celulares tem sido utilizados em diversos campos de pesquisa como
 res, como redes de interação proteicas, até estudo de populações; (2) químicos,
  na modelagem cinética de sistemas moleculares e no crescimento de cristais;
  (3) físicos, para o estudos sistemas dinâmicos, desde a interação entre
- partículas até o agrupamento de galáxias [41].
+ partículas até o agrupamento de galáxias 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ganguly_survey_2003"
+
+\end_inset
+
+.
  
 \end_layout
 
+\begin_layout Subsection
+Autômatos celulares elementares
+\end_layout
+
 \begin_layout Standard
-\begin_inset Note Note
+O tipo mais simples de AC são os autômatos celulares elementares (ACE).
+ Devido a sua simplicidade e semelhança com os modelos propostos neste trabalho,
+ acreditamos que explicá-los nesta introdução seja útil para facilitar uma
+ melhor compreensão.
+\end_layout
+
+\begin_layout Standard
+Os ACE possuem espaço unidimensional, o qual pode ser representado por um
+ conjunto linear de células (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ace-espaco"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-No entanto, não há na literatura artigos que mencionem a sua utilização
- na predição de enovelamentos proteicos.
- Apesar disso, acreditamos tratar-se de um modelo promissor.
- Mencionar a aplicação de AC na prediççao de SS
+\begin_inset Graphics
+	filename figures/ace-espaco-unidimensional.pdf
+	width 80line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ace-espaco"
+
+\end_inset
+
+Espaço discreto e unidimensional dos autômatos celulares representado por
+ um conjunto linear de células.
+ Cada célula corresponde a uma região do espaço.
+ 
 \end_layout
 
 \end_inset
@@ -181,8 +281,159 @@ No entanto, não há na literatura artigos que mencionem a sua utilização
 
 \end_layout
 
-\begin_layout Subsection
-Autômatos celulares elementares
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cada célula dos ACE possuem um estado discreto, esse estado pode ser 0 ou
+ 1 (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ace-estados"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/ace-estados.pdf
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ace-estados"
+
+\end_inset
+
+Estados discretos dos ACE representados com 0 e 1.
+ Cada célula encontra-se em um estado.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Os autômatos celulares são modelos dinâmicos onde os estados discretos de
+ suas células evoluem ao longo de um tempo também discreto.
+ Essa evolução ocorre de acordo com um conjunto de regras.
+ No caso dos ACE, essas regras possuem vizinhança 1 (r=1), o que indica
+ que o estado de uma célula no tempo 
+\emph on
+t
+\emph default
++1 depende do estado da própria célula no tempo 
+\emph on
+t 
+\emph default
+e também do estado das duas células vizinha: uma a esquerda e uma a direita
+ (r=1).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/ace-regra-110.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ace-regra"
+
+\end_inset
+
+Exemplo de um conjunto de regras para um ACE.
+ Os padrões de três células no tempo 
+\emph on
+t 
+\emph default
+ocasionam a mudança do estado da célula centra no tempo 
+\emph on
+t+1.
+ 
+\emph default
+A figura representa a 
+\begin_inset Quotes eld
+\end_inset
+
+regra 110
+\begin_inset Quotes erd
+\end_inset
+
+ dos ACE.
+ Ao todo, os ACE possuem 
+\begin_inset Formula $2^{8}$
+\end_inset
+
+ (256) regras possíveis.
+ Essas regras diferem pelos estados 
+\emph on
+t+1.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Section
@@ -3647,10 +3898,6 @@ status open
 
 \begin_layout Section
 Conclusão
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \end_body

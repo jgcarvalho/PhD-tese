@@ -4163,14 +4163,23 @@ A rede neural similar ao modelo de Holley e Karplus apresentou uma maior
 \begin_inset Formula $\beta$
 \end_inset
 
- foi observada em outros trabalhos [?].
+ foi observada em outros trabalhos 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+[?]
+\end_layout
+
+\end_inset
+
+.
  Entre as causas sugeridas para a menor acurácia está dependência de resíduos
  distantes na formação de folhas 
 \begin_inset Formula $\beta$
 \end_inset
 
-, fator que não é considerado num método que utiliza janelas de entradadas
- quais são formadas por fitas muitas vezes distantes na sequência de aminoácidos.
+, fator que não é considerado num método que utiliza janelas de entrada.
  Outra possível causa da menor acurácia é o menor número, nos conjuntos
  de dados, de resíduos que compõem as fitas 
 \begin_inset Formula $\beta$
@@ -6086,7 +6095,9 @@ name "tab:Tab-hk-ac-ss"
 
 \end_inset
 
-Tabela
+ Acurácia obtida na predição de hélices, fitas e coils para os conjuntos
+ de treinamento, validação e teste em redes neurais com diversos números
+ de neurônios na camada oculta.
 \end_layout
 
 \end_inset
@@ -6122,6 +6133,21 @@ Distribuição da acurácia por proteína
 \end_layout
 
 \begin_layout Standard
+A distribuição da acurácia para as proteínas do conjunto de teste é similar
+ nas duas melhores redes neurais treinadas, as com 32 e 64 neurônios na
+ camada oculta 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:distribuição-q3-hk"
+
+\end_inset
+
+.
+ A acurácia das redes para a predição de fitas apresentou uma distribuição
+ com maior variabilidade que  
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -6141,7 +6167,14 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:distribuição-q3-hk"
 
+\end_inset
+
+Distribuição da acurácia das redes com 32 e 64 neurônios na camada oculta
+ para as proteínas do conjunto de teste.
 \end_layout
 
 \end_inset

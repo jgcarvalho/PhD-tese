@@ -907,16 +907,30 @@ Rede neural que utiliza PSSM
 \end_layout
 
 \begin_layout Standard
-O método de predição PSIPRED foi escolhido para testar o estado da arte
- em predição de estruturas secundárias.
+O método de predição PSIPRED 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "jones_protein_1999"
+
+\end_inset
+
+ foi escolhido para testar o estado da arte em predição de estruturas secundária
+s.
  A PSSM de cada proteína foi gerada localmente com o PSI-Blast utilizando
  o banco de dados de sequências não redundantes (
 \emph on
 nr
 \emph default
-).
+) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "altschul_gapped_1997"
+
+\end_inset
+
+.
  
-\begin_inset Note Note
+\begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
@@ -4159,23 +4173,22 @@ A rede neural similar ao modelo de Holley e Karplus apresentou uma maior
 \end_inset
 
  (~ 60%).
- A menor acurácia em fitas 
-\begin_inset Formula $\beta$
-\end_inset
-
- foi observada em outros trabalhos 
-\begin_inset Note Note
+ 
+\begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
-[?]
+A menor acurácia em fitas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ foi observada em outros trabalhos [?].
 \end_layout
 
 \end_inset
 
-.
- Entre as causas sugeridas para a menor acurácia está dependência de resíduos
- distantes na formação de folhas 
+ Acreditamos que uma das causas desta menor acurácia seja a dependência
+ de resíduos distantes na formação de folhas 
 \begin_inset Formula $\beta$
 \end_inset
 
@@ -6115,7 +6128,7 @@ name "tab:Tab-hk-ac-ss"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
@@ -6130,6 +6143,25 @@ tamanho das estruturas para mostrar a predição de estruturas secundárias
 
 \begin_layout Subsubsection
 Distribuição da acurácia por proteína
+\end_layout
+
+\begin_layout Standard
+A distribuição da acurácia para as proteínas do conjunto de teste é similar
+ nas duas melhores redes neurais treinadas, as com 32 e 64 neurônios na
+ camada oculta 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:distribuição-q3-hk"
+
+\end_inset
+
+.
+ A acurácia das redes para a predição de fitas (
+\begin_inset Formula $Q_{E})$
+\end_inset
+
+ apresentou uma distribuição com maior espalhamento.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -6152,7 +6184,14 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:distribuição-q3-hk"
 
+\end_inset
+
+Distribuição da acurácia das redes com 32 e 64 neurônios na camada oculta
+ para as proteínas do conjunto de teste.
 \end_layout
 
 \end_inset
@@ -6231,7 +6270,7 @@ A alta ocorrência de elementos de estruturas secundárias preditos com poucos
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
@@ -6292,7 +6331,7 @@ name "fig:Distribuição-dos-comprimentos-modelo-hk"
 \end_layout
 
 \begin_layout Subsection
-PSIPRED
+Análise da predição com o PSIPRED
 \end_layout
 
 \begin_layout Standard
@@ -6330,8 +6369,8 @@ Assim como no método testado anteriormente, similar ao de Holley e Karplus,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
+\begin_inset Note Greyedout
+status collapsed
 
 \begin_layout Plain Layout
 Acurácia para as regiões de consenso
@@ -6343,8 +6382,8 @@ Acurácia para as regiões de consenso
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
+\begin_inset Note Greyedout
+status collapsed
 
 \begin_layout Plain Layout
 Acurácia geral por método de atribuicao
@@ -6564,8 +6603,8 @@ name "fig:Distribuição-da-acurácia-qc-psipred"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
+\begin_inset Note Greyedout
+status collapsed
 
 \begin_layout Plain Layout
 tamanho das estruturas para mostrar a continuidade das estruturas secundárias
@@ -6658,7 +6697,7 @@ name "fig:Distribuição-dos-comprimentos-psipred"
 \end_layout
 
 \begin_layout Section
-Conclusão 
+Discussão
 \end_layout
 
 \begin_layout Standard
