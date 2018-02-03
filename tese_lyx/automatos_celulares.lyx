@@ -184,16 +184,15 @@ key "mitchell_complexity:_2009"
 
 .
  Autômatos celulares são modelos matemáticos para representar sistemas complexos
- e consistem num conjunto de células discretas espacialmente.
- Cada uma dessas células estão em um estado dentre um conjunto finito de
- estados possíveis.
+ que consistem num conjunto de células espacialmente discretas.
+ Cada uma das células estão em um estado dentre um conjunto finito de estados
+ possíveis.
  Os autômatos celulares evoluem paralelamente, ou seja, o estado de cada
- célula evolui de maneira síncrona em passos discretos de tempo.
- Essa evolução ocorre de acordo com regras simples e determinísticas.
+ célula evolui de maneira síncrona em passos discretos de tempo e de acordo
+ com regras simples, locais e determinísticas.
  A evolução dos AC produz complexidade a partir do efeito cooperativo de
  elementos simples - as regras e as células - tratando-se portanto de uma
- complexidade emergente, que surge globalmente no sistema a partir de regras
- simples, locais e determinísticas 
+ complexidade emergente 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "wolfram_universality_1984"
@@ -311,7 +310,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename figures/ace-estados.pdf
-	width 80page%
+	width 80line%
 
 \end_inset
 

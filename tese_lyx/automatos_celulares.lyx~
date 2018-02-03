@@ -184,7 +184,7 @@ key "mitchell_complexity:_2009"
 
 .
  Autômatos celulares são modelos matemáticos para representar sistemas complexos
- e consistem num conjunto de células discretas espacialmente.
+ que consistem num conjunto de células espacialmente discretas.
  Cada uma dessas células estão em um estado dentre um conjunto finito de
  estados possíveis.
  Os autômatos celulares evoluem paralelamente, ou seja, o estado de cada
@@ -311,7 +311,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename figures/ace-estados.pdf
-	width 80page%
+	width 80line%
 
 \end_inset
 
@@ -348,8 +348,22 @@ Estados discretos dos ACE representados com 0 e 1.
 
 \begin_layout Standard
 Os autômatos celulares são modelos dinâmicos onde os estados discretos de
- suas células evoluem ao longo de um tempo também discreto.
- Essa evolução ocorre de acordo com um conjunto de regras.
+ suas células evoluem ao longo de um tempo também discreto (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ace-evo"
+
+\end_inset
+
+).
+ Essa evolução ocorre de acordo com um conjunto de regras (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ace-regra"
+
+\end_inset
+
+).
  No caso dos ACE, essas regras possuem vizinhança 1 (r=1), o que indica
  que o estado de uma célula no tempo 
 \emph on
@@ -433,6 +447,130 @@ t+1.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/ace-evo.pdf
+	width 80line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ace-evo"
+
+\end_inset
+
+ Esquema da evolução de um ACE.
+ Cada célula no estado 
+\emph on
+t 
+\emph default
+evolui para o estado 
+\emph on
+t
+\emph default
++1 e depois para o estado 
+\emph on
+t
+\emph default
++2 através da aplicação das regras da figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ace-regra"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Apesar dos ACE serem o modelo mais simples de AC, os padrões produzidos
+ por diferentes regras são interessantes.
+ Wolfram 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "_new_2002"
+
+\end_inset
+
+ classifica esses padrões em quatro tipos: (1) uniformes, (2) repetitivos,
+ (3) aleatórios e (4) complexos (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ace-padroes"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/ace-padroes.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ace-padroes"
+
+\end_inset
+
+Exemplos de padrões produzidos por diferentes regras dos ACE.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
