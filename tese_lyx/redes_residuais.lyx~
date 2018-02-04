@@ -80,6 +80,39 @@ Introdução
 \end_layout
 
 \begin_layout Standard
+Neste capítulo implementamos e avaliamos os resultados de redes neurais
+ residuais profundas, ou simplesmente redes residuais, aplicadas a predição
+ de estruturas secundárias a partir da estrutura primária da proteína.
+\end_layout
+
+\begin_layout Standard
+De modo similar aos autômatos celulares, a utilização de redes residuais
+ foi motivada pela possibilidade de construirmos uma arquitetura que possibilita
+sse extrairmos informação sobre a formação de estruturas secundárias.
+ Esse objetivo tornou nosso trabalho diferente de outros que utilizaram
+ redes neurais profundas para a predição de estruturas secundárias.
+ Em um desses trabalhos, publicado por Wang, Ma e Xu 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang_protein_2016"
+
+\end_inset
+
+, os autores usaram redes neurais convolucionais profundas (não residuais)
+ e, realizando a predição a partir de PSSM, obtiveram uma acurácia de aproximada
+mente 84% (
+\begin_inset Formula $Q_{3}$
+\end_inset
+
+).
+ Na discussão comparamos ambos os modelos.
+\end_layout
+
+\begin_layout Subsection
+Redes neurais residuais
+\end_layout
+
+\begin_layout Standard
 Redes neurais com mais de uma camada oculta de neurônios são chamadas de
  redes neurais profundas.
  Devido ao maior número de camadas ocultas, as redes neurais profundas são
@@ -99,7 +132,15 @@ key "goodfellow_deep_2016"
 \begin_layout Standard
 Dentre as arquiteturas de redes neurais profundas, as redes neurais convoluciona
 is tem obtido grande sucesso em diversas aplicações relacionadas a imagens,
- como por exemplo, a classificação e a detecção de objetos em fotografias.
+ como por exemplo, a classificação e a detecção de objetos em fotografias
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he_deep_2016"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -190,8 +231,7 @@ Comparando ambos os métodos, redes neurais convolucionais profundas e autômato
 \emph on
 a priori
 \emph default
- algumas vantagens e desvantagens.
- Dentre as vantagens das redes neurais convolucionais profundas temos:
+ algumas vantagens como:
 \end_layout
 
 \begin_layout Itemize
@@ -203,12 +243,6 @@ o modelo não exige uma pré determinação dos estados intermediários, como
 \begin_layout Itemize
 as redes neurais possuem métodos de treinamento bem estabelecidos, eficazes
  e eficientes.
-\end_layout
-
-\begin_layout Standard
-Por outro lado, os autômatos celulares possuem a vantagem de facilitar a
- análise e compreensão dos padrões aprendidos e dos eventos de formação
- e propagação da estrutura secundária.
 \end_layout
 
 \begin_layout Standard
@@ -230,12 +264,21 @@ INCLUIR NA DISCUSSÃO Entretanto, como demonstrado no capítulo anterior,
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Nesse capítulo, exploramos a utilização de redes neurais convolucionais
  profundas como um método alternativo ao uso de autômatos celulares.
  É importante notar que apesar da mudança de modelo, o objetivo continua
  ser predizer a estrutura secundária a partir da informação contida unicamente
  na sequência de aminoácidos utilizando padrões locais que se propagam a
  longo da sequência.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -268,12 +311,22 @@ name "sec:resnet-Materiais-e-métodos"
 
 \end_layout
 
+\begin_layout Subsection
+Arquitetura da rede residual
+\end_layout
+
 \begin_layout Standard
 Dentre as arquiteturas de redes neurais convolucionais profundas, o modelo
  que acreditamos ser o mais adequado são o de redes neurais residuais.
- Esse modelo, proposto inicialmente por He e colaboradores [He, 2015] facilitou
- o treinamento de redes convolucionais profundas, permitindo a construção
- de redes com até 1000 camadas de profundidade.
+ Esse modelo, proposto inicialmente por He e colaboradores 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he_deep_2016"
+
+\end_inset
+
+, facilitou o treinamento de redes convolucionais profundas, permitindo
+ a construção de redes com mais de 100 camadas de profundidade.
 \end_layout
 
 \begin_layout Standard
@@ -343,27 +396,10 @@ Na codificação da proteína, o número de canais é igual a 22 e cada um repre
  O tamanho foi pré-definido em 3000 para possibilitar que a cadeia polipeptídica
  mais longa em nosso conjunto de dados, a qual possui quase 2000 resíduos,
  tenha 500 códigos de ausência antes e depois.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-EXPLICAR o pq de 500
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Essa codificação permite testes com redes de até 250 blocos sem alteração
- nos dados.
-\end_layout
-
-\end_inset
-
+ O tamanho de 500 foi intencionalmente superestimado durante a preparação
+ dos dados para não limitar a exploração de arquiteturas diferentes como,
+ por exemplo, redes com mais camadas de convolução ou neurônios de convolução
+ com maior número de conexões.
  A outra dimensão da matriz é igual a 1, pois a cadeia polipeptídica é linear.
  Assim, a matriz de entrada possui dimensões 22x3000x1 (CHW).
 \end_layout
@@ -425,8 +461,8 @@ Através da codificação inicial da sequência no formato
 one hot encoding
 \emph default
  é possível apenas inferir se os aminoácidos são iguais ou diferentes.
- Consequentemente, um Aspartato diferirá igualmente de um Glutamato como
- de uma Fenilalanina, ou seja, essa codificação não contém qualquer informação
+ Consequentemente, um aspartato diferirá igualmente de um glutamato como
+ de uma fenilalanina, ou seja, essa codificação não contém qualquer informação
  sobre similaridades estruturais e/ou físico-químicas.
 \end_layout
 
@@ -447,7 +483,7 @@ a priori
 .
  Essa camada tem como objetivo, aprender uma nova representação para os
  aminoácidos e portanto, similaridades entre eles que possam ser úteis para
- a predição da estrutura secundária(Figura 
+ a predição da estrutura secundária (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Diagrama-de-uma"
@@ -465,8 +501,51 @@ A representação da segunda camada é mantida (residualmente) até a camada
 
  para 3.
  Os 3 canais finais estão relacionados aos 3 elementos de estrutura de secundári
-a e, após a aplicação da função Softmax, representam a probabilidade de
- cada um dos 3 elementos, hélice, fita e coil, para cada resíduo da proteína.
+a e, após a aplicação da função Softmax (Eq .
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:softmax"
+
+\end_inset
+
+), representam a probabilidade de cada um dos 3 elementos, hélice, fita
+ e coil, para cada resíduo da proteína.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+f(x_{i})=\frac{e^{x_{i}}}{\sum_{j}^{N}e^{x_{j}}}\label{eq:softmax}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+O conceito clássico de convolução é valido neste caso? da wikipedia:
+\begin_inset Quotes erd
+\end_inset
+
+convolution is a mathematical operation on two functions (f and g) to produce
+ a third function, that is typically viewed as a modified version of one
+ of the original functions, giving the integral of the pointwise multiplication
+ of the two functions as a function of the amount that one of the original
+ functions is translated
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -476,9 +555,8 @@ a e, após a aplicação da função Softmax, representam a probabilidade de
 
 \begin_layout Standard
 A influência da vizinhança é computada nos blocos da rede residual.
- O primeiro bloco, ou terceira camada, recebe a saída da segunda camada
- e, após realizar seus cálculos, soma sua matriz de resultados a matriz
- de entrada.
+ O primeiro bloco recebe a saída da segunda camada e, após realizar seus
+ cálculos, soma sua matriz de resultados a matriz de entrada.
  A matriz alterada pelo primeiro bloco, será a entrada para o segundo bloco,
  e assim sucessivamente (Figura 
 \begin_inset CommandInset ref
@@ -521,14 +599,16 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Diagrama da rede neural residual utilizada neste trabalho.
+Diagrama da arquitetura da rede neural residual utilizada neste trabalho.
  A entrada da rede consiste na sequência de resíduos de uma proteína no
  formato 
 \emph on
 one-hot encoding.
  
 \emph default
-Para facilitar, apenas dois blocos estão
+A saída contém três probabilidades para cada resíduo, cada uma representa
+ a probabilidade de uma estrutura secundária: hélice, fita ou coil.
+ Para facilitar, apenas dois blocos estão
 \emph on
  
 \emph default
@@ -576,77 +656,202 @@ name "fig:Diagrama-de-uma"
 
 \end_layout
 
-\begin_layout Standard
-A proposta original para as redes residuais utilizam uma função de ativação
- não linear do tipo ReLU (
-\emph on
-Rectified Linear Unit
-\emph default
-) [?] ao longo do caminho residual [He, 2015].
- Dentro do bloco são utilizados, em sequência, uma convolução 3x3, uma camada
- de 
-\emph on
-batch normalization
-\emph default
- [?], um ReLU, outra convolução 3x3 e outra camada de
-\emph on
- batch normalization 
-\emph default
-(Figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Blocos"
-
-\end_inset
-
- a).
- Posteriormente He e colaboradores [He, 2016] testaram diversas variações
- dos blocos e notaram que a alteração da ordem das camadas e a mudança da
- função de ativação do caminho residual para dentro do bloco melhoraram
- o desempenho da rede residual (Figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Blocos"
-
-\end_inset
-
- b).
- 
+\begin_layout Subsection
+Blocos
 \end_layout
 
 \begin_layout Standard
-No entanto, alguns testes preliminares na fase de construção do nosso modelo
- demonstravam uma queda de desempenho com a utilização da camada de 
-\emph on
-batch normalization
-\emph default
- (resultados não mostrados).
- Acreditamos que o motivo disso seja a influência das regiões com códigos
- que representam a ausência de resíduos possam ter no código dos aminoácidos
- e, uma vez que as cadeias polipeptídicas tem tamanhos diferentes para proteínas
- diferentes, essa influência possivelmente não é constante.
-\end_layout
-
-\begin_layout Standard
-Por outro lado, a retirada da camada de 
-\emph on
-batch normalization
-\emph default
- tornava as redes testadas mais suscetível ao sobreajuste (
-\emph on
-overfitting
-\emph default
-).
- A solução encontrada de regularização foi utilizar um camada de 
-\emph on
-dropout 
-\emph default
-[?] dentro do bloco, como utilizado por Zagoruyko e Komodakis [2017] nas
- 
+A composição dos blocos da rede residual é similar a proposta por Zagoruyko
+ e Komodakis nas 
 \emph on
 Wide Residual Networks
 \emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zagoruyko_wide_2016"
+
+\end_inset
+
 .
+ Cada bloco contém duas funções de ativação não lineares do tipo 
+\emph on
+Parametric ReLU
+\emph default
+ (PReLU) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he_delving_2015"
+
+\end_inset
+
+, duas camadas de neurônios de convolução 3x1 e uma camada de 
+\emph on
+dropout 
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "srivastava_dropout:_2014"
+
+\end_inset
+
+ para prevenir o sobreajuste (
+\emph on
+overfitting
+\emph default
+) (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:bloco-usado"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+A função PReLU é:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f(y_{i})=\begin{cases}
+y_{i} & {\textstyle se\,}y_{i}>0\\
+\alpha_{i}y_{i} & {\textstyle se\,}y_{i}\leq0
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+onde 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ é o coeficiente que controla a inclinação da parte negativa.
+ Esse coeficiente é otimizado durante o treinamento.
+ 
+\begin_inset Formula $i$
+\end_inset
+
+ é o índice do canal.
+\end_layout
+
+\begin_layout Standard
+A camada de 
+\emph on
+dropout 
+\emph default
+atua bloqueando aleatoriamente algumas conexões da rede durante o treinamento.
+ Isto é feito alterando os pesos das conexões para zero.
+ A probabilidade de cada conexão ser bloqueada é indicada durante a construção
+ do modelo, nós utilizamos uma probabilidade de 30%.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Deep neural nets with a large number of parameters are very powerful machine
+ learning systems.
+ However, overfitting is a serious problem in such networks.
+ Large networks are also slow to use, making it difficult to deal with overfitti
+ng by combining the predictions of many different large neural nets at test
+ time.
+ Dropout is a technique for addressing this problem.
+ The key idea is to randomly drop units (along with their connections) from
+ the neural network during training.
+ This prevents units from co-adapting too much.
+ During training, dropout samples from an exponential number of different
+ “thinned” networks.
+ At test time, it is easy to approximate the effect of averaging the predictions
+ of all these thinned networks by simply using a single unthinned network
+ that has smaller weights.
+ This significantly reduces overfitting and gives major improvements over
+ other regularization methods.
+ We show that dropout improves the performance of neural networks on supervised
+ learning tasks in vision, speech recognition, document classification and
+ computational biology, obtaining state-of-the-art results on many benchmark
+ data sets.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/bloco.pdf
+	width 30line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:bloco-usado"
+
+\end_inset
+
+Diagrama da configuração de bloco utilizada.
+ Cada bloco possui duas funções de ativação PReLU, duas camadas de convolução
+ 3x1 e uma camada de 
+\emph on
+dropout
+\emph default
+.
+ Cada bloco recebe a matriz de valores do bloco ou camada anterior e, após
+ realizar seus cálculos, soma a matriz de resultados a matriz original.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A camada de convolução 3x1 são as responsáveis por transmitir informação
+ sobre a vizinhança do resíduos.
+ Cada neurônio desta camada recebe valores referentes ao resíduo central
+ e seus dois vizinhos e, após o cálculo, atribui o valor resultante na camada
+ inferior e na posição correspondente ao resíduo central (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:conv3x1"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -657,7 +862,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename figures/blocos_residuais.pdf
+	filename figures/conv-neuron.pdf
 	width 100line%
 
 \end_inset
@@ -669,18 +874,28 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Blocos 
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Blocos"
+name "fig:conv3x1"
+
+\end_inset
+
+Esquema de um neurônio em uma camada de convolução 3x1.
+ Cada neurônio utiliza os valores dos canais de 3 colunas, multiplica esses
+ valores pelos pesos, soma, e atribui o resultado a um canal na posição
+ correspondente.
+ Os neurônios de um mesmo canal são idênticos, logo, o resultado irá variar
+ de acordo com a entrada.
+ Neurônios de canais diferentes tem pesos diferentes.
+ 
+\end_layout
 
 \end_inset
 
 
 \end_layout
 
-\end_inset
-
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -696,13 +911,15 @@ Número de blocos e canais
 \begin_layout Standard
 O número de blocos define a profundidade da rede e, consequentemente, o
  tamanho da vizinhança, em número de resíduos, que irá influenciar na predição
- da estrutura secundária de cada resíduo.
+ da estrutura secundária para cada resíduo.
 \end_layout
 
 \begin_layout Standard
-A utilização de 4 blocos determina que a predição da estrutura secundária
- de cada resíduo utilizará a informação contida numa janela de 17 resíduos
- da proteína 
+Cada bloco possui duas camadas de convolução 3x1 e cada camada recebe a
+ informação de dois vizinhos, um a esquerda e um a direita.
+ Consequentemente, a utilização de 4 blocos determina que a predição da
+ estrutura secundária para cada resíduo utilizará a informação contida numa
+ janela de 17 resíduos da proteína 
 \begin_inset Formula $(4\times4+1)$
 \end_inset
 
@@ -712,7 +929,7 @@ A utilização de 4 blocos determina que a predição da estrutura secundária
 \begin_inset Formula $(11\times4+1)$
 \end_inset
 
- e com 21 blocos, a informação em uma janela de 85 resíduos 
+ e a com 21 blocos, a informação em uma janela de 85 resíduos 
 \begin_inset Formula $(21\times4+1)$
 \end_inset
 
@@ -750,13 +967,21 @@ key "kingma_adam:_2014"
 \end_inset
 
  com taxa de aprendizado de 0.001.
- O valor do 
+ Uma época equivale a utilização de todas as proteínas do conjunto de treinament
+o.
+ 
+\end_layout
+
+\begin_layout Standard
+As proteínas do conjunto de treinamento são utilizadas em lotes (
 \emph on
-Dropout
+batches
 \emph default
- nos blocos é de 0,3.
- Esse valor indica uma probabilidade de 30% dos valores serem alterados
- para zero.
+) de 64, para as redes maiores, ou 128, para as menores.
+ Essa variação foi necessária devido à memória disponível.
+ O tempo médio de treinamento de cada rede foi de ~10 horas utilizando um
+ computador com placa de vídeo (GPU) Nvidia GTX 1060 6GB.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -840,7 +1065,10 @@ name "fig:resnet_4_treinamento"
 
 \end_inset
 
-
+Aprendizado da rede residual com 4 blocos demonstrado pela redução da entropia
+ cruzada ao longo de 1000 épocas.
+ Os valores são para os dados do conjunto de treinamento e validação nas
+ redes com 8, 16 e 32 canais (ou filtros).
 \end_layout
 
 \end_inset
@@ -879,7 +1107,11 @@ name "fig:resnet_11_treinamento"
 
 \end_inset
 
-
+Aprendizado da rede residual com 8 blocos demonstrado pela redução da entropia
+ cruzada ao longo de 1000 épocas.
+ Os valores são para os dados do conjunto de treinamento e validação nas
+ redes com 8, 16 e 32 canais (ou filtros).
+ A rede com 32 canais apresenta sinais de sobreajuste.
 \end_layout
 
 \end_inset
@@ -918,7 +1150,12 @@ name "fig:resnet_21_treinamento"
 
 \end_inset
 
-
+Aprendizado da rede residual com 21 blocos demonstrado pela redução da entropia
+ cruzada ao longo de 1000 épocas.
+ Os valores são para os dados do conjunto de treinamento e validação nas
+ redes com 8, 16 e 32 canais (ou filtros).
+ A rede com 32 canais apresenta fortes sinais de sobreajuste com a redução
+ do erro no conjunto de treinamento e o aumento do erro no conjunto de validação.
 \end_layout
 
 \end_inset
@@ -936,7 +1173,7 @@ Acurácia por tipo de estrutura secundária
 \end_layout
 
 \begin_layout Standard
-Os resultados da acurácia por tipo de estrutura secundária indica que o
+Os resultados da acurácia por tipo de estrutura secundária indicam que o
  aumento do número de blocos, e consequentemente, a utilização de resíduos
  mais distantes na sequência para a predição da estrutura secundária, aumenta,
  sobretudo, a acurácia na predição de fitas.
@@ -945,13 +1182,27 @@ Os resultados da acurácia por tipo de estrutura secundária indica que o
 
 \begin_layout Standard
 Ao compararmos a rede residual b21-c16 (21 blocos e 16 canais) com a rede
- b4-c16 observamos um aumento de 2,8% na acurácia (Q3) obtida no conjunto
- de teste.
- Respectivamente, Q3 78,3% e 75,5%.
+ b4-c16 observamos um aumento de 2,8% na acurácia (
+\begin_inset Formula $Q_{3}$
+\end_inset
+
+) obtida no conjunto de teste.
+ Respectivamente, 
+\begin_inset Formula $Q_{3}$
+\end_inset
+
+ igual a 78,3% e 75,5%.
  No entanto, ao compararmos a acurácia por tipo de estrutura secundária
  observamos um aumento de 8,3% (68,0% e 59,7%) na predição de fitas, de
  3,5% para a predição de coils (79,9% e 76,4%) e uma diminuição da acurácia
- na predição de hélices de 0,6% (81,9% e 82,5%).
+ na predição de hélices de 0,6% (81,9% e 82,5%) (Tabela 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:resnet-q3"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -966,7 +1217,11 @@ reference "subsec:Rede-neural-hk"
 ) e com 64 neurônios na camada oculta (hk64) mostra que a redes residuais
  com 11 e 21 blocos apresentam maior acurácia na predição.
  Quando comparamos especificamente a rede residual b21-c16 com a rede hk64
- observamos uma acurácia (Q3) 3,1% maior.
+ observamos uma acurácia (
+\begin_inset Formula $Q_{3}$
+\end_inset
+
+) 3,1% maior.
  A comparação da acurácia por tipo de estrutura secundária mostra uma acurácia
  6,8% maior para fitas, 4,2% maior para coils e 0,1% menor para hélices.
 \end_layout
@@ -4612,7 +4867,15 @@ Teste
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Tabela
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:resnet-q3"
+
+\end_inset
+
+Acurácia apresentada pelas redes residuais em resíduos com consenso na atribuiçã
+o da estrutura secundária.
+ 
 \end_layout
 
 \end_inset
@@ -5756,7 +6019,12 @@ name "tab:resnet-atribuicao"
 
 \end_inset
 
+Acurácia (
+\begin_inset Formula $Q_{3}$
+\end_inset
 
+) das redes residuais em relação a estrutura secundária atribuída por diferentes
+ métodos computacionais.
 \end_layout
 
 \end_inset
@@ -5922,7 +6190,10 @@ name "fig:resnet-comp-ss"
 
 \end_inset
 
-
+Distribuição do comprimento das estruturas secundárias preditas pelas redes
+ residuais.
+ As hélices, fitas e coils preditos apresentam comprimento similar ao observado
+ experimentalmente.
 \end_layout
 
 \end_inset
@@ -6003,8 +6274,8 @@ As redes demonstraram um clara tendência em separar os aminoácidos prolina
  em elementos de estrutura secundária.
  Na glicina, a ausência de cadeia lateral amplia os possíveis estados conformaci
 onais reduzindo as restrições dos ângulos torcionais.
- Tais características são únicas desses dois resíduos, e portanto, diferente
- dos outros 18 aminoácidos.
+ Tais características são únicas desses dois resíduos, e portanto, diferentes
+ dos demais 18 aminoácidos.
 \end_layout
 
 \begin_layout Standard
@@ -6307,8 +6578,17 @@ status open
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Conclusão
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

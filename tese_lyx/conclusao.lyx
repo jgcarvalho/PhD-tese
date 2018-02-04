@@ -210,6 +210,166 @@ Redes neurais profundas
 \end_layout
 
 \begin_layout Subsection
+Arquitetura
+\end_layout
+
+\begin_layout Standard
+A proposta original para as redes residuais utilizam uma função de ativação
+ não linear do tipo ReLU (
+\emph on
+Rectified Linear Unit
+\emph default
+) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nair_rectified_2010"
+
+\end_inset
+
+ ao longo do caminho residual 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he_deep_2016"
+
+\end_inset
+
+.
+ Dentro do bloco são utilizados, em sequência, uma convolução 3x3, uma camada
+ de 
+\emph on
+batch normalization
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ioffe_batch_2015"
+
+\end_inset
+
+, um ReLU, outra convolução 3x3 e outra camada de
+\emph on
+ batch normalization 
+\emph default
+(Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Blocos"
+
+\end_inset
+
+ a).
+ Posteriormente He e colaboradores 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+[He, 2016]
+\end_layout
+
+\end_inset
+
+ testaram diversas variações dos blocos e notaram que a alteração da ordem
+ das camadas e a mudança da função de ativação do caminho residual para
+ dentro do bloco melhoraram o desempenho da rede residual (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Blocos"
+
+\end_inset
+
+ b).
+ 
+\end_layout
+
+\begin_layout Standard
+No entanto, alguns testes preliminares na fase de construção do nosso modelo
+ demonstravam uma queda de desempenho com a utilização da camada de 
+\emph on
+batch normalization
+\emph default
+ (resultados não mostrados).
+ Acreditamos que o motivo disso seja a influência das regiões com códigos
+ que representam a ausência de resíduos possam ter no código dos aminoácidos
+ e, uma vez que as cadeias polipeptídicas tem tamanhos diferentes para proteínas
+ diferentes, essa influência possivelmente não é constante.
+\end_layout
+
+\begin_layout Standard
+Por outro lado, a retirada da camada de 
+\emph on
+batch normalization
+\emph default
+ tornava as redes testadas mais suscetível ao sobreajuste (
+\emph on
+overfitting
+\emph default
+).
+ A solução encontrada de regularização foi utilizar um camada de 
+\emph on
+dropout
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "srivastava_dropout:_2014"
+
+\end_inset
+
+ dentro do bloco, como utilizado por Zagoruyko e Komodakis nas 
+\emph on
+Wide Residual Networks
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zagoruyko_wide_2016"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/blocos_residuais.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Blocos"
+
+\end_inset
+
+ Configuração dos blocos 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Evidências da relação dos estados internos da rede neural com o processo
  de enovelamento
 \end_layout
