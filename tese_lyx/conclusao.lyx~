@@ -320,7 +320,23 @@ Redes neurais residuais
 \end_layout
 
 \begin_layout Subsection
-Arquitetura
+Representação do aminoácidos
+\end_layout
+
+\begin_layout Standard
+Ao propormos a utilização de uma camada de neurônios de convolução 1x1 como
+ primeira camada oculta da rede neural esperávamos que ela aprendesse a
+ qual a melhor representação para os aminoácidos.
+ Como essa representação estava relacionada apenas a tarefa de predizer
+ estruturas secundárias, não sabíamos como os aminoácidos seriam agrupados.
+ Interessantemente, o agrupamento dessas representações demonstrou que a
+ rede é capaz de aprender similaridades estruturais e físico-químicas dos
+ resíduos.
+ 
+\end_layout
+
+\begin_layout Subsection
+Configuração dos blocos da rede residual
 \end_layout
 
 \begin_layout Standard

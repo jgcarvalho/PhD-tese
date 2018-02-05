@@ -614,7 +614,7 @@ key "rohl_protein_2004"
 
 .
  Esses métodos utilizam fragmentos extraídos de proteínas com estrutura
- resolvida experimentalmente, os quais posteriormente são reunidos de acordo
+ resolvida experimentalmente, os quais são posteriormente reunidos de acordo
  com a sequência de aminoácidos da proteína a qual se deseja construir um
  modelo.
  A utilização de fragmentos tem como objetivo acelerar a busca pelo modelo
@@ -866,7 +866,7 @@ key "kolodny_universe_2013"
 \end_layout
 
 \begin_layout Standard
-Os métodos de modelagem comparativa não fornecem informação sobre o etapas
+Os métodos de modelagem comparativa não fornecem informação sobre as etapas
  de enovelamento da proteína, ou mesmo o mecanismo, pois baseiam-se apenas
  na estrutura nativa para a construção do modelo 
 \begin_inset CommandInset citation
@@ -1125,7 +1125,7 @@ key "colloch_beta-breakers:_1991"
 
 , os quais acredita-se que atuem como sinais de término ou “parada” desses
  elementos de estrutura secundária.
- Alguns trabalhos ainda demonstram que há preferência de algumas trincas
+ Alguns trabalhos ainda demonstram haver preferência de algumas trincas
  de aminoácidos por determinadas conformações e estruturas secundárias 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -1229,7 +1229,7 @@ key "abagyan_biased_1994,pedersen_protein_1997"
 
 \end_inset
 
- também identificaram que algumas sequências peptídicas, correspondentes
+ também identificaram que algumas sequências polipeptídicas, correspondentes
  a pequenas regiões de proteínas, apresentam maior propensão a adotar uma
  estrutura secundária, ou mesmo uma conformação similar a observada na estrutura
  nativa da proteína original.
@@ -1246,6 +1246,45 @@ key "srinivasan_physical_1999"
  secundária de estados intermediários da proteína, sendo por vezes conservada
  na estrutura nativa e, em outras, alterada devido a interações não locais.
  
+\end_layout
+
+\begin_layout Section
+Objetivo e justificativa
+\end_layout
+
+\begin_layout Standard
+Nosso objetivo neste trabalho foi desenvolver métodos de predição de estruturas
+ secundárias que forneçam informações sobre o processo de predição ou que
+ nos permitam extrair tal informação.
+ Acreditamos que uma informação detalhada do processo de predição poderá
+ estar relacionada ao processo físico de formação da estrutura secundária
+ e, consequentemente, ao enovelamento.
+ Assim, tal método poderá auxiliar ainda a predição da estrutura tridimensional
+ a partir da sequência.
+ 
+\end_layout
+
+\begin_layout Standard
+Neste trabalho exploramos dois modelos capazes de fornecer informações do
+ processo de predição.
+ O primeiro modelo utiliza autômatos celulares, o qual, devido as suas caracterí
+sticas, fornece diretamente a informação do processo de predição.O segundo
+ modelo, baseado em redes neurais residuais profundas, nos permite extrair
+ a informação do processo de predição a partir das camadas de neurônios
+ internas.
+\end_layout
+
+\begin_layout Standard
+Ambos os métodos, uma vez otimizados, são de rápida execução e exigem poucos
+ recursos computacionais, permitindo, assim, a aplicação em larga escala.
+ Isto possibilitará diversos tipos de aplicações, como o estudo do impacto
+ de mutações durante a formação da estrutura, a comparação entre proteínas
+ homólogas, entre proteínas com sequências similares, mas estruturas distintas,
+ além de auxiliar no 
+\emph on
+design
+\emph default
+ de novas sequências que possuam um enovelamento desejado.
 \end_layout
 
 \begin_layout Standard

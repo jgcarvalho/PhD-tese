@@ -151,7 +151,64 @@ conhecimento
 \end_layout
 
 \begin_layout Standard
-O primeiro neurônio artificial foi criado  
+O primeiro neurônio artificial foi proposto em 1949 por McCulloth e Pitts
+ e chamado de 
+\emph on
+Linear Threshold Unit 
+\emph default
+(LTU).
+ Posteriormente, Rosenblatt utilizou o LTU para criar, em 1957, o 
+\emph on
+Perceptron,
+\emph default
+ a primeira rede neural artificial capaz de aprender a reconhecer padrões.
+ Entretanto, em 1969, no livro 
+\begin_inset Quotes sld
+\end_inset
+
+Perceptrons
+\begin_inset Quotes srd
+\end_inset
+
+ de Minsky e Papert, os autores demonstraram a incapacidade do 
+\emph on
+Perceptron 
+\emph default
+em classificar padrões não-linearmente separáveis como o XOR.
+ Apesar de Grossberg ter demonstrado modelos de redes neurais capazes de
+ lidar com problemas não-linearmente separáveis apenas 3 anos após a publicação
+ do livro, acredita-se que o livro de Minsky e Papert tenha atrasado o desenvolv
+imento das redes neurais até a década de 80, quando elas voltaram a ser
+ estudadas.
+ 
+\end_layout
+
+\begin_layout Standard
+Em 1986, Rumelhart, Hinton e Willians publicaram o trabalho onde descrevem
+ o algoritmo de 
+\emph on
+backpropagation.
+ 
+\emph default
+Esse algoritmo tornou capaz o treinamento de redes neurais como múltiplas
+ camadas de neurônios chamadas de Multi Layer Perpectron.
+ As MLP utilizam camadas de neurônios ocultos, ou seja, neurônios que estão
+ conectados a outros neurônios, e devido a esta arquitetura, são capazes
+ de solucionar problemas não-lineares ou classificar dados em classes não-linear
+mente separáveis.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+Apesar do nome Multi Layer Perceptron ser amplamente
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Subsection

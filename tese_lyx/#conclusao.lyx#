@@ -320,7 +320,23 @@ Redes neurais residuais
 \end_layout
 
 \begin_layout Subsection
-Arquitetura
+Representação do aminoácidos
+\end_layout
+
+\begin_layout Standard
+Ao propormos a utilização de uma camada de neurônios de convolução 1x1 como
+ primeira camada oculta da rede neural esperávamos que ela aprendesse a
+ qual a melhor representação para os aminoácidos.
+ Como essa representação estava relacionada apenas a tarefa de predizer
+ estruturas secundárias, não sabíamos como os aminoácidos seriam agrupados.
+ Interessantemente, o agrupamento dessas representações demonstrou que a
+ rede é capaz de aprender similaridades estruturais e físico-químicas dos
+ resíduos.
+ 
+\end_layout
+
+\begin_layout Subsection
+Configuração dos blocos da rede residual
 \end_layout
 
 \begin_layout Standard
@@ -1208,11 +1224,10 @@ Neste trabalho testamos dois modelos de predição de estruturas secundárias
 \end_layout
 
 \begin_layout Standard
-O modelo utilizando autômatos celulares apresentou baixa acurácia em relação
- à outros métodos de predição de estruturas secundárias e o processo de
- predição dessas estruturas, observado durante a evolução do autômato, apresento
-u padrões de baixa complexidade.
- Combinados, esses dois resultados apontam para um modelo de pouca utilidade
+O modelo utilizando autômatos celulares apresentou menor acurácia em relação
+ à outros métodos de predição de estruturas secundárias.
+ O processo de predição dessas estruturas, observado durante a evolução
+ do autômato, apresentou padrões de baixa complexidade, o que não é ideal
  para estudos da formação de estruturas proteicas.
  No entanto, acreditamos que uma melhor definição dos estados que representam
  estruturas secundárias e alterações no mecanismo de otimização das regras,
@@ -1233,12 +1248,13 @@ Por outro lado, o modelo desenvolvido utilizando redes neurais residuais
  Ainda não temos evidências suficientes para afirmar que há uma relação
  significativa entre o processo de predição e o processo físico de formação
  dessas estruturas.
- Algo que planejamos avaliar futuramente comparando dados experimentais
- do enovelamento de proteínas com os resultados da predição.
- Nesse sentido, observar que as redes residuais aprenderam como agrupar
+ Futuramente planejamos comparar dados experimentais do enovelamento de
+ proteínas com os resultados da predição.
+ Nesse sentido, a observação de que as redes residuais aprenderam como agrupar
  aminoácidos e que esses agrupamentos tem relação com características estruturai
-s e físico-químicas pode ser um compreendido como um indício de que a relação
- possa  
+s e físico-químicas pode ser um ótimo indício de que a relação entre os
+ estados com o processo de formação das estruturas possa existir.
+ 
 \end_layout
 
 \end_body

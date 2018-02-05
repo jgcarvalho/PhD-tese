@@ -1,0 +1,251 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass classicthesis
+\use_default_options true
+\maintain_unincluded_children false
+\language brazilian
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language swedish
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes true
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\author -1589230395 "Paulo S. L. de Oliveira"
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begingroup
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+let
+\backslash
+clearpage
+\backslash
+relax
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+let
+\backslash
+cleardoublepage
+\backslash
+relax
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pdfbookmark[1]{Abstract}{Abstract}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
+Abstract
+\end_layout
+
+\begin_layout Standard
+The process of self-organization of the protein structure is known as folding.
+ Although we know the structure of many proteins, for a majority of them,
+ we do not have enough understanding to describe in details how the structure
+ is organized from its amino acid sequence.
+ In this work, we developed two methods for secondary structure prediction
+ using models that have the potential to provide detailed information about
+ the prediction process.
+ One of these models was constructed using cellular automata, a type of
+ dynamic model where it is possible to obtain spatial and temporal information.
+ The other model was developed using deep residual neural networks.
+ With this model it is possible to extract spatial and probabilistic information
+ from its multiple internal layers of convolution.
+ The accuracy of the prediction obtained by this model was ~ 78% for residues
+ that showed consensus in the structure assigned by the DSSP, STRIDE, KAKSI
+ and PROSS methods.
+ Such value is higher than that obtained by other methods which perform
+ the prediction of secondary structures from the amino acid sequence only.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pdfbookmark[1]{Resumo}{Resumo}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Chapter*
+Resumo
+\end_layout
+
+\begin_layout Standard
+O processo de auto-organização da estrutura proteica a partir da cadeia
+ de aminoácidos é conhecido como enovelamento.
+ Apesar de conhecermos a estrutura de muitas proteínas, para a maioria delas,
+ não possuímos uma compreensão suficiente para descrever em detalhes como
+ a estrutura se organiza a partir da sequência de aminoácidos.
+ 
+\change_inserted -1589230395 1517848231
+É bem conhecido que a formação de núcleos de estruturas locais, conhecida
+ como estrutura secundária, apresenta papel fundamental no enovelamento
+ final da proteína.
+ Desta forma, o desenvolvimento de métodos que permitam não somente predizer
+ a estrutura secundaŕia adotada por um dado resíduo, mas também, a maneira
+ como esse processo deve ocorrer ao longo do tempo é muito relevante em
+ várias áreas da biologia estrutural.
+\change_unchanged
+Neste trabalho desenvolvemos dois métodos de predição de estruturas secundárias
+ utilizando modelos com o potencial de fornecer informações mais detalhadas
+ sobre o processo de 
+\change_deleted -1589230395 1517848248
+predição
+\change_inserted -1589230395 1517848259
+formação de estruturas secundárias
+\change_unchanged
+.
+ Um desses modelos foi construído utilizando autômatos celulares, um tipo
+ de modelo dinâmico onde é possível obtermos informações espaciais e temporais.
+ O outro modelo foi desenvolvido utilizando redes neurais residuais profundas.
+ Com este modelo é possível extrair informações espaciais e probabilísticas
+ de suas múltiplas camadas internas de convolução
+\change_inserted -1589230395 1517848360
+, o que parece refletir, em algum sentido os estados de formação da estrutura
+ secundária
+\change_unchanged
+.
+ A acurácia da predição obtida por esse modelo foi de ~78% para os resíduos
+ que apresentaram consenso na estrutura atribuída pelos métodos DSSP, STRIDE,
+ KAKSI e PROSS.
+ Tal valor é superior ao obtido por outros métodos que realizam a predição
+ de estruturas secundárias 
+\change_inserted -1589230395 1517848399
+diretamente 
+\change_unchanged
+a partir da sequência de aminoácidos.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+endgroup
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
