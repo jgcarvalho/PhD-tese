@@ -1313,6 +1313,7 @@ são classificados como coil.
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1320,6 +1321,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename figures/pross_coarse.png
+	width 80line%
 
 \end_inset
 
@@ -1405,6 +1407,7 @@ Fita
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1412,6 +1415,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename figures/pross_fine.png
+	width 80line%
 
 \end_inset
 
@@ -1772,6 +1776,7 @@ Quantos resíduos tem atribuição igual entre os métodos e quantos são difere
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1837,6 +1842,7 @@ reference "fig:Similaridade-atribuiçao"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1926,6 +1932,7 @@ Qual a variação no número de estruturas secundarias? SCRIPT atribuicao_n_ss.p
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2012,6 +2019,7 @@ SCRIPT: atribuicao_len_ss.py
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2067,6 +2075,7 @@ reference "fig:Distribuição-do-comprimento_fitas"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2116,6 +2125,7 @@ As distribuições dos comprimentos dos coils apresentam mediana de 4 resíduos
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2196,6 +2206,7 @@ s_VS_length.py OUTLIER PDB ID: 3Q23 1.8A
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2301,6 +2312,7 @@ nso.py
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2429,6 +2441,7 @@ Onde ocorrem a falta de consenso? * Se for entre resíduos com o mesmo tipo
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2546,6 +2559,7 @@ Quais aminoácidos sofrem maior variação entre os métodos? * normalizar pelo
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open

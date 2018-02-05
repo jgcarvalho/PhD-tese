@@ -75,6 +75,168 @@
 Introdução
 \end_layout
 
+\begin_layout Section
+Proteínas e sua organização estrutural
+\end_layout
+
+\begin_layout Standard
+Proteínas são cadeias polipeptídicas compostas por aminoácidos unidos em
+ uma sequência definida.
+ Tal sequência determina todas a propriedades particulares da proteína,
+ incluindo sua função biológica e sua estrutura tridimensional.
+\end_layout
+
+\begin_layout Standard
+A estrutura proteica é comumente classificada de maneira hierárquica em
+ estrutura primária, secundária, terciária e quaternária.
+\end_layout
+
+\begin_layout Standard
+A estrutura primária corresponde a sequência de aminoácidos na cadeia polipeptíd
+ica.
+ A estrutura secundária são padrões estruturais locais formados, sobretudo,
+ por ligações de hidrogênio.
+ A estrutura terciária é o arranjo espacial da estrutura secundária e, consequen
+temente, da estrutura primária.
+ Já a estrutura quaternária é a organização espacial contendo mais de uma
+ estrutura terciária e, portanto, mais de uma cadeia polipeptídica (Figura).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/jgcarvalho/Documents/PhD-tese/presentation/four-structures.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:prot-hierarquia"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dentre os principais padrões observados em estruturas proteicas estão as
+ hélices 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, descritas pela primeira vez por Pauling em 1951.
+ Outro padrão estrutural importante são as folhas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ descritas por Pauling e Corey também em 1951.
+\end_layout
+
+\begin_layout Standard
+Apesar de haverem diversos outros padrões estruturais identificados, usualmente
+ as proteína costumam ser dividas em hélices, estruturas beta e coil.
+ Sendo as regiões de coil definidas na prática como 
+\begin_inset Quotes sld
+\end_inset
+
+nenhuma das outras
+\begin_inset Quotes srd
+\end_inset
+
+.
+ Assim, a característica que define coil é a ausência de conformações sequencial
+mente repetitivas.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+A protein, of course, is a polypeptide chain made up of amino acid residues
+ linked together in a definite sequence.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+The sequence of side chains determines all that is unique about a particular
+ protein, including its biological function and its specific three-dimensional
+ structure.
+\end_layout
+
+\begin_layout Plain Layout
+The α-helix was first described by Pauling in 1951 (Pauling et al., 1951)
+\end_layout
+
+\begin_layout Plain Layout
+, as Pauling first realized, the α-helix has 3.6 residues per turn, with
+ a hydrogen bond between the CO of residue n and the NH of residue n + 4
+ (see Fig.
+ 11)
+\end_layout
+
+\begin_layout Plain Layout
+The other major structural element found in globular proteins is the β sheet.
+ Historically, it was first observed as the β, or extended, form of keratin
+ fibers.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Pauling and Corey (1951) described the correct hydrogen-bonding patterns
+ for both antiparallel and parallel β sheet, and also realized that the
+ sheets were “pleated,” with α-carbons successively a little above and below
+ the plane of the sheet
+\end_layout
+
+\begin_layout Plain Layout
+When there is a need to divide up protein structure for purposes of description,
+ prediction, spectroscopic characterization, etc., the usual categories have
+ been “helix,” “β structure,” and “coil.” “Coil” is defined in practice as
+ “none of the above.” Its major distinguishing feature is that it is nonrepetitiv
+e in backbone conformation (although depending on one’s definition of β
+ structure, one might or might not include an isolated piece of extended
+ chain as coil).
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Enovelamento de proteínas
+\end_layout
+
 \begin_layout Standard
 O problema do enovelamento de proteínas é a questão de como são formadas
  ou organizadas suas estruturas atômicas tridimensionais.
@@ -118,7 +280,7 @@ key "rose_backbone-based_2006"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
+\begin_inset Note Comment
 status collapsed
 
 \begin_layout Plain Layout
@@ -215,7 +377,7 @@ o:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
+\begin_inset Note Comment
 status collapsed
 
 \begin_layout Plain Layout
@@ -318,7 +480,7 @@ key "baker_protein_2001"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
+\begin_inset Note Comment
 status collapsed
 
 \begin_layout Plain Layout
@@ -438,7 +600,7 @@ key "helles_comparative_2008"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
+\begin_inset Note Comment
 status collapsed
 
 \begin_layout Plain Layout
@@ -578,7 +740,7 @@ key "kolodny_universe_2013"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
+\begin_inset Note Comment
 status collapsed
 
 \begin_layout Plain Layout
@@ -707,7 +869,7 @@ de novo
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
+\begin_inset Note Comment
 status collapsed
 
 \begin_layout Plain Layout
@@ -811,7 +973,7 @@ key "daggett_is_2003"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
+\begin_inset Note Comment
 status collapsed
 
 \begin_layout Plain Layout
@@ -950,7 +1112,7 @@ key "otaki_secondary_2010"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
+\begin_inset Note Comment
 status collapsed
 
 \begin_layout Plain Layout
@@ -1053,7 +1215,7 @@ key "srinivasan_physical_1999"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
+\begin_inset Note Comment
 status collapsed
 
 \begin_layout Plain Layout
@@ -1090,7 +1252,7 @@ key "srinivasan_physical_1999"
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Os resultados observados na literatura sugerem a possibilidade do desenvolviment
@@ -1107,7 +1269,7 @@ o de um algoritmo de predição de estruturas secundárias que recapitule a
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 É necessário incluir os objetivos e explicar melhor a motivação
@@ -1119,7 +1281,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
+\begin_inset Note Comment
 status collapsed
 
 \begin_layout Plain Layout
@@ -1154,7 +1316,7 @@ key "helles_comparative_2008"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
+\begin_inset Note Comment
 status collapsed
 
 \begin_layout Plain Layout
@@ -1185,154 +1347,6 @@ key "helles_comparative_2008"
 .
  Acreditamos que um método com tais características possa ser desenvolvido
  utilizando autômatos celulares.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Section
-Proteínas
-\end_layout
-
-\begin_layout Plain Layout
-As proteínas estão envolvidas em diversas funções biológicas como suporte
- estrutural, catálise, transporte e regulação.
-\end_layout
-
-\begin_layout Section
-Organização estrutural
-\end_layout
-
-\begin_layout Plain Layout
-A estrutura proteica é classificada em quatro níveis: a estrutura primária,
- secundária, terciária e quaternária.
- 
-\end_layout
-
-\begin_layout Plain Layout
-A estrutura primária corresponde a sequência de aminoácidos da cadeia polipeptíd
-ica.
-\end_layout
-
-\begin_layout Plain Layout
-A estrutura secundária consiste em padrões locais que são determinados pelas
- ligações de hidrôgênio entre átomos da cadeia principal ou pelos ângulos
- torcionais PHI e PSI.
- Há dois tipos básicos de estrutura secundária: a ALPHA-hélice e a folha-BETA.
- Um outro tipo, chamado coil, indica a ausência de padrões regulares 
-\end_layout
-
-\begin_layout Section
-Processo de enovelamento
-\end_layout
-
-\begin_layout Plain Layout
-O problema do enovelamento de proteínas é a questão de como são formadas
- ou organizadas suas estruturas atômicas tridimensionais.
- Essa questão surgiu no final da década de 50, logo após a resolução atômica
- da primeira estrutura proteica por Kendrew e colaboradores [1], trabalho
- no qual se observou experimentalmente, segundo o próprio autor, uma complexidad
-e maior que as antecipadas pelas teorias da época sobre estruturas proteicas.
-\end_layout
-
-\begin_layout Plain Layout
-Posteriormente, Anfinsen [2] realizou experimentos que demonstraram que
- a ribonuclease poderia ser reversamente desnaturada/renaturada in vitro,
- e que em condições desnaturantes, tanto a estrutura quanto a função eram
- perdidas.
- No entanto, ambas eram recuperadas ao retornarem a condições fisiológicas.
- 
-\end_layout
-
-\begin_layout Plain Layout
-A conclusão foi que, apesar da grande complexidade observada, as proteínas
- se auto-organizavam estruturalmente.
- Assim, apenas a informação contida em sua sequência de aminoácidos seria
- suficiente para definir sua estrutura e que esta determinaria a sua função.
- A explicação de Anfinsen para esta auto-organização estrutural foi dada
- através da hipótese termodinâmica, a qual postula que em condições fisiológicas
- a população proteica atinge um mínimo de energia livre de Gibbs no seu
- estado nativo [3].
-\end_layout
-
-\begin_layout Plain Layout
-Devido ao princípio da relação estrutura ↔ função e aos resultados experimentais
- que demonstraram que a estrutura é determinada pela sequência de aminoácidos,
- diversos trabalhos buscaram prever a estrutura de uma proteína a partir
- da sua sequência de resíduos.
- Alguns dos primeiros trabalhos a discutir uma forma de predição foram publicado
-s por Levinthal [4, 5].
- Nestes trabalhos o autor afirma que o número de configurações estruturais
- possíveis para uma cadeia polipeptídica é imenso e que impossível explorar
- todas as conformações para encontrar sua estrutura nativa.
- Entretanto, as proteínas são capazes de se enovelarem espontaneamente e
- adotar a conformação nativa numa escala de segundos ou menos.
- Esta observação ficou popularmente conhecida como Paradoxo de Levinthal.
-\end_layout
-
-\begin_layout Plain Layout
-Levinthal não considerou isso como um resultado absurdo, mas baseou-se nessa
- análise para concluir que um mecanismo aleatório para o enovelamento não
- seria válido [6].
- Segundo Levinthal [4], uma possível explicação para a eficiência observada
- no processo seria a formação rápida de interações locais que acelerariam
- e guiariam o enovelamento:
-\end_layout
-
-\begin_layout Quotation
-We feel that protein folding is speeded and guided by the rapid formation
- of local interactions, which then determine the further folding of the
- peptide.
-\end_layout
-
-\begin_layout Plain Layout
-Apesar da sugestão de Levinthal para explicar um possível mecanismo de enovelame
-nto ter sido publicado há 45 anos, o desafio de se prever as estruturas
- tridimensionais das proteínas a partir de suas sequências de aminoácidos,
- mesmo obtendo grande progresso no últimos anos, ainda permanece sem uma
- solução definitiva [7].
- Assim, métodos experimentais, mais especificamente, os métodos de cristalografi
-a de proteínas por difração de raios-X e o de ressonância magnética nuclear,
- são as principais forma de se obter um modelo estrutural com resolução
- atômica.
-\end_layout
-
-\begin_layout Plain Layout
-No entanto, métodos experimentais de resolução da estrutura proteica apresentam
- diversas dificuldades técnicas.
- Por exemplo, na cristalografia por difração de raios-X é necessária a obtenção
- de proteína em alto grau de pureza e a formação de monocristais, que muitas
- vezes são fatores limitantes do processo.
- Por outro lado, a ressonância magnética nuclear exige altas concentrações
- de proteína purificada em meios com diferentes isótopos, além de possuir
- uma limitação quanto ao tamanho da proteína analisada.
- Essas limitações experimentais são evidenciadas pela disparidade entre
- o número de estruturas resolvidas experimentalmente (≈ 115 mil depositadas
- no PDB) e o número de proteínas com sequência de aminoácido conhecidas
- (≈ 67 milhões depositadas no UniProtKB/TrEMBL – dados de 09/2016).
-\end_layout
-
-\begin_layout Plain Layout
-Consequentemente, a busca por métodos computacionais capazes de prever estrutura
-s proteicas continua uma área de grande interesse científico, tanto como
- uma forma de se conhecer melhor o mecanismo de enovelamento como também
- na utilização da informação estrutural para responder diversas questões
- biológicas com diversas aplicações práticas como o desenvolvimento de novos
- medicamentos e a engenharia de proteínas [8].
-\end_layout
-
-\begin_layout Subsection
-Formação das ALPHA-hélices
-\end_layout
-
-\begin_layout Subsection
-Formação das folhas-BETA
 \end_layout
 
 \end_inset

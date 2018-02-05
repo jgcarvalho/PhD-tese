@@ -75,6 +75,177 @@
 Introdução
 \end_layout
 
+\begin_layout Section
+Proteínas e sua organização estrutural
+\end_layout
+
+\begin_layout Standard
+Proteínas são cadeias polipeptídicas compostas por aminoácidos unidos em
+ uma sequência definida.
+ Tal sequência determina todas a propriedades particulares da proteína,
+ incluindo sua função biológica e sua estrutura tridimensional.
+\end_layout
+
+\begin_layout Standard
+A estrutura proteica é comumente classificada de maneira hierárquica em
+ estrutura primária, secundária, terciária e quaternária.
+\end_layout
+
+\begin_layout Standard
+A estrutura primária corresponde a sequência de aminoácidos na cadeia polipeptíd
+ica.
+ A estrutura secundária são padrões estruturais locais formados, sobretudo,
+ por ligações de hidrogênio.
+ A estrutura terciária é o arranjo espacial da estrutura secundária e, consequen
+temente, da estrutura primária.
+ Já a estrutura quaternária é a organização espacial contendo mais de uma
+ estrutura terciária e, portanto, mais de uma cadeia polipeptídica (Figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:prot-hierarquia"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/jgcarvalho/Documents/PhD-tese/presentation/four-structures.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:prot-hierarquia"
+
+\end_inset
+
+Classificação hierárquica da organização estrutural das proteínas.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dentre os principais padrões observados em estruturas proteicas estão as
+ hélices 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, descritas pela primeira vez por Pauling em 1951.
+ Outro padrão estrutural importante são as folhas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ descritas por Pauling e Corey também em 1951.
+\end_layout
+
+\begin_layout Standard
+Apesar de haverem diversos outros padrões estruturais identificados, usualmente
+ as proteína costumam ser dividas em hélices, estruturas beta e coil.
+ Sendo as regiões de coil definidas na prática como 
+\begin_inset Quotes sld
+\end_inset
+
+nenhuma das outras
+\begin_inset Quotes srd
+\end_inset
+
+.
+ Assim, a característica que define coil é a ausência de conformações sequencial
+mente repetitivas.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+A protein, of course, is a polypeptide chain made up of amino acid residues
+ linked together in a definite sequence.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+The sequence of side chains determines all that is unique about a particular
+ protein, including its biological function and its specific three-dimensional
+ structure.
+\end_layout
+
+\begin_layout Plain Layout
+The α-helix was first described by Pauling in 1951 (Pauling et al., 1951)
+\end_layout
+
+\begin_layout Plain Layout
+, as Pauling first realized, the α-helix has 3.6 residues per turn, with
+ a hydrogen bond between the CO of residue n and the NH of residue n + 4
+ (see Fig.
+ 11)
+\end_layout
+
+\begin_layout Plain Layout
+The other major structural element found in globular proteins is the β sheet.
+ Historically, it was first observed as the β, or extended, form of keratin
+ fibers.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Pauling and Corey (1951) described the correct hydrogen-bonding patterns
+ for both antiparallel and parallel β sheet, and also realized that the
+ sheets were “pleated,” with α-carbons successively a little above and below
+ the plane of the sheet
+\end_layout
+
+\begin_layout Plain Layout
+When there is a need to divide up protein structure for purposes of description,
+ prediction, spectroscopic characterization, etc., the usual categories have
+ been “helix,” “β structure,” and “coil.” “Coil” is defined in practice as
+ “none of the above.” Its major distinguishing feature is that it is nonrepetitiv
+e in backbone conformation (although depending on one’s definition of β
+ structure, one might or might not include an isolated piece of extended
+ chain as coil).
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Enovelamento de proteínas
+\end_layout
+
 \begin_layout Standard
 O problema do enovelamento de proteínas é a questão de como são formadas
  ou organizadas suas estruturas atômicas tridimensionais.
@@ -1090,7 +1261,7 @@ key "srinivasan_physical_1999"
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Os resultados observados na literatura sugerem a possibilidade do desenvolviment
@@ -1107,7 +1278,7 @@ o de um algoritmo de predição de estruturas secundárias que recapitule a
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 É necessário incluir os objetivos e explicar melhor a motivação

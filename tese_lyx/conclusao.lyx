@@ -76,6 +76,81 @@ Discussão
 \end_layout
 
 \begin_layout Section
+Métodos de atribuição de estrutura secundária
+\end_layout
+
+\begin_layout Standard
+Uma das etapas iniciais no desenvolvimento de métodos de predição de estrutura
+ secundária é a preparação dos dados de referência para serem usados tanto
+ no treinamento quanto no teste, onde a acurácia é calculada.
+ Parte dessa preparação consiste na atribuição da estrutura secundária em
+ proteínas com estrutura atômica resolvida.
+ Em geral, trabalhos da literatura costumam utilizar o método DSSP como
+ padrão.
+ Entretanto, as diferenças observadas entre as atribuições de estrutura
+ secundária efetuadas por diferentes métodos computacionais indicam que
+ essa etapa pode ser importante para o desenvolvimento de preditores com
+ maior acurácia.
+\end_layout
+
+\begin_layout Standard
+Entre os quatro métodos de atribuição analisados, há a ocorrência de uma
+ variação considerável entre as estruturas secundárias atribuídas a cada
+ resíduo.
+ Como esperado, a maior similaridade é observada entre os métodos DSSP e
+ STRIDE, uma vez que o último é inspirado no primeiro.
+ Entretanto, a similaridade entre os demais métodos encontra-se na faixa
+ entre 83% e 85%.
+ A porcentagem de resíduos que apresentaram consenso entre os quatro métodos
+ foi de apenas 74,43%.
+\end_layout
+
+\begin_layout Standard
+Ao longo deste trabalho nós exploramos a utilização dos dados de cada um
+ dos quatro métodos citados e sua influência no treinamento de métodos de
+ predição.
+ Nossos resultados indicam que a utilização apenas de resíduos que apresentam
+ consenso na atribuição resulta em preditores com acurácia maior ou semelhante
+ ao melhor método de atribuição.
+ Neste contexto, melhor método de atribuição significa o que produziu os
+ dados que resultaram no preditor com maior acurácia.
+ 
+\end_layout
+
+\begin_layout Section
+Métodos de referência para a predição de estrutura secundária
+\end_layout
+
+\begin_layout Standard
+A partir dos resultados deste capítulo, consideramos que a acurácia esperada
+ para a predição da estrutura secundária a partir da sequência de aminoácidos
+ fique na faixa entre 75% a 90% para os resíduos do consenso.
+\end_layout
+
+\begin_layout Standard
+O fato do treinamento da rede neural similar a de Holley e Karplus (HK)
+ com dados do consenso ter apresentado acurácia similar ou superior ao treinamen
+to com dados de qualquer um dos quatro métodos de atribuição indica que
+ podemos utilizar apenas o consenso para o treinamento de outros métodos
+ de predição.
+\end_layout
+
+\begin_layout Standard
+A diferença observada no comprimento das estruturas atribuídas em relação
+ às estruturas preditas pela rede neural HK, não foi observada para o PSIPRED.
+ Acreditamos que o fator responsável por produzir estruturas com comprimentos
+ similares ao experimental seja a utilização de uma segunda rede neural.
+ Como mencionado anteriormente, essa segunda rede neural recebe como entrada
+ três valores para cada resíduo da janela.
+ Esses valores representam os três tipos de estruturas secundárias.
+ Assim, a segunda rede neural não recebe informação direta dos aminoácidos,
+ mas apenas das estruturas secundárias.
+ Ela teria então a função de construir estruturas mais próximas as observadas
+ experimentalmente, removendo ou conectando estruturas muito curtas como
+ hélices com apenas um resíduo.
+\end_layout
+
+\begin_layout Section
 Autômatos celulares para a predição de estruturas secundárias
 \end_layout
 
@@ -206,7 +281,7 @@ Apesar dos resultados não atingirem nossas expectativas, a motivação inicial
 \end_layout
 
 \begin_layout Section
-Redes neurais profundas
+Redes neurais residuais
 \end_layout
 
 \begin_layout Subsection
@@ -349,14 +424,44 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
- 
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Blocos"
 
 \end_inset
 
- Configuração dos blocos 
+ Configurações de blocos para redes residuais.
+ (a) Configuração original proposta por He e colaboradores 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he_deep_2016"
+
+\end_inset
+
+, (b) Variação também proposta por He e colaboradores 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he_identity_2016"
+
+\end_inset
+
+, (c) Bloco proposto por Zagoruyko e Komodakis que substitui as duas camadas
+ de 
+\emph on
+batch normalization 
+\emph default
+por uma de 
+\emph on
+dropout 
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zagoruyko_wide_2016"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -370,13 +475,617 @@ name "fig:Blocos"
 \end_layout
 
 \begin_layout Subsection
+Comparação com outras redes profundas
+\end_layout
+
+\begin_layout Subsection
+Acurácia dos modelos de predição
+\end_layout
+
+\begin_layout Standard
+Os modelos de predição de estruturas secundárias desenvolvidos neste trabalho,
+ os quais utilizam apenas a informação contida na estrutura primária, apresentar
+am acurácia inferior aos modelos que utilizam PSSM.
+ Entretanto, acreditamos que o modelo baseado em redes residuais apresenta
+ propriedades que precisam ser consideradas durante a comparação.
+\end_layout
+
+\begin_layout Standard
+Uma delas é o número de parâmetros do modelo.
+ Os parâmetros são as variáveis que precisam ser otimizadas durante o processo
+ de aprendizado ou treinamento.
+ Nesse aspecto, a rede residual que apresentou a melhor acurácia possui
+ um número baixo de parâmetros quando comparado a outros modelos (Tabela
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:acuracia-parametro"
+
+\end_inset
+
+).
+ Isso indica que nossa arquitetura de rede residual foi mais eficiente.
+\end_layout
+
+\begin_layout Standard
+Outro fator relevante é a não utilização de PSSM como entrada.
+ Como nosso objetivo sempre envolveu a construção de um modelo capaz de
+ fornecer informações que pudessem ser relacionadas ao processo físico de
+ formação das estruturas secundárias e, consequentemente, ao enovelamento,
+ acreditamos que o modelo deveria se basear apenas na informação contida
+ na estrutura primária da proteínas.
+ No entanto, futuramente poderemos adaptar um modelo similar que utilize
+ PSSM.
+ Nesse ponto, é relevante mencionar que todos os 5 métodos testados por
+ Wang e colaboradores 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang_protein_2016"
+
+\end_inset
+
+ e que utilizam PSSM, entre eles o PSIPRED e a rede neural convolucional
+ profunda desenvolvida por eles, tem uma perda de até 10% de acurácia quando
+ o alinhamento para construção da PSSM contém poucas proteínas.
+ Para esses casos, os 5 métodos apresentaram acurácia em torno de 74% 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang_protein_2016"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="5">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Modelo
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Entrada
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Parâmetros
+\size small
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Informação
+\size footnotesize
+ sobre
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Acurácia
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+o processo de predição
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Q_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Rede HK (32)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Sequência
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+~36 mil
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Não
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+75,17%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Rede HK (64)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Sequência
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+~72 mil
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Não
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+75,27%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+PSIPRED
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+PSSM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+~82 mil
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Não
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+93%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Autômato Celular (4)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Sequência
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+~59 mil
+\begin_inset Formula $^{(a)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Sim
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+62,6%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+ResNet (b21-c16)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Sequência
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+~32 mil
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Sim
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+78,3%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+DCNN 
+\size default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang_protein_2016"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+PSSM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+~500 mil
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Não
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+~84%
+\begin_inset Formula $^{(b)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:acuracia-parametro"
+
+\end_inset
+
+Comparação de métodos de predição de estruturas secundárias.
+ (a) Consideramos como parâmetros do autômato celular (AC4) o número de
+ elementos no conjunto de regras.
+ Nos demais modelos os parâmetros correspondem ao número de pesos que são
+ otimizados durante o treinamento.
+ (b) A acurácia da rede neural convolucional profunda (DCNN) corresponde
+ ao dado do artigo 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang_protein_2016"
+
+\end_inset
+
+.
+ Para os demais casos, a acurácia foi calculada utilizando nossos dados
+ e com os resíduos que apresentam consenso na atribuição da estrutura secundária.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Evidências da relação dos estados internos da rede neural com o processo
  de enovelamento
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Plain Layout
 Qual a relação entre os estados internos da rede neural e o processo de
  enovelamento? 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter

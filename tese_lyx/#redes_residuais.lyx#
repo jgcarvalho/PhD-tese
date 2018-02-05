@@ -6190,7 +6190,10 @@ name "fig:resnet-comp-ss"
 
 \end_inset
 
-
+Distribuição do comprimento das estruturas secundárias preditas pelas redes
+ residuais.
+ As hélices, fitas e coils preditos apresentam comprimento similar ao observado
+ experimentalmente.
 \end_layout
 
 \end_inset
@@ -6271,8 +6274,8 @@ As redes demonstraram um clara tendência em separar os aminoácidos prolina
  em elementos de estrutura secundária.
  Na glicina, a ausência de cadeia lateral amplia os possíveis estados conformaci
 onais reduzindo as restrições dos ângulos torcionais.
- Tais características são únicas desses dois resíduos, e portanto, diferente
- dos outros 18 aminoácidos.
+ Tais características são únicas desses dois resíduos, e portanto, diferentes
+ dos demais 18 aminoácidos.
 \end_layout
 
 \begin_layout Standard
@@ -6322,7 +6325,9 @@ name "fig:resnet-4-cluster"
 
 \end_inset
 
-
+Agrupamento da representação dos aminoácidos aprendida pela primeira camada
+ oculta da rede residual com 4 blocos.
+ 
 \end_layout
 
 \end_inset
@@ -6365,7 +6370,8 @@ name "fig:resnet-11-cluster"
 
 \end_inset
 
-
+Agrupamento da representação dos aminoácidos aprendida pela primeira camada
+ oculta da rede residual com 11 blocos.
 \end_layout
 
 \end_inset
@@ -6408,7 +6414,8 @@ name "fig:resnet-21-cluster"
 
 \end_inset
 
-
+Agrupamento da representação dos aminoácidos aprendida pela primeira camada
+ oculta da rede residual com 21 blocos.
 \end_layout
 
 \end_inset
@@ -6427,6 +6434,57 @@ name "fig:resnet-21-cluster"
 
 \begin_layout Subsection
 Análise do processo de predição
+\end_layout
+
+\begin_layout Standard
+Analisamos a predição da estrutura secundária de duas proteínas do conjunto
+ de teste utilizando a rede residual b21-c16, a qual apresentou a melhor
+ acurácia.
+ Selecionamos uma proteína entre as que obtiveram melhor acurácia e uma
+ entre as com pior acurácia.
+\end_layout
+
+\begin_layout Standard
+Entre as que obtiveram melhor acurácia está o domínio N-terminal da proteína
+ RssB, o qual apresenta uma topologia 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Rossmann fold
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\emph default
+(Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3eod"
+
+\end_inset
+
+)
+\emph on
+.
+ 
+\emph default
+Os estados internos da rede residual indicam que logo nos primeiros blocos
+ da rede os resíduos que compõem as fitas apresentam uma maior probabilidade
+ para essa estrutura secundária.
+ Por outro lado, apenas poucos resíduos de algumas hélices possuem maior
+ probabilidade para esse estrutura nos blocos iniciais.
+ Entretanto, a medida que os blocos vão alterando as probabilidades, as
+ hélices começam a serem preditas nas regiões corretas (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:resnet-good-3eod"
+
+\end_inset
+
+).
+ 
 \end_layout
 
 \begin_layout Standard
@@ -6450,7 +6508,19 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:resnet-good-3eod"
 
+\end_inset
+
+Estados internos da rede residual durante a predição do domínio N-terminal
+ da proteína RssB (PDB ID: 3EOD).
+ As três primeiras linhas correspondem, respectivamente, a sequência de
+ resíduos, a estrutura secundária predita e a estrutura secundária atribuída.
+ Nas demais linhas temos a estrutura secundária com maior probabilidade
+ em cada um dos 21 blocos.
+ Hélices são representadas em vermelho, fitas em amarelo e coils em verde.
 \end_layout
 
 \end_inset
@@ -6487,7 +6557,16 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:3eod"
 
+\end_inset
+
+ Domínio N-terminal da proteína RssB (PDB ID: 3EOD).
+ As cores representam a estrutura secundária predita com maior probabilidade.
+ Resíduos preditos como hélices são representadas em vermelho, fitas em
+ amarelo e coils em verde.
 \end_layout
 
 \end_inset
@@ -6498,6 +6577,44 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Entre proteínas com menor acurácia na predição está a RmlC de 
+\emph on
+Streptococcus suis 
+\emph default
+(PDB ID: 1NXM) que possui topologia 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Jelly roll
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:1nxm"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+As probabilidades extraídas após cada bloco da rede residual indicam vários
+ resíduos com probabilidade de fitas.
+ Interessante notar que a quarta fita atribuída é predita parcialmente até
+ a penúltima camada, quando então passa a ser predita como coil.
+ Algo similar ocorre com a décima e décima primeira fitas atribuídas, quando,
+ nas últimas camadas ocorre uma mudança na predição de fita para hélice.
+ Ao analisarmos a estrutura notamos que essas fitas preditas incorretamente
+ formam a interface de dimerização 
 \end_layout
 
 \begin_layout Standard
@@ -6521,6 +6638,12 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:resnet-bad-1nxm"
+
+\end_inset
+
 
 \end_layout
 
@@ -6558,6 +6681,12 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:1nxm"
+
+\end_inset
+
 
 \end_layout
 

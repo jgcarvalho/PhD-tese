@@ -41,8 +41,8 @@
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine natbib
-\cite_engine_type numerical
+\cite_engine basic
+\cite_engine_type default
 \biblio_style plainnat
 \use_bibtopic false
 \use_indices false
@@ -172,9 +172,8 @@ O capítulo 5, Redes Neurais Residuais, descreve a utilização de um método
 Deep Learning
 \emph default
 ) como uma alternativa aos autômatos celulares.
- Este método apresentou melhor acurácia que os autômatos celulares e conservou
- características que gostaríamos de observar nos autômatos celulares com
- a vantagem de ser mais simples e rápido de treinar.
+ Este método conservou características que gostaríamos de observar nos autômatos
+ celulares com a vantagem de ser mais simples e rápido de treinar.
 \end_layout
 
 \begin_layout Standard

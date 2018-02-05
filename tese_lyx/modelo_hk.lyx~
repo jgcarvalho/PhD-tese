@@ -230,6 +230,7 @@ A acurácia do método foi de aproximadamente 63%.
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -508,6 +509,7 @@ O PSIPRED apresentou acurácia de 78,3% (Q3) no conjunto de teste com 187
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -534,7 +536,15 @@ Método de predição de estrutura secundária PSIPRED.
  estrutura secundária.
  A segunda rede neural utiliza como entrada janelas de 15 resíduos contendo
  os valores preditos pela rede anterior e emite 3 valores correspondentes
- a estrutura secundária predita para o resíduo no centro da janela.
+ a estrutura secundária predita para o resíduo no centro da janela (Figura
+ extraída de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jones_protein_1999"
+
+\end_inset
+
+)
 \end_layout
 
 \end_inset
@@ -965,26 +975,21 @@ Influência da atribuição na predição
 Os resultados demonstraram que os resíduos que apresentam consenso entre
  os métodos de atribuição de estrutura secundária são preditos com maior
  acurácia independentemente do método de atribuição utilizado durante o
- treinamento (Consenso, DSSP, STRIDE, KAKSI ou PROSS) (Tabela abaixo, coluna
- 
-\begin_inset Quotes sld
-\end_inset
-
-Teste consenso
-\begin_inset Quotes srd
-\end_inset
-
-) 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-resolver label e legenda
-\end_layout
+ treinamento (Consenso, DSSP, STRIDE, KAKSI ou PROSS) (Tabelas 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:hk-atrib-01"
 
 \end_inset
 
-.
+ e 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:hk-atrib-02"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Standard
@@ -998,12 +1003,14 @@ Na rede com maior acurácia, com 64 neurônios na camada oculta e treinada
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
 
-\end_layout
-
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="38" columns="7">
+<lyxtabular version="3" rows="23" columns="7">
 <features booktabs="true" islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
@@ -2026,7 +2033,7 @@ PROSS
 </cell>
 </row>
 <row>
-<cell multirow="3" alignment="center" valignment="middle" topline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2747,7 +2754,7 @@ PROSS
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2758,7 +2765,7 @@ PROSS
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2769,7 +2776,7 @@ PROSS
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2780,7 +2787,7 @@ PROSS
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2791,7 +2798,7 @@ PROSS
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2803,8 +2810,305 @@ PROSS
 \end_inset
 </cell>
 </row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:hk-atrib-01"
+
+\end_inset
+
+Redes neurais treinadas usando como dados de entrada a estrutura atribuída
+ por diferentes métodos ou somente resíduos com consenso entre eles.
+ A tabela mostra a influência dos dados de treinamento na acurácia durante
+ a predição.
+ (A tabela continua na 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:hk-atrib-02"
+
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="18" columns="7">
+<features booktabs="true" islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
 <row>
-<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+camada oculta
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+TREINAMENTO
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+TESTE
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+FONTE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size tiny
+CONSENSO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size tiny
+DSSP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size tiny
+STRIDE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size tiny
+KAKSI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+PROSS
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape slanted
+\size footnotesize
+(# de neurônios)
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size tiny
+(%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size tiny
+(%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size tiny
+(%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size tiny
+(%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size tiny
+(%)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3971,6 +4275,40 @@ PROSS
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:hk-atrib-02"
+
+\end_inset
+
+Continuação da tabela 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:hk-atrib-01"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -6522,6 +6860,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename figures/psipred_qe.pdf
+	width 100line%
 
 \end_inset
 
@@ -6696,17 +7035,21 @@ name "fig:Distribuição-dos-comprimentos-psipred"
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Discussão
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 A partir dos resultados deste capítulo, consideramos que a acurácia esperada
  para a predição da estrutura secundária a partir da sequência de aminoácidos
  fique na faixa entre 75% a 90% para os resíduos do consenso.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 O fato do treinamento da rede neural similar a de Holley e Karplus (HK)
  com dados do consenso ter apresentado acurácia similar ou superior ao treinamen
 to com dados de qualquer um dos quatro métodos de atribuição indica que
@@ -6714,7 +7057,7 @@ to com dados de qualquer um dos quatro métodos de atribuição indica que
  de predição.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 A diferença observada no comprimento das estruturas atribuídas em relação
  às estruturas preditas pela rede neural HK, não foi observada para o PSIPRED.
  Acreditamos que o fator responsável por produzir estruturas com comprimentos
@@ -6727,6 +7070,11 @@ A diferença observada no comprimento das estruturas atribuídas em relação
  Ela teria então a função de construir estruturas mais próximas as observadas
  experimentalmente, removendo ou conectando estruturas muito curtas como
  hélices com apenas um resíduo.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
