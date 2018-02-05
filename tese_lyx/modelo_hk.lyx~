@@ -829,6 +829,7 @@ reference "eq:cross_entropy"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1004,6 +1005,7 @@ Na rede com maior acurácia, com 64 neurônios na camada oculta e treinada
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -2857,6 +2859,7 @@ reference "tab:hk-atrib-02"
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -4455,6 +4458,7 @@ A tendência de aumento começa bem antes por volta da época 400.
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4549,6 +4553,7 @@ reference "fig:Estrutura-secundária-atribuída"
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -6504,6 +6509,7 @@ reference "fig:distribuição-q3-hk"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6622,6 +6628,7 @@ grafico gerado com model_hk_len_ss.py
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6734,6 +6741,7 @@ Acurácia geral por método de atribuicao
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6808,6 +6816,7 @@ reference "fig:Distribuição-da-acurácia-qc-psipred"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6853,6 +6862,7 @@ name "fig:Distribuição-da-acurácia-qh-psipred"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6898,6 +6908,7 @@ name "fig:Distribuição-da-acurácia-qe-psipred"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6991,6 +7002,7 @@ reference "fig:Distribuição-do-comprimento_coil"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open

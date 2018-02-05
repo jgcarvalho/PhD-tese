@@ -148,24 +148,32 @@ key "jones_protein_1999"
 
 \begin_layout Standard
 O fato do treinamento das redes neurais similares a de Holley e Karplus
- (HK) utilizando somente dados de resíduos que apresentaram consenso na
- atribuição da estrutura secundária ter apresentado acurácia similar ou
- superior ao treinamento com dados de qualquer um dos quatro métodos de
- atribuição indicou que pode ser utilizado apenas o consenso para o treinamento
- de outros métodos de predição.
+ (HK) utilizando somente os dados de resíduos que apresentaram consenso
+ na atribuição da estrutura secundária ter apresentado acurácia similar
+ ou superior em relação ao treinamento com dados de qualquer um dos quatro
+ métodos de atribuição indicou que apenas o consenso pode ser utilizado
+ para o treinamento de métodos de predição estrutura secundária.
 \end_layout
 
 \begin_layout Standard
 A diferença observada no comprimento das estruturas atribuídas em relação
- às estruturas preditas pela rede neural HK, não foi observada para o PSIPRED.
+ às estruturas preditas pela rede neural HK, não foi observada para o PSIPRED
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "jones_protein_1999"
+
+\end_inset
+
+.
  Acreditamos que o fator responsável por produzir estruturas com comprimentos
  similares ao experimental seja a utilização de uma segunda rede neural.
- Como mencionado anteriormente, essa segunda rede neural recebe como entrada
- três valores para cada resíduo da janela.
- Esses valores representam os três tipos de estruturas secundárias.
+ Essa segunda rede neural recebe como entrada três valores para cada resíduo
+ da janela.
+ Tais valores representam os três tipos de estruturas secundárias.
  Assim, a segunda rede neural não recebe informação direta dos aminoácidos,
  mas apenas das estruturas secundárias.
- Ela teria então a função de construir estruturas mais próximas as observadas
+ Consequentemente, sua função é construir estruturas mais próximas as observadas
  experimentalmente, removendo ou conectando estruturas muito curtas como
  hélices com apenas um resíduo.
 \end_layout
@@ -232,9 +240,9 @@ Outro problema observado foi a definição de estados do AC.
 Entretanto, durante o trabalho, notamos que os quatro estados adicionados
  não seriam suficientes.
  Ao observarmos que uma célula, ao evoluir de um estado representando um
- aminoácido para um estado representando uma estrutura secundária, perdia
- toda a informação sobre o resíduo naquela posição, percebemos que precisaríamos
- acrescentar mais estados.
+ aminoácido para um estado que representasse uma estrutura secundária, perdia
+ toda a informação sobre o resíduo originalmente naquela posição da sequência,
+ percebemos que precisaríamos acrescentar mais estados.
  
 \end_layout
 
@@ -271,16 +279,23 @@ A definição de uma métrica para a acurácia e a forma de como calculá-la
 \emph on
 Class Balance Accuracy
 \emph default
-), o qual foi desenvolvido para problemas com classes desbalanceadas, caso
- das estruturas secundárias.
+) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mosley_balanced_2013"
+
+\end_inset
+
+, o qual foi desenvolvido para problemas com classes desbalanceadas, como
+ é caso das estruturas secundárias.
  Em relação a forma de calculá-la para o AC, haviam diversas possibilidades,
  cada uma com vantagens e desvantagens.
  Poderíamos predefinir um número finito de evoluções do AC e calcular a
  acurácia na última geração.
  No entanto, observamos que o AC podia apresentar um padrão de oscilação
  entre estados durante a evolução.
- Testamos ampliar a medida para um intervalo de gerações até finalmente
- decidirmos utilizar todas as gerações do AC.
+ Testamos solucionar este problema calculando a acurácia em um intervalo
+ de gerações até finalmente decidirmos utilizar todas as gerações do AC.
 \end_layout
 
 \begin_layout Standard
@@ -297,7 +312,7 @@ Apesar dos resultados não atingirem nossas expectativas, a motivação inicial
  de utilizar autômatos celulares para observarmos, dinamicamente, a predição
  das estruturas secundárias, nos levaram a buscar métodos que tivessem essa
  mesma capacidade.
- Encontramos esse potencial em redes neurais profundas.
+ Encontramos esse potencial em redes neurais residuais profundas.
 \end_layout
 
 \begin_layout Section
@@ -305,7 +320,15 @@ Redes neurais residuais
 \end_layout
 
 \begin_layout Subsection
-Arquitetura
+Representação do aminoácidos
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Subsection
+Configuração dos blocos da rede residual
 \end_layout
 
 \begin_layout Standard
@@ -494,8 +517,17 @@ key "zagoruyko_wide_2016"
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Comparação com outras redes profundas
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -514,9 +546,9 @@ am acurácia inferior aos modelos que utilizam PSSM.
 Uma delas é o número de parâmetros do modelo.
  Os parâmetros são as variáveis que precisam ser otimizadas durante o processo
  de aprendizado ou treinamento.
- Nesse aspecto, a rede residual que apresentou a melhor acurácia possui
- um número baixo de parâmetros quando comparado a outros modelos (Tabela
- 
+ Nesse aspecto, a rede residual que apresentou a melhor acurácia (b21-c16)
+ possui um número baixo de parâmetros quando comparado a outros modelos
+ (Tabela 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:acuracia-parametro"
@@ -524,6 +556,13 @@ reference "tab:acuracia-parametro"
 \end_inset
 
 ).
+ Outra rede residual, a b4-c16, devido ao uso de 4 blocos, utiliza para
+ a predição da estrutura secundária de cada resíduo a informação equivalente
+ a uma janela de 17 resíduos na sequência.
+ Informação esta similar a utilizada pelas redes HK.
+ Entretanto, com apenas ~6 parâmetros ela atinge uma acurácia similar as
+ redes HK(32), com 32 neurônios na camada oculta e ~36 mil parâmetros, e
+ HK(64) com ~72 mil parâmetro.
  Isso indica que nossa arquitetura de rede residual foi mais eficiente.
 \end_layout
 
@@ -565,7 +604,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="5">
+<lyxtabular version="3" rows="9" columns="5">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -918,6 +957,63 @@ Sim
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+ResNet (b4-c16)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Sequência
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+~6 mil
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Sim
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+75,5%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
@@ -1109,7 +1205,49 @@ Qual a relação entre os estados internos da rede neural e o processo de
 \end_layout
 
 \begin_layout Chapter
-Conclusão
+Conclusões e perspectivas futuras 
+\end_layout
+
+\begin_layout Standard
+Neste trabalho testamos dois modelos de predição de estruturas secundárias
+ com potenciais para fornecer informações detalhadas sobre o processo de
+ predição a partir da sequência de aminoácidos das proteínas.
+ 
+\end_layout
+
+\begin_layout Standard
+O modelo utilizando autômatos celulares apresentou baixa acurácia em relação
+ à outros métodos de predição de estruturas secundárias e o processo de
+ predição dessas estruturas, observado durante a evolução do autômato, apresento
+u padrões de baixa complexidade.
+ Combinados, esses dois resultados apontam para um modelo de pouca utilidade
+ para estudos da formação de estruturas proteicas.
+ No entanto, acreditamos que uma melhor definição dos estados que representam
+ estruturas secundárias e alterações no mecanismo de otimização das regras,
+ o qual inclui uma melhor função de 
+\emph on
+fitness
+\emph default
+, poderão produzir melhores resultados.
+\end_layout
+
+\begin_layout Standard
+Por outro lado, o modelo desenvolvido utilizando redes neurais residuais
+ profundas apresentou alta acurácia em relação a outros métodos de predição
+ a partir da estrutura primária.
+ A extração de informações da rede residual durante o processo de predição
+ indicou ser possível determinarmos quais regiões da sequência tem maior
+ influência na predição de cada elemento da estrutura secundária.
+ Ainda não temos evidências suficientes para afirmar que há uma relação
+ significativa entre o processo de predição e o processo físico de formação
+ dessas estruturas.
+ Algo que planejamos avaliar futuramente comparando dados experimentais
+ do enovelamento de proteínas com os resultados da predição.
+ Nesse sentido, observar que as redes residuais aprenderam como agrupar
+ aminoácidos e que esses agrupamentos tem relação com características estruturai
+s e físico-químicas pode ser um compreendido como um indício de que a relação
+ com o processo de formação das estruturas possa existir.
+ 
 \end_layout
 
 \end_body

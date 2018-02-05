@@ -130,20 +130,24 @@ Abstract
 \end_layout
 
 \begin_layout Standard
-Short summary of the contents in English
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-dots
-\end_layout
-
-\end_inset
-
-
+The process of self-organization of the protein structure from the amino
+ acid chain is known as folding.
+ Although we know a structure of many proteins, for a majority of them,
+ we do not have enough understanding to describe in detail how a structure
+ is organized from the amino acid sequence.
+ In this work, we developed two methods of prediction of secondary structures,
+ we use models with the potential of detailed information about the prediction
+ process.
+ One of the models was constructed using cellular automata, a type of dynamic
+ model where it is possible to see the spatial and temporal information.
+ The other model was developed using deep residual neural networks.
+ With this model it is possible to extract spatial and probabilistic information
+ from its multiple internal layers of convolution.
+ The accuracy of the prediction obtained by this model was ~ 78% for the
+ residues that showed consensus in the structure assigned by the DSSP, STRIDE,
+ KAKSI and PROSS methods.
+ Such a value is higher than that obtained by other methods which perform
+ a prediction of secondary structures from the amino acid sequence.
 \end_layout
 
 \begin_layout Standard

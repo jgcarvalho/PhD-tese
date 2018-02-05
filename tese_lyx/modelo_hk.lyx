@@ -129,6 +129,37 @@ O método que utiliza PSSM tem passado por atualizações frequentes, assim,
 \end_layout
 
 \begin_layout Subsection
+Redes neurais
+\end_layout
+
+\begin_layout Standard
+As redes neurais artificiais são modelos computacionais inspirados na estrutura
+ neural biológica e capazes de aprender a reconhecer padrões através de
+ um processo de treinamento.
+ Este processo de treinamento consiste em fornecer dados com padrões conhecidos
+ para que a rede possa, através de um procedimento matemático, identificar
+ características que sejam relevantes para a classificação.
+ Assim, uma vez treinada, a rede neural é capaz de utilizar seu 
+\begin_inset Quotes sld
+\end_inset
+
+conhecimento
+\begin_inset Quotes srd
+\end_inset
+
+ previamente adquirido e aplicá-lo aos novos dados.
+\end_layout
+
+\begin_layout Standard
+O primeiro neurônio artificial foi criado por McCulloth e Pitts e chamado
+ de 
+\emph on
+Linear Threshold
+\emph default
+ 
+\end_layout
+
+\begin_layout Subsection
 Redes neurais para a predição a partir da sequência
 \end_layout
 
