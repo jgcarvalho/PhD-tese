@@ -98,7 +98,14 @@ Entre os quatro métodos de atribuição analisados, há a ocorrência de uma
  variação considerável entre as estruturas secundárias atribuídas a cada
  resíduo.
  Como esperado, a maior similaridade é observada entre os métodos DSSP e
- STRIDE, uma vez que o último é inspirado no primeiro.
+ STRIDE, uma vez que o último é inspirado no primeiro 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kabsch_dictionary_1983,frishman_knowledge-based_1995"
+
+\end_inset
+
+.
  Entretanto, a similaridade entre os demais métodos encontra-se na faixa
  entre 83% e 85%.
  A porcentagem de resíduos que apresentaram consenso entre os quatro métodos
@@ -110,8 +117,8 @@ Ao longo deste trabalho nós exploramos a utilização dos dados de cada um
  dos quatro métodos citados e sua influência no treinamento de métodos de
  predição.
  Nossos resultados indicam que a utilização apenas de resíduos que apresentam
- consenso na atribuição resulta em preditores com acurácia maior ou semelhante
- ao melhor método de atribuição.
+ consenso na atribuição resulta em preditores com acurácia maior ou, ao
+ menos, semelhante ao melhor método de atribuição.
  Neste contexto, melhor método de atribuição significa o que produziu os
  dados que resultaram no preditor com maior acurácia.
  
@@ -122,17 +129,30 @@ Métodos de referência para a predição de estrutura secundária
 \end_layout
 
 \begin_layout Standard
-A partir dos resultados deste capítulo, consideramos que a acurácia esperada
- para a predição da estrutura secundária a partir da sequência de aminoácidos
- fique na faixa entre 75% a 90% para os resíduos do consenso.
+Os resultados obtidos com a rede neural similar a de Holley e Karplus (HK),
+ a qual realiza a predição a partir da sequência de resíduos, e o PSIPRED
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "jones_protein_1999"
+
+\end_inset
+
+, que realiza a predição a partir da PSSM, indica que o ganho na acurácia
+ da predição ao se utilizar informações da conservação evolutiva pode ser
+ de até 15%.
+ A rede HK forneceu ainda uma acurácia de referência para comparamos com
+ nossos modelos, o quais também realizam a predição a partir da sequência
+ de resíduos.
 \end_layout
 
 \begin_layout Standard
-O fato do treinamento da rede neural similar a de Holley e Karplus (HK)
- com dados do consenso ter apresentado acurácia similar ou superior ao treinamen
-to com dados de qualquer um dos quatro métodos de atribuição indica que
- podemos utilizar apenas o consenso para o treinamento de outros métodos
- de predição.
+O fato do treinamento das redes neurais similares a de Holley e Karplus
+ (HK) utilizando somente dados de resíduos que apresentaram consenso na
+ atribuição da estrutura secundária ter apresentado acurácia similar ou
+ superior ao treinamento com dados de qualquer um dos quatro métodos de
+ atribuição indicou que pode ser utilizado apenas o consenso para o treinamento
+ de outros métodos de predição.
 \end_layout
 
 \begin_layout Standard

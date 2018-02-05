@@ -99,7 +99,59 @@ ica.
  A estrutura terciária é o arranjo espacial da estrutura secundária e, consequen
 temente, da estrutura primária.
  Já a estrutura quaternária é a organização espacial contendo mais de uma
- estrutura terciária e, portanto, mais de uma cadeia polipeptídica (Figura).
+ estrutura terciária e, portanto, mais de uma cadeia polipeptídica (Figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:prot-hierarquia"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/jgcarvalho/Documents/PhD-tese/presentation/four-structures.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:prot-hierarquia"
+
+\end_inset
+
+Classificação hierárquica da organização estrutural das proteínas.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -108,14 +160,35 @@ Dentre os principais padrões observados em estruturas proteicas estão as
 \begin_inset Formula $\alpha$
 \end_inset
 
-, descritas pela primeira vez por Pauling em 1951.
- Outro padrão estrutural importante são as folhas beta descritas por Pauling
- e Corey também em 1951.
+, descritas pela primeira vez por Pauling, Corey e Branson em 1951 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pauling_structure_1951"
+
+\end_inset
+
+.
+ Outro padrão estrutural importante são as folhas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ descritas por Pauling e Corey também em 1951 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pauling_pleated_1951"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
 Apesar de haverem diversos outros padrões estruturais identificados, usualmente
- as proteína costumam ser dividas em hélices, estruturas beta e coil.
+ as proteína costumam ser dividas em hélices, estruturas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ e coil.
  Sendo as regiões de coil definidas na prática como 
 \begin_inset Quotes sld
 \end_inset
@@ -125,8 +198,15 @@ nenhuma das outras
 \end_inset
 
 .
- Assim, a característica que define coil é a ausência de conformações sequencial
-mente repetitivas.
+ Assim, a característica que define coil é a ausência de conformações estruturai
+s sequencialmente repetitivas 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "richardson_anatomy_1981"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -534,7 +614,7 @@ key "rohl_protein_2004"
 
 .
  Esses métodos utilizam fragmentos extraídos de proteínas com estrutura
- resolvida experimentalmente, os quais posteriormente são reunidos de acordo
+ resolvida experimentalmente, os quais são posteriormente reunidos de acordo
  com a sequência de aminoácidos da proteína a qual se deseja construir um
  modelo.
  A utilização de fragmentos tem como objetivo acelerar a busca pelo modelo
@@ -786,7 +866,7 @@ key "kolodny_universe_2013"
 \end_layout
 
 \begin_layout Standard
-Os métodos de modelagem comparativa não fornecem informação sobre o etapas
+Os métodos de modelagem comparativa não fornecem informação sobre as etapas
  de enovelamento da proteína, ou mesmo o mecanismo, pois baseiam-se apenas
  na estrutura nativa para a construção do modelo 
 \begin_inset CommandInset citation
@@ -1045,7 +1125,7 @@ key "colloch_beta-breakers:_1991"
 
 , os quais acredita-se que atuem como sinais de término ou “parada” desses
  elementos de estrutura secundária.
- Alguns trabalhos ainda demonstram que há preferência de algumas trincas
+ Alguns trabalhos ainda demonstram haver preferência de algumas trincas
  de aminoácidos por determinadas conformações e estruturas secundárias 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -1149,7 +1229,7 @@ key "abagyan_biased_1994,pedersen_protein_1997"
 
 \end_inset
 
- também identificaram que algumas sequências peptídicas, correspondentes
+ também identificaram que algumas sequências polipeptídicas, correspondentes
  a pequenas regiões de proteínas, apresentam maior propensão a adotar uma
  estrutura secundária, ou mesmo uma conformação similar a observada na estrutura
  nativa da proteína original.
@@ -1166,6 +1246,48 @@ key "srinivasan_physical_1999"
  secundária de estados intermediários da proteína, sendo por vezes conservada
  na estrutura nativa e, em outras, alterada devido a interações não locais.
  
+\end_layout
+
+\begin_layout Section
+Objetivo e justificativa
+\end_layout
+
+\begin_layout Standard
+Nosso objetivo neste trabalho foi desenvolver métodos de predição de estruturas
+ secundárias que forneçam informações sobre o processo de predição ou que
+ nos permitam extrair tal informação.
+ Acreditamos que uma informação detalhada do processo de predição poderá
+ estar relacionada ao processo físico de formação da estrutura secundária
+ e, consequentemente, ao enovelamento.
+ Assim, tal método poderá auxiliar ainda a predição da estrutura tridimensional
+ a partir da sequência.
+ 
+\end_layout
+
+\begin_layout Standard
+Neste trabalho exploramos dois modelos capazes de fornecer informações do
+ processo de predição.
+ O primeiro modelo utiliza autômatos celulares, o qual, devido as suas caracterí
+sticas, poderia 
+\end_layout
+
+\begin_layout Standard
+O segundo modelo, baseado em redes neurais residuais profundas, nos permite
+ extrair a informação do processo de predição a partir das camadas de neurônios
+ internas.
+\end_layout
+
+\begin_layout Standard
+Ambos os métodos, uma vez otimizados, são de rápida execução e exigem poucos
+ recursos computacionais, permitindo, assim, a aplicação em larga escala.
+ Isto possibilitará diversos tipos de aplicações, como o estudo do impacto
+ de mutações durante a formação da estrutura, a comparação entre proteínas
+ homólogas, entre proteínas com sequências similares, mas estruturas distintas,
+ e além de auxiliar no 
+\emph on
+design
+\emph default
+ de novas sequências que 
 \end_layout
 
 \begin_layout Standard

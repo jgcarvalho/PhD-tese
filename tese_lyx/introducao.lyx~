@@ -99,7 +99,15 @@ ica.
  A estrutura terciária é o arranjo espacial da estrutura secundária e, consequen
 temente, da estrutura primária.
  Já a estrutura quaternária é a organização espacial contendo mais de uma
- estrutura terciária e, portanto, mais de uma cadeia polipeptídica (Figura).
+ estrutura terciária e, portanto, mais de uma cadeia polipeptídica (Figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:prot-hierarquia"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -128,7 +136,8 @@ name "fig:prot-hierarquia"
 
 \end_inset
 
-
+Classificação hierárquica da organização estrutural das proteínas.
+ 
 \end_layout
 
 \end_inset
@@ -151,17 +160,35 @@ Dentre os principais padrões observados em estruturas proteicas estão as
 \begin_inset Formula $\alpha$
 \end_inset
 
-, descritas pela primeira vez por Pauling em 1951.
+, descritas pela primeira vez por Pauling, Corey e Branson em 1951 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pauling_structure_1951"
+
+\end_inset
+
+.
  Outro padrão estrutural importante são as folhas 
 \begin_inset Formula $\beta$
 \end_inset
 
- descritas por Pauling e Corey também em 1951.
+ descritas por Pauling e Corey também em 1951 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pauling_pleated_1951"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
 Apesar de haverem diversos outros padrões estruturais identificados, usualmente
- as proteína costumam ser dividas em hélices, estruturas beta e coil.
+ as proteína costumam ser dividas em hélices, estruturas 
+\begin_inset Formula $\beta$
+\end_inset
+
+ e coil.
  Sendo as regiões de coil definidas na prática como 
 \begin_inset Quotes sld
 \end_inset
@@ -171,8 +198,15 @@ nenhuma das outras
 \end_inset
 
 .
- Assim, a característica que define coil é a ausência de conformações sequencial
-mente repetitivas.
+ Assim, a característica que define coil é a ausência de conformações estruturai
+s sequencialmente repetitivas 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "richardson_anatomy_1981"
+
+\end_inset
+
+.
  
 \end_layout
 

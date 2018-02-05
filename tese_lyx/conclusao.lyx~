@@ -98,7 +98,14 @@ Entre os quatro métodos de atribuição analisados, há a ocorrência de uma
  variação considerável entre as estruturas secundárias atribuídas a cada
  resíduo.
  Como esperado, a maior similaridade é observada entre os métodos DSSP e
- STRIDE, uma vez que o último é inspirado no primeiro.
+ STRIDE, uma vez que o último é inspirado no primeiro 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kabsch_dictionary_1983,frishman_knowledge-based_1995"
+
+\end_inset
+
+.
  Entretanto, a similaridade entre os demais métodos encontra-se na faixa
  entre 83% e 85%.
  A porcentagem de resíduos que apresentaram consenso entre os quatro métodos
@@ -110,8 +117,8 @@ Ao longo deste trabalho nós exploramos a utilização dos dados de cada um
  dos quatro métodos citados e sua influência no treinamento de métodos de
  predição.
  Nossos resultados indicam que a utilização apenas de resíduos que apresentam
- consenso na atribuição resulta em preditores com acurácia maior ou semelhante
- ao melhor método de atribuição.
+ consenso na atribuição resulta em preditores com acurácia maior ou, ao
+ menos, semelhante ao melhor método de atribuição.
  Neste contexto, melhor método de atribuição significa o que produziu os
  dados que resultaram no preditor com maior acurácia.
  
@@ -1069,17 +1076,22 @@ key "wang_protein_2016"
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Evidências da relação dos estados internos da rede neural com o processo
  de enovelamento
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Plain Layout
 Qual a relação entre os estados internos da rede neural e o processo de
  enovelamento? 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 
 \end_layout
 
