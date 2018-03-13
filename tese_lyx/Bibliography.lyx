@@ -46,7 +46,7 @@
 \use_package undertilde 1
 \cite_engine basic
 \cite_engine_type default
-\biblio_style unsrtnat
+\biblio_style 
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -106,13 +106,9 @@ manualmark
 \backslash
 markboth{
 \backslash
-spacedlowsmallcaps{
+spacedlowsmallcaps{Referências Bibliográficas}}{
 \backslash
-bibname}}{
-\backslash
-spacedlowsmallcaps{
-\backslash
-bibname}}
+spacedlowsmallcaps{Referências Bibliográficas}}
 \end_layout
 
 \begin_layout Plain Layout
@@ -153,9 +149,7 @@ beforebibskip}}
 \backslash
 addcontentsline{toc}{chapter}{
 \backslash
-tocEntry{
-\backslash
-bibname}}
+tocEntry{Referências Bibliográficas}}
 \end_layout
 
 \end_inset
@@ -181,7 +175,7 @@ status open
 
 
 \backslash
-printbibliography
+printbibliography[title=Referências Bibliográficas]
 \end_layout
 
 \end_inset

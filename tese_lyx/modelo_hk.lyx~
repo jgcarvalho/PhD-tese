@@ -199,7 +199,7 @@ Perceptron
 em classificar padrões não-linearmente separáveis como o XOR 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "minsky_neurocomputing:_1988"
+key "minsky_perceptrons:_1988"
 
 \end_inset
 
@@ -210,6 +210,30 @@ key "minsky_neurocomputing:_1988"
 imento das redes neurais até a década de 80, quando elas voltaram a ser
  estudadas.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+Apesar do nome Multi Layer Perceptron ainda ser amplamente utilizado, este
+ nome está incorreto segundo uns dos próprios autores, Geoffrey Hinton.
+ O erro deve-se ao fato mecanismo de treinamento do 
+\emph on
+Perceptron 
+\emph default
+ser diferente do 
+\emph on
+backpropagation.
+
+\emph default
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -239,30 +263,6 @@ reference "fig:mlp"
 \end_inset
 
 ).
-\end_layout
-
-\begin_layout Standard
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
-Apesar do nome Multi Layer Perceptron ainda ser amplamente utilizado, este
- nome está incorreto segundo uns dos próprios autores, Geoffrey Hinton.
- O erro deve-se ao fato mecanismo de treinamento do 
-\emph on
-Perceptron 
-\emph default
-ser diferente do 
-\emph on
-backpropagation.
-
-\emph default
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

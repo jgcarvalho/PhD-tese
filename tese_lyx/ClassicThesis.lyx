@@ -49,7 +49,7 @@
 \use_package undertilde 1
 \cite_engine basic
 \cite_engine_type default
-\biblio_style unsrtnat
+\biblio_style 
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait

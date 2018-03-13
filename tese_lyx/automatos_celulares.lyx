@@ -589,6 +589,70 @@ Exemplos de padrões produzidos por diferentes regras dos ACE.
 
 \end_layout
 
+\begin_layout Subsection
+Autômatos celulares aplicados à predição de estruturas secundárias
+\end_layout
+
+\begin_layout Standard
+Em 2007, Chopra e Bender 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chopra_evolved_2007"
+
+\end_inset
+
+ publicaram um método de predição de estruturas secundárias utilizando autômatos
+ celulares.
+ Neste trabalho, os autores utilizando um autômato celular com vizinhança
+ cinco, ou seja, o estado de cada célula evolui de acordo com o estado da
+ célula central e de cinco células vizinhas a direita e cinco a esquerda.
+ Os estados de cada célula representam as probabilidades de cada resíduo
+ ser hélice, fita e coil, e portanto, não são estados discretos.
+ Para os estados iniciais do autômato, foram utilizadas as probabilidades
+ definidas por Chou e Fasman 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chou_prediction_1974"
+
+\end_inset
+
+.
+ A transição do autômato é definida por pesos para as probabilidades das
+ 11 células no tempo 
+\emph on
+t
+\emph default
+ que influenciam na alteração das probabilidades no tempo 
+\emph on
+t+1
+\emph default
+.
+ Tais pesos foram otimizados utilizando um algoritmo genético.
+ O autômato celular evolui por apenas duas gerações, pois, segundo os autores,
+ um maior número de gerações reduzia a acurácia.
+ A acurácia apresentada foi de aproximadamente 58% (
+\begin_inset Formula $Q_{3}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+O autômato celular desenvolvido por nós neste trabalho difere do publicado
+ por Chopra e Bender 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chopra_evolved_2007"
+
+\end_inset
+
+ por utilizar estados discretos, vizinhança igual a um e um número superior
+ de gerações durante a evolução.
+ Acreditamos que tais alterações sejam mais adequadas para um método cujo
+ um dos objetivos é fornecer informação sobre o processo de formação das
+ estruturas secundárias proteicas.
+\end_layout
+
 \begin_layout Section
 Materiais e métodos
 \end_layout

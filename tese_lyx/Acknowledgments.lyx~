@@ -126,7 +126,8 @@ status open
 
 
 \backslash
-defcitealias{knuth:1974}{Donald E.
+defcitealias{Donald E.
+ Knuth}{Donald E.
  Knuth}
 \end_layout
 
@@ -140,15 +141,9 @@ status open
 
 
 \backslash
-citetalias{knuth:1974}
+citetalias{Donald E.
+ Knuth}
 \end_layout
-
-\end_inset
-
- 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "knuth:1974"
 
 \end_inset
 

@@ -199,7 +199,7 @@ Perceptron
 em classificar padrões não-linearmente separáveis como o XOR 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "minsky_neurocomputing:_1988"
+key "minsky_perceptrons:_1988"
 
 \end_inset
 
@@ -240,10 +240,10 @@ backpropagation.
 Em 1986, Rumelhart, Hinton e Willians publicaram o trabalho onde descrevem
  o algoritmo de 
 \emph on
-backpropagation 
+back-propagation 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "rumelhart_parallel_1986"
+key "rumelhart_learning_1986"
 
 \end_inset
 

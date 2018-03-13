@@ -251,6 +251,7 @@ reference "fig:ace-espaco"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -309,6 +310,7 @@ reference "fig:ace-estados"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -384,6 +386,7 @@ e também dos estados das duas células vizinhas: uma a esquerda e uma a direita
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -458,6 +461,7 @@ dos elementos
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -542,6 +546,7 @@ reference "fig:ace-padroes"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1975,6 +1980,7 @@ reference "tab:ac-elementos"
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -2873,6 +2879,7 @@ cell{
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -3048,6 +3055,7 @@ carule{S}{A}{W}{|}
 \end_deeper
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -3187,6 +3195,7 @@ cell{
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -3344,6 +3353,7 @@ Onde
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -3985,6 +3995,7 @@ Os outros três modelos, os quais utilizam informação sobre o contexto, obtive
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4085,6 +4096,7 @@ discutir melhor
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4196,6 +4208,7 @@ Analise do modelo estendido com as 3 novas funçoes de fitness
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4279,6 +4292,7 @@ status open
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4364,6 +4378,7 @@ status open
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4434,6 +4449,7 @@ status open
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4530,6 +4546,7 @@ Analise do comprimento das estruturas secundarias
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4637,6 +4654,7 @@ analise de um caso de sucesso
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4722,6 +4740,7 @@ analise de um fracasso
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open

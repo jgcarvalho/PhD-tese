@@ -251,6 +251,7 @@ reference "fig:ace-espaco"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -309,6 +310,7 @@ reference "fig:ace-estados"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -384,6 +386,7 @@ e também dos estados das duas células vizinhas: uma a esquerda e uma a direita
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -458,6 +461,7 @@ dos elementos
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -542,6 +546,7 @@ reference "fig:ace-padroes"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -582,6 +587,63 @@ Exemplos de padrões produzidos por diferentes regras dos ACE.
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Autômatos celulares aplicados à predição de estruturas secundárias
+\end_layout
+
+\begin_layout Standard
+Em 2007, Chopra e Bender 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chopra_evolved_2007"
+
+\end_inset
+
+ publicaram um método de predição de estruturas secundárias utilizando autômatos
+ celulares.
+ Neste trabalho, os autores utilizando um autômato celular com vizinhança
+ cinco, ou seja, o estado de cada célula evolui de acordo com o estado da
+ célula central e de cinco células vizinhas a direita e cinco a esquerda.
+ Os estados de cada célula representam as probabilidades de cada resíduo
+ ser hélice, fita e coil, e portanto, não são estados discretos.
+ Para os estados iniciais do autômato, foram utilizadas as probabilidades
+ definidas por Chou e Fasman .
+ A transição do autômato é definida por pesos para as probabilidades das
+ 11 células no tempo 
+\emph on
+t
+\emph default
+ que influenciam na alteração das probabilidades no tempo 
+\emph on
+t+1
+\emph default
+.
+ Tais pesos foram otimizados utilizando um algoritmo genético.
+ O autômato celular evolui por apenas duas gerações, pois, segundo os autores,
+ um maior número de gerações reduzia a acurácia.
+ A acurácia apresentada foi de aproximadamente 58% (
+\begin_inset Formula $Q_{3}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+O autômato celular desenvolvido por nós neste trabalho difere do publicado
+ por Chopra e Bender 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chopra_evolved_2007"
+
+\end_inset
+
+ por utilizar estados discretos, vizinhança igual a um e um número superior
+ de gerações durante a evolução.
+ Acreditamos que tais alterações sejam mais adequadas para um método cujo
+ um dos objetivos é fornecer informação sobre o processo de formação das
+ estruturas secundárias proteicas.
 \end_layout
 
 \begin_layout Section
@@ -1975,6 +2037,7 @@ reference "tab:ac-elementos"
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -2798,7 +2861,7 @@ reference "fig:eda-prob"
 
 \end_inset
 
-onde cada um dos quatro estados de transição possíveis tem probabilidade
+) onde cada um dos quatro estados de transição possíveis tem probabilidade
  inicial de 25%.
  Isso ocorre para cada elemento do conjunto de regras com exceção de elementos
  cujo estado da célula central apresenta o estado de início/fim da cadeia
@@ -2810,7 +2873,9 @@ status open
 
 
 \backslash
-cell{#}
+cell{
+\backslash
+#}
 \end_layout
 
 \end_inset
@@ -2830,7 +2895,9 @@ status open
 
 
 \backslash
-cell{#}
+cell{
+\backslash
+#}
 \end_layout
 
 \end_inset
@@ -2856,7 +2923,9 @@ status open
 
 
 \backslash
-cell{#}
+cell{
+\backslash
+#}
 \end_layout
 
 \end_inset
@@ -2867,6 +2936,7 @@ cell{#}
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -3042,6 +3112,7 @@ carule{S}{A}{W}{|}
 \end_deeper
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -3152,7 +3223,9 @@ status open
 
 
 \backslash
-cell{#}
+cell{
+\backslash
+#}
 \end_layout
 
 \end_inset
@@ -3166,7 +3239,9 @@ status open
 
 
 \backslash
-cell{#}
+cell{
+\backslash
+#}
 \end_layout
 
 \end_inset
@@ -3177,6 +3252,7 @@ cell{#}
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -3334,11 +3410,13 @@ Onde
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
 <features tabularvalignment="middle">
@@ -3348,7 +3426,7 @@ status open
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3357,7 +3435,7 @@ status open
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3366,7 +3444,7 @@ status open
 
 \end_inset
 </cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3395,7 +3473,7 @@ Observados
 </cell>
 </row>
 <row>
-<cell multirow="3" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
+<cell multirow="3" alignment="center" valignment="top" topline="true" rightline="true" rotate="90" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3404,7 +3482,7 @@ Preditos
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3413,7 +3491,7 @@ Preditos
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3422,7 +3500,7 @@ H
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3431,7 +3509,7 @@ E
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3451,7 +3529,7 @@ C
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3460,7 +3538,7 @@ H
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3472,7 +3550,7 @@ H
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3484,7 +3562,7 @@ H
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3507,7 +3585,7 @@ H
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3516,7 +3594,7 @@ E
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3528,7 +3606,7 @@ E
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3540,7 +3618,7 @@ E
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3563,7 +3641,7 @@ E
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3572,7 +3650,7 @@ C
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3584,7 +3662,7 @@ C
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3937,7 +4015,7 @@ Seleção do modelo de autômato celular
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -3974,6 +4052,7 @@ Os outros três modelos, os quais utilizam informação sobre o contexto, obtive
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4074,6 +4153,7 @@ discutir melhor
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4158,7 +4238,7 @@ da pelas redes HK (
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4171,7 +4251,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4185,6 +4265,7 @@ Analise do modelo estendido com as 3 novas funçoes de fitness
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4254,7 +4335,7 @@ reference "fig:ac4-qh"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4268,6 +4349,7 @@ status open
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4339,7 +4421,7 @@ reference "fig:Estrutura-secundária-atribuída"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4353,6 +4435,7 @@ status open
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4409,7 +4492,7 @@ C
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4423,6 +4506,7 @@ status open
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4505,7 +4589,7 @@ reference "fig:Distribuição-do-comprimento_coil"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4519,6 +4603,7 @@ Analise do comprimento das estruturas secundarias
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4612,7 +4697,7 @@ Entretanto, a baixa acurácia obtida pelo AC 4 em conjunto com a estabilidade
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4626,6 +4711,7 @@ analise de um caso de sucesso
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4660,7 +4746,26 @@ O domínio PUB da proteína
 \emph on
 Peptide-N(4)-(N-acetyl-beta-glucosaminyl) asparagine amidase 
 \emph default
-(PDB ID: 2CCQ) apresentou 
+(PDB ID: 2CCQ) apresentou uma das maiores acurácias com 
+\begin_inset Formula $Q_{3}=90,23\%$
+\end_inset
+
+, 
+\begin_inset Formula $Q_{H}=84,31\%$
+\end_inset
+
+, 
+\begin_inset Formula $Q_{E}=100\%$
+\end_inset
+
+ e 
+\begin_inset Formula $Q_{C}=86,36\%$
+\end_inset
+
+.
+ Estados que representam hélices estão em vermelho, fitas em amarelo e coils
+ em verde.
+ 
 \end_layout
 
 \end_inset
@@ -4678,7 +4783,7 @@ Peptide-N(4)-(N-acetyl-beta-glucosaminyl) asparagine amidase
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -4692,6 +4797,7 @@ analise de um fracasso
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4716,7 +4822,31 @@ name "fig:ac4-bad"
 
 \end_inset
 
+Evolução do AC4 com a regra otimizada por EDA utilizando CBA como função
+ de 
+\emph on
+fitness.
+ 
+\emph default
+A proteína sem função descrita
+\emph on
+ 
+\emph default
+(PDB ID: 2RLD) apresentou uma das piores acurácias com 
+\begin_inset Formula $Q_{3}=30\%$
+\end_inset
 
+, 
+\begin_inset Formula $Q_{H}=60,00\%$
+\end_inset
+
+ e 
+\begin_inset Formula $Q_{C}=0\%$
+\end_inset
+
+.
+ Estados que representam hélices estão em vermelho, fitas em amarelo e coils
+ em verde.
 \end_layout
 
 \end_inset
@@ -4734,7 +4864,7 @@ name "fig:ac4-bad"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
