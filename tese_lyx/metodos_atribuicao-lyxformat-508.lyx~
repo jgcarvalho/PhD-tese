@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,8 +21,6 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype false
-\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -52,7 +50,6 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
-\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -61,10 +58,7 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\is_math_indent 0
-\math_numbering_side default
-\quotes_style swedish
-\dynamic_quotes 0
+\quotes_language swedish
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -118,7 +112,6 @@ Diferentes autores sugerem a impossibilidade de se eleger qual o melhor
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kabsch_dictionary_1983,colloch_comparison_1993,frishman_knowledge-based_1995,zhang_secondary_2015"
-literal "true"
 
 \end_inset
 
@@ -155,7 +148,6 @@ Dictionary of Protein Secondary Structure
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kabsch_dictionary_1983"
-literal "true"
 
 \end_inset
 
@@ -213,7 +205,7 @@ O DSSP define as ligações de hidrogênio utilizando um modelo eletrostático.
 \begin_inset Formula $HB$
 \end_inset
 
- ocorrerá se, e somente se, a energia de ligação 
+ ocorrerá se, e somente se, a energia 
 \begin_inset Formula $E$
 \end_inset
 
@@ -280,7 +272,7 @@ reference "eq:dssp_energy"
 \begin_inset Formula $r(AB)$
 \end_inset
 
- é a distância interatômica entre A e B em Ångström e 
+ é a distância interatômica entre A e B em ångström e 
 \begin_inset Formula $f$
 \end_inset
 
@@ -308,7 +300,6 @@ Os autores afirmam que, por este modelo, uma boa ligação de hidrogênio teria
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kabsch_dictionary_1983"
-literal "true"
 
 \end_inset
 
@@ -404,7 +395,7 @@ Coloque um esquema para isso
 \end_layout
 
 \begin_layout Standard
-sendo que as sequências 
+Sendo que as sequências 
 \begin_inset Formula $i-1,i,i+1$
 \end_inset
 
@@ -479,7 +470,6 @@ O método de atribuição de estrutura secundárias STRIDE foi desenvolvido
 \begin_inset CommandInset citation
 LatexCommand citep
 key "frishman_knowledge-based_1995"
-literal "true"
 
 \end_inset
 
@@ -513,7 +503,7 @@ E_{hb}=E_{r}*E_{t}*E_{p}\label{eq:hb_stride}
 \end_layout
 
 \begin_layout Standard
-onde 
+Onde 
 \begin_inset Formula $E_{r}$
 \end_inset
 
@@ -562,7 +552,7 @@ E_{r}=\frac{-3E_{m}r_{m}⁸}{r^{8}}+\frac{-4E_{m}r_{m}⁶}{r^{6}}\label{eq:strid
 \end_layout
 
 \begin_layout Standard
-onde 
+Onde 
 \begin_inset Formula $r$
 \end_inset
 
@@ -945,7 +935,6 @@ KAKSI é um método de atribuição de estruturas secundárias proposto por Mart
 \begin_inset CommandInset citation
 LatexCommand citep
 key "martin_protein_2005"
-literal "true"
 
 \end_inset
 
@@ -1210,7 +1199,6 @@ mesostate
 \begin_inset CommandInset citation
 LatexCommand citep
 key "srinivasan_physical_1999,gong_does_2005"
-literal "true"
 
 \end_inset
 
@@ -1253,7 +1241,7 @@ ou coil de acordo com um conjunto de regras.
 \end_layout
 
 \begin_layout Enumerate
-Hélices 
+Hélices
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -1485,7 +1473,6 @@ Segundo os autores, a utilização somente dos ângulos torcionais da cadeia
 \begin_inset CommandInset citation
 LatexCommand citep
 key "srinivasan_physical_1999"
-literal "true"
 
 \end_inset
 
@@ -1531,7 +1518,6 @@ TOP8000-best-hom50
 LatexCommand href
 name "github.com/rlabduke/reference_data"
 target "https://github.com/rlabduke/reference_data/tree/master/Top8000"
-literal "false"
 
 \end_inset
 
@@ -2538,7 +2524,6 @@ helix capping
 \begin_inset CommandInset citation
 LatexCommand citep
 key "aurora_helix_1998,doig_n-_1995"
-literal "true"
 
 \end_inset
 
@@ -2550,7 +2535,6 @@ beta-sheet capping
 \begin_inset CommandInset citation
 LatexCommand citep
 key "farzadfard_beta-sheet_2008"
-literal "true"
 
 \end_inset
 

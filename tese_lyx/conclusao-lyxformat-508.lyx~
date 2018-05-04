@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,8 +21,6 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype false
-\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -52,7 +50,6 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
-\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -61,10 +58,7 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\is_math_indent 0
-\math_numbering_side default
-\quotes_style swedish
-\dynamic_quotes 0
+\quotes_language swedish
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -108,7 +102,6 @@ Entre os quatro métodos de atribuição analisados, há a ocorrência de uma
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kabsch_dictionary_1983,frishman_knowledge-based_1995"
-literal "true"
 
 \end_inset
 
@@ -142,11 +135,10 @@ Os resultados obtidos com a rede neural similar a de Holley e Karplus (HK),
 \begin_inset CommandInset citation
 LatexCommand citep
 key "jones_protein_1999"
-literal "true"
 
 \end_inset
 
-, que realiza a predição a partir da PSSM, indicam que o ganho na acurácia
+, que realiza a predição a partir da PSSM, indica que o ganho na acurácia
  da predição ao se utilizar informações da conservação evolutiva pode ser
  de até 15%.
  A rede HK forneceu ainda uma acurácia de referência para comparamos com
@@ -170,7 +162,6 @@ A diferença observada no comprimento das estruturas atribuídas em relação
 \begin_inset CommandInset citation
 LatexCommand citep
 key "jones_protein_1999"
-literal "true"
 
 \end_inset
 
@@ -207,7 +198,6 @@ O primeiro obstáculo era a dificuldade em se resolver o problema inverso
 \begin_inset CommandInset citation
 LatexCommand citep
 key "ganguly_survey_2003"
-literal "true"
 
 \end_inset
 
@@ -293,7 +283,6 @@ Class Balance Accuracy
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mosley_balanced_2013"
-literal "true"
 
 \end_inset
 
@@ -360,7 +349,6 @@ Rectified Linear Unit
 \begin_inset CommandInset citation
 LatexCommand cite
 key "nair_rectified_2010"
-literal "true"
 
 \end_inset
 
@@ -368,7 +356,6 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "he_deep_2016"
-literal "true"
 
 \end_inset
 
@@ -382,7 +369,6 @@ batch normalization
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ioffe_batch_2015"
-literal "true"
 
 \end_inset
 
@@ -452,7 +438,6 @@ dropout
 \begin_inset CommandInset citation
 LatexCommand cite
 key "srivastava_dropout:_2014"
-literal "true"
 
 \end_inset
 
@@ -464,7 +449,6 @@ Wide Residual Networks
 \begin_inset CommandInset citation
 LatexCommand cite
 key "zagoruyko_wide_2016"
-literal "true"
 
 \end_inset
 
@@ -502,7 +486,6 @@ name "fig:Blocos"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "he_deep_2016"
-literal "true"
 
 \end_inset
 
@@ -510,7 +493,6 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "he_identity_2016"
-literal "true"
 
 \end_inset
 
@@ -527,7 +509,6 @@ dropout
 \begin_inset CommandInset citation
 LatexCommand cite
 key "zagoruyko_wide_2016"
-literal "true"
 
 \end_inset
 
@@ -607,7 +588,6 @@ Outro fator relevante é a não utilização de PSSM como entrada.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "wang_protein_2016"
-literal "true"
 
 \end_inset
 
@@ -618,7 +598,6 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "wang_protein_2016"
-literal "true"
 
 \end_inset
 
@@ -1112,7 +1091,6 @@ DCNN
 \begin_inset CommandInset citation
 LatexCommand cite
 key "wang_protein_2016"
-literal "true"
 
 \end_inset
 
@@ -1197,7 +1175,6 @@ Comparação de métodos de predição de estruturas secundárias.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "wang_protein_2016"
-literal "true"
 
 \end_inset
 

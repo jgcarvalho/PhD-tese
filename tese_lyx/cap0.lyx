@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,6 +21,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -50,6 +52,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -58,7 +61,10 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language swedish
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swedish
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -89,7 +95,8 @@ A segunda parte, nomeada de Desenvolvimento, contém 4 capítulos.
 
 \begin_layout Standard
 No capítulo 2, Métodos de Atribuição de Estruturas Secundárias, descrevemos
- a preparação dos dados utilizados ao longo do trabalho.
+ a preparação dos dados utilizados ao longo do trabalho para compor os conjuntos
+ de treinamento, validação e teste.
  Tais dados consistem de um conjunto de estruturas proteicas resolvidas
  experimentalmente e com alta qualidade, e da estrutura secundária atribuída
  aos seus resíduos através de métodos computacionais.
@@ -120,7 +127,8 @@ Um dos métodos realiza a predição da estrutura secundária utilizando diretam
  Na época, haviam poucas estruturas resolvidas experimentalmente para serem
  usadas no treinamento da rede neural.
  Assim, ao invés de utilizarmos a rede neural original, optamos por implementar
- uma rede neural similar e a treinamos utilizando o nosso conjunto de dados.
+ uma rede neural similar e a treinamos utilizando o nosso conjunto de dados
+ contendo um maior número de estruturas proteicas.
  Essa abordagem possibilitou uma comparação mais justa da capacidade preditiva
  do método.
  

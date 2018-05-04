@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,6 +21,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -50,6 +52,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -58,7 +61,10 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language swedish
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swedish
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -82,7 +88,7 @@ Proteínas e sua organização estrutural
 \begin_layout Standard
 Proteínas são cadeias polipeptídicas compostas por aminoácidos unidos em
  uma sequência definida.
- Tal sequência determina todas a propriedades particulares da proteína,
+ Tal sequência determina todas as propriedades particulares da proteína,
  incluindo sua função biológica e sua estrutura tridimensional.
 \end_layout
 
@@ -92,10 +98,20 @@ A estrutura proteica é comumente classificada de maneira hierárquica em
 \end_layout
 
 \begin_layout Standard
-A estrutura primária corresponde a sequência de aminoácidos na cadeia polipeptíd
-ica.
- A estrutura secundária são padrões estruturais locais formados, sobretudo,
- por ligações de hidrogênio.
+A estrutura primária corresponde a sequência linear de aminoácidos na cadeia
+ polipeptídica.
+ A estrutura secundária corresponde à padrões conformacionais locais os
+ quais são formados, sobretudo, por ligações de hidrogênio
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+melhorar essa frase
+\end_layout
+
+\end_inset
+
+.
  A estrutura terciária é o arranjo espacial da estrutura secundária e, consequen
 temente, da estrutura primária.
  Já a estrutura quaternária é a organização espacial contendo mais de uma
@@ -164,6 +180,7 @@ Dentre os principais padrões observados em estruturas proteicas estão as
 \begin_inset CommandInset citation
 LatexCommand cite
 key "pauling_structure_1951"
+literal "true"
 
 \end_inset
 
@@ -176,6 +193,7 @@ key "pauling_structure_1951"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "pauling_pleated_1951"
+literal "true"
 
 \end_inset
 
@@ -184,12 +202,41 @@ key "pauling_pleated_1951"
 
 \begin_layout Standard
 Apesar de haverem diversos outros padrões estruturais identificados, usualmente
- as proteína costumam ser dividas em hélices, estruturas 
+ as diferentes estruturas secundárias costumam ser agrupadas em três classes:
+ hélices, a qual compreende as hélices 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $\pi$
+\end_inset
+
+ e 
+\begin_inset Formula $3_{10}$
+\end_inset
+
+; estruturas 
 \begin_inset Formula $\beta$
 \end_inset
 
- e coil.
- Sendo as regiões de coil definidas na prática como 
+ e 
+\begin_inset Quotes sld
+\end_inset
+
+coil
+\begin_inset Quotes srd
+\end_inset
+
+.
+ Sendo as regiões de 
+\begin_inset Quotes sld
+\end_inset
+
+coil
+\begin_inset Quotes srd
+\end_inset
+
+ definidas na prática como 
 \begin_inset Quotes sld
 \end_inset
 
@@ -198,11 +245,12 @@ nenhuma das outras
 \end_inset
 
 .
- Assim, a característica que define coil é a ausência de conformações estruturai
-s sequencialmente repetitivas 
+ Assim, a característica que define uma região de coil é a ausência de conformaç
+ões estruturais sequencialmente repetitivas 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "richardson_anatomy_1981"
+literal "true"
 
 \end_inset
 
@@ -279,6 +327,7 @@ O problema do enovelamento de proteínas é a questão de como são formadas
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kendrew_three-dimensional_1958"
+literal "true"
 
 \end_inset
 
@@ -289,6 +338,7 @@ key "kendrew_three-dimensional_1958"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "anfinsen_principles_1973"
+literal "true"
 
 \end_inset
 
@@ -307,6 +357,7 @@ nte desnaturada/renaturada in vitro, e que em condições desnaturantes, tanto
 \begin_inset CommandInset citation
 LatexCommand citep
 key "rose_backbone-based_2006"
+literal "true"
 
 \end_inset
 
@@ -325,6 +376,7 @@ O problema do enovelamento de proteínas é a questão de como são formadas
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kendrew_three-dimensional_1958"
+literal "true"
 
 \end_inset
 
@@ -335,6 +387,7 @@ key "kendrew_three-dimensional_1958"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "anfinsen_principles_1973"
+literal "true"
 
 \end_inset
 
@@ -353,6 +406,7 @@ nte desnaturada/renaturada in vitro, e que em condições desnaturantes, tanto
 \begin_inset CommandInset citation
 LatexCommand citep
 key "rose_backbone-based_2006"
+literal "true"
 
 \end_inset
 
@@ -377,6 +431,7 @@ s por Levinthal
 \begin_inset CommandInset citation
 LatexCommand citep
 key "levinthal_are_1968,levinthal_how_1969"
+literal "true"
 
 \end_inset
 
@@ -384,9 +439,20 @@ key "levinthal_are_1968,levinthal_how_1969"
  Nestes, o autor menciona que o número de configurações estruturais possíveis
  para uma cadeia polipeptídica é imenso, sendo impossível explorar todas
  as conformações possíveis para se determinar qual sua estrutura nativa,
- ou de menor energia.
+ ou de menor energia livre.
  Apesar disso, as proteínas são capazes de se enovelarem espontaneamente
- e adotar a conformação nativa rapidamente, numa escala de segundos ou menos.
+ e adotar a conformação nativa rapidamente, numa escala de segundos ou menos
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+referencia
+\end_layout
+
+\end_inset
+
+.
  Esta observação ficou popularmente conhecida como Paradoxo de Levinthal.
  Entretanto, Levinthal não considerou isso como um resultado absurdo, mas
  baseou-se nessa análise para concluir que um mecanismo aleatório para o
@@ -394,6 +460,7 @@ key "levinthal_are_1968,levinthal_how_1969"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "ben-naim_levinthals_2012"
+literal "true"
 
 \end_inset
 
@@ -402,6 +469,7 @@ key "ben-naim_levinthals_2012"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "levinthal_how_1969"
+literal "true"
 
 \end_inset
 
@@ -427,6 +495,7 @@ s por Levinthal (1968; 1969)
 \begin_inset CommandInset citation
 LatexCommand citep
 key "levinthal_are_1968,levinthal_how_1969"
+literal "true"
 
 \end_inset
 
@@ -443,6 +512,7 @@ key "levinthal_are_1968,levinthal_how_1969"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "ben-naim_levinthals_2012"
+literal "true"
 
 \end_inset
 
@@ -451,6 +521,7 @@ key "ben-naim_levinthals_2012"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "levinthal_how_1969"
+literal "true"
 
 \end_inset
 
@@ -465,9 +536,16 @@ key "levinthal_how_1969"
 \end_layout
 
 \begin_layout Quotation
+\begin_inset Quotes sld
+\end_inset
+
 We feel that protein folding is speeded and guided by the rapid formation
  of local interactions, which then determine the further folding of the
  peptide.
+\begin_inset Quotes srd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -479,18 +557,24 @@ nto ter sido publicado há 45 anos, o desafio de se prever as estruturas
 \begin_inset CommandInset citation
 LatexCommand citep
 key "moult_critical_2014"
+literal "true"
 
 \end_inset
 
-, sendo os métodos experimentais, mais especificamente, os métodos de cristalogr
-afia de proteínas por difração de raios-X e o de ressonância magnética nuclear,
- ainda as principais formas de se obter um modelo estrutural com resolução
- atômica.
- Métodos experimentais de resolução da estrutura proteica apresentam diversas
- dificuldades técnicas.
+.
+ Consequentemente, métodos experimentais, mais especificamente, a cristalografia
+ de proteínas por difração de raios-X, a ressonância magnética nuclear e
+ a criomicroscopia eletrônica, ainda são as principais formas de se obter
+ um modelo estrutural com resolução atômica.
+ 
+\end_layout
+
+\begin_layout Standard
+No entanto, tais métodos experimentais de resolução da estrutura proteica
+ apresentam diversas dificuldades técnicas.
  Para a cristalografia por difração de raios-X, é necessária a obtenção
- de proteína em alto grau de pureza e a obtenção de monocristais, que muitas
- vezes é o fator limitante do processo.
+ de proteína em alto grau de pureza e a obtenção de monocristais os quais,
+ muitas vezes, são um fator limitante no processo.
  Por outro lado, a ressonância magnética nuclear exige concentrações bastante
  altas de proteína purificada de meios com diferentes isótopos e ainda,
  existe limitação quanto ao tamanho da proteína analisada.
@@ -506,6 +590,7 @@ afia de proteínas por difração de raios-X e o de ressonância magnética nucl
 \begin_inset CommandInset citation
 LatexCommand citep
 key "baker_protein_2001"
+literal "true"
 
 \end_inset
 
@@ -526,6 +611,7 @@ nto ter sido publicado há 45 anos, o desafio de se prever as estruturas
 \begin_inset CommandInset citation
 LatexCommand citep
 key "moult_critical_2014"
+literal "true"
 
 \end_inset
 
@@ -553,6 +639,7 @@ afia de proteínas por difração de raios-X e o de ressonância magnética nucl
 \begin_inset CommandInset citation
 LatexCommand citep
 key "baker_protein_2001"
+literal "true"
 
 \end_inset
 
@@ -579,12 +666,13 @@ ab initio
 \emph on
 de novo
 \emph default
- os métodos que não utilizam informações provenientes de proteínas com estrutura
-s similares ao invés de apenas métodos que utilizem informação de carácter
- exclusivamente físico 
+ todos os métodos que não utilizam informações provenientes de proteínas
+ com estruturas similares ao invés de apenas métodos que utilizem informação
+ de carácter exclusivamente físico 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "helles_comparative_2008"
+literal "true"
 
 \end_inset
 
@@ -602,6 +690,7 @@ fragment assembly
 \begin_inset CommandInset citation
 LatexCommand citep
 key "zhang_i-tasser_2008"
+literal "true"
 
 \end_inset
 
@@ -609,6 +698,7 @@ key "zhang_i-tasser_2008"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "rohl_protein_2004"
+literal "true"
 
 \end_inset
 
@@ -626,6 +716,7 @@ es como a predição da estrutura secundária e de contatos não-locais entre
 \begin_inset CommandInset citation
 LatexCommand citep
 key "helles_comparative_2008"
+literal "true"
 
 \end_inset
 
@@ -647,6 +738,7 @@ Os métodos computacionais desenvolvidos e utilizados para construir modelos
 \begin_inset CommandInset citation
 LatexCommand citep
 key "helles_comparative_2008"
+literal "true"
 
 \end_inset
 
@@ -657,6 +749,7 @@ key "helles_comparative_2008"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "zhang_i-tasser_2008"
+literal "true"
 
 \end_inset
 
@@ -664,6 +757,7 @@ key "zhang_i-tasser_2008"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "rohl_protein_2004"
+literal "true"
 
 \end_inset
 
@@ -681,6 +775,7 @@ es como a predição da estrutura secundária e de contatos não-locais entre
 \begin_inset CommandInset citation
 LatexCommand citep
 key "helles_comparative_2008"
+literal "true"
 
 \end_inset
 
@@ -705,6 +800,7 @@ A outra categoria de métodos de modelagem, a modelagem comparativa, necessita
 \begin_inset CommandInset citation
 LatexCommand citep
 key "marti-renom_comparative_2000"
+literal "true"
 
 \end_inset
 
@@ -717,6 +813,7 @@ key "marti-renom_comparative_2000"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "marti-renom_comparative_2000"
+literal "true"
 
 \end_inset
 
@@ -729,6 +826,7 @@ key "marti-renom_comparative_2000"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "dunbrack_sequence_2006"
+literal "true"
 
 \end_inset
 
@@ -742,6 +840,7 @@ key "dunbrack_sequence_2006"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "overington_tertiary_1990"
+literal "true"
 
 \end_inset
 
@@ -756,6 +855,7 @@ key "overington_tertiary_1990"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "chothia_proteins._1992,coulson_unifold_2002"
+literal "true"
 
 \end_inset
 
@@ -767,6 +867,7 @@ key "chothia_proteins._1992,coulson_unifold_2002"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kolodny_universe_2013"
+literal "true"
 
 \end_inset
 
@@ -790,6 +891,7 @@ A outra categoria de métodos de modelagem, a modelagem comparativa, necessita
 \begin_inset CommandInset citation
 LatexCommand citep
 key "marti-renom_comparative_2000"
+literal "true"
 
 \end_inset
 
@@ -802,6 +904,7 @@ key "marti-renom_comparative_2000"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "marti-renom_comparative_2000"
+literal "true"
 
 \end_inset
 
@@ -815,6 +918,7 @@ key "marti-renom_comparative_2000"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "dunbrack_sequence_2006"
+literal "true"
 
 \end_inset
 
@@ -828,6 +932,7 @@ key "dunbrack_sequence_2006"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "overington_tertiary_1990"
+literal "true"
 
 \end_inset
 
@@ -843,6 +948,7 @@ key "overington_tertiary_1990"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "chothia_proteins._1992,coulson_unifold_2002"
+literal "true"
 
 \end_inset
 
@@ -854,6 +960,7 @@ key "chothia_proteins._1992,coulson_unifold_2002"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kolodny_universe_2013"
+literal "true"
 
 \end_inset
 
@@ -872,6 +979,7 @@ Os métodos de modelagem comparativa não fornecem informação sobre as etapas
 \begin_inset CommandInset citation
 LatexCommand citep
 key "helles_comparative_2008"
+literal "true"
 
 \end_inset
 
@@ -882,6 +990,7 @@ key "helles_comparative_2008"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "giri_folding_2012"
+literal "true"
 
 \end_inset
 
@@ -913,6 +1022,7 @@ Os métodos de modelagem comparativa não fornecem informação sobre o caminho,
 \begin_inset CommandInset citation
 LatexCommand citep
 key "helles_comparative_2008"
+literal "true"
 
 \end_inset
 
@@ -923,6 +1033,7 @@ key "helles_comparative_2008"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "giri_folding_2012"
+literal "true"
 
 \end_inset
 
@@ -951,6 +1062,7 @@ A hipótese termodinâmica, apesar de explicar o enovelamento, não fornece
 \begin_inset CommandInset citation
 LatexCommand citep
 key "rose_backbone-based_2006"
+literal "true"
 
 \end_inset
 
@@ -959,6 +1071,7 @@ key "rose_backbone-based_2006"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "dill_levinthal_1997,dill_protein_2008,dill_protein-folding_2012"
+literal "true"
 
 \end_inset
 
@@ -977,6 +1090,7 @@ co e não-hierárquico.
 \begin_inset CommandInset citation
 LatexCommand citep
 key "baldwin_is_1999"
+literal "true"
 
 \end_inset
 
@@ -989,6 +1103,7 @@ key "baldwin_is_1999"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "baldwin_is_1999-1,daggett_is_2003,englander_case_2017,eaton_theory_2017,englander_reply_2017"
+literal "true"
 
 \end_inset
 
@@ -1000,6 +1115,7 @@ os
 \begin_inset CommandInset citation
 LatexCommand citep
 key "daggett_is_2003"
+literal "true"
 
 \end_inset
 
@@ -1018,6 +1134,7 @@ A hipótese termodinâmica, apesar de explicar o enovelamento, também não
 \begin_inset CommandInset citation
 LatexCommand citep
 key "rose_backbone-based_2006"
+literal "true"
 
 \end_inset
 
@@ -1027,6 +1144,7 @@ key "rose_backbone-based_2006"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "dill_levinthal_1997,dill_protein_2008,dill_protein-folding_2012"
+literal "true"
 
 \end_inset
 
@@ -1045,6 +1163,7 @@ co e não-hierárquico.
 \begin_inset CommandInset citation
 LatexCommand citep
 key "baldwin_is_1999"
+literal "true"
 
 \end_inset
 
@@ -1057,6 +1176,7 @@ key "baldwin_is_1999"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "baldwin_is_1999-1,daggett_is_2003"
+literal "true"
 
 \end_inset
 
@@ -1068,6 +1188,7 @@ os (Daggett e Fersht, 2003)
 \begin_inset CommandInset citation
 LatexCommand citep
 key "daggett_is_2003"
+literal "true"
 
 \end_inset
 
@@ -1096,6 +1217,7 @@ molten globules
 \begin_inset CommandInset citation
 LatexCommand citep
 key "baldwin_is_1999"
+literal "true"
 
 \end_inset
 
@@ -1109,6 +1231,7 @@ key "baldwin_is_1999"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "harper_helix_1993,aurora_rules_1994,aurora_local_1997,baldwin_is_1999"
+literal "true"
 
 \end_inset
 
@@ -1120,6 +1243,7 @@ key "harper_helix_1993,aurora_rules_1994,aurora_local_1997,baldwin_is_1999"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "colloch_beta-breakers:_1991"
+literal "true"
 
 \end_inset
 
@@ -1130,6 +1254,7 @@ key "colloch_beta-breakers:_1991"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "betancourt_local_2004,otaki_secondary_2010"
+literal "true"
 
 \end_inset
 
@@ -1139,6 +1264,7 @@ key "betancourt_local_2004,otaki_secondary_2010"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "otaki_secondary_2010"
+literal "true"
 
 \end_inset
 
@@ -1164,6 +1290,7 @@ molten globules
 \begin_inset CommandInset citation
 LatexCommand citep
 key "baldwin_is_1999"
+literal "true"
 
 \end_inset
 
@@ -1179,6 +1306,7 @@ key "baldwin_is_1999"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "harper_helix_1993,aurora_rules_1994,aurora_local_1997,baldwin_is_1999"
+literal "true"
 
 \end_inset
 
@@ -1190,6 +1318,7 @@ key "harper_helix_1993,aurora_rules_1994,aurora_local_1997,baldwin_is_1999"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "colloch_beta-breakers:_1991"
+literal "true"
 
 \end_inset
 
@@ -1201,6 +1330,7 @@ rt e Skolnick, 2004; Otaki et al., 2010)
 \begin_inset CommandInset citation
 LatexCommand citep
 key "betancourt_local_2004,otaki_secondary_2010"
+literal "true"
 
 \end_inset
 
@@ -1210,6 +1340,7 @@ key "betancourt_local_2004,otaki_secondary_2010"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "otaki_secondary_2010"
+literal "true"
 
 \end_inset
 
@@ -1226,6 +1357,7 @@ Alguns trabalhos de simulação computacional
 \begin_inset CommandInset citation
 LatexCommand citep
 key "abagyan_biased_1994,pedersen_protein_1997"
+literal "true"
 
 \end_inset
 
@@ -1237,6 +1369,7 @@ key "abagyan_biased_1994,pedersen_protein_1997"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "srinivasan_physical_1999"
+literal "true"
 
 \end_inset
 
@@ -1246,6 +1379,10 @@ key "srinivasan_physical_1999"
  secundária de estados intermediários da proteína, sendo por vezes conservada
  na estrutura nativa e, em outras, alterada devido a interações não locais.
  
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Section
@@ -1268,12 +1405,9 @@ Nosso objetivo neste trabalho foi desenvolver métodos de predição de estrutur
 Neste trabalho exploramos dois modelos capazes de fornecer informações do
  processo de predição.
  O primeiro modelo utiliza autômatos celulares, o qual, devido as suas caracterí
-sticas, poderia 
-\end_layout
-
-\begin_layout Standard
-O segundo modelo, baseado em redes neurais residuais profundas, nos permite
- extrair a informação do processo de predição a partir das camadas de neurônios
+sticas, fornece diretamente a informação do processo de predição.O segundo
+ modelo, baseado em redes neurais residuais profundas, nos permite extrair
+ a informação do processo de predição a partir das camadas de neurônios
  internas.
 \end_layout
 
@@ -1283,11 +1417,11 @@ Ambos os métodos, uma vez otimizados, são de rápida execução e exigem pouco
  Isto possibilitará diversos tipos de aplicações, como o estudo do impacto
  de mutações durante a formação da estrutura, a comparação entre proteínas
  homólogas, entre proteínas com sequências similares, mas estruturas distintas,
- e além de auxiliar no 
+ além de auxiliar no 
 \emph on
 design
 \emph default
- de novas sequências que 
+ de novas sequências que possuam um enovelamento desejado.
 \end_layout
 
 \begin_layout Standard
@@ -1300,6 +1434,7 @@ Alguns trabalhos de simulação computacional (Abagyan e Totrov, 1994; Pedersen
 \begin_inset CommandInset citation
 LatexCommand citep
 key "abagyan_biased_1994,pedersen_protein_1997"
+literal "true"
 
 \end_inset
 
@@ -1311,6 +1446,7 @@ key "abagyan_biased_1994,pedersen_protein_1997"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "srinivasan_physical_1999"
+literal "true"
 
 \end_inset
 
@@ -1371,6 +1507,7 @@ ento de enovelamentos proteicos, mas possivelmente apresentar sensibilidade
 \begin_inset CommandInset citation
 LatexCommand citep
 key "giri_folding_2012"
+literal "true"
 
 \end_inset
 
@@ -1378,6 +1515,7 @@ key "giri_folding_2012"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "helles_comparative_2008"
+literal "true"
 
 \end_inset
 
@@ -1410,6 +1548,7 @@ Esses resultados observados na literatura sugerem ser possível um algoritmo
 \begin_inset CommandInset citation
 LatexCommand citep
 key "giri_folding_2012"
+literal "true"
 
 \end_inset
 
@@ -1417,6 +1556,7 @@ key "giri_folding_2012"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "helles_comparative_2008"
+literal "true"
 
 \end_inset
 

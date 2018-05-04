@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,6 +21,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -41,8 +43,8 @@
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine natbib
-\cite_engine_type numerical
+\cite_engine basic
+\cite_engine_type default
 \biblio_style plainnat
 \use_bibtopic false
 \use_indices false
@@ -50,6 +52,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -58,7 +61,10 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language swedish
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swedish
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -86,8 +92,8 @@ Os métodos computacionais de atribuição de estruturas secundárias surgiram
  Em geral, tais métodos buscam por um conjunto de padrões estruturais, como
  distâncias e ângulos entre átomos, capazes de representar a estrutura secundári
 a atribuída por especialistas.
-\begin_inset Note Note
-status open
+\begin_inset Note Comment
+status collapsed
 
 \begin_layout Plain Layout
 Clarifificar esta frase
@@ -112,6 +118,7 @@ Diferentes autores sugerem a impossibilidade de se eleger qual o melhor
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kabsch_dictionary_1983,colloch_comparison_1993,frishman_knowledge-based_1995,zhang_secondary_2015"
+literal "true"
 
 \end_inset
 
@@ -148,6 +155,7 @@ Dictionary of Protein Secondary Structure
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kabsch_dictionary_1983"
+literal "true"
 
 \end_inset
 
@@ -205,7 +213,7 @@ O DSSP define as ligações de hidrogênio utilizando um modelo eletrostático.
 \begin_inset Formula $HB$
 \end_inset
 
- ocorrerá se, e somente se, a energia 
+ ocorrerá se, e somente se, a energia de ligação 
 \begin_inset Formula $E$
 \end_inset
 
@@ -272,7 +280,7 @@ reference "eq:dssp_energy"
 \begin_inset Formula $r(AB)$
 \end_inset
 
- é a distância interatômica entre A e B em ångström e 
+ é a distância interatômica entre A e B em Ångström e 
 \begin_inset Formula $f$
 \end_inset
 
@@ -300,6 +308,7 @@ Os autores afirmam que, por este modelo, uma boa ligação de hidrogênio teria
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kabsch_dictionary_1983"
+literal "true"
 
 \end_inset
 
@@ -395,7 +404,7 @@ Coloque um esquema para isso
 \end_layout
 
 \begin_layout Standard
-Sendo que as sequências 
+sendo que as sequências 
 \begin_inset Formula $i-1,i,i+1$
 \end_inset
 
@@ -470,6 +479,7 @@ O método de atribuição de estrutura secundárias STRIDE foi desenvolvido
 \begin_inset CommandInset citation
 LatexCommand citep
 key "frishman_knowledge-based_1995"
+literal "true"
 
 \end_inset
 
@@ -503,7 +513,7 @@ E_{hb}=E_{r}*E_{t}*E_{p}\label{eq:hb_stride}
 \end_layout
 
 \begin_layout Standard
-Onde 
+onde 
 \begin_inset Formula $E_{r}$
 \end_inset
 
@@ -552,7 +562,7 @@ E_{r}=\frac{-3E_{m}r_{m}⁸}{r^{8}}+\frac{-4E_{m}r_{m}⁶}{r^{6}}\label{eq:strid
 \end_layout
 
 \begin_layout Standard
-Onde 
+onde 
 \begin_inset Formula $r$
 \end_inset
 
@@ -935,6 +945,7 @@ KAKSI é um método de atribuição de estruturas secundárias proposto por Mart
 \begin_inset CommandInset citation
 LatexCommand citep
 key "martin_protein_2005"
+literal "true"
 
 \end_inset
 
@@ -1199,6 +1210,7 @@ mesostate
 \begin_inset CommandInset citation
 LatexCommand citep
 key "srinivasan_physical_1999,gong_does_2005"
+literal "true"
 
 \end_inset
 
@@ -1313,6 +1325,7 @@ são classificados como coil.
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1320,7 +1333,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename figures/pross_coarse.png
-	width 100line%
+	width 80line%
 
 \end_inset
 
@@ -1406,6 +1419,7 @@ Fita
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1413,6 +1427,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename figures/pross_fine.png
+	width 80line%
 
 \end_inset
 
@@ -1470,6 +1485,7 @@ Segundo os autores, a utilização somente dos ângulos torcionais da cadeia
 \begin_inset CommandInset citation
 LatexCommand citep
 key "srinivasan_physical_1999"
+literal "true"
 
 \end_inset
 
@@ -1515,6 +1531,7 @@ TOP8000-best-hom50
 LatexCommand href
 name "github.com/rlabduke/reference_data"
 target "https://github.com/rlabduke/reference_data/tree/master/Top8000"
+literal "false"
 
 \end_inset
 
@@ -1759,7 +1776,7 @@ reference "fig:Estrutura-secundária-atribuída"
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Quantos resíduos tem atribuição igual entre os métodos e quantos são diferentes?
@@ -1773,6 +1790,7 @@ Quantos resíduos tem atribuição igual entre os métodos e quantos são difere
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1838,6 +1856,7 @@ reference "fig:Similaridade-atribuiçao"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1887,8 +1906,17 @@ Características das estruturas secundárias atribuídas
 Em relação ao número de estruturas secundárias atribuídas, o DSSP atribuiu
  o maior número de hélices, ~67 mil.
  Esse valor é apenas 5,7% maior que o número atribuído pelo STRIDE, mas
- 31,6% maior que o KAKSI e 42% maior que o atribuído pelo PROSS.
- Quanto as fitas, o método que atribuiu o maior número foi o STRIDE ~68mil.
+ 31,6% maior que o KAKSI e 42% maior que o atribuído pelo PROSS (Figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Número-de-estruturas"
+
+\end_inset
+
+).
+ Quanto as fitas, o método que atribuiu o maior número foi o STRIDE com
+ ~68mil.
  O número de fitas atribuídas por cada método apresentou uma variação menor
  que as hélices.
  O número de fitas atribuídas pelo DSSP foi apenas 0,03% menor, pelo PROSS,
@@ -1905,7 +1933,7 @@ reference "fig:Número-de-estruturas"
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Qual a variação no número de estruturas secundarias? SCRIPT atribuicao_n_ss.py
@@ -1918,6 +1946,7 @@ Qual a variação no número de estruturas secundarias? SCRIPT atribuicao_n_ss.p
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1991,7 +2020,7 @@ reference "fig:Número-de-estruturas"
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 SCRIPT: atribuicao_len_ss.py
@@ -2004,6 +2033,7 @@ SCRIPT: atribuicao_len_ss.py
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2059,6 +2089,7 @@ reference "fig:Distribuição-do-comprimento_fitas"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2108,6 +2139,7 @@ As distribuições dos comprimentos dos coils apresentam mediana de 4 resíduos
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2173,7 +2205,7 @@ reference "fig:comprimento_x_dissenso"
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Há relação entre o número de resíduos dissensos vs tamanho da estrutura?
@@ -2188,6 +2220,7 @@ s_VS_length.py OUTLIER PDB ID: 3Q23 1.8A
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2258,7 +2291,7 @@ Na comparação entre as estruturas secundárias atribuídas para cada resíduo,
 \end_inset
 
 , com 50,5%, totalizando 99,2% dos casos de dissenso.
- Dos demais tipos, 
+ Dentre os demais tipos, 
 \begin_inset Formula $H\leftrightarrow E$
 \end_inset
 
@@ -2278,7 +2311,7 @@ reference "fig:Proporção-dos-quatro"
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Quantos resíduos apresentam o dissenso: - helice/fita - helice/coil - fita/coil
@@ -2293,6 +2326,7 @@ nso.py
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2405,7 +2439,7 @@ O tipo
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Onde ocorrem a falta de consenso? * Se for entre resíduos com o mesmo tipo
@@ -2421,6 +2455,7 @@ Onde ocorrem a falta de consenso? * Se for entre resíduos com o mesmo tipo
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2503,6 +2538,7 @@ helix capping
 \begin_inset CommandInset citation
 LatexCommand citep
 key "aurora_helix_1998,doig_n-_1995"
+literal "true"
 
 \end_inset
 
@@ -2514,6 +2550,7 @@ beta-sheet capping
 \begin_inset CommandInset citation
 LatexCommand citep
 key "farzadfard_beta-sheet_2008"
+literal "true"
 
 \end_inset
 
@@ -2522,7 +2559,7 @@ key "farzadfard_beta-sheet_2008"
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Quais aminoácidos sofrem maior variação entre os métodos? * normalizar pelo
@@ -2538,6 +2575,7 @@ Quais aminoácidos sofrem maior variação entre os métodos? * normalizar pelo
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2569,33 +2607,6 @@ Frequência dos aminoácidos em regiões de dissenso.
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Conclusão
-\end_layout
-
-\begin_layout Standard
-Uma das etapas iniciais no desenvolvimento de métodos de predição de estrutura
- secundária é a preparação dos dados de referência.
- Parte dessa preparação consiste na atribuição da estrutura secundária em
- proteínas com estrutura atômica resolvida.
- Em geral, trabalhos da literatura costumam utilizar o método DSSP como
- padrão.
- Entretanto, a diferença observada entre as atribuições de estrutura secundária
- efetuadas por diferentes métodos computacionais indica que essa etapa pode
- ser importante para o desenvolvimento de preditores com maior acurácia.
-\end_layout
-
-\begin_layout Standard
-Ao longo deste trabalho nós exploramos a utilização dos dados de cada um
- dos quatro métodos citados e sua influência no treinamento de preditores.
- Como veremos adiante, a utilização apenas de resíduos que apresentam consenso
- na atribuição resulta em preditores com acurácia maior ou semelhante ao
- melhor método de atribuição.
- Neste contexto, melhor método de atribuição significa o que produziu os
- dados que resultaram no preditor com maior acurácia.
- 
 \end_layout
 
 \end_body
