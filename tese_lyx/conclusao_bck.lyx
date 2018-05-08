@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,6 +21,7 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \use_dash_ligatures true
 \graphics default
 \default_output_format default
@@ -107,6 +108,7 @@ Entre os quatro métodos de atribuição analisados, há a ocorrência de uma
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kabsch_dictionary_1983,frishman_knowledge-based_1995"
+literal "true"
 
 \end_inset
 
@@ -140,6 +142,7 @@ Os resultados obtidos com a rede neural similar a de Holley e Karplus (HK),
 \begin_inset CommandInset citation
 LatexCommand citep
 key "jones_protein_1999"
+literal "true"
 
 \end_inset
 
@@ -167,6 +170,7 @@ A diferença observada no comprimento das estruturas atribuídas em relação
 \begin_inset CommandInset citation
 LatexCommand citep
 key "jones_protein_1999"
+literal "true"
 
 \end_inset
 
@@ -203,6 +207,7 @@ O primeiro obstáculo era a dificuldade em se resolver o problema inverso
 \begin_inset CommandInset citation
 LatexCommand citep
 key "ganguly_survey_2003"
+literal "true"
 
 \end_inset
 
@@ -288,6 +293,7 @@ Class Balance Accuracy
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mosley_balanced_2013"
+literal "true"
 
 \end_inset
 
@@ -354,6 +360,7 @@ Rectified Linear Unit
 \begin_inset CommandInset citation
 LatexCommand cite
 key "nair_rectified_2010"
+literal "true"
 
 \end_inset
 
@@ -361,6 +368,7 @@ key "nair_rectified_2010"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "he_deep_2016"
+literal "true"
 
 \end_inset
 
@@ -374,6 +382,7 @@ batch normalization
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ioffe_batch_2015"
+literal "true"
 
 \end_inset
 
@@ -443,6 +452,7 @@ dropout
 \begin_inset CommandInset citation
 LatexCommand cite
 key "srivastava_dropout:_2014"
+literal "true"
 
 \end_inset
 
@@ -454,6 +464,7 @@ Wide Residual Networks
 \begin_inset CommandInset citation
 LatexCommand cite
 key "zagoruyko_wide_2016"
+literal "true"
 
 \end_inset
 
@@ -491,6 +502,7 @@ name "fig:Blocos"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "he_deep_2016"
+literal "true"
 
 \end_inset
 
@@ -498,6 +510,7 @@ key "he_deep_2016"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "he_identity_2016"
+literal "true"
 
 \end_inset
 
@@ -514,6 +527,7 @@ dropout
 \begin_inset CommandInset citation
 LatexCommand cite
 key "zagoruyko_wide_2016"
+literal "true"
 
 \end_inset
 
@@ -593,6 +607,7 @@ Outro fator relevante é a não utilização de PSSM como entrada.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "wang_protein_2016"
+literal "true"
 
 \end_inset
 
@@ -603,6 +618,7 @@ key "wang_protein_2016"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "wang_protein_2016"
+literal "true"
 
 \end_inset
 
@@ -1096,6 +1112,7 @@ DCNN
 \begin_inset CommandInset citation
 LatexCommand cite
 key "wang_protein_2016"
+literal "true"
 
 \end_inset
 
@@ -1180,6 +1197,7 @@ Comparação de métodos de predição de estruturas secundárias.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "wang_protein_2016"
+literal "true"
 
 \end_inset
 

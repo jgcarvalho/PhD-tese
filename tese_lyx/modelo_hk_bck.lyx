@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,6 +21,7 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \use_dash_ligatures true
 \graphics default
 \default_output_format default
@@ -108,6 +109,7 @@ Position Specific Scoring Matrix
 \begin_inset CommandInset citation
 LatexCommand citep
 key "altschul_gapped_1997"
+literal "true"
 
 \end_inset
 
@@ -169,6 +171,7 @@ Linear Threshold Unit
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mcculloch_logical_1943"
+literal "true"
 
 \end_inset
 
@@ -182,6 +185,7 @@ Perceptron,
 \begin_inset CommandInset citation
 LatexCommand cite
 key "rosenblatt_perceptron:_1958"
+literal "true"
 
 \end_inset
 
@@ -209,6 +213,7 @@ em classificar padrões não-linearmente separáveis como o XOR
 \begin_inset CommandInset citation
 LatexCommand cite
 key "minsky_perceptrons:_1988"
+literal "true"
 
 \end_inset
 
@@ -253,6 +258,7 @@ back-propagation
 \begin_inset CommandInset citation
 LatexCommand cite
 key "rumelhart_learning_1986"
+literal "true"
 
 \end_inset
 
@@ -334,6 +340,7 @@ Em 1988, Qian e Sejnowski
 \begin_inset CommandInset citation
 LatexCommand citep
 key "qian_predicting_1988"
+literal "true"
 
 \end_inset
 
@@ -348,6 +355,7 @@ text-to-speech
 \begin_inset CommandInset citation
 LatexCommand citep
 key "sejnowski_parallel_1987"
+literal "true"
 
 \end_inset
 
@@ -397,6 +405,7 @@ Outro modelo de rede neural aplicado à predição de estruturas secundárias
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
+literal "true"
 
 \end_inset
 
@@ -450,6 +459,7 @@ Rede neural utilizada nos trabalhos de Holley e Karplus
 \begin_inset CommandInset citation
 LatexCommand citeyearpar
 key "holley_protein_1989"
+literal "true"
 
 \end_inset
 
@@ -457,6 +467,7 @@ key "holley_protein_1989"
 \begin_inset CommandInset citation
 LatexCommand citeyearpar
 key "chandonia_importance_1996"
+literal "true"
 
 \end_inset
 
@@ -491,6 +502,7 @@ O método de predição proposto por Holley e Karplus
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
+literal "true"
 
 \end_inset
 
@@ -500,6 +512,7 @@ key "holley_protein_1989"
 \begin_inset CommandInset citation
 LatexCommand citeyearpar
 key "chandonia_importance_1996"
+literal "true"
 
 \end_inset
 
@@ -507,6 +520,7 @@ key "chandonia_importance_1996"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "chandonia_importance_1996"
+literal "true"
 
 \end_inset
 
@@ -525,6 +539,7 @@ O modelo de Holley e Karplus
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
+literal "true"
 
 \end_inset
 
@@ -534,6 +549,7 @@ key "holley_protein_1989"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "qian_predicting_1988"
+literal "true"
 
 \end_inset
 
@@ -567,6 +583,7 @@ Em 1999, Jones
 \begin_inset CommandInset citation
 LatexCommand citep
 key "jones_protein_1999"
+literal "true"
 
 \end_inset
 
@@ -576,6 +593,7 @@ key "jones_protein_1999"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
+literal "true"
 
 \end_inset
 
@@ -607,6 +625,7 @@ Blast
 \begin_inset CommandInset citation
 LatexCommand citep
 key "altschul_gapped_1997"
+literal "true"
 
 \end_inset
 
@@ -617,6 +636,7 @@ key "altschul_gapped_1997"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "henikoff_amino_1992"
+literal "true"
 
 \end_inset
 
@@ -634,6 +654,7 @@ to são utilizadas para a construção de uma nova matriz de substituição.
 \begin_inset CommandInset citation
 LatexCommand citep
 key "altschul_gapped_1997"
+literal "true"
 
 \end_inset
 
@@ -738,6 +759,7 @@ Método de predição de estrutura secundária PSIPRED.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "jones_protein_1999"
+literal "true"
 
 \end_inset
 
@@ -943,6 +965,7 @@ Na camada de saída optamos por utilizar 3 neurônios ao invés de 2 como no
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
+literal "true"
 
 \end_inset
 
@@ -1104,6 +1127,7 @@ O algoritmo de otimização utilizado no treinamento foi o Adam
 \begin_inset CommandInset citation
 LatexCommand citet
 key "kingma_adam:_2014"
+literal "true"
 
 \end_inset
 
@@ -1119,6 +1143,7 @@ O método de predição PSIPRED
 \begin_inset CommandInset citation
 LatexCommand citep
 key "jones_protein_1999"
+literal "true"
 
 \end_inset
 
@@ -1133,6 +1158,7 @@ nr
 \begin_inset CommandInset citation
 LatexCommand citep
 key "altschul_gapped_1997"
+literal "true"
 
 \end_inset
 
@@ -4597,6 +4623,9 @@ Durante o treinamento, o conjunto de validação também é apresentado a rede
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:cross_entropy"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 

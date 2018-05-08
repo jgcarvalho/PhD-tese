@@ -1,5 +1,6 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#\lyxformat 544
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,7 +22,7 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype false
+#\use_microtype false
 \use_dash_ligatures true
 \graphics default
 \default_output_format default
@@ -203,12 +204,15 @@ as utilizando modelos com o potencial de fornecer informações mais detalhadas
  O outro modelo foi desenvolvido utilizando redes neurais residuais profundas.
  Com este modelo é possível extrair informações espaciais e probabilísticas
  de suas múltiplas camadas internas de convolução, o que parece refletir,
- em algum sentido os estados de formação da estrutura secundária.
+ em algum sentido, os estados de formação da estrutura secundária durante
+ o enovelamento.
  A acurácia da predição obtida por esse modelo foi de ~78% para os resíduos
  que apresentaram consenso na estrutura atribuída pelos métodos DSSP, STRIDE,
  KAKSI e PROSS.
- Tal valor é superior ao obtido por outros métodos que realizam a predição
- de estruturas secundárias diretamente a partir da sequência de aminoácidos.
+ Tal acurácia, apesar de inferior à obtida pelo PSIPRED, o qual utiliza
+ matrizes PSSM como entrada, é superior à obtida por outros métodos que
+ realizam a predição de estruturas secundárias diretamente a partir da sequência
+ de aminoácidos.
  
 \end_layout
 

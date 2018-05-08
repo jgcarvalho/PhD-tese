@@ -1,0 +1,6804 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass classicthesis
+\use_default_options true
+\maintain_unincluded_children false
+\language brazilian
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Redes neurais residuais
+\end_layout
+
+\begin_layout Section
+Introdução
+\end_layout
+
+\begin_layout Standard
+Neste capítulo implementamos e avaliamos os resultados de redes neurais
+ residuais profundas, ou simplesmente redes residuais, aplicadas a predição
+ de estruturas secundárias a partir da estrutura primária da proteína.
+\end_layout
+
+\begin_layout Standard
+De modo similar aos autômatos celulares, a utilização de redes residuais
+ foi motivada pela possibilidade de construirmos uma arquitetura que possibilita
+sse extrairmos informação sobre a formação de estruturas secundárias.
+ Esse objetivo tornou nosso trabalho diferente de outros que utilizaram
+ redes neurais profundas para a predição de estruturas secundárias.
+ Em um desses trabalhos, publicado por Wang, Ma e Xu 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang_protein_2016"
+
+\end_inset
+
+, os autores usaram redes neurais convolucionais profundas (não residuais)
+ e, realizando a predição a partir de PSSM, obtiveram uma acurácia de aproximada
+mente 84% (
+\begin_inset Formula $Q_{3}$
+\end_inset
+
+).
+ Na discussão comparamos ambos os modelos.
+\end_layout
+
+\begin_layout Subsection
+Redes neurais residuais
+\end_layout
+
+\begin_layout Standard
+Redes neurais com mais de uma camada oculta de neurônios são chamadas de
+ redes neurais profundas.
+ Devido ao maior número de camadas ocultas, as redes neurais profundas são
+ capazes de integrar atributos de vários níveis de abstração de maneira
+ hierárquica.
+ Isso ocorre porque cada camada oculta de neurônios constrói atributos derivados
+ a partir da informação contida nas camadas anteriores 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "goodfellow_deep_2016"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dentre as arquiteturas de redes neurais profundas, as redes neurais convoluciona
+is tem obtido grande sucesso em diversas aplicações relacionadas a imagens,
+ como por exemplo, a classificação e a detecção de objetos em fotografias
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he_deep_2016"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Nas redes convolucionais são utilizados neurônios que possuem conexões locais
+ com a camada imediatamente anterior.
+ Cada tipo de neurônio é então aplicado a camada anterior realizando uma
+ espécie de varredura.
+ Assim, um tipo de neurônio que responde a um determinado padrão local,
+ irá responder a esse padrão independentemente de onde ele ocorra espacialmente.
+ Isso difere das redes neurais totalmente conectadas (
+\emph on
+Fully Connected
+\emph default
+), como as utilizadas no capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ch:rede_neural_similar_hk"
+
+\end_inset
+
+, onde cada neurônio de uma camada está conectado a todos os neurônios da
+ camada anterior.
+ 
+\end_layout
+
+\begin_layout Standard
+Para uma explicação mais intuitiva, podemos pensar em uma rede neural convolucio
+nal cujo objetivo é identificar a ocorrência de um rosto humano em fotografias.
+ Nessa rede poderíamos ter um tipo de neurônio que seria responsável por
+ identificar a presença de um olho, outro tipo neurônio para um nariz e
+ outro tipo para a boca.
+ Cada neurônio estaria conectado a uma pequena região da imagem, mas o conjunto
+ de todos os neurônios do mesmo tipo estariam distribuídos cobrindo toda
+ a imagem.
+ Assim, neurônios do tipo que respondem a presença da boca emitiriam uma
+ resposta somente na região da imagem onde há uma boca.
+ O mesmo ocorreria para os demais tipos de neurônios.
+ Na camada seguinte, um tipo de neurônio capaz de identificar faces humanas
+ iria sinalizar a presença da mesma caso houvessem sinais de boca, nariz
+ e olhos em regiões próximas.
+ Essa rede exemplifica a hierarquia entre as camadas e a identificação de
+ padrões mais complexos derivados de padrões mais simples.
+ Caso fosse utilizada uma rede neural totalmente conectada, mesmo utilizando
+ várias camadas ocultas, seria perdida a referência espacial.
+ Isto significa que mesmo que houvessem neurônios capazes de identificar
+ olhos, bocas e narizes, a rede não saberia interpretar se eles estariam
+ posicionados numa face ou apenas como elementos dispersos na foto.
+ 
+\end_layout
+
+\begin_layout Standard
+No exemplo anterior, por motivos didáticos, mencionamos tipos de neurônios
+ capazes de identificar atributos específicos na imagem: olho, boca e nariz.
+ Entretanto, é importante esclarecer que os neurônios não são pré definidos
+ em relação aos atributos que eles identificam.
+ Esse processo ocorre durante o treinamento das redes neurais e não costuma
+ ser direcionado para atributos reais como no exemplo.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Inserir uma imagem para exemplificar
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A capacidade de detectar padrões locais, combinada as múltiplas camadas
+ das redes profundas, possibilita criarmos um modelo de predição com semelhanças
+ importantes ao modelo de autômatos celulares.
+ Essas semelhanças, as quais motivaram esse trabalho, são a identificação
+ de padrões locais na sequência capazes de iniciar a formação e/ou propagarem
+ a informação ao longo da proteína até a formação da estrutura secundária
+ nativa.
+\end_layout
+
+\begin_layout Standard
+Comparando ambos os métodos, redes neurais convolucionais profundas e autômatos
+ celulares, podemos listar 
+\emph on
+a priori
+\emph default
+ algumas vantagens como:
+\end_layout
+
+\begin_layout Itemize
+o modelo não exige uma pré determinação dos estados intermediários, como
+ foi necessário com os autômatos celulares, os quais necessitam de estados
+ discretos;
+\end_layout
+
+\begin_layout Itemize
+as redes neurais possuem métodos de treinamento bem estabelecidos, eficazes
+ e eficientes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+INCLUIR NA DISCUSSÃO Entretanto, como demonstrado no capítulo anterior,
+ a definição de um modelo de autômatos celulares capazes de representar
+ a estrutura secundária é limitada pela dificuldade de se buscar regras
+ que reproduzam o comportamento esperado.
+ Ou seja, pela grande dificuldade imposta pelo problema inverso dos autômatos
+ celulares.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Nesse capítulo, exploramos a utilização de redes neurais convolucionais
+ profundas como um método alternativo ao uso de autômatos celulares.
+ É importante notar que apesar da mudança de modelo, o objetivo continua
+ ser predizer a estrutura secundária a partir da informação contida unicamente
+ na sequência de aminoácidos utilizando padrões locais que se propagam a
+ longo da sequência.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SUGESTÃO PAULAO Nesse capítulo, mostramos a implementação de  redes neurais
+ convolucionais profundas para a predição de estrutura secundárias de proteínas.
+ Isto permitirá a comparação  com o uso de autômatos celulares para o mesmo
+ fim, desde que ambos permitem a propagação de padrões locais ao longo de
+ uma cadeia de estados iniciais.
+ É importante notar que apesar da mudança de modelo, o objetivo continua
+ ser predizer .
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Materiais e métodos 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:resnet-Materiais-e-métodos"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Arquitetura da rede residual
+\end_layout
+
+\begin_layout Standard
+Dentre as arquiteturas de redes neurais convolucionais profundas, o modelo
+ que acreditamos ser o mais adequado são o de redes neurais residuais.
+ Esse modelo, proposto inicialmente por He e colaboradores 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he_deep_2016"
+
+\end_inset
+
+, facilitou o treinamento de redes convolucionais profundas, permitindo
+ a construção de redes com mais de 100 camadas de profundidade.
+\end_layout
+
+\begin_layout Standard
+No modelo proposto por nós, a camada de entrada da rede utiliza a representação
+ 
+\emph on
+one hot encoding
+\emph default
+, onde cada aminoácido é representado por um vetor com 22 posições.
+ Essas posições representam os 20 aminoácidos e mais duas posições que represent
+am a ausência de um aminoácido anterior ou posterior a sequência de resíduos
+\emph on
+.
+ 
+\emph default
+A utilização de códigos para a ausência de aminoácidos tem como objetivo
+ manter constante a somatória dos valores de entrada para as convoluções
+ (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Codificação-da-sequência"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+Com o objetivo de tornar mais didática a codificação de entrada, podemos
+ comparar a entrada com uma imagem, o tipo de dado mais comum para redes
+ convolucionais.
+ As imagens coloridas (RGB) são representadas como 
+\emph on
+pixeis
+\emph default
+, onde cada 
+\emph on
+pixel
+\emph default
+ contém 3 valores, chamado de canais, que representam a intensidade das
+ cores vermelho, verde e azul.
+ O tamanho da imagem corresponde ao número de 
+\emph on
+pixeis
+\emph default
+ que ela tem de largura e altura.
+ Assim, uma imagem colorida de tamanho 800x600, tem dimensões 3x600x800
+ (CHW - 
+\emph on
+Channels, Height, Width
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+Na codificação da proteína, o número de canais é igual a 22 e cada um representa
+ a ocorrência de um aminoácido ou a ausência deles como mencionado anteriormente.
+ Uma das dimensões representa a cadeia polipeptídica e foi definida com
+ tamanho 3000.
+ Nessa dimensão, as primeiras 500 posições possuem o código de ausência
+ de aminoácido anterior a proteína.
+ A partir da posição 501, tem início os códigos que representam a sequência
+ de resíduos da proteína.
+ Após o término da sequência de resíduos, a matriz é preenchida com o código
+ para ausência de aminoácidos posteriores a proteína.
+ O tamanho foi pré-definido em 3000 para possibilitar que a cadeia polipeptídica
+ mais longa em nosso conjunto de dados, a qual possui quase 2000 resíduos,
+ tenha 500 códigos de ausência antes e depois.
+ O tamanho de 500 foi intencionalmente superestimado durante a preparação
+ dos dados para não limitar a exploração de arquiteturas diferentes como,
+ por exemplo, redes com mais camadas de convolução ou neurônios de convolução
+ com maior número de conexões.
+ A outra dimensão da matriz é igual a 1, pois a cadeia polipeptídica é linear.
+ Assim, a matriz de entrada possui dimensões 22x3000x1 (CHW).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/one_hot_encoding.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Codificação da sequência de aminoácidos da proteína no formato 
+\emph on
+one hot encoding.
+ 
+\emph default
+Os códigos '>' e '<' representam, respectivamente, a ausência de um aminoácido
+ anterior e posterior a proteína.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Codificação-da-sequência"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Através da codificação inicial da sequência no formato 
+\emph on
+one hot encoding
+\emph default
+ é possível apenas inferir se os aminoácidos são iguais ou diferentes.
+ Consequentemente, um aspartato diferirá igualmente de um glutamato como
+ de uma fenilalanina, ou seja, essa codificação não contém qualquer informação
+ sobre similaridades estruturais e/ou físico-químicas.
+\end_layout
+
+\begin_layout Standard
+Entretanto, ao invés de passarmos similaridades físico-químicas 
+\emph on
+a priori
+\emph default
+, optamos por utilizar como segunda camada da rede (primeira camada oculta)
+ uma convolução 1x1, que altera o número de canais de 22 para 
+\begin_inset Formula $C$
+\end_inset
+
+, onde 
+\begin_inset Formula $C=\{8,\,16,\,32\}$
+\end_inset
+
+.
+ Essa camada tem como objetivo, aprender uma nova representação para os
+ aminoácidos e portanto, similaridades entre eles que possam ser úteis para
+ a predição da estrutura secundária (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagrama-de-uma"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+A representação da segunda camada é mantida (residualmente) até a camada
+ final, onde outra convolução 1x1 reduz o número de canais de 
+\begin_inset Formula $C$
+\end_inset
+
+ para 3.
+ Os 3 canais finais estão relacionados aos 3 elementos de estrutura de secundári
+a e, após a aplicação da função Softmax (Eq .
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:softmax"
+
+\end_inset
+
+), representam a probabilidade de cada um dos 3 elementos, hélice, fita
+ e coil, para cada resíduo da proteína.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+f(x_{i})=\frac{e^{x_{i}}}{\sum_{j}^{N}e^{x_{j}}}\label{eq:softmax}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+O conceito clássico de convolução é valido neste caso? da wikipedia:
+\begin_inset Quotes erd
+\end_inset
+
+convolution is a mathematical operation on two functions (f and g) to produce
+ a third function, that is typically viewed as a modified version of one
+ of the original functions, giving the integral of the pointwise multiplication
+ of the two functions as a function of the amount that one of the original
+ functions is translated
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+É importante notar que nas camadas descritas até o momento, não há influência
+ de resíduos vizinhos, dado que são utilizadas somente convoluções 1x1.
+\end_layout
+
+\begin_layout Standard
+A influência da vizinhança é computada nos blocos da rede residual.
+ O primeiro bloco recebe a saída da segunda camada e, após realizar seus
+ cálculos, soma sua matriz de resultados a matriz de entrada.
+ A matriz alterada pelo primeiro bloco, será a entrada para o segundo bloco,
+ e assim sucessivamente (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagrama-de-uma"
+
+\end_inset
+
+).
+ Após as alterações feitas pelos blocos, a camada final, descrita anteriormente,
+ fará a convolução 1x1 de 
+\begin_inset Formula $C$
+\end_inset
+
+ para 3 canais.
+ Como mencionado, os resultados da camada inicial são mantidos até a camada
+ final, mas são alterados pelos blocos, ou seja, eles são mantidos apenas
+ residualmente.
+ Por essa características essa arquitetura de rede neural é chamada de rede
+ residual.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/residual_ss.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diagrama da arquitetura da rede neural residual utilizada neste trabalho.
+ A entrada da rede consiste na sequência de resíduos de uma proteína no
+ formato 
+\emph on
+one-hot encoding.
+ 
+\emph default
+A saída contém três probabilidades para cada resíduo, cada uma representa
+ a probabilidade de uma estrutura secundária: hélice, fita ou coil.
+ Para facilitar, apenas dois blocos estão
+\emph on
+ 
+\emph default
+representados
+\emph on
+ 
+\emph default
+e 
+\begin_inset Formula $C$
+\end_inset
+
+=32 canais
+\emph on
+ 
+\emph default
+(ou filtros)
+\emph on
+.
+ 
+\emph default
+No trabalho foram testadas redes com 4, 11 ou 21 blocos e 8, 16 ou 32 canais.
+
+\emph on
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Diagrama-de-uma"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Blocos
+\end_layout
+
+\begin_layout Standard
+A composição dos blocos da rede residual é similar a proposta por Zagoruyko
+ e Komodakis nas 
+\emph on
+Wide Residual Networks
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zagoruyko_wide_2016"
+
+\end_inset
+
+.
+ Cada bloco contém duas funções de ativação não lineares do tipo 
+\emph on
+Parametric ReLU
+\emph default
+ (PReLU) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he_delving_2015"
+
+\end_inset
+
+, duas camadas de neurônios de convolução 3x1 e uma camada de 
+\emph on
+dropout 
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "srivastava_dropout:_2014"
+
+\end_inset
+
+ para prevenir o sobreajuste (
+\emph on
+overfitting
+\emph default
+) (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:bloco-usado"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+A função PReLU é:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f(y_{i})=\begin{cases}
+y_{i} & {\textstyle se\,}y_{i}>0\\
+\alpha_{i}y_{i} & {\textstyle se\,}y_{i}\leq0
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+onde 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ é o coeficiente que controla a inclinação da parte negativa.
+ Esse coeficiente é otimizado durante o treinamento.
+ 
+\begin_inset Formula $i$
+\end_inset
+
+ é o índice do canal.
+\end_layout
+
+\begin_layout Standard
+A camada de 
+\emph on
+dropout 
+\emph default
+atua bloqueando aleatoriamente algumas conexões da rede durante o treinamento.
+ Isto é feito alterando os pesos das conexões para zero.
+ A probabilidade de cada conexão ser bloqueada é indicada durante a construção
+ do modelo, nós utilizamos uma probabilidade de 30%.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Deep neural nets with a large number of parameters are very powerful machine
+ learning systems.
+ However, overfitting is a serious problem in such networks.
+ Large networks are also slow to use, making it difficult to deal with overfitti
+ng by combining the predictions of many different large neural nets at test
+ time.
+ Dropout is a technique for addressing this problem.
+ The key idea is to randomly drop units (along with their connections) from
+ the neural network during training.
+ This prevents units from co-adapting too much.
+ During training, dropout samples from an exponential number of different
+ “thinned” networks.
+ At test time, it is easy to approximate the effect of averaging the predictions
+ of all these thinned networks by simply using a single unthinned network
+ that has smaller weights.
+ This significantly reduces overfitting and gives major improvements over
+ other regularization methods.
+ We show that dropout improves the performance of neural networks on supervised
+ learning tasks in vision, speech recognition, document classification and
+ computational biology, obtaining state-of-the-art results on many benchmark
+ data sets.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/bloco.pdf
+	width 30line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:bloco-usado"
+
+\end_inset
+
+Diagrama da configuração de bloco utilizada.
+ Cada bloco possui duas funções de ativação PReLU, duas camadas de convolução
+ 3x1 e uma camada de 
+\emph on
+dropout
+\emph default
+.
+ Cada bloco recebe a matriz de valores do bloco ou camada anterior e, após
+ realizar seus cálculos, soma a matriz de resultados a matriz original.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A camada de convolução 3x1 são as responsáveis por transmitir informação
+ sobre a vizinhança do resíduos.
+ Cada neurônio desta camada recebe valores referentes ao resíduo central
+ e seus dois vizinhos e, após o cálculo, atribui o valor resultante na camada
+ inferior e na posição correspondente ao resíduo central (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:conv3x1"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/conv-neuron.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:conv3x1"
+
+\end_inset
+
+Esquema de um neurônio em uma camada de convolução 3x1.
+ Cada neurônio utiliza os valores dos canais de 3 colunas, multiplica esses
+ valores pelos pesos, soma, e atribui o resultado a um canal na posição
+ correspondente.
+ Os neurônios de um mesmo canal são idênticos, logo, o resultado irá variar
+ de acordo com a entrada.
+ Neurônios de canais diferentes tem pesos diferentes.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Número de blocos e canais
+\end_layout
+
+\begin_layout Standard
+O número de blocos define a profundidade da rede e, consequentemente, o
+ tamanho da vizinhança, em número de resíduos, que irá influenciar na predição
+ da estrutura secundária para cada resíduo.
+\end_layout
+
+\begin_layout Standard
+Cada bloco possui duas camadas de convolução 3x1 e cada camada recebe a
+ informação de dois vizinhos, um a esquerda e um a direita.
+ Consequentemente, a utilização de 4 blocos determina que a predição da
+ estrutura secundária para cada resíduo utilizará a informação contida numa
+ janela de 17 resíduos da proteína 
+\begin_inset Formula $(4\times4+1)$
+\end_inset
+
+, sendo 8 resíduos anteriores e 8 resíduos posteriores.
+ A rede com onze blocos utilizará a informação contida em uma janela de
+ 45 resíduos 
+\begin_inset Formula $(11\times4+1)$
+\end_inset
+
+ e a com 21 blocos, a informação em uma janela de 85 resíduos 
+\begin_inset Formula $(21\times4+1)$
+\end_inset
+
+.
+ Ou seja, a medida que o número de blocos aumenta, resíduos mais distantes
+ na sequência proteica irão influenciar na predição da estrutura secundária
+ local.
+\end_layout
+
+\begin_layout Standard
+O número de canais tem relação com a capacidade de representar a informação
+ local.
+ Assim, os canais tem função similar ao número de neurônios da camada oculta
+ no modelo de rede similar à de Holley e Karplus (Subseção 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Rede-neural-similar"
+
+\end_inset
+
+) e, também, similar ao número de estados de transição do autômato celulares.
+\end_layout
+
+\begin_layout Subsection
+Treinamento
+\end_layout
+
+\begin_layout Standard
+Cada rede neural foi treinada por 1000 épocas utilizando o algoritmo de
+ aprendizado Adam 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "kingma_adam:_2014"
+
+\end_inset
+
+ com taxa de aprendizado de 0.001.
+ Uma época equivale a utilização de todas as proteínas do conjunto de treinament
+o.
+ 
+\end_layout
+
+\begin_layout Standard
+As proteínas do conjunto de treinamento são utilizadas em lotes (
+\emph on
+batches
+\emph default
+) de 64, para as redes maiores, ou 128, para as menores.
+ Essa variação foi necessária devido à memória disponível.
+ O tempo médio de treinamento de cada rede foi de ~10 horas utilizando um
+ computador com placa de vídeo (GPU) Nvidia GTX 1060 6GB.
+ As redes foram implementadas usando o 
+\emph on
+framework
+\emph default
+ Pytorch (disponível em 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://pytorch.org/"
+target "http://pytorch.org/"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+nova seção clustering das similaridades
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Resultados
+\end_layout
+
+\begin_layout Subsection
+Análise do treinamento
+\end_layout
+
+\begin_layout Standard
+O treinamento das redes residuais demonstrou que tanto o aumento do número
+ de blocos quanto o aumento do número de canais reduz o erro no conjunto
+ de dados de treinamento.
+ Entretanto, nas redes com 11 e 21 blocos, a utilização de 32 canais (ou
+ filtros) tornou a rede susceptível ao sobreajuste (
+\emph on
+overfitting
+\emph default
+).
+ Isso pode ser observado pela diferença entre a entropia cruzada no conjunto
+ de treinamento e a entropia cruzada no conjunto de validação (Figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:resnet_11_treinamento"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:resnet_21_treinamento"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+A análise do treinamento indica que, dentre as redes residuais testadas,
+ a que apresentou melhor desempenho foi a rede com 21 blocos e 16 canais.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/train-resnet-4.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:resnet_4_treinamento"
+
+\end_inset
+
+Aprendizado da rede residual com 4 blocos demonstrado pela redução da entropia
+ cruzada ao longo de 1000 épocas.
+ Os valores são para os dados do conjunto de treinamento e validação nas
+ redes com 8, 16 e 32 canais (ou filtros).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/train-resnet-11.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:resnet_11_treinamento"
+
+\end_inset
+
+Aprendizado da rede residual com 8 blocos demonstrado pela redução da entropia
+ cruzada ao longo de 1000 épocas.
+ Os valores são para os dados do conjunto de treinamento e validação nas
+ redes com 8, 16 e 32 canais (ou filtros).
+ A rede com 32 canais apresenta sinais de sobreajuste.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/train-resnet-21.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:resnet_21_treinamento"
+
+\end_inset
+
+Aprendizado da rede residual com 21 blocos demonstrado pela redução da entropia
+ cruzada ao longo de 1000 épocas.
+ Os valores são para os dados do conjunto de treinamento e validação nas
+ redes com 8, 16 e 32 canais (ou filtros).
+ A rede com 32 canais apresenta fortes sinais de sobreajuste com a redução
+ do erro no conjunto de treinamento e o aumento do erro no conjunto de validação.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Acurácia por tipo de estrutura secundária
+\end_layout
+
+\begin_layout Standard
+Os resultados da acurácia por tipo de estrutura secundária indicam que o
+ aumento do número de blocos, e consequentemente, a utilização de resíduos
+ mais distantes na sequência para a predição da estrutura secundária, aumenta,
+ sobretudo, a acurácia na predição de fitas.
+ 
+\end_layout
+
+\begin_layout Standard
+Ao compararmos a rede residual b21-c16 (21 blocos e 16 canais) com a rede
+ b4-c16 observamos um aumento de 2,8% na acurácia (
+\begin_inset Formula $Q_{3}$
+\end_inset
+
+) obtida no conjunto de teste.
+ Respectivamente, 
+\begin_inset Formula $Q_{3}$
+\end_inset
+
+ igual a 78,3% e 75,5%.
+ No entanto, ao compararmos a acurácia por tipo de estrutura secundária
+ observamos um aumento de 8,3% (68,0% e 59,7%) na predição de fitas, de
+ 3,5% para a predição de coils (79,9% e 76,4%) e uma diminuição da acurácia
+ na predição de hélices de 0,6% (81,9% e 82,5%) (Tabela 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:resnet-q3"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+A comparação com a rede neural similar a proposta por Holley e Karplus (Subseção
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Rede-neural-hk"
+
+\end_inset
+
+) e com 64 neurônios na camada oculta (hk64) mostra que a redes residuais
+ com 11 e 21 blocos apresentam maior acurácia na predição.
+ Quando comparamos especificamente a rede residual b21-c16 com a rede hk64
+ observamos uma acurácia (
+\begin_inset Formula $Q_{3}$
+\end_inset
+
+) 3,1% maior.
+ A comparação da acurácia por tipo de estrutura secundária mostra uma acurácia
+ 6,8% maior para fitas, 4,2% maior para coils e 0,1% menor para hélices.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="29" columns="8">
+<features booktabs="true" tabularvalignment="middle" tabularwidth="100text%">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+camada oculta
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+dados
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+entropia
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size footnotesize
+Q
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size footnotesize
+3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size footnotesize
+Q
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size footnotesize
+H
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size footnotesize
+Q
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size footnotesize
+E
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size footnotesize
+Q
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size footnotesize
+C
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape slanted
+\size footnotesize
+(# de neurônios)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+cruzada
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size footnotesize
+(%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size footnotesize
+(%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size footnotesize
+(%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size footnotesize
+(%)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size larger
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Treinamento
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,643
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+73,1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Validação
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,621
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+73,9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+74,7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+63,6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+78,5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Teste
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,626
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+73,7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+74,7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+63,3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+78,3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Treinamento
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,605
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+74,8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Validação
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,581
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+75,7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+82,2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+59,9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+76,4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Teste
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,59
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+75,5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+82,5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+59,7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+76,4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+32
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Treinamento
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,566
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+76,6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Validação
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,563
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+76,7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+83,9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+62,1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+76,0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Teste
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,571
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+76,3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+84,1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+61,8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+75,8
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size larger
+11
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Treinamento
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,582
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+75,9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Validação
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,562
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+76,7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+83,9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+59,0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+77,7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Teste
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,571
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+76,5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+83,9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+59,3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+77,7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Treinamento
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,54
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+77,7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Validação
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,545
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+77,4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+78,9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+68,6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+80,3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Teste
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,549
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+77,3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+79,1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+68,3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+80,3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+32
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Treinamento
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,465
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+81,1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Validação
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,554
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+78,1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+82,3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+68,1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+78,4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Teste
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,563
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+77,6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+82,1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+67,7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+78,1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size larger
+21
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Treinamento
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,561
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+76,8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Validação
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,546
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+77,5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+81,2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+64,5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+80,2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Teste
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,554
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+77,2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+81,3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+64,1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+79,9
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Treinamento
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,503
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+79,5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Validação
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,525
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+78,6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+82,2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+68,3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+80,0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Teste
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,531
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+78,3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+81,9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+68,0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+79,9
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+32
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Treinamento
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,405
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+83,6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Validação
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,559
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+78,6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+85,2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+64,7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+78,1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size scriptsize
+Teste
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0,570
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+78,0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+84,9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+64,3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size footnotesize
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+77,8
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:resnet-q3"
+
+\end_inset
+
+Acurácia apresentada pelas redes residuais em resíduos com consenso na atribuiçã
+o da estrutura secundária.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Acurácia em relação ao métodos de atribuição
+\end_layout
+
+\begin_layout Standard
+A rede residual com 21 blocos e 16 canais (b21-c16) apresentou a maior acurácia
+ tanto para os resíduos com consenso na atribuição da secundária (Q3=78,3%)
+ quanto para a estrutura secundária atribuída por cada um dos métodos de
+ atribuição (Tabela 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:resnet-atribuicao"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Considerando que 74,4% dos resíduos apresentaram consenso entre os métodos
+ de atribuição (ver capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:cap1-resultados"
+
+\end_inset
+
+) é possível inferir a acurácia da predição para as regiões de dissenso
+ como aproximadamente 47,8%.
+ Tal acurácia é semelhante à obtida através do modelo de Holley e Karplus
+ (47,6%) e inferior à apresentada pelo PSIPRED para regiões de dissenso,
+ estimada entre 60-65%.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+0,744*0,783+0,256*Q_{3}dissenso\simeq0,705
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Q_{3}dissenso\simeq0,478
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="8">
+<features booktabs="true" islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+camada oculta
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+TREINAMENTO
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+TESTE
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+FONTE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size tiny
+CONSENSO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size tiny
+DSSP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size tiny
+STRIDE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size tiny
+KAKSI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+PROSS
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+blocos
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+canais
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size tiny
+(%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size tiny
+(%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size tiny
+(%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size tiny
+(%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+\size tiny
+(%)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size larger
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+CONSENSO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+73,7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+67,0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+66,7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+66,4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+68,3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="middle" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+CONSENSO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+75,5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+68,1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+68,1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+67,8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+69,0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="middle" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+32
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+CONSENSO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+76,3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+68,8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+68,9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+68,5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+69,5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size larger
+11
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+CONSENSO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+76,5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+68,8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+69,0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+68,9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+69,9
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+CONSENSO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+77,3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+69,9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+69,9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+69,7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+71,2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+32
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+CONSENSO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+77,6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+70,0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+70,2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+69,9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+70,9
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size larger
+21
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+CONSENSO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+77,2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+69,7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+69,8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+69,5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+71,0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+CONSENSO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+78,3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+70,6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+70,8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+70,5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+71,7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+32
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+CONSENSO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+78,0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+70,2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+70,4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+70,3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+71,0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:resnet-atribuicao"
+
+\end_inset
+
+Acurácia (
+\begin_inset Formula $Q_{3}$
+\end_inset
+
+) das redes residuais em relação a estrutura secundária atribuída por diferentes
+ métodos computacionais.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Distribuição da acurácia
+\end_layout
+
+\begin_layout Standard
+Distribuição de acurácia da predição para as proteínas do conjunto de teste
+ (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:resnet-dist-q3"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+grafico gerado com model_resnet_q_ss.py
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/model_resnet_q_ss.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:resnet-dist-q3"
+
+\end_inset
+
+Distribuição de acurácia da predição para as proteínas do conjunto de teste.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Distribuição do tamanho das estruturas secundárias preditas
+\end_layout
+
+\begin_layout Standard
+A distribuição do comprimento das estruturas secundárias preditas pelas
+ redes residuais (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:resnet-comp-ss"
+
+\end_inset
+
+) é semelhante a observada para o método PSIPRED (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-dos-comprimentos-psipred"
+
+\end_inset
+
+) e a distribuição do comprimento das estruturas secundárias atribuídas
+ pelos métodos DSSP, STRIDE, KAKSI e PROSS (Figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-do-comprimento-helices"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-do-comprimento_fitas"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribuição-do-comprimento_coil"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+melhor que hk e falta comparar com o AC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+grafico gerado com model_hk_len_ss.py
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/model_resnet_len_ss.pdf
+	lyxscale 50
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:resnet-comp-ss"
+
+\end_inset
+
+Distribuição do comprimento das estruturas secundárias preditas pelas redes
+ residuais.
+ As hélices, fitas e coils preditos apresentam comprimento similar ao observado
+ experimentalmente.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Similaridade entre aminoácidos
+\end_layout
+
+\begin_layout Standard
+Como descrito na seção 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:resnet-Materiais-e-métodos"
+
+\end_inset
+
+, a segunda camada da rede residual (ou primeira camada oculta) foi projetada
+ para aprender uma representação dos resíduos contendo informação da similaridad
+e entre aminoácidos.
+ A codificação inicial não contém informação de qualquer similaridade entre
+ aminoácidos, assim, acreditamos que a rede deverá aprender as características
+ de cada um deles de acordo com a influência dos mesmos na formação/predição
+ da estrutura secundária.
+\end_layout
+
+\begin_layout Standard
+O agrupamento (
+\emph on
+clustering
+\emph default
+) hierárquico da representação aprendida pelas redes residuais apresentaram
+ características interessantes que podem ser observadas nas figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:resnet-4-cluster"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:resnet-11-cluster"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:resnet-21-cluster"
+
+\end_inset
+
+.
+ A seguir explicitamos algumas dessas características.
+\end_layout
+
+\begin_layout Standard
+As redes demonstraram um clara tendência em separar os aminoácidos prolina
+ e glicina dos demais.
+ Somente nas redes b11-c32 e b21-c32 que apresentaram sobreajuste a glicina
+ se aproxima de outros resíduos.
+ A distinção dos aminoácidos prolina e glicina é interessante devido as
+ características estruturais dos mesmo.
+ Na prolina, a maior restrição dos ângulos torcionais da cadeia principal
+ e a ausência de um hidrogênio ligado ao nitrogênio restringem sua ocorrência
+ em elementos de estrutura secundária.
+ Na glicina, a ausência de cadeia lateral amplia os possíveis estados conformaci
+onais reduzindo as restrições dos ângulos torcionais.
+ Tais características são únicas desses dois resíduos, e portanto, diferentes
+ dos demais 18 aminoácidos.
+\end_layout
+
+\begin_layout Standard
+O agrupamento apresentou ainda a tendência de separar aminoácidos com cadeias
+ laterais polares e apolares.
+ 
+\end_layout
+
+\begin_layout Standard
+No grupo dos apolares ocorreu a formação de subgrupos como: (1) isoleucina
+ (I) e valina (V); (2) fenilalanina (F), tirosina (Y) e triptofano (W);
+ (3) cisteína (C), metionina (M) e leucina (L).
+ 
+\end_layout
+
+\begin_layout Standard
+No grupo dos polares, há a formação de subgrupos como serina (S) e treonina
+ (T) e de carregados positivamente, lisina (K) e arginina (R).
+ Os carregados negativamente, aspartato (D) e glutamato (E) aparecem próximos
+ em alguns grupos, mas em outros ocorre um agrupamento de aspartato (D)
+ com asparagina (N) e de glutamato (E) com glutamina (Q).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/feat_resnet_4.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:resnet-4-cluster"
+
+\end_inset
+
+Agrupamento da representação dos aminoácidos aprendida pela primeira camada
+ oculta da rede residual com 4 blocos.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/feat_resnet_11.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:resnet-11-cluster"
+
+\end_inset
+
+Agrupamento da representação dos aminoácidos aprendida pela primeira camada
+ oculta da rede residual com 11 blocos.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/feat_resnet_21.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:resnet-21-cluster"
+
+\end_inset
+
+Agrupamento da representação dos aminoácidos aprendida pela primeira camada
+ oculta da rede residual com 21 blocos.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Análise do processo de predição
+\end_layout
+
+\begin_layout Standard
+Analisamos a predição da estrutura secundária de duas proteínas do conjunto
+ de teste utilizando a rede residual b21-c16, a qual apresentou a melhor
+ acurácia.
+ Selecionamos uma proteína entre as que obtiveram melhor acurácia e uma
+ entre as com pior acurácia.
+\end_layout
+
+\begin_layout Standard
+Entre as que obtiveram melhor acurácia está o domínio N-terminal da proteína
+ RssB, o qual apresenta uma topologia 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Rossmann fold
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\emph default
+(Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3eod"
+
+\end_inset
+
+)
+\emph on
+.
+ 
+\emph default
+Os estados internos da rede residual indicam que logo nos primeiros blocos
+ da rede os resíduos que compõem as fitas apresentam uma maior probabilidade
+ para essa estrutura secundária.
+ Por outro lado, apenas poucos resíduos de algumas hélices possuem maior
+ probabilidade para esse estrutura nos blocos iniciais.
+ Entretanto, a medida que os blocos vão alterando as probabilidades, as
+ hélices começam a serem preditas nas regiões corretas (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:resnet-good-3eod"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/steps-good-pred-3eodA.pdf
+	height 100theight%
+	rotateAngle 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:resnet-good-3eod"
+
+\end_inset
+
+Estados internos da rede residual durante a predição do domínio N-terminal
+ da proteína RssB (PDB ID: 3EOD).
+ As três primeiras linhas correspondem, respectivamente, a sequência de
+ resíduos, a estrutura secundária predita e a estrutura secundária atribuída.
+ Nas demais linhas temos a estrutura secundária com maior probabilidade
+ em cada um dos 21 blocos.
+ Hélices são representadas em vermelho, fitas em amarelo e coils em verde.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/resnet-steps-good-pred-3eodA.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:3eod"
+
+\end_inset
+
+ Domínio N-terminal da proteína RssB (PDB ID: 3EOD).
+ As cores representam a estrutura secundária predita com maior probabilidade.
+ Resíduos preditos como hélices são representadas em vermelho, fitas em
+ amarelo e coils em verde.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entre proteínas com menor acurácia na predição está a RmlC de 
+\emph on
+Streptococcus suis 
+\emph default
+(PDB ID: 1NXM) que possui topologia 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Jelly roll
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:1nxm"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+As probabilidades extraídas após cada bloco da rede residual indicam vários
+ resíduos com probabilidade de fitas.
+ Interessante notar que a quarta fita atribuída é predita parcialmente até
+ a penúltima camada, quando então passa a ser predita como coil.
+ Algo similar ocorre com a décima e décima primeira fitas atribuídas, quando,
+ nas últimas camadas ocorre uma mudança na predição de fita para hélice.
+ Ao analisarmos a estrutura notamos que essas fitas preditas incorretamente
+ formam a interface de dimerização, formando uma folha 
+\begin_inset Formula $\beta$
+\end_inset
+
+ com fitas da outra cadeia polipeptídica.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/steps-bad-pred-1nxmA.pdf
+	height 100theight%
+	rotateAngle 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:resnet-bad-1nxm"
+
+\end_inset
+
+Estados internos da rede residual durante a predição da proteína RmlC de
+ 
+\emph on
+Streptococcus suis 
+\emph default
+(PDB ID: 1NXM).
+ As três primeiras linhas correspondem, respectivamente, a sequência de
+ resíduos, a estrutura secundária predita e a estrutura secundária atribuída.
+ Nas demais linhas temos a estrutura secundária com maior probabilidade
+ em cada um dos 21 blocos.
+ Hélices são representadas em vermelho, fitas em amarelo e coils em verde.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/resnet-steps-bad-pred-1nxmA.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:1nxm"
+
+\end_inset
+
+Proteína RmlC de 
+\emph on
+Streptococcus suis 
+\emph default
+(PDB ID: 1NXM).
+ As cores representam a estrutura secundária predita com maior probabilidade.
+ Resíduos preditos como hélices são representadas em vermelho, fitas em
+ amarelo e coils em verde.
+ Em azul é representada a outra cadeia do homodímero.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Conclusão
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+terminar as análises do autômato celular para comparar
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

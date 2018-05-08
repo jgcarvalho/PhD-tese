@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,7 +21,7 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype false
+#\use_microtype false
 \use_dash_ligatures true
 \graphics default
 \default_output_format default
@@ -180,7 +180,7 @@ Dentre os principais padrões observados em estruturas proteicas estão as
 \begin_inset CommandInset citation
 LatexCommand cite
 key "pauling_structure_1951"
-literal "true"
+
 
 \end_inset
 
@@ -193,7 +193,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "pauling_pleated_1951"
-literal "true"
+
 
 \end_inset
 
@@ -238,7 +238,7 @@ nenhuma das outras
 \begin_inset CommandInset citation
 LatexCommand cite
 key "richardson_anatomy_1981"
-literal "true"
+
 
 \end_inset
 
@@ -315,7 +315,7 @@ O problema do enovelamento de proteínas é a questão de como são formadas
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kendrew_three-dimensional_1958"
-literal "true"
+
 
 \end_inset
 
@@ -326,7 +326,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "anfinsen_principles_1973"
-literal "true"
+
 
 \end_inset
 
@@ -345,7 +345,7 @@ nte desnaturada/renaturada in vitro, e que em condições desnaturantes, tanto
 \begin_inset CommandInset citation
 LatexCommand citep
 key "rose_backbone-based_2006"
-literal "true"
+
 
 \end_inset
 
@@ -364,7 +364,7 @@ O problema do enovelamento de proteínas é a questão de como são formadas
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kendrew_three-dimensional_1958"
-literal "true"
+
 
 \end_inset
 
@@ -375,7 +375,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "anfinsen_principles_1973"
-literal "true"
+
 
 \end_inset
 
@@ -394,7 +394,7 @@ nte desnaturada/renaturada in vitro, e que em condições desnaturantes, tanto
 \begin_inset CommandInset citation
 LatexCommand citep
 key "rose_backbone-based_2006"
-literal "true"
+
 
 \end_inset
 
@@ -419,7 +419,7 @@ s por Levinthal
 \begin_inset CommandInset citation
 LatexCommand citep
 key "levinthal_are_1968,levinthal_how_1969"
-literal "true"
+
 
 \end_inset
 
@@ -448,7 +448,7 @@ referencia
 \begin_inset CommandInset citation
 LatexCommand citep
 key "ben-naim_levinthals_2012"
-literal "true"
+
 
 \end_inset
 
@@ -457,7 +457,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "levinthal_how_1969"
-literal "true"
+
 
 \end_inset
 
@@ -483,7 +483,7 @@ s por Levinthal (1968; 1969)
 \begin_inset CommandInset citation
 LatexCommand citep
 key "levinthal_are_1968,levinthal_how_1969"
-literal "true"
+
 
 \end_inset
 
@@ -500,7 +500,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "ben-naim_levinthals_2012"
-literal "true"
+
 
 \end_inset
 
@@ -509,7 +509,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "levinthal_how_1969"
-literal "true"
+
 
 \end_inset
 
@@ -545,7 +545,7 @@ nto ter sido publicado há 45 anos, o desafio de se prever as estruturas
 \begin_inset CommandInset citation
 LatexCommand citep
 key "moult_critical_2014"
-literal "true"
+
 
 \end_inset
 
@@ -573,7 +573,7 @@ afia de proteínas por difração de raios-X e o de ressonância magnética nucl
 \begin_inset CommandInset citation
 LatexCommand citep
 key "baker_protein_2001"
-literal "true"
+
 
 \end_inset
 
@@ -594,7 +594,7 @@ nto ter sido publicado há 45 anos, o desafio de se prever as estruturas
 \begin_inset CommandInset citation
 LatexCommand citep
 key "moult_critical_2014"
-literal "true"
+
 
 \end_inset
 
@@ -622,7 +622,7 @@ afia de proteínas por difração de raios-X e o de ressonância magnética nucl
 \begin_inset CommandInset citation
 LatexCommand citep
 key "baker_protein_2001"
-literal "true"
+
 
 \end_inset
 
@@ -650,7 +650,7 @@ de novo
 \begin_inset CommandInset citation
 LatexCommand citep
 key "helles_comparative_2008"
-literal "true"
+
 
 \end_inset
 
@@ -668,7 +668,7 @@ fragment assembly
 \begin_inset CommandInset citation
 LatexCommand citep
 key "zhang_i-tasser_2008"
-literal "true"
+
 
 \end_inset
 
@@ -676,7 +676,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "rohl_protein_2004"
-literal "true"
+
 
 \end_inset
 
@@ -694,7 +694,7 @@ es como a predição da estrutura secundária e de contatos não-locais entre
 \begin_inset CommandInset citation
 LatexCommand citep
 key "helles_comparative_2008"
-literal "true"
+
 
 \end_inset
 
@@ -716,7 +716,7 @@ Os métodos computacionais desenvolvidos e utilizados para construir modelos
 \begin_inset CommandInset citation
 LatexCommand citep
 key "helles_comparative_2008"
-literal "true"
+
 
 \end_inset
 
@@ -727,7 +727,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "zhang_i-tasser_2008"
-literal "true"
+
 
 \end_inset
 
@@ -735,7 +735,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "rohl_protein_2004"
-literal "true"
+
 
 \end_inset
 
@@ -753,7 +753,7 @@ es como a predição da estrutura secundária e de contatos não-locais entre
 \begin_inset CommandInset citation
 LatexCommand citep
 key "helles_comparative_2008"
-literal "true"
+
 
 \end_inset
 
@@ -778,7 +778,7 @@ A outra categoria de métodos de modelagem, a modelagem comparativa, necessita
 \begin_inset CommandInset citation
 LatexCommand citep
 key "marti-renom_comparative_2000"
-literal "true"
+
 
 \end_inset
 
@@ -791,7 +791,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "marti-renom_comparative_2000"
-literal "true"
+
 
 \end_inset
 
@@ -808,7 +808,7 @@ dos métodos de reconhecimento de enovelamento, os quais englobam métodos
 \begin_inset CommandInset citation
 LatexCommand citep
 key "dunbrack_sequence_2006"
-literal "true"
+
 
 \end_inset
 
@@ -826,7 +826,7 @@ do por Overington e colaboradores (1990)
 \begin_inset CommandInset citation
 LatexCommand citep
 key "overington_tertiary_1990"
-literal "true"
+
 
 \end_inset
 
@@ -841,7 +841,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "chothia_proteins._1992,coulson_unifold_2002"
-literal "true"
+
 
 \end_inset
 
@@ -853,7 +853,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kolodny_universe_2013"
-literal "true"
+
 
 \end_inset
 
@@ -877,7 +877,7 @@ A outra categoria de métodos de modelagem, a modelagem comparativa, necessita
 \begin_inset CommandInset citation
 LatexCommand citep
 key "marti-renom_comparative_2000"
-literal "true"
+
 
 \end_inset
 
@@ -890,7 +890,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "marti-renom_comparative_2000"
-literal "true"
+
 
 \end_inset
 
@@ -904,7 +904,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "dunbrack_sequence_2006"
-literal "true"
+
 
 \end_inset
 
@@ -918,7 +918,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "overington_tertiary_1990"
-literal "true"
+
 
 \end_inset
 
@@ -934,7 +934,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "chothia_proteins._1992,coulson_unifold_2002"
-literal "true"
+
 
 \end_inset
 
@@ -946,7 +946,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kolodny_universe_2013"
-literal "true"
+
 
 \end_inset
 
@@ -965,7 +965,7 @@ Os métodos de modelagem comparativa não fornecem informação sobre as etapas
 \begin_inset CommandInset citation
 LatexCommand citep
 key "helles_comparative_2008"
-literal "true"
+
 
 \end_inset
 
@@ -976,7 +976,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "giri_folding_2012"
-literal "true"
+
 
 \end_inset
 
@@ -1008,7 +1008,7 @@ Os métodos de modelagem comparativa não fornecem informação sobre o caminho,
 \begin_inset CommandInset citation
 LatexCommand citep
 key "helles_comparative_2008"
-literal "true"
+
 
 \end_inset
 
@@ -1019,7 +1019,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "giri_folding_2012"
-literal "true"
+
 
 \end_inset
 
@@ -1048,7 +1048,7 @@ A hipótese termodinâmica, apesar de explicar o enovelamento, não fornece
 \begin_inset CommandInset citation
 LatexCommand citep
 key "rose_backbone-based_2006"
-literal "true"
+
 
 \end_inset
 
@@ -1057,7 +1057,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "dill_levinthal_1997,dill_protein_2008,dill_protein-folding_2012"
-literal "true"
+
 
 \end_inset
 
@@ -1076,7 +1076,7 @@ co e não-hierárquico.
 \begin_inset CommandInset citation
 LatexCommand citep
 key "baldwin_is_1999"
-literal "true"
+
 
 \end_inset
 
@@ -1089,7 +1089,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "baldwin_is_1999-1,daggett_is_2003,englander_case_2017,eaton_theory_2017,englander_reply_2017"
-literal "true"
+
 
 \end_inset
 
@@ -1101,7 +1101,7 @@ os
 \begin_inset CommandInset citation
 LatexCommand citep
 key "daggett_is_2003"
-literal "true"
+
 
 \end_inset
 
@@ -1120,7 +1120,7 @@ A hipótese termodinâmica, apesar de explicar o enovelamento, também não
 \begin_inset CommandInset citation
 LatexCommand citep
 key "rose_backbone-based_2006"
-literal "true"
+
 
 \end_inset
 
@@ -1130,7 +1130,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "dill_levinthal_1997,dill_protein_2008,dill_protein-folding_2012"
-literal "true"
+
 
 \end_inset
 
@@ -1149,7 +1149,7 @@ co e não-hierárquico.
 \begin_inset CommandInset citation
 LatexCommand citep
 key "baldwin_is_1999"
-literal "true"
+
 
 \end_inset
 
@@ -1162,7 +1162,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "baldwin_is_1999-1,daggett_is_2003"
-literal "true"
+
 
 \end_inset
 
@@ -1174,7 +1174,7 @@ os (Daggett e Fersht, 2003)
 \begin_inset CommandInset citation
 LatexCommand citep
 key "daggett_is_2003"
-literal "true"
+
 
 \end_inset
 
@@ -1203,7 +1203,7 @@ molten globules
 \begin_inset CommandInset citation
 LatexCommand citep
 key "baldwin_is_1999"
-literal "true"
+
 
 \end_inset
 
@@ -1217,7 +1217,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "harper_helix_1993,aurora_rules_1994,aurora_local_1997,baldwin_is_1999"
-literal "true"
+
 
 \end_inset
 
@@ -1229,7 +1229,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "colloch_beta-breakers:_1991"
-literal "true"
+
 
 \end_inset
 
@@ -1240,7 +1240,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "betancourt_local_2004,otaki_secondary_2010"
-literal "true"
+
 
 \end_inset
 
@@ -1250,7 +1250,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "otaki_secondary_2010"
-literal "true"
+
 
 \end_inset
 
@@ -1276,7 +1276,7 @@ molten globules
 \begin_inset CommandInset citation
 LatexCommand citep
 key "baldwin_is_1999"
-literal "true"
+
 
 \end_inset
 
@@ -1292,7 +1292,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "harper_helix_1993,aurora_rules_1994,aurora_local_1997,baldwin_is_1999"
-literal "true"
+
 
 \end_inset
 
@@ -1304,7 +1304,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "colloch_beta-breakers:_1991"
-literal "true"
+
 
 \end_inset
 
@@ -1316,7 +1316,7 @@ rt e Skolnick, 2004; Otaki et al., 2010)
 \begin_inset CommandInset citation
 LatexCommand citep
 key "betancourt_local_2004,otaki_secondary_2010"
-literal "true"
+
 
 \end_inset
 
@@ -1326,7 +1326,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "otaki_secondary_2010"
-literal "true"
+
 
 \end_inset
 
@@ -1343,7 +1343,7 @@ Alguns trabalhos de simulação computacional
 \begin_inset CommandInset citation
 LatexCommand citep
 key "abagyan_biased_1994,pedersen_protein_1997"
-literal "true"
+
 
 \end_inset
 
@@ -1355,7 +1355,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "srinivasan_physical_1999"
-literal "true"
+
 
 \end_inset
 
@@ -1425,7 +1425,7 @@ Alguns trabalhos de simulação computacional (Abagyan e Totrov, 1994; Pedersen
 \begin_inset CommandInset citation
 LatexCommand citep
 key "abagyan_biased_1994,pedersen_protein_1997"
-literal "true"
+
 
 \end_inset
 
@@ -1437,7 +1437,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "srinivasan_physical_1999"
-literal "true"
+
 
 \end_inset
 
@@ -1498,7 +1498,7 @@ ento de enovelamentos proteicos, mas possivelmente apresentar sensibilidade
 \begin_inset CommandInset citation
 LatexCommand citep
 key "giri_folding_2012"
-literal "true"
+
 
 \end_inset
 
@@ -1506,7 +1506,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "helles_comparative_2008"
-literal "true"
+
 
 \end_inset
 
@@ -1539,7 +1539,7 @@ Esses resultados observados na literatura sugerem ser possível um algoritmo
 \begin_inset CommandInset citation
 LatexCommand citep
 key "giri_folding_2012"
-literal "true"
+
 
 \end_inset
 
@@ -1547,7 +1547,7 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "helles_comparative_2008"
-literal "true"
+
 
 \end_inset
 
