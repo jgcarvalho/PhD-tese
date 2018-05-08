@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,8 +21,6 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype false
-\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -52,7 +50,6 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
-\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -61,10 +58,7 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\is_math_indent 0
-\math_numbering_side default
-\quotes_style swedish
-\dynamic_quotes 0
+\quotes_language swedish
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -109,7 +103,6 @@ Position Specific Scoring Matrix
 \begin_inset CommandInset citation
 LatexCommand citep
 key "altschul_gapped_1997"
-literal "true"
 
 \end_inset
 
@@ -122,15 +115,11 @@ literal "true"
 \begin_layout Standard
 O método que utiliza apenas a sequência de aminoácidos como entrada foi
  proposto em 1989, época em que havia em torno de apenas 350 estruturas
- disponíveis no 
-\emph on
-Protein Data Bank 
-\emph default
-(PDB).
+ disponíveis.
  Assim, um dos objetivos desse capítulo foi avaliar qual acurácia poderia
  ser atingida por um método similar utilizando um conjunto de dados maior.
- Isso nos fornece uma medida de acurácia mais justa para ser usada como
- uma linha de base na comparação com os métodos propostos neste trabalho.
+ Isso nos fornece uma medida de acurácia mais justa para ser usada na comparação
+ com os métodos propostos neste trabalho.
 \end_layout
 
 \begin_layout Standard
@@ -171,7 +160,6 @@ Linear Threshold Unit
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mcculloch_logical_1943"
-literal "true"
 
 \end_inset
 
@@ -185,7 +173,6 @@ Perceptron,
 \begin_inset CommandInset citation
 LatexCommand cite
 key "rosenblatt_perceptron:_1958"
-literal "true"
 
 \end_inset
 
@@ -213,7 +200,6 @@ em classificar padrões não-linearmente separáveis como o XOR
 \begin_inset CommandInset citation
 LatexCommand cite
 key "minsky_perceptrons:_1988"
-literal "true"
 
 \end_inset
 
@@ -258,7 +244,6 @@ back-propagation
 \begin_inset CommandInset citation
 LatexCommand cite
 key "rumelhart_learning_1986"
-literal "true"
 
 \end_inset
 
@@ -269,8 +254,8 @@ Esse algoritmo tornou capaz o treinamento de redes neurais como múltiplas
  camadas de neurônios chamadas de Multi Layer Perpectron.
  As MLP utilizam camadas de neurônios ocultos, ou seja, neurônios que estão
  conectados a outros neurônios, e devido a esta arquitetura, são capazes
- de solucionar problemas de regressão não-linear e/ou classificar dados
- em classes não-linearmente separáveis (Figura 
+ de solucionar problemas não-lineares ou classificar dados em classes não-linear
+mente separáveis (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:mlp"
@@ -340,7 +325,6 @@ Em 1988, Qian e Sejnowski
 \begin_inset CommandInset citation
 LatexCommand citep
 key "qian_predicting_1988"
-literal "true"
 
 \end_inset
 
@@ -355,7 +339,6 @@ text-to-speech
 \begin_inset CommandInset citation
 LatexCommand citep
 key "sejnowski_parallel_1987"
-literal "true"
 
 \end_inset
 
@@ -405,7 +388,6 @@ Outro modelo de rede neural aplicado à predição de estruturas secundárias
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
-literal "true"
 
 \end_inset
 
@@ -459,7 +441,6 @@ Rede neural utilizada nos trabalhos de Holley e Karplus
 \begin_inset CommandInset citation
 LatexCommand citeyearpar
 key "holley_protein_1989"
-literal "true"
 
 \end_inset
 
@@ -467,7 +448,6 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citeyearpar
 key "chandonia_importance_1996"
-literal "true"
 
 \end_inset
 
@@ -502,7 +482,6 @@ O método de predição proposto por Holley e Karplus
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
-literal "true"
 
 \end_inset
 
@@ -512,7 +491,6 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citeyearpar
 key "chandonia_importance_1996"
-literal "true"
 
 \end_inset
 
@@ -520,7 +498,6 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "chandonia_importance_1996"
-literal "true"
 
 \end_inset
 
@@ -539,17 +516,15 @@ O modelo de Holley e Karplus
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
-literal "true"
 
 \end_inset
 
-, por ser construído com uma arquitetura mais convencional que utiliza uma
+, por ser construído com uma arquitetura mais convencional que utiliza um
  rede neural com uma camada oculta, ao invés de duas redes em sequência
  como a de Qian e Sejnowski 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "qian_predicting_1988"
-literal "true"
 
 \end_inset
 
@@ -583,7 +558,6 @@ Em 1999, Jones
 \begin_inset CommandInset citation
 LatexCommand citep
 key "jones_protein_1999"
-literal "true"
 
 \end_inset
 
@@ -593,7 +567,6 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
-literal "true"
 
 \end_inset
 
@@ -625,7 +598,6 @@ Blast
 \begin_inset CommandInset citation
 LatexCommand citep
 key "altschul_gapped_1997"
-literal "true"
 
 \end_inset
 
@@ -636,7 +608,6 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "henikoff_amino_1992"
-literal "true"
 
 \end_inset
 
@@ -654,7 +625,6 @@ to são utilizadas para a construção de uma nova matriz de substituição.
 \begin_inset CommandInset citation
 LatexCommand citep
 key "altschul_gapped_1997"
-literal "true"
 
 \end_inset
 
@@ -759,7 +729,6 @@ Método de predição de estrutura secundária PSIPRED.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "jones_protein_1999"
-literal "true"
 
 \end_inset
 
@@ -965,7 +934,6 @@ Na camada de saída optamos por utilizar 3 neurônios ao invés de 2 como no
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
-literal "true"
 
 \end_inset
 
@@ -1091,7 +1059,7 @@ A principal diferença encontra-se na camada de saída onde foram utilizados
 \end_layout
 
 \begin_layout Standard
-O conjunto de dados contendo informação da estrutura secundária de 6749
+O conjunto de dados contendo informação da estrutura secundária de 6800
  proteínas foi divido em 3 subconjuntos: (1) treinamento com 5000 proteínas,
  (2) validação com 500 proteínas e (3) teste com 1249 proteínas.
  
@@ -1127,7 +1095,6 @@ O algoritmo de otimização utilizado no treinamento foi o Adam
 \begin_inset CommandInset citation
 LatexCommand citet
 key "kingma_adam:_2014"
-literal "true"
 
 \end_inset
 
@@ -1143,7 +1110,6 @@ O método de predição PSIPRED
 \begin_inset CommandInset citation
 LatexCommand citep
 key "jones_protein_1999"
-literal "true"
 
 \end_inset
 
@@ -1158,7 +1124,6 @@ nr
 \begin_inset CommandInset citation
 LatexCommand citep
 key "altschul_gapped_1997"
-literal "true"
 
 \end_inset
 

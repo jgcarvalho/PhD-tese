@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,8 +21,6 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype false
-\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -52,7 +50,6 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
-\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -61,10 +58,7 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\is_math_indent 0
-\math_numbering_side default
-\quotes_style english
-\dynamic_quotes 0
+\quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -184,7 +178,6 @@ Os autômatos celulares foram inventados na década de 40 por John von Neumann
 \begin_inset CommandInset citation
 LatexCommand citep
 key "mitchell_complexity:_2009"
-literal "true"
 
 \end_inset
 
@@ -202,7 +195,6 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "wolfram_universality_1984"
-literal "true"
 
 \end_inset
 
@@ -220,7 +212,6 @@ res, como redes de interação proteicas, até estudo de populações; (2) quím
 \begin_inset CommandInset citation
 LatexCommand citep
 key "ganguly_survey_2003"
-literal "true"
 
 \end_inset
 
@@ -539,7 +530,6 @@ Apesar dos ACE serem o modelo mais simples de AC, os padrões produzidos
 \begin_inset CommandInset citation
 LatexCommand citep
 key "_new_2002"
-literal "true"
 
 \end_inset
 
@@ -608,7 +598,6 @@ Em 2007, Chopra e Bender
 \begin_inset CommandInset citation
 LatexCommand cite
 key "chopra_evolved_2007"
-literal "true"
 
 \end_inset
 
@@ -624,7 +613,6 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "chou_prediction_1974"
-literal "true"
 
 \end_inset
 
@@ -655,7 +643,6 @@ O autômato celular desenvolvido por nós neste trabalho difere do publicado
 \begin_inset CommandInset citation
 LatexCommand cite
 key "chopra_evolved_2007"
-literal "true"
 
 \end_inset
 
@@ -1262,7 +1249,6 @@ O segundo modelo utiliza dois contextos para representar a hidrofobicidade.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "rose_hydrophobicity_1985"
-literal "true"
 
 \end_inset
 
@@ -1627,47 +1613,6 @@ Positivos (+) que representa o contexto dos resíduos K e R
 
 \begin_layout Enumerate
 Negativos (-) que representa o contexto dos resíduos D e E
-\end_layout
-
-\begin_layout Standard
-Apesar da histidina (H), em pH fisiológico, poder ser observada também no
- estado protonado (H
-\begin_inset script superscript
-
-\begin_layout Plain Layout
-+
-\end_layout
-
-\end_inset
-
-) e portanto com carga positiva 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "gu_structural_2009"
-literal "false"
-
-\end_inset
-
-, nós optamos por categorizá-la de forma geral como polar (neutro).
- Esse padrão é adotado por outros métodos computacionais como por exemplo
- o 
-\begin_inset CommandInset href
-LatexCommand href
-name "Rosetta"
-target "https://www.rosettacommons.org"
-literal "false"
-
-\end_inset
-
- e é mencionado no trabalho de Kilambi e Gray 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kilambi_rapid_2012"
-literal "false"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2857,7 +2802,6 @@ simulated annealing
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ganguly_survey_2003"
-literal "true"
 
 \end_inset
 
@@ -2870,8 +2814,7 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
-O funcionamento do EDA distribuído na busca de regras para os autômatos
- celulares envolve os seguintes passos:
+O funcionamento do EDA distribuído envolve os seguintes passos:
 \end_layout
 
 \begin_layout Enumerate
@@ -3408,7 +3351,6 @@ Class Balance Accuracy
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mosley_balanced_2013"
-literal "true"
 
 \end_inset
 
@@ -3426,7 +3368,6 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mosley_balanced_2013"
-literal "true"
 
 \end_inset
 
@@ -3835,9 +3776,9 @@ E a entropia cruzada por resíduo é (
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
-CE_{r}=-\sum_{i}p(\hat{y})\ln(y)\label{eq:cross_entrpy}
-\end{equation}
+\[
+CE_{r}=-\sum_{i}p(\hat{y})\ln(y)
+\]
 
 \end_inset
 

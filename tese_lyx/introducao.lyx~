@@ -100,8 +100,8 @@ A estrutura proteica é comumente classificada de maneira hierárquica em
 \begin_layout Standard
 A estrutura primária corresponde a sequência linear de aminoácidos na cadeia
  polipeptídica.
- A estrutura secundária corresponde à padrões estruturais locais os quais
- são formados, sobretudo, por ligações de hidrogênio
+ A estrutura secundária corresponde à padrões conformacionais locais os
+ quais são formados, sobretudo, por ligações de hidrogênio
 \begin_inset Note Note
 status open
 
@@ -202,7 +202,8 @@ literal "true"
 
 \begin_layout Standard
 Apesar de haverem diversos outros padrões estruturais identificados, usualmente
- as proteína costumam ser dividas em hélices, estruturas 
+ as diferentes estruturas secundárias costumam ser agrupadas em três classes:
+ hélices, estruturas 
 \begin_inset Formula $\beta$
 \end_inset
 
@@ -232,8 +233,8 @@ nenhuma das outras
 \end_inset
 
 .
- Assim, a característica que define coil é a ausência de conformações estruturai
-s sequencialmente repetitivas 
+ Assim, a característica que define uma região de coil é a ausência de conformaç
+ões estruturais sequencialmente repetitivas 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "richardson_anatomy_1981"
@@ -640,17 +641,12 @@ Os métodos computacionais desenvolvidos e utilizados para construir modelos
 \emph on
 de novo
 \emph default
- ou 
-\emph on
-ab initio
-\emph default
 , sendo considerados 
 \emph on
 de novo
 \emph default
  todos os métodos que não utilizam informações provenientes de proteínas
- com estruturas similares ao invés de apenas métodos que utilizem informação
- de carácter exclusivamente físico 
+ com estruturas similares 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "helles_comparative_2008"
@@ -776,9 +772,9 @@ A outra categoria de métodos de modelagem, a modelagem comparativa, necessita
  Os métodos de modelagem comparativa baseiam-se no princípio de que, em
  proteínas homólogas, a estrutura é mais conservada do que a sequência de
  aminoácidos.
- Sendo assim, proteínas que tenham uma identidade entre as sequências maior
- que 30% e que por isso apresentam evidência de que são homólogas, podem
- ser modeladas caso uma delas tenha estrutura resolvida 
+ Assim, proteínas que tenham uma identidade entre as sequências maior que
+ 30% e que por isso apresentam evidência de que são homólogas, podem ser
+ modeladas caso uma delas tenha estrutura resolvida 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "marti-renom_comparative_2000"
@@ -800,11 +796,15 @@ literal "true"
 \end_inset
 
 .
- Na tentativa de contornar tal deficiência dos métodos de modelagem comparativa,
- foram desenvolvidos métodos que buscam identificar proteínas com estruturas
- similares, mas com baixa identidade sequencial (< 30%), chamados de métodos
- de reconhecimento de enovelamento, os quais englobam métodos de comparação
- sequência-estrutura e métodos de alinhavamento (threading) 
+ 
+\end_layout
+
+\begin_layout Standard
+Na tentativa de contornar as dificuldades na identifição e no alinhamento
+ de proteínas homólogas com baixa identidade sequencial (< 30%) foram desenvolvi
+dos métodos de reconhecimento de enovelamento, os quais englobam métodos
+ de comparação sequência-estrutura e métodos de alinhavamento (threading)
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "dunbrack_sequence_2006"
@@ -814,11 +814,15 @@ literal "true"
 
 .
  O diferencial desses métodos em relação ao simples alinhamento entre sequências
- primárias está na utilização de informações estruturais, como por exemplo,
- estrutura secundária, exposição ao solvente, entre outros, para descrever
+ primárias está na utilização de informações estruturais, dentre elas, a
+ estrutura secundária, a exposição ao solvente, entre outros, para descrever
  o ambiente em que o resíduo se encontra na proteína.
- Esses ambientes alteram os padrões de substituições de aminoácidos como
- demonstrado por Overington e colaboradores (1990) 
+ 
+\end_layout
+
+\begin_layout Standard
+Esse ambientes alteram os padrões de substituições de aminoácidos como demonstra
+do por Overington e colaboradores (1990) 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "overington_tertiary_1990"
@@ -828,7 +832,7 @@ literal "true"
 
 .
  Consequentemente, a utilização desses ambientes na construção de matrizes
- de substituição ou nos métodos de alinhavamento permite uma estimativa
+ de substituição ou nos métodos de alinhavamento permite muma estimativa
  da estrutura tridimensional conhecida que melhor acomoda a sequência de
  aminoácidos da proteína que se deseja modelar.
  Outro argumento que justifica a aplicação de tal método é a existência
@@ -1378,8 +1382,12 @@ Nosso objetivo neste trabalho foi desenvolver métodos de predição de estrutur
  Acreditamos que uma informação detalhada do processo de predição poderá
  estar relacionada ao processo físico de formação da estrutura secundária
  e, consequentemente, ao enovelamento.
- Assim, tal método poderá auxiliar ainda a predição da estrutura tridimensional
- a partir da sequência.
+ Assim, tal método poderá auxiliar na predição da estrutura tridimensional
+ tanto por métodos de modelagem comparativa quanto por métodos 
+\emph on
+de novo
+\emph default
+.
  
 \end_layout
 
@@ -1387,9 +1395,9 @@ Nosso objetivo neste trabalho foi desenvolver métodos de predição de estrutur
 Neste trabalho exploramos dois modelos capazes de fornecer informações do
  processo de predição.
  O primeiro modelo utiliza autômatos celulares, o qual, devido as suas caracterí
-sticas, fornece diretamente a informação do processo de predição.O segundo
- modelo, baseado em redes neurais residuais profundas, nos permite extrair
- a informação do processo de predição a partir das camadas de neurônios
+sticas, fornece diretamente a informação do processo de predição.
+ O segundo modelo, baseado em redes neurais residuais profundas, nos permite
+ extrair a informação do processo de predição a partir das camadas de neurônios
  internas.
 \end_layout
 

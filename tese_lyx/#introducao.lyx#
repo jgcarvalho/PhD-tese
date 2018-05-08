@@ -203,19 +203,7 @@ literal "true"
 \begin_layout Standard
 Apesar de haverem diversos outros padrões estruturais identificados, usualmente
  as diferentes estruturas secundárias costumam ser agrupadas em três classes:
- hélices, a qual compreende as hélices 
-\begin_inset Formula $\alpha$
-\end_inset
-
-, 
-\begin_inset Formula $\pi$
-\end_inset
-
- e 
-\begin_inset Formula $3_{10}$
-\end_inset
-
-; estruturas 
+ hélices, estruturas 
 \begin_inset Formula $\beta$
 \end_inset
 
@@ -561,20 +549,15 @@ literal "true"
 
 \end_inset
 
-.
- Consequentemente, métodos experimentais, mais especificamente, a cristalografia
- de proteínas por difração de raios-X, a ressonância magnética nuclear e
- a criomicroscopia eletrônica, ainda são as principais formas de se obter
- um modelo estrutural com resolução atômica.
- 
-\end_layout
-
-\begin_layout Standard
-No entanto, tais métodos experimentais de resolução da estrutura proteica
- apresentam diversas dificuldades técnicas.
+, sendo os métodos experimentais, mais especificamente, os métodos de cristalogr
+afia de proteínas por difração de raios-X e o de ressonância magnética nuclear,
+ ainda as principais formas de se obter um modelo estrutural com resolução
+ atômica.
+ Métodos experimentais de resolução da estrutura proteica apresentam diversas
+ dificuldades técnicas.
  Para a cristalografia por difração de raios-X, é necessária a obtenção
- de proteína em alto grau de pureza e a obtenção de monocristais os quais,
- muitas vezes, são um fator limitante no processo.
+ de proteína em alto grau de pureza e a obtenção de monocristais, que muitas
+ vezes é o fator limitante do processo.
  Por outro lado, a ressonância magnética nuclear exige concentrações bastante
  altas de proteína purificada de meios com diferentes isótopos e ainda,
  existe limitação quanto ao tamanho da proteína analisada.
@@ -658,17 +641,12 @@ Os métodos computacionais desenvolvidos e utilizados para construir modelos
 \emph on
 de novo
 \emph default
- ou 
-\emph on
-ab initio
-\emph default
 , sendo considerados 
 \emph on
 de novo
 \emph default
  todos os métodos que não utilizam informações provenientes de proteínas
- com estruturas similares ao invés de apenas métodos que utilizem informação
- de carácter exclusivamente físico 
+ com estruturas similares 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "helles_comparative_2008"
@@ -794,9 +772,9 @@ A outra categoria de métodos de modelagem, a modelagem comparativa, necessita
  Os métodos de modelagem comparativa baseiam-se no princípio de que, em
  proteínas homólogas, a estrutura é mais conservada do que a sequência de
  aminoácidos.
- Sendo assim, proteínas que tenham uma identidade entre as sequências maior
- que 30% e que por isso apresentam evidência de que são homólogas, podem
- ser modeladas caso uma delas tenha estrutura resolvida 
+ Assim, proteínas que tenham uma identidade entre as sequências maior que
+ 30% e que por isso apresentam evidência de que são homólogas, podem ser
+ modeladas caso uma delas tenha estrutura resolvida 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "marti-renom_comparative_2000"
@@ -818,11 +796,15 @@ literal "true"
 \end_inset
 
 .
- Na tentativa de contornar tal deficiência dos métodos de modelagem comparativa,
- foram desenvolvidos métodos que buscam identificar proteínas com estruturas
- similares, mas com baixa identidade sequencial (< 30%), chamados de métodos
- de reconhecimento de enovelamento, os quais englobam métodos de comparação
- sequência-estrutura e métodos de alinhavamento (threading) 
+ 
+\end_layout
+
+\begin_layout Standard
+Na tentativa de contornar as dificuldades na identifição e no alinhamento
+ de proteínas homólogas com baixa identidade sequencial (< 30%) foram desenvolvi
+dos métodos de reconhecimento de enovelamento, os quais englobam métodos
+ de comparação sequência-estrutura e métodos de alinhavamento (threading)
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "dunbrack_sequence_2006"
@@ -832,11 +814,15 @@ literal "true"
 
 .
  O diferencial desses métodos em relação ao simples alinhamento entre sequências
- primárias está na utilização de informações estruturais, como por exemplo,
- estrutura secundária, exposição ao solvente, entre outros, para descrever
+ primárias está na utilização de informações estruturais, dentre elas, a
+ estrutura secundária, a exposição ao solvente, entre outros, para descrever
  o ambiente em que o resíduo se encontra na proteína.
- Esses ambientes alteram os padrões de substituições de aminoácidos como
- demonstrado por Overington e colaboradores (1990) 
+ 
+\end_layout
+
+\begin_layout Standard
+Esse ambientes alteram os padrões de substituições de aminoácidos como demonstra
+do por Overington e colaboradores (1990) 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "overington_tertiary_1990"
@@ -846,7 +832,7 @@ literal "true"
 
 .
  Consequentemente, a utilização desses ambientes na construção de matrizes
- de substituição ou nos métodos de alinhavamento permite uma estimativa
+ de substituição ou nos métodos de alinhavamento permite muma estimativa
  da estrutura tridimensional conhecida que melhor acomoda a sequência de
  aminoácidos da proteína que se deseja modelar.
  Outro argumento que justifica a aplicação de tal método é a existência

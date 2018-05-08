@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,6 +21,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -50,6 +52,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -58,7 +61,10 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language swedish
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swedish
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -103,6 +109,7 @@ Position Specific Scoring Matrix
 \begin_inset CommandInset citation
 LatexCommand citep
 key "altschul_gapped_1997"
+literal "true"
 
 \end_inset
 
@@ -115,11 +122,15 @@ key "altschul_gapped_1997"
 \begin_layout Standard
 O método que utiliza apenas a sequência de aminoácidos como entrada foi
  proposto em 1989, época em que havia em torno de apenas 350 estruturas
- disponíveis.
+ disponíveis no 
+\emph on
+Protein Data Bank 
+\emph default
+(PDB).
  Assim, um dos objetivos desse capítulo foi avaliar qual acurácia poderia
  ser atingida por um método similar utilizando um conjunto de dados maior.
- Isso nos fornece uma medida de acurácia mais justa para ser usada na comparação
- com os métodos propostos neste trabalho.
+ Isso nos fornece uma medida de acurácia mais justa para ser usada como
+ uma linha de base na comparação com os métodos propostos neste trabalho.
 \end_layout
 
 \begin_layout Standard
@@ -151,17 +162,41 @@ conhecimento
 \end_layout
 
 \begin_layout Standard
-O primeiro neurônio artificial foi proposto em 1949 por McCulloth e Pitts
- e chamado de 
+O primeiro neurônio artificial foi proposto na década de 40 por McCulloth
+ e Pitts e chamado de 
 \emph on
 Linear Threshold Unit 
 \emph default
-(LTU).
+(LTU) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mcculloch_logical_1943"
+literal "true"
+
+\end_inset
+
+.
  Posteriormente, Rosenblatt utilizou o LTU para criar, em 1957, o 
 \emph on
 Perceptron,
 \emph default
- a primeira rede neural artificial capaz de aprender a reconhecer padrões.
+ a primeira rede neural artificial capaz de aprender a reconhecer padrões
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rosenblatt_perceptron:_1958"
+literal "true"
+
+\end_inset
+
+ (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:mlp"
+
+\end_inset
+
+).
  Entretanto, em 1969, no livro 
 \begin_inset Quotes sld
 \end_inset
@@ -174,7 +209,15 @@ Perceptrons
 \emph on
 Perceptron 
 \emph default
-em classificar padrões não-linearmente separáveis como o XOR.
+em classificar padrões não-linearmente separáveis como o XOR 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "minsky_perceptrons:_1988"
+literal "true"
+
+\end_inset
+
+.
  Apesar de Grossberg ter demonstrado modelos de redes neurais capazes de
  lidar com problemas não-linearmente separáveis apenas 3 anos após a publicação
  do livro, acredita-se que o livro de Minsky e Papert tenha atrasado o desenvolv
@@ -184,31 +227,108 @@ imento das redes neurais até a década de 80, quando elas voltaram a ser
 \end_layout
 
 \begin_layout Standard
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+Apesar do nome Multi Layer Perceptron ainda ser amplamente utilizado, este
+ nome está incorreto segundo uns dos próprios autores, Geoffrey Hinton.
+ O erro deve-se ao fato mecanismo de treinamento do 
+\emph on
+Perceptron 
+\emph default
+ser diferente do 
+\emph on
+backpropagation.
+
+\emph default
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Em 1986, Rumelhart, Hinton e Willians publicaram o trabalho onde descrevem
  o algoritmo de 
 \emph on
-backpropagation.
+back-propagation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rumelhart_learning_1986"
+literal "true"
+
+\end_inset
+
+.
  
 \emph default
 Esse algoritmo tornou capaz o treinamento de redes neurais como múltiplas
  camadas de neurônios chamadas de Multi Layer Perpectron.
  As MLP utilizam camadas de neurônios ocultos, ou seja, neurônios que estão
  conectados a outros neurônios, e devido a esta arquitetura, são capazes
- de solucionar problemas não-lineares ou classificar dados em classes não-linear
-mente separáveis.
+ de solucionar problemas de regressão não-linear e/ou classificar dados
+ em classes não-linearmente separáveis (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:mlp"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
-\begin_inset Marginal
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-Apesar do nome Multi Layer Perceptron ser amplamente
+\begin_inset Graphics
+	filename /home/jgcarvalho/Documents/PhD-tese/presentation/multilayerperceptron.pdf
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:mlp"
+
+\end_inset
+
+Esquema demonstrando a arquitetura diferente entre 
+\emph on
+Perpeptrons 
+\emph default
+e 
+\emph on
+Multi Layer Perceptron
+\emph default
+, a qual possui camadas ocultas de neurônios.
 \end_layout
 
 \end_inset
 
- 
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -220,6 +340,7 @@ Em 1988, Qian e Sejnowski
 \begin_inset CommandInset citation
 LatexCommand citep
 key "qian_predicting_1988"
+literal "true"
 
 \end_inset
 
@@ -234,6 +355,7 @@ text-to-speech
 \begin_inset CommandInset citation
 LatexCommand citep
 key "sejnowski_parallel_1987"
+literal "true"
 
 \end_inset
 
@@ -283,6 +405,7 @@ Outro modelo de rede neural aplicado à predição de estruturas secundárias
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
+literal "true"
 
 \end_inset
 
@@ -336,6 +459,7 @@ Rede neural utilizada nos trabalhos de Holley e Karplus
 \begin_inset CommandInset citation
 LatexCommand citeyearpar
 key "holley_protein_1989"
+literal "true"
 
 \end_inset
 
@@ -343,6 +467,7 @@ key "holley_protein_1989"
 \begin_inset CommandInset citation
 LatexCommand citeyearpar
 key "chandonia_importance_1996"
+literal "true"
 
 \end_inset
 
@@ -377,6 +502,7 @@ O método de predição proposto por Holley e Karplus
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
+literal "true"
 
 \end_inset
 
@@ -386,6 +512,7 @@ key "holley_protein_1989"
 \begin_inset CommandInset citation
 LatexCommand citeyearpar
 key "chandonia_importance_1996"
+literal "true"
 
 \end_inset
 
@@ -393,6 +520,7 @@ key "chandonia_importance_1996"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "chandonia_importance_1996"
+literal "true"
 
 \end_inset
 
@@ -411,15 +539,17 @@ O modelo de Holley e Karplus
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
+literal "true"
 
 \end_inset
 
-, por ser construído com uma arquitetura mais convencional que utiliza um
+, por ser construído com uma arquitetura mais convencional que utiliza uma
  rede neural com uma camada oculta, ao invés de duas redes em sequência
  como a de Qian e Sejnowski 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "qian_predicting_1988"
+literal "true"
 
 \end_inset
 
@@ -453,6 +583,7 @@ Em 1999, Jones
 \begin_inset CommandInset citation
 LatexCommand citep
 key "jones_protein_1999"
+literal "true"
 
 \end_inset
 
@@ -462,6 +593,7 @@ key "jones_protein_1999"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
+literal "true"
 
 \end_inset
 
@@ -493,6 +625,7 @@ Blast
 \begin_inset CommandInset citation
 LatexCommand citep
 key "altschul_gapped_1997"
+literal "true"
 
 \end_inset
 
@@ -503,6 +636,7 @@ key "altschul_gapped_1997"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "henikoff_amino_1992"
+literal "true"
 
 \end_inset
 
@@ -520,6 +654,7 @@ to são utilizadas para a construção de uma nova matriz de substituição.
 \begin_inset CommandInset citation
 LatexCommand citep
 key "altschul_gapped_1997"
+literal "true"
 
 \end_inset
 
@@ -624,6 +759,7 @@ Método de predição de estrutura secundária PSIPRED.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "jones_protein_1999"
+literal "true"
 
 \end_inset
 
@@ -829,6 +965,7 @@ Na camada de saída optamos por utilizar 3 neurônios ao invés de 2 como no
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
+literal "true"
 
 \end_inset
 
@@ -954,7 +1091,7 @@ A principal diferença encontra-se na camada de saída onde foram utilizados
 \end_layout
 
 \begin_layout Standard
-O conjunto de dados contendo informação da estrutura secundária de 6800
+O conjunto de dados contendo informação da estrutura secundária de 6749
  proteínas foi divido em 3 subconjuntos: (1) treinamento com 5000 proteínas,
  (2) validação com 500 proteínas e (3) teste com 1249 proteínas.
  
@@ -990,6 +1127,7 @@ O algoritmo de otimização utilizado no treinamento foi o Adam
 \begin_inset CommandInset citation
 LatexCommand citet
 key "kingma_adam:_2014"
+literal "true"
 
 \end_inset
 
@@ -1005,6 +1143,7 @@ O método de predição PSIPRED
 \begin_inset CommandInset citation
 LatexCommand citep
 key "jones_protein_1999"
+literal "true"
 
 \end_inset
 
@@ -1019,6 +1158,7 @@ nr
 \begin_inset CommandInset citation
 LatexCommand citep
 key "altschul_gapped_1997"
+literal "true"
 
 \end_inset
 
@@ -4478,10 +4618,19 @@ o, ou seja, o conjunto é apresentado à rede neural 1000 vezes para que os
 Durante o treinamento, o conjunto de validação também é apresentado a rede
  para o cálculo a entropia cruzada.
  No entanto, ao contrário do conjunto de treinamento, o conjunto de validação
- não é utilizado no aprendizado, o que significa que ele não é usado para
- a otimização dos pesos.
- A comparação da entropia cruzada do conjunto de treinamento com a do conjunto
- de validação permite analisarmos se há a ocorrência de sobreajuste (
+ não é utilizado para a otimização dos pesos.
+ A comparação da entropia cruzada (Equação 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:cross_entropy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ do conjunto de treinamento com a do conjunto de validação permite analisarmos
+ se há a ocorrência de sobreajuste (
 \emph on
 overfiting
 \emph default

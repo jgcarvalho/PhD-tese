@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,6 +21,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -50,6 +52,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -58,7 +61,10 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language swedish
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swedish
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -83,9 +89,12 @@ Introdução
 Os métodos computacionais de atribuição de estruturas secundárias surgiram
  com o objetivo de automatizar e reduzir a subjetividade da atribuição manual
  feita durante o processo de resolução experimental de estruturas.
- Em geral, tais métodos buscam por um conjunto de padrões estruturais, como
- distâncias e ângulos entre átomos, capazes de representar a estrutura secundári
-a atribuída por especialistas.
+ Portanto, tais métodos são diferentes dos métodos de predição.
+ Enquanto na atribuição o objetivo é identificar os elementos de estrutura
+ secundária a partir da estrutura trimidimensional da proteína e, portanto,
+ é necessário que sua estrutura atômica já tenha sido resolvida, na predição
+ o objetivo é prever os elementos de estrutura secundária a partir da sequência
+ de aminoácidos, ou seja, quando a estrutura atômica ainda não é conhecida.
 \begin_inset Note Comment
 status collapsed
 
@@ -99,7 +108,10 @@ Clarifificar esta frase
 \end_layout
 
 \begin_layout Standard
-Entretanto, como a atribuição feita por diferentes especialistas pode diferir
+Em geral, os métodos de atribuição buscam por um conjunto de padrões estruturais
+, como distâncias e ângulos entre átomos, capazes de representar a estrutura
+ secundária atribuída por especialistas.
+ Entretanto, como a atribuição feita por diferentes especialistas pode diferir
  devido ao uso de padrões subjetivos e, sobretudo, pela dificuldade ao se
  selecionar parâmetros objetivos que reproduzam a atribuição feita por especiali
 stas, os métodos computacionais apresentam variações entre si.
@@ -112,6 +124,7 @@ Diferentes autores sugerem a impossibilidade de se eleger qual o melhor
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kabsch_dictionary_1983,colloch_comparison_1993,frishman_knowledge-based_1995,zhang_secondary_2015"
+literal "true"
 
 \end_inset
 
@@ -120,15 +133,13 @@ key "kabsch_dictionary_1983,colloch_comparison_1993,frishman_knowledge-based_199
  como os métodos de predição de estruturas secundárias, acabaram optando,
  possivelmente de forma natural, por escolherem um método de atribuição
  como padrão.
- Consequentemente, podemos observar o método DSSP como o mais utilizado
- como padrão de referência.
- 
+ Consequentemente, podemos observar o método DSSP como um padrão de referência
+ por ser o mais utilizado.
 \end_layout
 
 \begin_layout Standard
-Nesse trabalho, nós decidimos comparar quatro métodos de atribuição que
- utilizam diferentes parâmetros para classificar elementos de estrutura
- secundária.
+Nesse trabalho, nós comparamos quatro métodos de atribuição que utilizam
+ diferentes parâmetros para classificar elementos de estrutura secundária.
  O objetivo disso foi entender como a atribuição varia entre os métodos
  e como isso afeta a acurácia dos métodos de predição de estrutura secundária.
 \end_layout
@@ -148,6 +159,7 @@ Dictionary of Protein Secondary Structure
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kabsch_dictionary_1983"
+literal "true"
 
 \end_inset
 
@@ -179,7 +191,7 @@ A utilização das ligações de hidrogênio da cadeia principal ao invés de
 \end_inset
 
  foi justificada pela simplicidade.
- A presença, ou ausência, de ligações de hidrogênio poderiam ser avaliadas
+ Assim, a presença ou ausência, de ligações de hidrogênio poderiam ser avaliadas
  por um simples critério energético, enquanto que outras características
  precisariam do ajuste numérico de um número maior de parâmetros.
  
@@ -205,7 +217,7 @@ O DSSP define as ligações de hidrogênio utilizando um modelo eletrostático.
 \begin_inset Formula $HB$
 \end_inset
 
- ocorrerá se, e somente se, a energia 
+ ocorrerá se, e somente se, a energia de ligação 
 \begin_inset Formula $E$
 \end_inset
 
@@ -272,7 +284,7 @@ reference "eq:dssp_energy"
 \begin_inset Formula $r(AB)$
 \end_inset
 
- é a distância interatômica entre A e B em ångström e 
+ é a distância interatômica entre A e B em Ångström e 
 \begin_inset Formula $f$
 \end_inset
 
@@ -300,6 +312,7 @@ Os autores afirmam que, por este modelo, uma boa ligação de hidrogênio teria
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kabsch_dictionary_1983"
+literal "true"
 
 \end_inset
 
@@ -395,7 +408,7 @@ Coloque um esquema para isso
 \end_layout
 
 \begin_layout Standard
-Sendo que as sequências 
+sendo que as sequências 
 \begin_inset Formula $i-1,i,i+1$
 \end_inset
 
@@ -470,6 +483,7 @@ O método de atribuição de estrutura secundárias STRIDE foi desenvolvido
 \begin_inset CommandInset citation
 LatexCommand citep
 key "frishman_knowledge-based_1995"
+literal "true"
 
 \end_inset
 
@@ -503,7 +517,7 @@ E_{hb}=E_{r}*E_{t}*E_{p}\label{eq:hb_stride}
 \end_layout
 
 \begin_layout Standard
-Onde 
+onde 
 \begin_inset Formula $E_{r}$
 \end_inset
 
@@ -552,7 +566,7 @@ E_{r}=\frac{-3E_{m}r_{m}⁸}{r^{8}}+\frac{-4E_{m}r_{m}⁶}{r^{6}}\label{eq:strid
 \end_layout
 
 \begin_layout Standard
-Onde 
+onde 
 \begin_inset Formula $r$
 \end_inset
 
@@ -598,8 +612,8 @@ e
 \begin_inset Formula 
 \begin{equation}
 E_{t}=\begin{cases}
-(0.9+0.1\sin2t_{i})\cos t_{0} & 0<t_{i}<90\text{°}\\
-K_{1}(K_{2}-\cos²t_{i})³\cos t_{0} & 90\text{°}<t_{i}<110\text{°}\\
+(0.9+0.1\sin2t_{i})\cos t_{0} & 0<t_{i}\leq90\text{°}\\
+K_{1}(K_{2}-\cos²t_{i})³\cos t_{0} & 90\text{°}<t_{i}\leq110\text{°}\\
 0 & t_{i}>110\text{°}
 \end{cases}\label{eq:stride_et}
 \end{equation}
@@ -627,6 +641,59 @@ e os ângulos
 \end_inset
 
  são, respectivamente, os desvios angulares da ligação de hidrogênio.
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+Na equação 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:stride_et"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, a colocação de ambos 
+\begin_inset Quotes sld
+\end_inset
+
+
+\begin_inset Formula $\leq$
+\end_inset
+
+
+\begin_inset Quotes srd
+\end_inset
+
+ foi feita por nós, uma vez que no artigo original 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kabsch_dictionary_1983"
+literal "true"
+
+\end_inset
+
+ os autores utilizam somente 
+\begin_inset Quotes sld
+\end_inset
+
+
+\begin_inset Formula $<$
+\end_inset
+
+
+\begin_inset Quotes srd
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -935,6 +1002,7 @@ KAKSI é um método de atribuição de estruturas secundárias proposto por Mart
 \begin_inset CommandInset citation
 LatexCommand citep
 key "martin_protein_2005"
+literal "true"
 
 \end_inset
 
@@ -1197,8 +1265,9 @@ mesostate
 \emph default
 ) de acordo com o valor de seus ângulos torcionais 
 \begin_inset CommandInset citation
-LatexCommand citep
-key "srinivasan_physical_1999,gong_does_2005"
+LatexCommand cite
+key "srinivasan_physical_1999"
+literal "true"
 
 \end_inset
 
@@ -1241,7 +1310,7 @@ ou coil de acordo com um conjunto de regras.
 \end_layout
 
 \begin_layout Enumerate
-Hélices
+Hélices 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -1313,6 +1382,7 @@ são classificados como coil.
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1387,7 +1457,7 @@ ente, mas utilizando estados mais específicos.
 \end_layout
 
 \begin_layout Enumerate
-Hélices
+Hélices 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -1406,6 +1476,7 @@ Fita
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1471,6 +1542,7 @@ Segundo os autores, a utilização somente dos ângulos torcionais da cadeia
 \begin_inset CommandInset citation
 LatexCommand citep
 key "srinivasan_physical_1999"
+literal "true"
 
 \end_inset
 
@@ -1516,6 +1588,7 @@ TOP8000-best-hom50
 LatexCommand href
 name "github.com/rlabduke/reference_data"
 target "https://github.com/rlabduke/reference_data/tree/master/Top8000"
+literal "false"
 
 \end_inset
 
@@ -1586,6 +1659,11 @@ identidade sequencial entre elas
 \end_layout
 
 \begin_layout Standard
+A restrição de identidade sequencial inferior à 50% tem o objetivo de reduzir
+ a redundância no conjunto.
+\end_layout
+
+\begin_layout Standard
 A estrutura secundária dessas proteínas foram atribuídas pelos métodos DSSP,
  STRIDE, KAKSI e PROSS.
  Proteínas que possuíam resíduos indeterminados na sequência de aminoácidos
@@ -1595,14 +1673,15 @@ A estrutura secundária dessas proteínas foram atribuídas pelos métodos DSSP,
 \end_layout
 
 \begin_layout Standard
-O DSSP e o STRIDE classificam os resíduos em oito categorias.
- Nós realizamos o agrupamento dessas categorias em três: hélice (H), fita
- (E) e coil (C).
- O modo de agrupamento foi o seguinte:
+O DSSP e o STRIDE classificam os resíduos em oito categorias: H, G, I, E,
+ S, B, T e C.
+ Nós realizamos o reagrupamento dessas categorias em apenas três: hélice
+ (H), fita (E) e coil (C).
+ O reagrupamento foi o seguinte:
 \end_layout
 
 \begin_layout Itemize
-Hélices: H (hélice 
+Hélices (H) = H (hélice 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -1618,11 +1697,11 @@ Hélices: H (hélice
 \end_layout
 
 \begin_layout Itemize
-Fitas: E (fita)
+Fitas (E) = E (fita)
 \end_layout
 
 \begin_layout Itemize
-Coil: S (curva), B (ponte 
+Coil (C) = S (curva), B (ponte 
 \begin_inset Formula $\beta$
 \end_inset
 
@@ -1630,20 +1709,20 @@ Coil: S (curva), B (ponte
 \end_layout
 
 \begin_layout Standard
-O PROSS classifica os resíduos em 5 categorias.
- Elas foram agrupadas como:
+O PROSS classifica os resíduos em 5 categorias: H, E, T, P e C.
+ Elas foram reagrupadas como:
 \end_layout
 
 \begin_layout Itemize
-Hélices: H (hélices)
+Hélices (H) = H (hélices)
 \end_layout
 
 \begin_layout Itemize
-Fitas: E (Fitas)
+Fitas (E) = E (Fitas)
 \end_layout
 
 \begin_layout Itemize
-Coil: T (volta), P (
+Coil (C) = T (volta), P (
 \begin_inset Formula $P_{II}$
 \end_inset
 
@@ -1672,7 +1751,8 @@ TOP8000-best-hom50
 \begin_layout Standard
 Nos capítulos seguintes, descrevemos o desenvolvido de métodos de predição
  utilizando redes neurais artificiais e autômatos celulares.
- Para o desenvolvimento o conjunto foi divido em três subconjuntos:
+ Durante o desenvolvimento dos métodos o conjunto foi divido em três subconjunto
+s:
 \end_layout
 
 \begin_layout Itemize
@@ -1685,6 +1765,13 @@ Subconjunto de validação: 500 proteínas
 
 \begin_layout Itemize
 Subconjunto de teste: 1249 proteínas
+\end_layout
+
+\begin_layout Standard
+A separação das proteínas entre os subconjuntos foi feita de maneira aleatória.
+ A proporção aproximada foi de 3/4 (~75%) dos dados no subconjunto de treinament
+o e 1/4 (~25%) para os subconjuntos restantes.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1774,6 +1861,7 @@ Quantos resíduos tem atribuição igual entre os métodos e quantos são difere
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1797,11 +1885,12 @@ Estrutura secundária atribuída aos resíduos das proteínas do conjunto de
  Entre os resíduos que apresentaram consenso entre os métodos, aproximadamente
  29,5% foram classificados como hélices (H); 14,5% como fitas (E); 26,5%
  como coils (C).
- 24,2% não apresentam consenso entre os quatro métodos de atribuição (Dissenso);
- 5,2% são resíduos não visualizados na estrutura atômica resolvida, mas
- presentes na sequência da proteína analisada experimentalmente e 0,04%
- dos resíduos não tiveram a estrutura secundária atribuída por todos os
- quatro métodos (Erro*).
+ 24,2% dos resíduos não apresentaram consenso entre as estruturas secundárias
+ atribuídas pelos quatro métodos (Dissenso); 5,2% são resíduos não visualizados
+ na estrutura atômica resolvida, mas presentes na sequência da proteína
+ analisada experimentalmente e 0,04% dos resíduos não tiveram a estrutura
+ secundária atribuída por todos os quatro métodos (Erro*).
+ Acima das barras estão indicados os números de resíduos.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Estrutura-secundária-atribuída"
@@ -1839,6 +1928,7 @@ reference "fig:Similaridade-atribuiçao"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1857,9 +1947,10 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Similaridade entre as estruturas secundárias atribuídas para cada resíduo
- entre os quatro métodos de atribuição de estruturas secundárias: DSSP,
- STRIDE, KAKSI e PROSS.
+Comparação pareada entre os métodos DSSP, STRIDE, KAKSI e PROSS da fração
+ de resíduos com a mesma estrutura secundária atribuída.
+ É possível observar que a atribuição mais similar ocorre entre os métodos
+ DSSP e STRIDE.
  
 \begin_inset CommandInset label
 LatexCommand label
@@ -1928,6 +2019,7 @@ Qual a variação no número de estruturas secundarias? SCRIPT atribuicao_n_ss.p
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2014,6 +2106,7 @@ SCRIPT: atribuicao_len_ss.py
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2069,6 +2162,7 @@ reference "fig:Distribuição-do-comprimento_fitas"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2118,6 +2212,7 @@ As distribuições dos comprimentos dos coils apresentam mediana de 4 resíduos
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2198,6 +2293,7 @@ s_VS_length.py OUTLIER PDB ID: 3Q23 1.8A
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2303,6 +2399,7 @@ nso.py
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2351,7 +2448,15 @@ Outra característica analisada é a região relativa onde as regiões de dissen
 \begin_inset Formula $C?H$
 \end_inset
 
- é um dissenso antecedido por um coil e sucedido por uma hélice, o que indicaria
+ é um dissenso (simbolizado por 
+\begin_inset Quotes sld
+\end_inset
+
+?
+\begin_inset Quotes srd
+\end_inset
+
+) antecedido por um coil (C) e sucedido por uma hélice (H), o que indicaria
  que há variações em relação ao resíduo que inicia a hélice.
  
 \end_layout
@@ -2431,6 +2536,7 @@ Onde ocorrem a falta de consenso? * Se for entre resíduos com o mesmo tipo
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2513,6 +2619,7 @@ helix capping
 \begin_inset CommandInset citation
 LatexCommand citep
 key "aurora_helix_1998,doig_n-_1995"
+literal "true"
 
 \end_inset
 
@@ -2524,6 +2631,7 @@ beta-sheet capping
 \begin_inset CommandInset citation
 LatexCommand citep
 key "farzadfard_beta-sheet_2008"
+literal "true"
 
 \end_inset
 
@@ -2548,6 +2656,7 @@ Quais aminoácidos sofrem maior variação entre os métodos? * normalizar pelo
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
