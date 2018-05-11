@@ -72,7 +72,7 @@
 \begin_body
 
 \begin_layout Chapter
-Redes neurais residuais
+Redes neurais residuais profundas
 \end_layout
 
 \begin_layout Section
@@ -99,8 +99,18 @@ key "wang_protein_2016"
 \end_inset
 
 , os autores usaram redes neurais convolucionais profundas (não residuais)
- e, realizando a predição a partir de PSSM, obtiveram uma acurácia de aproximada
-mente 84% (
+ e, realizando a predição a partir de 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+, obtiveram uma acurácia de aproximadamente 84% (
 \begin_inset Formula $Q_{3}$
 \end_inset
 
@@ -114,7 +124,14 @@ Redes neurais residuais
 
 \begin_layout Standard
 Redes neurais com mais de uma camada oculta de neurônios são chamadas de
- redes neurais profundas.
+ redes neurais profundas 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mhaskar_when_2017"
+
+\end_inset
+
+.
  Devido ao maior número de camadas ocultas, as redes neurais profundas são
  capazes de integrar atributos de vários níveis de abstração de maneira
  hierárquica.
@@ -406,6 +423,7 @@ Na codificação da proteína, o número de canais é igual a 22 e cada um repre
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -581,6 +599,7 @@ reference "fig:Diagrama-de-uma"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -675,10 +694,17 @@ key "zagoruyko_wide_2016"
 
 .
  Cada bloco contém duas funções de ativação não lineares do tipo 
-\emph on
-Parametric ReLU
-\emph default
- (PReLU) 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PReLU
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "he_delving_2015"
@@ -712,7 +738,18 @@ reference "alg:bloco-usado"
 \end_layout
 
 \begin_layout Standard
-A função PReLU é:
+A função 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PReLU
+\end_layout
+
+\end_inset
+
+ é:
 \end_layout
 
 \begin_layout Standard
@@ -789,6 +826,7 @@ ng by combining the predictions of many different large neural nets at test
 
 \begin_layout Standard
 \begin_inset Float algorithm
+placement h
 wide false
 sideways false
 status open
@@ -815,8 +853,18 @@ name "alg:bloco-usado"
 \end_inset
 
 Diagrama da configuração de bloco utilizada.
- Cada bloco possui duas funções de ativação PReLU, duas camadas de convolução
- 3x1 e uma camada de 
+ Cada bloco possui duas funções de ativação 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PReLU
+\end_layout
+
+\end_inset
+
+, duas camadas de convolução 3x1 e uma camada de 
 \emph on
 dropout
 \emph default
@@ -856,6 +904,7 @@ reference "fig:conv3x1"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -975,13 +1024,25 @@ o.
 \begin_layout Standard
 As proteínas do conjunto de treinamento são utilizadas em lotes (
 \emph on
-batches
+minibatches
 \emph default
 ) de 64, para as redes maiores, ou 128, para as menores.
  Essa variação foi necessária devido à memória disponível.
  O tempo médio de treinamento de cada rede foi de ~10 horas utilizando um
  computador com placa de vídeo (GPU) Nvidia GTX 1060 6GB.
- 
+ As redes foram implementadas usando o 
+\emph on
+framework
+\emph default
+ Pytorch (disponível em 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://pytorch.org/"
+target "http://pytorch.org/"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -1041,6 +1102,7 @@ A análise do treinamento indica que, dentre as redes residuais testadas,
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1083,6 +1145,7 @@ Aprendizado da rede residual com 4 blocos demonstrado pela redução da entropia
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1126,6 +1189,7 @@ Aprendizado da rede residual com 8 blocos demonstrado pela redução da entropia
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1228,6 +1292,7 @@ reference "subsec:Rede-neural-hk"
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -1392,7 +1457,7 @@ C
 
 \shape slanted
 \size footnotesize
-(# de neurônios)
+(# de blocos)
 \end_layout
 
 \end_inset
@@ -4943,6 +5008,7 @@ Q_{3}dissenso\simeq0,478
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -6042,6 +6108,18 @@ Distribuição da acurácia
 \end_layout
 
 \begin_layout Standard
+Distribuição de acurácia da predição para as proteínas do conjunto de teste
+ (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:resnet-dist-q3"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -6056,6 +6134,7 @@ grafico gerado com model_resnet_q_ss.py
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6074,7 +6153,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:resnet-dist-q3"
 
+\end_inset
+
+Distribuição de acurácia da predição para as proteínas do conjunto de teste.
 \end_layout
 
 \end_inset
@@ -6165,6 +6250,7 @@ grafico gerado com model_hk_len_ss.py
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6301,6 +6387,7 @@ No grupo dos polares, há a formação de subgrupos como serina (S) e treonina
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6346,6 +6433,7 @@ Agrupamento da representação dos aminoácidos aprendida pela primeira camada
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6390,6 +6478,7 @@ Agrupamento da representação dos aminoácidos aprendida pela primeira camada
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6489,6 +6578,7 @@ reference "fig:resnet-good-3eod"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6539,6 +6629,7 @@ Estados internos da rede residual durante a predição do domínio N-terminal
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6614,11 +6705,16 @@ As probabilidades extraídas após cada bloco da rede residual indicam vários
  Algo similar ocorre com a décima e décima primeira fitas atribuídas, quando,
  nas últimas camadas ocorre uma mudança na predição de fita para hélice.
  Ao analisarmos a estrutura notamos que essas fitas preditas incorretamente
- formam a interface de dimerização 
+ formam a interface de dimerização, formando uma folha 
+\begin_inset Formula $\beta$
+\end_inset
+
+ com fitas da outra cadeia polipeptídica.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6644,7 +6740,17 @@ name "fig:resnet-bad-1nxm"
 
 \end_inset
 
-
+Estados internos da rede residual durante a predição da proteína RmlC de
+ 
+\emph on
+Streptococcus suis 
+\emph default
+(PDB ID: 1NXM).
+ As três primeiras linhas correspondem, respectivamente, a sequência de
+ resíduos, a estrutura secundária predita e a estrutura secundária atribuída.
+ Nas demais linhas temos a estrutura secundária com maior probabilidade
+ em cada um dos 21 blocos.
+ Hélices são representadas em vermelho, fitas em amarelo e coils em verde.
 \end_layout
 
 \end_inset
@@ -6663,6 +6769,7 @@ name "fig:resnet-bad-1nxm"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6687,7 +6794,15 @@ name "fig:1nxm"
 
 \end_inset
 
-
+Proteína RmlC de 
+\emph on
+Streptococcus suis 
+\emph default
+(PDB ID: 1NXM).
+ As cores representam a estrutura secundária predita com maior probabilidade.
+ Resíduos preditos como hélices são representadas em vermelho, fitas em
+ amarelo e coils em verde.
+ Em azul é representada a outra cadeia do homodímero.
 \end_layout
 
 \end_inset

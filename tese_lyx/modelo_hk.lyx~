@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,8 +21,6 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype false
-\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -52,7 +50,6 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
-\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -61,10 +58,7 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\is_math_indent 0
-\math_numbering_side default
-\quotes_style swedish
-\dynamic_quotes 0
+\quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -101,7 +95,18 @@ Neste capítulo analisamos o resultado de dois métodos que utilizam redes
  A diferença entre os métodos está sobretudo nos dados de entrada.
  Enquanto em um deles a predição é realizada a partir da sequência de aminoácido
 s das proteínas, no outro é realizada a partir de uma matriz de substituição
- específica por posição (PSSM - 
+ específica por posição (
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+ - 
 \emph on
 Position Specific Scoring Matrix
 \emph default
@@ -109,13 +114,22 @@ Position Specific Scoring Matrix
 \begin_inset CommandInset citation
 LatexCommand citep
 key "altschul_gapped_1997"
-literal "true"
 
 \end_inset
 
 .
- Métodos baseados em matrizes PSSM são o estado da arte para a predição
- de estruturas secundárias.
+ Métodos baseados em matrizes 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+ são o estado da arte para a predição de estruturas secundárias.
  
 \end_layout
 
@@ -126,7 +140,18 @@ O método que utiliza apenas a sequência de aminoácidos como entrada foi
 \emph on
 Protein Data Bank 
 \emph default
-(PDB).
+(
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PDB
+\end_layout
+
+\end_inset
+
+).
  Assim, um dos objetivos desse capítulo foi avaliar qual acurácia poderia
  ser atingida por um método similar utilizando um conjunto de dados maior.
  Isso nos fornece uma medida de acurácia mais justa para ser usada como
@@ -134,9 +159,20 @@ Protein Data Bank
 \end_layout
 
 \begin_layout Standard
-O método que utiliza PSSM tem passado por atualizações frequentes, assim,
- ele foi apenas aplicado as proteínas do conjunto de dados para termos uma
- referência do estado da arte.
+O método que utiliza 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+ tem passado por atualizações frequentes, assim, ele foi apenas aplicado
+ as proteínas do conjunto de dados para termos uma referência do estado
+ da arte.
 \end_layout
 
 \begin_layout Subsection
@@ -164,19 +200,36 @@ conhecimento
 \begin_layout Standard
 O primeiro neurônio artificial foi proposto na década de 40 por McCulloth
  e Pitts e chamado de 
-\emph on
-Linear Threshold Unit 
-\emph default
-(LTU) 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+LTU
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mcculloch_logical_1943"
-literal "true"
 
 \end_inset
 
 .
- Posteriormente, Rosenblatt utilizou o LTU para criar, em 1957, o 
+ Posteriormente, Rosenblatt utilizou o 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+LTU
+\end_layout
+
+\end_inset
+
+ para criar, em 1957, o 
 \emph on
 Perceptron,
 \emph default
@@ -185,7 +238,6 @@ Perceptron,
 \begin_inset CommandInset citation
 LatexCommand cite
 key "rosenblatt_perceptron:_1958"
-literal "true"
 
 \end_inset
 
@@ -213,7 +265,6 @@ em classificar padrões não-linearmente separáveis como o XOR
 \begin_inset CommandInset citation
 LatexCommand cite
 key "minsky_perceptrons:_1988"
-literal "true"
 
 \end_inset
 
@@ -258,7 +309,6 @@ back-propagation
 \begin_inset CommandInset citation
 LatexCommand cite
 key "rumelhart_learning_1986"
-literal "true"
 
 \end_inset
 
@@ -266,11 +316,33 @@ literal "true"
  
 \emph default
 Esse algoritmo tornou capaz o treinamento de redes neurais como múltiplas
- camadas de neurônios chamadas de Multi Layer Perpectron.
- As MLP utilizam camadas de neurônios ocultos, ou seja, neurônios que estão
- conectados a outros neurônios, e devido a esta arquitetura, são capazes
- de solucionar problemas de regressão não-linear e/ou classificar dados
- em classes não-linearmente separáveis (Figura 
+ camadas de neurônios chamadas de 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+MLP
+\end_layout
+
+\end_inset
+
+.
+ As 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+MLP
+\end_layout
+
+\end_inset
+
+ utilizam camadas de neurônios ocultos, ou seja, neurônios que estão conectados
+ a outros neurônios, e devido a esta arquitetura, são capazes de solucionar
+ problemas de regressão não-linear e/ou classificar dados em classes não-linearm
+ente separáveis (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:mlp"
@@ -340,7 +412,6 @@ Em 1988, Qian e Sejnowski
 \begin_inset CommandInset citation
 LatexCommand citep
 key "qian_predicting_1988"
-literal "true"
 
 \end_inset
 
@@ -355,7 +426,6 @@ text-to-speech
 \begin_inset CommandInset citation
 LatexCommand citep
 key "sejnowski_parallel_1987"
-literal "true"
 
 \end_inset
 
@@ -405,7 +475,6 @@ Outro modelo de rede neural aplicado à predição de estruturas secundárias
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
-literal "true"
 
 \end_inset
 
@@ -459,7 +528,6 @@ Rede neural utilizada nos trabalhos de Holley e Karplus
 \begin_inset CommandInset citation
 LatexCommand citeyearpar
 key "holley_protein_1989"
-literal "true"
 
 \end_inset
 
@@ -467,7 +535,6 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citeyearpar
 key "chandonia_importance_1996"
-literal "true"
 
 \end_inset
 
@@ -502,7 +569,6 @@ O método de predição proposto por Holley e Karplus
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
-literal "true"
 
 \end_inset
 
@@ -512,7 +578,6 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citeyearpar
 key "chandonia_importance_1996"
-literal "true"
 
 \end_inset
 
@@ -520,7 +585,6 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "chandonia_importance_1996"
-literal "true"
 
 \end_inset
 
@@ -539,7 +603,6 @@ O modelo de Holley e Karplus
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
-literal "true"
 
 \end_inset
 
@@ -549,7 +612,6 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "qian_predicting_1988"
-literal "true"
 
 \end_inset
 
@@ -575,7 +637,18 @@ Nesse capítulo, analisamos o desempenho de uma rede neural artificial similar
 
 \begin_layout Subsection
 Redes neurais para a predição a partir da matriz de substituição específica
- por posição (PSSM)
+ por posição (
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Standard
@@ -583,7 +656,6 @@ Em 1999, Jones
 \begin_inset CommandInset citation
 LatexCommand citep
 key "jones_protein_1999"
-literal "true"
 
 \end_inset
 
@@ -593,7 +665,6 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
-literal "true"
 
 \end_inset
 
@@ -601,7 +672,18 @@ literal "true"
 \emph on
 Position Specific Scoring Matrix
 \emph default
- - PSSM) ou 
+ - 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+) ou 
 \emph on
 profile
 \emph default
@@ -609,7 +691,18 @@ profile
 \end_layout
 
 \begin_layout Standard
-A PSSM é produzida através do método de alinhamento PSI-Blast (
+A 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+ é produzida através do método de alinhamento PSI-Blast (
 \emph on
 Position-Specific
 \emph default
@@ -625,7 +718,6 @@ Blast
 \begin_inset CommandInset citation
 LatexCommand citep
 key "altschul_gapped_1997"
-literal "true"
 
 \end_inset
 
@@ -636,7 +728,6 @@ literal "true"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "henikoff_amino_1992"
-literal "true"
 
 \end_inset
 
@@ -645,16 +736,48 @@ literal "true"
 to são utilizadas para a construção de uma nova matriz de substituição.
  No entanto, essa segunda matriz tem probabilidades específicas para os
  aminoácidos em cada posição da sequência da proteína alvo, ou seja, essa
- matriz é uma PSSM.
- A PSSM é então utilizada para um segundo alinhamento e o resultados são
- utilizados para atualizar as probabilidades da PSSM.
+ matriz é uma 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+.
+ A 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+ é então utilizada para um segundo alinhamento e o resultados são utilizados
+ para atualizar as probabilidades da 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+.
  Esse processo é iterativo e ocorre por um número definido de passos ou
  até os resultados convergirem, isto é, quando não forem encontradas novas
  proteínas nos resultados do alinhamento com o banco de dados 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "altschul_gapped_1997"
-literal "true"
 
 \end_inset
 
@@ -662,7 +785,18 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
-A PSSM construída no alinhamento representa um perfil (
+A 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+ construída no alinhamento representa um perfil (
 \emph on
 profile
 \emph default
@@ -677,7 +811,18 @@ Como a conservação de resíduos na proteína tem relação com a estrutura,
  por exemplo, resíduos expostos ao solvente sofrem menor pressão evolutiva
  que resíduos não expostos.
  Assim, por conter indiretamente a informação do ambiente de cada resíduo,
- a PSSM contém mais informação que a simples sequência de resíduos.
+ a 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+ contém mais informação que a simples sequência de resíduos.
  
 \begin_inset Note Note
 status open
@@ -694,7 +839,18 @@ melhorar essa frase
 \begin_layout Standard
 O PSIPRED é composto de duas redes neurais artificias.
  A primeira rede neural recebe uma janela correspondente a 15 resíduos na
- PSSM.
+ 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+.
  Essa rede neural possui 75 neurônios na camada oculta e 3 neurônios de
  saída.
  Cada neurônio de saída representa um tipo de estrutura secundária, coil,
@@ -748,10 +904,32 @@ status open
 \begin_layout Plain Layout
 Método de predição de estrutura secundária PSIPRED.
  Inicialmente a sequência de resíduos da proteína alvo é alinhada com um
- banco de dados para a contrução de uma PSSM.
+ banco de dados para a contrução de uma 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+.
  A primeira rede neural artificial recebe como entrada janelas de 15 resíduos
- da PSSM e emite 3 valores entre 0 e 1 correspondentes a cada elemento de
- estrutura secundária.
+ da 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+ e emite 3 valores entre 0 e 1 correspondentes a cada elemento de estrutura
+ secundária.
  A segunda rede neural utiliza como entrada janelas de 15 resíduos contendo
  os valores preditos pela rede anterior e emite 3 valores correspondentes
  a estrutura secundária predita para o resíduo no centro da janela (Figura
@@ -759,7 +937,6 @@ Método de predição de estrutura secundária PSIPRED.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "jones_protein_1999"
-literal "true"
 
 \end_inset
 
@@ -965,7 +1142,6 @@ Na camada de saída optamos por utilizar 3 neurônios ao invés de 2 como no
 \begin_inset CommandInset citation
 LatexCommand citep
 key "holley_protein_1989"
-literal "true"
 
 \end_inset
 
@@ -1127,7 +1303,6 @@ O algoritmo de otimização utilizado no treinamento foi o Adam
 \begin_inset CommandInset citation
 LatexCommand citet
 key "kingma_adam:_2014"
-literal "true"
 
 \end_inset
 
@@ -1135,7 +1310,18 @@ literal "true"
 \end_layout
 
 \begin_layout Subsection
-Rede neural que utiliza PSSM
+Rede neural que utiliza 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1143,14 +1329,24 @@ O método de predição PSIPRED
 \begin_inset CommandInset citation
 LatexCommand citep
 key "jones_protein_1999"
-literal "true"
 
 \end_inset
 
  foi escolhido para testar o estado da arte em predição de estruturas secundária
 s.
- A PSSM de cada proteína foi gerada localmente com o PSI-Blast utilizando
- o banco de dados de sequências não redundantes (
+ A 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+ de cada proteína foi gerada localmente com o PSI-Blast utilizando o banco
+ de dados de sequências não redundantes (
 \emph on
 nr
 \emph default
@@ -1158,7 +1354,6 @@ nr
 \begin_inset CommandInset citation
 LatexCommand citep
 key "altschul_gapped_1997"
-literal "true"
 
 \end_inset
 
@@ -4618,10 +4813,16 @@ o, ou seja, o conjunto é apresentado à rede neural 1000 vezes para que os
 Durante o treinamento, o conjunto de validação também é apresentado a rede
  para o cálculo a entropia cruzada.
  No entanto, ao contrário do conjunto de treinamento, o conjunto de validação
- não é utilizado no aprendizado, o que significa que ele não é usado para
- a otimização dos pesos.
- A comparação da entropia cruzada do conjunto de treinamento com a do conjunto
- de validação permite analisarmos se há a ocorrência de sobreajuste (
+ não é utilizado para a otimização dos pesos.
+ A comparação da entropia cruzada (Equação 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:cross_entropy"
+
+\end_inset
+
+ do conjunto de treinamento com a do conjunto de validação permite analisarmos
+ se há a ocorrência de sobreajuste (
 \emph on
 overfiting
 \emph default

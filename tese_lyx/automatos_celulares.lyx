@@ -1,4 +1,4 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
 \lyxformat 508
 \begin_document
 \begin_header
@@ -21,7 +21,6 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -51,7 +50,6 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
-\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -60,10 +58,7 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\is_math_indent 0
-\math_numbering_side default
-\quotes_style english
-\dynamic_quotes 0
+\quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -144,7 +139,7 @@ Introdução
 
 \begin_layout Standard
 Neste capítulo descrevemos a implementação e os resultados dos autômatos
- celulares (AC) aplicados a predição de estruturas secundárias.
+ celulares aplicados a predição de estruturas secundárias.
  Foram testados quatro modelos de autômatos celulares que diferem essencialmente
  pelos estados utilizados para representar os elementos de estruturas secundária
 s.
@@ -160,13 +155,35 @@ No primeiro modelo testado tais estados representam apenas um dos três elemento
 
 \begin_layout Standard
 A construção de autômatos celulares que reproduzam um padrão desejado implica
- na busca por um conjunto de regras capazes de conduzir a evolução do AC
+ na busca por um conjunto de regras capazes de conduzir a evolução do autômato
+ celular 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
  de um estado inicial, conhecido, até um estado final, também conhecido.
  Neste trabalho, o estado inicial é a sequência de resíduos da proteína
  e o estado final, sua estrutura secundária.
  Essa busca por um conjunto de regras, chamada de problema inverso, é um
  problema de otimização e para isso foi utilizado um algoritmo de estimação
- de distribuição (EDA - 
+ de distribuição (
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+EDA
+\end_layout
+
+\end_inset
+
+ - 
 \emph on
 Estimation of distribution algorithm
 \emph default
@@ -194,9 +211,20 @@ key "mitchell_complexity:_2009"
  Os autômatos celulares evoluem paralelamente, ou seja, o estado de cada
  célula evolui de maneira síncrona em passos discretos de tempo e de acordo
  com regras simples, locais e determinísticas.
- A evolução dos AC produz complexidade a partir do efeito cooperativo de
- elementos simples - as regras e as células - tratando-se portanto de uma
- complexidade emergente 
+ A evolução dos 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ produz complexidade a partir do efeito cooperativo de elementos simples
+ - as regras e as células - tratando-se portanto de uma complexidade emergente
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "wolfram_universality_1984"
@@ -236,15 +264,48 @@ name "subsec:ace"
 \end_layout
 
 \begin_layout Standard
-O tipo mais simples de AC são os autômatos celulares elementares (ACE).
+O tipo mais simples de 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ são os autômatos celulares elementares (
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+ACE
+\end_layout
+
+\end_inset
+
+).
  Devido a sua simplicidade e a semelhança com os modelos propostos neste
  trabalho, acreditamos que explicá-los nesta introdução seja útil para facilitar
  uma melhor compreensão.
 \end_layout
 
 \begin_layout Standard
-Os ACE possuem espaço unidimensional, o qual pode ser representado como
- um conjunto linear de células (Figura 
+Os 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+ACE
+\end_layout
+
+\end_inset
+
+ possuem espaço unidimensional, o qual pode ser representado como um conjunto
+ linear de células (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:ace-espaco"
@@ -302,8 +363,18 @@ Espaço discreto e unidimensional dos autômatos celulares representado por
 \end_layout
 
 \begin_layout Standard
-Cada célula dos ACE possuem um estado discreto, esse estado pode ser 0 ou
- 1 (Figura 
+Cada célula dos 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+ACE
+\end_layout
+
+\end_inset
+
+ possuem um estado discreto, esse estado pode ser 0 ou 1 (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:ace-estados"
@@ -340,7 +411,18 @@ name "fig:ace-estados"
 
 \end_inset
 
-Estados discretos dos ACE representados com 0 e 1.
+Estados discretos dos 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+ACE
+\end_layout
+
+\end_inset
+
+ representados com 0 e 1.
  Cada célula encontra-se em um estado.
 \end_layout
 
@@ -376,8 +458,19 @@ reference "fig:ace-regra"
 \end_inset
 
 ).
- No caso dos ACE, essas regras possuem vizinhança 1 (r=1), o que indica
- que o estado de uma célula no tempo 
+ No caso dos 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+ACE
+\end_layout
+
+\end_inset
+
+, essas regras possuem vizinhança 1 (r=1), o que indica que o estado de
+ uma célula no tempo 
 \emph on
 t
 \emph default
@@ -416,7 +509,18 @@ name "fig:ace-regra"
 
 \end_inset
 
-Exemplo de um conjunto de regras para um ACE.
+Exemplo de um conjunto de regras para um 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+ACE
+\end_layout
+
+\end_inset
+
+.
  Os padrões de três células no tempo 
 \emph on
 t 
@@ -434,8 +538,30 @@ regra 110
 \begin_inset Quotes erd
 \end_inset
 
- dos ACE.
- Ao todo, os ACE possuem 
+ dos 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+ACE
+\end_layout
+
+\end_inset
+
+.
+ Ao todo, os 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+ACE
+\end_layout
+
+\end_inset
+
+ possuem 
 \begin_inset Formula $2^{8}$
 \end_inset
 
@@ -491,7 +617,18 @@ name "fig:ace-evo"
 
 \end_inset
 
- Esquema da evolução de um ACE.
+ Esquema da evolução de um 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+ACE
+\end_layout
+
+\end_inset
+
+.
  Cada célula no estado 
 \emph on
 t 
@@ -529,8 +666,29 @@ reference "fig:ace-regra"
 \end_layout
 
 \begin_layout Standard
-Apesar dos ACE serem o modelo mais simples de AC, os padrões produzidos
- por diferentes regras são interessantes.
+Apesar dos 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+ACE
+\end_layout
+
+\end_inset
+
+ serem o modelo mais simples de 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+, os padrões produzidos por diferentes regras são interessantes.
  Wolfram 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -576,7 +734,18 @@ name "fig:ace-padroes"
 
 \end_inset
 
-Exemplos de padrões produzidos por diferentes regras dos ACE.
+Exemplos de padrões produzidos por diferentes regras dos 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+ACE
+\end_layout
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -667,8 +836,18 @@ Autômatos celulares
 \end_layout
 
 \begin_layout Standard
-Neste trabalho foram utilizados autômatos celulares (AC) unidimensionais
- com vizinhança 1.
+Neste trabalho foram utilizados autômatos celulares (
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+) unidimensionais com vizinhança 1.
  Nesse aspecto, eles são semelhantes aos autômatos celulares elementares.
  Entretanto, a principal diferença ocorre nos estados possíveis para cada
  célula.
@@ -839,7 +1018,18 @@ cell{c'}
 \begin_inset Formula $S\neq S'$
 \end_inset
 
-, enquanto que nos ACE (
+, enquanto que nos 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+ACE
+\end_layout
+
+\end_inset
+
+ (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:ace"
@@ -874,7 +1064,18 @@ Estados
 \begin_inset Formula $S$
 \end_inset
 
- comuns entre os AC testados: {
+ comuns entre os 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ testados: {
 \begin_inset ERT
 status open
 
@@ -1175,8 +1376,18 @@ cell{
 
 \begin_layout Standard
 No primeiro modelo construído acrescentamos o menor número de estados possíveis
- para que o AC tivesse a capacidade de realizar a predição de estruturas
- secundárias.
+ para que o 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ tivesse a capacidade de realizar a predição de estruturas secundárias.
  Assim, nesse modelo nós acrescentamos apenas três novos estados, os quais,
  representam os elementos de estruturas secundária hélice, fita e coil.
  São eles, respectivamente:
@@ -2850,15 +3061,37 @@ key "ganguly_survey_2003"
 
 .
  Neste trabalho optamos por utilizar um Algoritmo de Estimação de Distribuição
- (EDA) que implementamos de forma distribuída através do modelo mestre-escravos.
+ (
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+EDA
+\end_layout
+
+\end_inset
+
+) que implementamos de forma distribuída através do modelo mestre-escravos.
  No modelo mestre-escravos, um processo mestre coordena o trabalho passando
  tarefas para os processos escravos executarem.
  Após a execução, os escravos enviam os resultados para os mestres.
 \end_layout
 
 \begin_layout Standard
-O funcionamento do EDA distribuído na busca de regras para os autômatos
- celulares envolve os seguintes passos:
+O funcionamento do 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+EDA
+\end_layout
+
+\end_inset
+
+ distribuído na busca de regras para os autômatos celulares envolve os seguintes
+ passos:
 \end_layout
 
 \begin_layout Enumerate
@@ -2892,8 +3125,18 @@ des
 \end_layout
 
 \begin_layout Enumerate
-Retorna ao passo 1 ou termina se a geração final (G) do EDA foi atingida
- 
+Retorna ao passo 1 ou termina se a geração final (G) do 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+EDA
+\end_layout
+
+\end_inset
+
+ foi atingida 
 \end_layout
 
 \begin_layout Standard
@@ -3374,7 +3617,18 @@ Inicialmente utilizamos como medida da acurácia o próprio Q
 
 .
  Para o cálculo, o estado de estrutura secundária mais frequente ao longo
- da evolução do AC foi considerado como o resultado da predição para o resíduo.
+ da evolução do 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ foi considerado como o resultado da predição para o resíduo.
  
 \end_layout
 
@@ -3387,10 +3641,21 @@ Essa medida inicial foi utilizada para avaliar o desempenho dos quatro modelos
 \begin_layout Standard
 Posteriormente, decidimos avaliar outras métricas de acurácia para tentar
  melhorar a capacidade preditiva do modelo mais promissor.
- Essas outras métricas testadas foram o CBA (
+ Essas outras métricas testadas foram a 
 \emph on
 Class Balance Accuracy
 \emph default
+ (
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CBA
+\end_layout
+
+\end_inset
+
 ) 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -3398,14 +3663,28 @@ key "mosley_balanced_2013"
 
 \end_inset
 
-, o coeficiente de correlação de Matthews (MCC
-\emph on
- - Matthews correlation coefficient
-\emph default
-) e a entropia cruzada (CE
-\emph on
- - Cross Entropy
-\emph default
+, o coeficiente de correlação de Matthews (
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+MCC
+\end_layout
+
+\end_inset
+
+) e a entropia cruzada (
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CE
+\end_layout
+
+\end_inset
+
 ).
  As duas primeiras métricas são eficientes para medir a acurácia em classes
  desbalanceadas 
@@ -3419,7 +3698,17 @@ key "mosley_balanced_2013"
 \end_layout
 
 \begin_layout Standard
-CBA é definido como:
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CBA
+\end_layout
+
+\end_inset
+
+ é definido como:
 \end_layout
 
 \begin_layout Standard
@@ -3759,7 +4048,18 @@ Matriz de confusão
 \begin_inset Formula $C^{k}$
 \end_inset
 
- para o cálculo do CBA.
+ para o cálculo do 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CBA
+\end_layout
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -3778,7 +4078,17 @@ Matriz de confusão
 \end_layout
 
 \begin_layout Standard
-MCC é definido como:
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+MCC
+\end_layout
+
+\end_inset
+
+ é definido como:
 \end_layout
 
 \begin_layout Standard
@@ -3842,9 +4152,27 @@ onde
 \end_inset
 
  será a frequência dos estados de estrutura secundária durante a evolução
- do AC.
+ do 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+.
  A 
-\begin_inset Formula $CE$
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CE
+\end_layout
+
 \end_inset
 
  final é a média das 
@@ -3856,7 +4184,18 @@ onde
 \end_layout
 
 \begin_layout Subsubsection
-Atualização das probabilidades do EDA no mestre
+Atualização das probabilidades do 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+EDA
+\end_layout
+
+\end_inset
+
+ no mestre
 \end_layout
 
 \begin_layout Standard
@@ -3868,8 +4207,19 @@ Após o mestre receber
 \begin_inset Formula $N$
 \end_inset
 
- população do EDA) conjunto de regras dos escravos as probabilidades dos
- elementos são atualizadas.
+ população do 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+EDA
+\end_layout
+
+\end_inset
+
+) conjunto de regras dos escravos as probabilidades dos elementos são atualizada
+s.
  Esse procedimento é realizado observando-se a frequência das transições
  para cada elemento entre as regras vencedoras recebidas pelo mestre.
  Por exemplo, se dentre as regras recebidas pelo mestre observarmos as seguinte
@@ -4021,6 +4371,8 @@ Programa de Equipamento Multiusuário da FAPESP-2009
  do Hospital A.
  C.
  Camargo em São Paulo).
+ O cluster contém 7 nós de processamento, cada um com 4 processadores AMD
+ Opteron 6276 que possuem 16 cores (2,3GHz).
  A execução utilizando 320 cores de processamento demora aproximadamente
  10 dias.
 \end_layout
@@ -4030,7 +4382,18 @@ Parâmetros utilizados
 \end_layout
 
 \begin_layout Itemize
-População do EDA: 
+População do 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+EDA
+\end_layout
+
+\end_inset
+
+: 
 \begin_inset Formula $N=10000$
 \end_inset
 
@@ -4038,7 +4401,18 @@ População do EDA:
 \end_layout
 
 \begin_layout Itemize
-Número de gerações do EDA: 
+Número de gerações do 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+EDA
+\end_layout
+
+\end_inset
+
+: 
 \begin_inset Formula $G=1000$
 \end_inset
 
@@ -4046,7 +4420,18 @@ Número de gerações do EDA:
 \end_layout
 
 \begin_layout Itemize
-Número de gerações do AC: 
+Número de gerações do 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+: 
 \begin_inset Formula $t=100$
 \end_inset
 
@@ -4070,7 +4455,18 @@ Seleção do modelo de autômato celular
 status open
 
 \begin_layout Plain Layout
-Analise dos modelos de AC (selecao do modelo estendido) 
+Analise dos modelos de 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ (selecao do modelo estendido) 
 \end_layout
 
 \end_inset
@@ -4082,9 +4478,20 @@ Analise dos modelos de AC (selecao do modelo estendido)
 A capacidade dos quatro modelos de autômatos celulares foram testadas num
  conjunto reduzido de proteínas.
  O objetivo deste teste foi avaliar se os estados utilizados em cada modelo
- de AC seriam capazes de predizer as estruturas secundárias com acurácia.
+ de 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ seriam capazes de predizer as estruturas secundárias com acurácia.
  Os resultados apresentados demonstram que o primeiro modelo, o qual não
- utiliza informação sobre o contexto, falhou a predizer estruturas menos
+ utiliza informação sobre o contexto, falhou em predizer estruturas menos
  frequentes como as fitas e coils (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4128,9 +4535,31 @@ name "fig:capacidade-acs"
 
 \end_inset
 
-Acurácia dos modelos de AC testados em um conjunto reduzido de proteínas.
- O AC 4, o qual utiliza um maior número de contextos, apresentou maior capacidad
-e de reproduzir a estrutura secundária.
+Acurácia dos modelos de 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ testados em um conjunto reduzido de proteínas.
+ O 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ 4, o qual utiliza um maior número de contextos, apresentou maior capacidade
+ de reproduzir a estrutura secundária.
 \end_layout
 
 \end_inset
@@ -4158,12 +4587,56 @@ As análises da capacidade de predição de estruturas secundárias foram realiz
 \end_layout
 
 \begin_layout Standard
-Na otimização das regras do AC utilizando o subconjunto de treinamento nós
- utilizamos como funções de 
+Na otimização das regras do 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ utilizando o subconjunto de treinamento nós utilizamos como funções de
+ 
 \emph on
 fitness 
 \emph default
-as métricas CBA, MCC e CE.
+as métricas 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CBA
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+MCC
+\end_layout
+
+\end_inset
+
+ e 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CE
+\end_layout
+
+\end_inset
+
+.
  Essas métricas foram utilizadas pois notamos que o uso direto do Q
 \begin_inset script subscript
 
@@ -4177,11 +4650,52 @@ as métricas CBA, MCC e CE.
 \end_layout
 
 \begin_layout Standard
-Durante o treinamento por 1000 gerações do EDA não foram observadas convergência
-s para a população de regras candidatas.
- Entretanto, ao final da otimização o CBA estava aumentando a um taxa média
- de 0,00005 por geração, o MCC 0,00015 por geração e o CE reduzindo a uma
- taxa de 0,00002 por geração (Figura 
+Durante o treinamento por 1000 gerações do 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+EDA
+\end_layout
+
+\end_inset
+
+ não foram observadas convergências para a população de regras candidatas.
+ Entretanto, ao final da otimização o 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CBA
+\end_layout
+
+\end_inset
+
+ estava aumentando a um taxa média de 0,00005 por geração, o 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+MCC
+\end_layout
+
+\end_inset
+
+ 0,00015 por geração e o 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CE
+\end_layout
+
+\end_inset
+
+ reduzindo a uma taxa de 0,00002 por geração (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:ac4-fitness"
@@ -4229,8 +4743,51 @@ name "fig:ac4-fitness"
 
 \end_inset
 
-Valor médio observado durante a evolução do EDA por 1000 gerações utilizando
- as métricas CBA, MCC e CE como 
+Valor médio observado durante a evolução do 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+EDA
+\end_layout
+
+\end_inset
+
+ por 1000 gerações utilizando as métricas 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CBA
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+MCC
+\end_layout
+
+\end_inset
+
+ e 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CE
+\end_layout
+
+\end_inset
+
+ como 
 \emph on
 fitness.
 \end_layout
@@ -4250,12 +4807,34 @@ fitness.
 \end_layout
 
 \begin_layout Standard
-O AC treinado utilizando como função de 
+O 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ treinado utilizando como função de 
 \emph on
 fitness 
 \emph default
-o CBA foi o que apresentou a melhor acurácia, tanto para o subconjunto de
- treinamento quanto para o de teste.
+o 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CBA
+\end_layout
+
+\end_inset
+
+ foi o que apresentou a melhor acurácia, tanto para o subconjunto de treinamento
+ quanto para o de teste.
  Entretanto, a acurácia média do modelo foi de apenas 62,6% (Q
 \begin_inset script subscript
 
@@ -4273,8 +4852,29 @@ reference "fig:ac4-q3"
 \end_inset
 
 ).
- A entropia cruzada (CE) e o MCC obtiveram menor acurácia, 53,4% e 51,1%,
- respectivamente.
+ A entropia cruzada (
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CE
+\end_layout
+
+\end_inset
+
+) e o 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+MCC
+\end_layout
+
+\end_inset
+
+ obtiveram menor acurácia, 53,4% e 51,1%, respectivamente.
  Estes valores, medidos para os resíduos que apresentaram consenso na atribuição
  da estrutura secundária, são significativamente inferiores à acurácia apresenta
 da pelas redes HK (
@@ -4345,7 +4945,18 @@ Distribuição da acurácia (
 \begin_inset Formula $Q_{3}$
 \end_inset
 
-) apresentada pelo AC 4 para proteínas do conjunto de treinamento e teste.
+) apresentada pelo 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ 4 para proteínas do conjunto de treinamento e teste.
 \end_layout
 
 \end_inset
@@ -4374,8 +4985,29 @@ H
 
 ) foi maior no modelo treinado utilizando a entropia cruzada, com valor
  próximo a 73,6%.
- O treinamento com CBA apresentou acurácia de 66,7% e o com MCC, acurácia
- de 60,5% (Figura 
+ O treinamento com 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CBA
+\end_layout
+
+\end_inset
+
+ apresentou acurácia de 66,7% e o com 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+MCC
+\end_layout
+
+\end_inset
+
+, acurácia de 60,5% (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:ac4-qh"
@@ -4429,7 +5061,18 @@ Distribuição da acurácia na predição de hélices (
 \begin_inset Formula $Q_{H}$
 \end_inset
 
-) apresentada pelo AC 4 para proteínas do conjunto de treinamento e teste.
+) apresentada pelo 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ 4 para proteínas do conjunto de treinamento e teste.
 \end_layout
 
 \end_inset
@@ -4456,8 +5099,40 @@ E
 
 \end_inset
 
-) foi de 52,2% para o modelo treinado com CBA, 37,8% para o treinado com
- MCC e 21% para o treinado com CE.
+) foi de 52,2% para o modelo treinado com 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CBA
+\end_layout
+
+\end_inset
+
+, 37,8% para o treinado com 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+MCC
+\end_layout
+
+\end_inset
+
+ e 21% para o treinado com 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CE
+\end_layout
+
+\end_inset
+
+.
  Como há um menor número resíduos atribuídos a estrutura secundária fita
  (Figura 
 \begin_inset CommandInset ref
@@ -4466,8 +5141,18 @@ reference "fig:Estrutura-secundária-atribuída"
 
 \end_inset
 
-), isso demonstra que o CBA foi a métrica mais eficaz em nosso problema
- com classes desbalanceadas.
+), isso demonstra que o 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CBA
+\end_layout
+
+\end_inset
+
+ foi a métrica mais eficaz em nosso problema com classes desbalanceadas.
  Por outro lado, a entropia cruzada foi a menos eficaz.
 \end_layout
 
@@ -4515,7 +5200,18 @@ Distribuição da acurácia na predição de fitas (
 \begin_inset Formula $Q_{E}$
 \end_inset
 
-) apresentada pelo AC 4 para proteínas do conjunto de treinamento e teste.
+) apresentada pelo 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ 4 para proteínas do conjunto de treinamento e teste.
 \end_layout
 
 \end_inset
@@ -4538,8 +5234,40 @@ C
 
 \end_inset
 
-) foi de 69,0% no modelo treinado utilizando CBA, 67,6% no que utilizou
- CE e 53,1% utilizando MCC.
+) foi de 69,0% no modelo treinado utilizando 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CBA
+\end_layout
+
+\end_inset
+
+, 67,6% no que utilizou 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CE
+\end_layout
+
+\end_inset
+
+ e 53,1% utilizando 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+MCC
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -4586,7 +5314,18 @@ Distribuição da acurácia na predição de coils (
 \begin_inset Formula $Q_{C}$
 \end_inset
 
-) apresentada pelo AC 4 para proteínas do conjunto de treinamento e teste.
+) apresentada pelo 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ 4 para proteínas do conjunto de treinamento e teste.
 \end_layout
 
 \end_inset
@@ -4620,7 +5359,29 @@ reference "fig:Distribuição-do-comprimento-helices"
 
 ).
  Fitas e coils apresentam, respectivamente, medianas de 3 e 4 resíduos para
- o AC treinado com CBA.
+ o 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ treinado com 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CBA
+\end_layout
+
+\end_inset
+
+.
  O esperado nestes casos seriam 5 resíduos para fitas e 4 resíduos para
  coils (Figuras 
 \begin_inset CommandInset ref
@@ -4681,8 +5442,18 @@ name "fig:ac4-comp"
 
 Distribuição do comprimento de estruturas secundárias preditas para o conjunto
  de treinamento.
- Independentemente da métrica utilizada na otimização das regras, o AC 4
- produziu estruturas com comprimento inferior ao observado experimentalmente
+ Independentemente da métrica utilizada na otimização das regras, o 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ 4 produziu estruturas com comprimento inferior ao observado experimentalmente
  para as três classes de estruturas secundárias: hélice (H), fita (E) e
  coil (C).
  
@@ -4707,9 +5478,30 @@ Exemplos de evolução do autômato celular para predizer a estrutura secundári
 \end_layout
 
 \begin_layout Standard
-A observação da evolução do AC 4 treinado com CBA, o melhor modelo segundo
- nossos resultados, indica que ocorre uma rápida convergência ou estabilidade
- dos estados (Figuras 
+A observação da evolução do 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ 4 treinado com 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CBA
+\end_layout
+
+\end_inset
+
+, o melhor modelo segundo nossos resultados, indica que ocorre uma rápida
+ convergência ou estabilidade dos estados (Figuras 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:ac4-good"
@@ -4741,10 +5533,30 @@ reference "fig:ac4-bad"
 \end_layout
 
 \begin_layout Standard
-Entretanto, a baixa acurácia obtida pelo AC 4 em conjunto com a estabilidade
- dos estados durante a evolução do AC 4 não nos fornecem informações que
- possam auxiliar numa melhor compreensão de processos de formação de estruturas
- secundárias.
+Entretanto, a baixa acurácia obtida pelo 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ 4 em conjunto com a estabilidade dos estados durante a evolução do 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ 4 não nos fornecem informações que possam auxiliar numa melhor compreensão
+ de processos de formação de estruturas secundárias.
 \end_layout
 
 \begin_layout Standard
@@ -4787,8 +5599,29 @@ name "fig:ac4-good"
 
 \end_inset
 
-Evolução do AC4 com a regra otimizada por EDA utilizando CBA como função
- de 
+Evolução do AC4 com a regra otimizada por 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+EDA
+\end_layout
+
+\end_inset
+
+ utilizando 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CBA
+\end_layout
+
+\end_inset
+
+ como função de 
 \emph on
 fitness.
  
@@ -4873,8 +5706,29 @@ name "fig:ac4-bad"
 
 \end_inset
 
-Evolução do AC4 com a regra otimizada por EDA utilizando CBA como função
- de 
+Evolução do AC4 com a regra otimizada por 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+EDA
+\end_layout
+
+\end_inset
+
+ utilizando 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CBA
+\end_layout
+
+\end_inset
+
+ como função de 
 \emph on
 fitness.
  

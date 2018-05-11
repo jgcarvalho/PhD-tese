@@ -72,7 +72,7 @@
 \begin_body
 
 \begin_layout Chapter
-Redes neurais residuais
+Redes neurais residuais profundas
 \end_layout
 
 \begin_layout Section
@@ -99,8 +99,18 @@ key "wang_protein_2016"
 \end_inset
 
 , os autores usaram redes neurais convolucionais profundas (não residuais)
- e, realizando a predição a partir de PSSM, obtiveram uma acurácia de aproximada
-mente 84% (
+ e, realizando a predição a partir de 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+, obtiveram uma acurácia de aproximadamente 84% (
 \begin_inset Formula $Q_{3}$
 \end_inset
 
@@ -114,7 +124,14 @@ Redes neurais residuais
 
 \begin_layout Standard
 Redes neurais com mais de uma camada oculta de neurônios são chamadas de
- redes neurais profundas.
+ redes neurais profundas 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mhaskar_when_2017"
+
+\end_inset
+
+.
  Devido ao maior número de camadas ocultas, as redes neurais profundas são
  capazes de integrar atributos de vários níveis de abstração de maneira
  hierárquica.
@@ -677,10 +694,17 @@ key "zagoruyko_wide_2016"
 
 .
  Cada bloco contém duas funções de ativação não lineares do tipo 
-\emph on
-Parametric ReLU
-\emph default
- (PReLU) 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PReLU
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "he_delving_2015"
@@ -714,7 +738,18 @@ reference "alg:bloco-usado"
 \end_layout
 
 \begin_layout Standard
-A função PReLU é:
+A função 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PReLU
+\end_layout
+
+\end_inset
+
+ é:
 \end_layout
 
 \begin_layout Standard
@@ -818,8 +853,18 @@ name "alg:bloco-usado"
 \end_inset
 
 Diagrama da configuração de bloco utilizada.
- Cada bloco possui duas funções de ativação PReLU, duas camadas de convolução
- 3x1 e uma camada de 
+ Cada bloco possui duas funções de ativação 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PReLU
+\end_layout
+
+\end_inset
+
+, duas camadas de convolução 3x1 e uma camada de 
 \emph on
 dropout
 \emph default
@@ -979,7 +1024,7 @@ o.
 \begin_layout Standard
 As proteínas do conjunto de treinamento são utilizadas em lotes (
 \emph on
-batches
+minibatches
 \emph default
 ) de 64, para as redes maiores, ou 128, para as menores.
  Essa variação foi necessária devido à memória disponível.
@@ -1057,6 +1102,7 @@ A análise do treinamento indica que, dentre as redes residuais testadas,
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1099,6 +1145,7 @@ Aprendizado da rede residual com 4 blocos demonstrado pela redução da entropia
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1142,6 +1189,7 @@ Aprendizado da rede residual com 8 blocos demonstrado pela redução da entropia
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1244,6 +1292,7 @@ reference "subsec:Rede-neural-hk"
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -4959,6 +5008,7 @@ Q_{3}dissenso\simeq0,478
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -6084,6 +6134,7 @@ grafico gerado com model_resnet_q_ss.py
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6199,6 +6250,7 @@ grafico gerado com model_hk_len_ss.py
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6335,6 +6387,7 @@ No grupo dos polares, há a formação de subgrupos como serina (S) e treonina
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6380,6 +6433,7 @@ Agrupamento da representação dos aminoácidos aprendida pela primeira camada
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6424,6 +6478,7 @@ Agrupamento da representação dos aminoácidos aprendida pela primeira camada
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6523,6 +6578,7 @@ reference "fig:resnet-good-3eod"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6573,6 +6629,7 @@ Estados internos da rede residual durante a predição do domínio N-terminal
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6657,6 +6714,7 @@ As probabilidades extraídas após cada bloco da rede residual indicam vários
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -6711,6 +6769,7 @@ Streptococcus suis
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open

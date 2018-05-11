@@ -382,6 +382,350 @@ listoftables
 \end_layout
 
 \begin_layout Standard
+
+\lang american
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%*************************
+\end_layout
+
+\begin_layout Plain Layout
+
+% Acronyms
+\end_layout
+
+\begin_layout Plain Layout
+
+%*************************
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+phantomsection
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+refstepcounter{dummy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pdfbookmark[1]{Lista de siglas e acrônimos}{acronyms}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+markboth{
+\backslash
+spacedlowsmallcaps{Acronyms}}{
+\backslash
+spacedlowsmallcaps{Acronyms}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+chapter*{Lista de Siglas e Acrônimos}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{acronym}[UML]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{AC}{Autômato Celular}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{ACE}{Autômato Celular Elementar}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{CBA}{Class Balance Accuracy} 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{CE}{Cross Entropy}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{DCNN}{Deep Convolutional Neural Network}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{EDA}{Estimation of distribution algorithm} 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{LTU}{Linear Threshold Unit}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{MCC}{Matthews Correlation Coeficient} 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{MLP}{Multi Layer Perceptron} 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{PDB}{Protein Data Bank} 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{PSSM}{Position Specific Scoring Matrix} 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{PReLU}{Parametric Rectified Linear Unit}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{ReLU}{Rectified Linear Unit} 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{ResNet}{Residual Neural Network} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{acronym}              
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%*************************
+\end_layout
+
+\begin_layout Plain Layout
+
+% Acronyms
+\end_layout
+
+\begin_layout Plain Layout
+
+%*************************
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+phantomsection
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+refstepcounter{dummy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pdfbookmark[1]{Acronimos}{acronyms}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+markboth{
+\backslash
+spacedlowsmallcaps{Acronimos}}{
+\backslash
+spacedlowsmallcaps{Acronimos}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+chapter*{Acronyms}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{acronym}[UML]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{PSSM}{Position Specific Scoring Matrix} 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{EDA}{Estimation of distribution algorithm} 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{CBA}{Class Balance Accuracy} 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{MCC}{Matthews Correlation Coeficient} 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{CE}{Cross Entropy} 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{DCNN}{Deep Convolutional Neural Network} 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{ResNet}{Residual Neural Network} 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{PDB}{Protein Data Bank} 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{LTU}{Linear Threshold Unit} 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{MLP}{Multi Layer Perceptron} 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{ReLU}{Rectified Linear Unit} 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+acro{PRELU}{Parametric Rectified Linear Unit}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{acronym}              
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Note Note
 status open
 

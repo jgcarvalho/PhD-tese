@@ -1,0 +1,11 @@
+estrutura primária - 
+estrutura secundária
+estrutura terciária
+estrutura quaternária
+enovelamento
+atribuição da estrutura secundária 
+predição da estrutura secundária
+PSSM
+conjunto de treinamento
+conjunto de teste
+conjunto de validação

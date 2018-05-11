@@ -1,4 +1,4 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
 \lyxformat 508
 \begin_document
 \begin_header
@@ -21,7 +21,6 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -51,7 +50,6 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
-\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -60,10 +58,7 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\is_math_indent 0
-\math_numbering_side default
-\quotes_style swedish
-\dynamic_quotes 0
+\quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -143,9 +138,19 @@ key "jones_protein_1999"
 
 \end_inset
 
-, que realiza a predição a partir da PSSM, indicam que o ganho na acurácia
- da predição ao se utilizar informações da conservação evolutiva pode ser
- de até 15%.
+, que realiza a predição a partir da 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+, indicam que o ganho na acurácia da predição ao se utilizar informações
+ da conservação evolutiva pode ser de até 15%.
  A rede HK forneceu ainda uma acurácia de referência para comparamos com
  nossos modelos, o quais também realizam a predição a partir da sequência
  de resíduos.
@@ -221,15 +226,37 @@ The inverse problem of deducing the local rules from a given global behavior
 
 \begin_layout Standard
 Esse problema foi enfrentado por nós com a implementação de um algoritmo
- de estimação de distribuição (EDA) de forma distribuída, possibilitando
- a utilização de infraestrutura de computação de alto desempenho.
+ de estimação de distribuição (
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+EDA
+\end_layout
+
+\end_inset
+
+) de forma distribuída, possibilitando a utilização de infraestrutura de
+ computação de alto desempenho.
  Consequentemente, isso aumentou a eficiência no processo de otimização
  das regras assim como possibilitou o aumento no número de proteínas em
  nosso conjunto de treinamento.
 \end_layout
 
 \begin_layout Standard
-Outro problema observado foi a definição de estados do AC.
+Outro problema observado foi a definição de estados do 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+.
  Nossa abordagem inicial foi utilizar cada resíduo como um estado e adicionar
  quatro estados: um para hélice, um para fita, um para coil e mais um para
  início/fim da sequência.
@@ -263,10 +290,31 @@ contexto
 
 .
  Iniciamos com apenas dois contextos, polar e apolar.
- Acreditamos que esses dois contextos auxiliariam o AC na formação de hélices
- e fitas com características anfipáticas.
+ Acreditamos que esses dois contextos auxiliariam o 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ na formação de hélices e fitas com características anfipáticas.
  Com o uso de contextos observamos uma melhora na capacidade preditiva do
- AC.
+ 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+.
  Isso nos levou a explorar outras características dos resíduos como contextos.
  Primeiro, tornamos glicinas e prolinas dois novos contextos e então, adicionamo
 s outros dois, para resíduos carregados, positivos e negativos.
@@ -280,7 +328,18 @@ as, no entanto, também tornaram a busca por regras ainda mais difícil.
 \begin_layout Standard
 A definição de uma métrica para a acurácia e a forma de como calculá-la
  na evolução do autômato também nos trouxeram dificuldades.
- A melhor métrica testada foi o CBA (
+ A melhor métrica testada foi o 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+CBA
+\end_layout
+
+\end_inset
+
+ (
 \emph on
 Class Balance Accuracy
 \emph default
@@ -293,14 +352,55 @@ key "mosley_balanced_2013"
 
 , o qual foi desenvolvido para problemas com classes desbalanceadas, como
  é caso das estruturas secundárias.
- Em relação a forma de calculá-la para o AC, haviam diversas possibilidades,
- cada uma com vantagens e desvantagens.
- Poderíamos predefinir um número finito de evoluções do AC e calcular a
- acurácia na última geração.
- No entanto, observamos que o AC podia apresentar um padrão de oscilação
- entre estados durante a evolução.
+ Em relação a forma de calculá-la para o 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+, haviam diversas possibilidades, cada uma com vantagens e desvantagens.
+ Poderíamos predefinir um número finito de evoluções do 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ e calcular a acurácia na última geração.
+ No entanto, observamos que o 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+ podia apresentar um padrão de oscilação entre estados durante a evolução.
  Testamos solucionar este problema calculando a acurácia em um intervalo
- de gerações até finalmente decidirmos utilizar todas as gerações do AC.
+ de gerações até finalmente decidirmos utilizar todas as gerações do 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+AC
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -346,11 +446,18 @@ Configuração dos blocos da rede residual
 
 \begin_layout Standard
 A proposta original para as redes residuais utilizam uma função de ativação
- não linear do tipo ReLU (
-\emph on
-Rectified Linear Unit
-\emph default
-) 
+ não linear do tipo 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+ReLU
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "nair_rectified_2010"
@@ -550,7 +657,18 @@ Acurácia dos modelos de predição
 \begin_layout Standard
 Os modelos de predição de estruturas secundárias desenvolvidos neste trabalho,
  os quais utilizam apenas a informação contida na estrutura primária, apresentar
-am acurácia inferior aos modelos que utilizam PSSM.
+am acurácia inferior aos modelos que utilizam 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+.
  Entretanto, acreditamos que o modelo baseado em redes residuais apresenta
  propriedades que precisam ser consideradas durante a comparação.
 \end_layout
@@ -580,14 +698,36 @@ reference "tab:acuracia-parametro"
 \end_layout
 
 \begin_layout Standard
-Outro fator relevante é a não utilização de PSSM como entrada.
+Outro fator relevante é a não utilização de 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+ como entrada.
  Como nosso objetivo sempre envolveu a construção de um modelo capaz de
  fornecer informações que pudessem ser relacionadas ao processo físico de
  formação das estruturas secundárias e, consequentemente, ao enovelamento,
  acreditamos que o modelo deveria se basear apenas na informação contida
  na estrutura primária da proteínas.
  No entanto, futuramente poderemos adaptar um modelo similar que utilize
- PSSM.
+ 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+.
  Nesse ponto, é relevante mencionar que todos os 5 métodos testados por
  Wang e colaboradores 
 \begin_inset CommandInset citation
@@ -596,9 +736,31 @@ key "wang_protein_2016"
 
 \end_inset
 
- e que utilizam PSSM, entre eles o PSIPRED e a rede neural convolucional
- profunda desenvolvida por eles, tem uma perda de até 10% de acurácia quando
- o alinhamento para construção da PSSM contém poucas proteínas.
+ e que utilizam 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+, entre eles o PSIPRED e a rede neural convolucional profunda desenvolvida
+ por eles, tem uma perda de até 10% de acurácia quando o alinhamento para
+ construção da 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+ contém poucas proteínas.
  Para esses casos, os 5 métodos apresentaram acurácia em torno de 74% 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1175,8 +1337,18 @@ Comparação de métodos de predição de estruturas secundárias.
  elementos no conjunto de regras.
  Nos demais modelos os parâmetros correspondem ao número de pesos que são
  otimizados durante o treinamento.
- (b) A acurácia da rede neural convolucional profunda (DCNN) corresponde
- ao dado do artigo 
+ (b) A acurácia da rede neural convolucional profunda (
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+DCNN
+\end_layout
+
+\end_inset
+
+) corresponde ao dado do artigo 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "wang_protein_2016"
@@ -1218,7 +1390,7 @@ Qual a relação entre os estados internos da rede neural e o processo de
 \end_layout
 
 \begin_layout Chapter
-Conclusões e perspectivas futuras 
+Conclusões e perspectivas
 \end_layout
 
 \begin_layout Standard
@@ -1245,21 +1417,22 @@ fitness
 
 \begin_layout Standard
 Por outro lado, o modelo desenvolvido utilizando redes neurais residuais
- profundas apresentou alta acurácia em relação a outros métodos de predição
- a partir da estrutura primária.
+ profundas apresentou maior acurácia que outros métodos de predição a partir
+ da estrutura primária.
  A extração de informações da rede residual durante o processo de predição
  indicou ser possível determinarmos quais regiões da sequência tem maior
  influência na predição de cada elemento da estrutura secundária.
  Ainda não temos evidências suficientes para afirmar que há uma relação
  significativa entre o processo de predição e o processo físico de formação
  dessas estruturas.
- Futuramente planejamos comparar dados experimentais do enovelamento de
- proteínas com os resultados da predição.
- Nesse sentido, a observação de que as redes residuais aprenderam como agrupar
- aminoácidos e que esses agrupamentos tem relação com características estruturai
-s e físico-químicas pode ser um ótimo indício de que a relação entre o processo
- de predição da rede residual possa ser relacionado ao processo de formação
- das estruturas proteicas.
+ Futuramente planejamos comparar dados experimentais sobre as etapas iniciais
+ do enovelamento de proteínas com os resultados da predição utilizando nosso
+ método baseado em redes neurais residuais profundas.
+ Nesse sentido, a observarmos neste trabalho que as redes residuais aprenderam
+ como agrupar aminoácidos e que esses agrupamentos tem relação com característic
+as estruturais e físico-químicas pode ser um ótimo indício de que a relação
+ entre o processo de predição da rede residual possa ser relacionada ao
+ processo de formação das estruturas proteicas.
  
 \end_layout
 

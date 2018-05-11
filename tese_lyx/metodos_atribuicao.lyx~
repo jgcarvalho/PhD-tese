@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,8 +21,6 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype false
-\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -52,7 +50,6 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
-\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -61,10 +58,7 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\is_math_indent 0
-\math_numbering_side default
-\quotes_style swedish
-\dynamic_quotes 0
+\quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -124,7 +118,6 @@ Diferentes autores sugerem a impossibilidade de se eleger qual o melhor
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kabsch_dictionary_1983,colloch_comparison_1993,frishman_knowledge-based_1995,zhang_secondary_2015"
-literal "true"
 
 \end_inset
 
@@ -159,7 +152,6 @@ Dictionary of Protein Secondary Structure
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kabsch_dictionary_1983"
-literal "true"
 
 \end_inset
 
@@ -312,7 +304,6 @@ Os autores afirmam que, por este modelo, uma boa ligação de hidrogênio teria
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kabsch_dictionary_1983"
-literal "true"
 
 \end_inset
 
@@ -483,7 +474,6 @@ O método de atribuição de estrutura secundárias STRIDE foi desenvolvido
 \begin_inset CommandInset citation
 LatexCommand citep
 key "frishman_knowledge-based_1995"
-literal "true"
 
 \end_inset
 
@@ -649,9 +639,6 @@ Na equação
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:stride_et"
-plural "false"
-caps "false"
-noprefix "false"
 
 \end_inset
 
@@ -671,7 +658,6 @@ noprefix "false"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kabsch_dictionary_1983"
-literal "true"
 
 \end_inset
 
@@ -1002,7 +988,6 @@ KAKSI é um método de atribuição de estruturas secundárias proposto por Mart
 \begin_inset CommandInset citation
 LatexCommand citep
 key "martin_protein_2005"
-literal "true"
 
 \end_inset
 
@@ -1267,7 +1252,6 @@ mesostate
 \begin_inset CommandInset citation
 LatexCommand cite
 key "srinivasan_physical_1999"
-literal "true"
 
 \end_inset
 
@@ -1542,7 +1526,6 @@ Segundo os autores, a utilização somente dos ângulos torcionais da cadeia
 \begin_inset CommandInset citation
 LatexCommand citep
 key "srinivasan_physical_1999"
-literal "true"
 
 \end_inset
 
@@ -1588,7 +1571,6 @@ TOP8000-best-hom50
 LatexCommand href
 name "github.com/rlabduke/reference_data"
 target "https://github.com/rlabduke/reference_data/tree/master/Top8000"
-literal "false"
 
 \end_inset
 
@@ -1948,7 +1930,7 @@ status open
 
 \begin_layout Plain Layout
 Comparação pareada entre os métodos DSSP, STRIDE, KAKSI e PROSS da fração
- de resíduos com a mesma estrutura secundária atribuída.
+ [0,1] de resíduos com a mesma estrutura secundária atribuída.
  É possível observar que a atribuição mais similar ocorre entre os métodos
  DSSP e STRIDE.
  
@@ -2462,8 +2444,16 @@ Outra característica analisada é a região relativa onde as regiões de dissen
 \end_layout
 
 \begin_layout Standard
-Notamos que a maioria dos dissensos ocorre em regiões de transição entre
- coil e as estruturas secundárias hélice ou fita.
+Notamos que a maioria dos dissensos (
+\begin_inset Quotes sld
+\end_inset
+
+?
+\begin_inset Quotes srd
+\end_inset
+
+) ocorre em regiões de transição entre coil e as estruturas secundárias
+ hélice ou fita.
  Assim, os tipos mais frequentes foram 
 \begin_inset Formula $C?E$
 \end_inset
@@ -2619,7 +2609,6 @@ helix capping
 \begin_inset CommandInset citation
 LatexCommand citep
 key "aurora_helix_1998,doig_n-_1995"
-literal "true"
 
 \end_inset
 
@@ -2631,7 +2620,6 @@ beta-sheet capping
 \begin_inset CommandInset citation
 LatexCommand citep
 key "farzadfard_beta-sheet_2008"
-literal "true"
 
 \end_inset
 

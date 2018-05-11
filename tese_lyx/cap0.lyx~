@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,8 +21,6 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype false
-\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -52,7 +50,6 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
-\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -61,10 +58,7 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\is_math_indent 0
-\math_numbering_side default
-\quotes_style swedish
-\dynamic_quotes 0
+\quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -95,7 +89,8 @@ A segunda parte, nomeada de Desenvolvimento, contém 4 capítulos.
 
 \begin_layout Standard
 No capítulo 2, Métodos de Atribuição de Estruturas Secundárias, descrevemos
- a preparação dos dados utilizados ao longo do trabalho.
+ a preparação dos dados utilizados ao longo do trabalho para compor os conjuntos
+ de treinamento, validação e teste.
  Tais dados consistem de um conjunto de estruturas proteicas resolvidas
  experimentalmente e com alta qualidade, e da estrutura secundária atribuída
  aos seus resíduos através de métodos computacionais.
@@ -126,7 +121,8 @@ Um dos métodos realiza a predição da estrutura secundária utilizando diretam
  Na época, haviam poucas estruturas resolvidas experimentalmente para serem
  usadas no treinamento da rede neural.
  Assim, ao invés de utilizarmos a rede neural original, optamos por implementar
- uma rede neural similar e a treinamos utilizando o nosso conjunto de dados.
+ uma rede neural similar e a treinamos utilizando o nosso conjunto de dados
+ contendo um maior número de estruturas proteicas.
  Essa abordagem possibilitou uma comparação mais justa da capacidade preditiva
  do método.
  
@@ -138,7 +134,18 @@ O outro método escolhido, PSIPRED, representa o estado da arte na predição
  Assim como o método anterior, ele faz uso de redes neurais artificiais.
  Entretanto, o grande diferencial deste método está no uso de matrizes de
  substituição de aminoácidos construídas através do alinhamento de proteínas
- similares (PSSM - 
+ similares (
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+ - 
 \emph on
 Position Specific Scoring Matrix
 \emph default
@@ -147,7 +154,18 @@ Position Specific Scoring Matrix
  proteína, ele obtém, através do alinhamento, informações como regiões mais
  conservadas e substituições mais frequentes em cada posição.
  Como essas informações tem uma relação direta com a estrutura proteica,
- os métodos que utilizam PSSM atingem uma acurácia maior.
+ os métodos que utilizam 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+PSSM
+\end_layout
+
+\end_inset
+
+ atingem uma acurácia maior.
  O PSIPRED é um método atualizado frequentemente e por isso, comparamos
  diretamente os resultados da predição no nosso conjunto de proteínas.
 \end_layout
@@ -165,15 +183,26 @@ Problema Inverso
 \end_inset
 
 , foi realizada utilizando um algoritmo de estimação de distribuição (AED,
- em inglês EDA).
+ em inglês 
+\begin_inset Flex CT - acronym
+status open
+
+\begin_layout Plain Layout
+
+EDA
+\end_layout
+
+\end_inset
+
+).
  Essa busca tem como objetivo encontrar um conjunto de regras capaz de reproduzi
 r o padrão de elementos de estrutura secundária a partir da sequência de
  aminoácidos.
 \end_layout
 
 \begin_layout Standard
-O capítulo 5, Redes Neurais Residuais, descreve a utilização de um método
- de aprendizado profundo (
+O capítulo 5, Redes Neurais Residuais Profundas, descreve a utilização de
+ um método de aprendizado profundo (
 \emph on
 Deep Learning
 \emph default

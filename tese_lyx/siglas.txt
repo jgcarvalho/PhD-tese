@@ -1,0 +1,15 @@
+\acro{AC}{Autômato Celular} 
+\acro{ACE}{Autômato Celular Elementar}
+\acro{PSSM}{Position Specific Scoring Matrix}
+\acro{EDA}{Estimation of distribution algorithm}
+\acro{CBA}{Class Balance Accuracy}
+\acro{MCC}{Matthews Correlation Coeficient}
+\acro{CE}{Cross Entropy}
+\acro{DCNN}{Deep Convolutional Neural Network}
+\acro{ResNet}{Residual Neural Network}
+\acro{PDB}{Protein Data Bank}
+\acro{LTU}{Linear Threshold Unit}
+\acro{MLP}{Multi Layer Perceptron}
+\acro{ReLU}{Rectified Linear Unit}
+\acro{PRELU}{Parametric Rectified Linear Unit}
+
