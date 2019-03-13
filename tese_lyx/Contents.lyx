@@ -305,7 +305,7 @@ listoffigures
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace 8ex
+\begin_inset VSpace 35pheight%
 \end_inset
 
 
@@ -429,9 +429,9 @@ pdfbookmark[1]{Lista de siglas e acrônimos}{acronyms}
 \backslash
 markboth{
 \backslash
-spacedlowsmallcaps{Acronyms}}{
+spacedlowsmallcaps{Lista de siglas e acrônimos}}{
 \backslash
-spacedlowsmallcaps{Acronyms}}
+spacedlowsmallcaps{Lista de siglas e acrônimos}}
 \end_layout
 
 \begin_layout Plain Layout

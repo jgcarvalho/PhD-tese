@@ -1,0 +1,242 @@
+ffmpeg version 3.4.2-2 Copyright (c) 2000-2018 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.3.0-16ubuntu2)
+  configuration: --prefix=/usr --extra-version=2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libavresample   3.  7.  0 /  3.  7.  0
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+  libpostproc    54.  7.100 / 54.  7.100
+Splitting the commandline.
+Reading option '-v' ... matched as option 'v' (set logging level) with argument 'debug'.
+Reading option '-nostdin' ... matched as option 'stdin' (enable or disable interaction on standard input) with argument 0.
+Reading option '-progress' ... matched as option 'progress' (write program-readable progress information) with argument '/tmp/KritaFFmpegProgress.C10682'.
+Reading option '-r' ... matched as option 'r' (set frame rate (Hz value, fraction or abbreviation)) with argument '2'.
+Reading option '-start_number' ... matched as AVOption 'start_number' with argument '0'.
+Reading option '-i' ... matched as input url with argument '/home/jgcarvalho/Documents/PhD-tese/presentation/frame%04d.png'.
+Reading option '-vf' ... matched as option 'vf' (set video filters) with argument 'scale=w=876:h=720:force_original_aspect_ratio=decrease'.
+Reading option '-y' ... matched as option 'y' (overwrite output files) with argument '1'.
+Reading option '/home/jgcarvalho/Documents/PhD-tese/presentation/conv_bg_white.mp4' ... matched as output url.
+Finished splitting the commandline.
+Parsing a group of options: global .
+Applying option v (set logging level) with argument debug.
+Applying option nostdin (enable or disable interaction on standard input) with argument 0.
+Applying option progress (write program-readable progress information) with argument /tmp/KritaFFmpegProgress.C10682.
+[file @ 0x55aab9e6ba80] Setting default whitelist 'file,crypto'
+Applying option y (overwrite output files) with argument 1.
+Successfully parsed a group of options.
+Parsing a group of options: input url /home/jgcarvalho/Documents/PhD-tese/presentation/frame%04d.png.
+Applying option r (set frame rate (Hz value, fraction or abbreviation)) with argument 2.
+Successfully parsed a group of options.
+Opening an input file: /home/jgcarvalho/Documents/PhD-tese/presentation/frame%04d.png.
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0000.png' for reading
+[file @ 0x55aab9e70ac0] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aab9e6fb20] Statistics: 1469209 bytes read, 0 seeks
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0001.png' for reading
+[file @ 0x55aab9e710e0] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aab9e711c0] Statistics: 1469209 bytes read, 0 seeks
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0002.png' for reading
+[file @ 0x55aab9e71820] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aab9e71180] Statistics: 1469209 bytes read, 0 seeks
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0003.png' for reading
+[file @ 0x55aab9e71f00] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aab9e71180] Statistics: 1476612 bytes read, 0 seeks
+[image2 @ 0x55aab9e6bee0] Probe buffer size limit of 5000000 bytes reached
+Input #0, image2, from '/home/jgcarvalho/Documents/PhD-tese/presentation/frame%04d.png':
+  Duration: 00:00:01.04, start: 0.000000, bitrate: N/A
+    Stream #0:0, 4, 1/25: Video: png, 1 reference frame, rgba(pc), 4732x3885 [SAR 23622:23622 DAR 676:555], 0/1, 25 fps, 25 tbr, 25 tbn, 25 tbc
+Successfully opened the file.
+Parsing a group of options: output url /home/jgcarvalho/Documents/PhD-tese/presentation/conv_bg_white.mp4.
+Applying option vf (set video filters) with argument scale=w=876:h=720:force_original_aspect_ratio=decrease.
+Successfully parsed a group of options.
+Opening an output file: /home/jgcarvalho/Documents/PhD-tese/presentation/conv_bg_white.mp4.
+[file @ 0x55aab9e77e40] Setting default whitelist 'file,crypto'
+Successfully opened the file.
+detected 8 logical cores
+Stream mapping:
+  Stream #0:0 -> #0:0 (png (native) -> h264 (libx264))
+cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+    Last message repeated 4 times
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0004.png' for reading
+[file @ 0x55aab9e855c0] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aab9e8d720] Statistics: 1515526 bytes read, 0 seeks
+cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0005.png' for reading
+[file @ 0x55aab9e85840] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aab9e72000] Statistics: 1604717 bytes read, 0 seeks
+cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0006.png' for reading
+[file @ 0x55aab9e85ac0] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aab9e8dc20] Statistics: 1653132 bytes read, 0 seeks
+cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0007.png' for reading
+[file @ 0x55aab9e85d40] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aab9e8dea0] Statistics: 1763247 bytes read, 0 seeks
+cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0008.png' for reading
+[file @ 0x55aab9e85e40] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aab9e8e0a0] Statistics: 2056251 bytes read, 0 seeks
+[Parsed_scale_0 @ 0x55aab9e87740] Setting 'w' to value '876'
+[Parsed_scale_0 @ 0x55aab9e87740] Setting 'h' to value '720'
+[Parsed_scale_0 @ 0x55aab9e87740] Setting 'force_original_aspect_ratio' to value 'decrease'
+[Parsed_scale_0 @ 0x55aab9e87740] Setting 'flags' to value 'bicubic'
+[Parsed_scale_0 @ 0x55aab9e87740] w:876 h:720 flags:'bicubic' interl:0
+[graph 0 input from stream 0:0 @ 0x55aab9e88220] Setting 'video_size' to value '4732x3885'
+[graph 0 input from stream 0:0 @ 0x55aab9e88220] Setting 'pix_fmt' to value '28'
+[graph 0 input from stream 0:0 @ 0x55aab9e88220] Setting 'time_base' to value '1/2'
+[graph 0 input from stream 0:0 @ 0x55aab9e88220] Setting 'pixel_aspect' to value '23622/23622'
+[graph 0 input from stream 0:0 @ 0x55aab9e88220] Setting 'sws_param' to value 'flags=2'
+[graph 0 input from stream 0:0 @ 0x55aab9e88220] Setting 'frame_rate' to value '2/1'
+[graph 0 input from stream 0:0 @ 0x55aab9e88220] w:4732 h:3885 pixfmt:rgba tb:1/2 fr:2/1 sar:23622/23622 sws_param:flags=2
+[format @ 0x55aab9e888c0] compat: called with args=[yuv420p|yuvj420p|yuv422p|yuvj422p|yuv444p|yuvj444p|nv12|nv16|nv21]
+[format @ 0x55aab9e888c0] Setting 'pix_fmts' to value 'yuv420p|yuvj420p|yuv422p|yuvj422p|yuv444p|yuvj444p|nv12|nv16|nv21'
+[AVFilterGraph @ 0x55aab9e85f20] query_formats: 4 queried, 3 merged, 0 already done, 0 delayed
+[Parsed_scale_0 @ 0x55aab9e87740] picking yuv444p out of 8 ref:rgba alpha:1
+[Parsed_scale_0 @ 0x55aab9e87740] w:4732 h:3885 fmt:rgba sar:23622/23622 -> w:876 h:719 fmt:yuv444p sar:121511/121545 flags:0x4
+[libx264 @ 0x55aab9e74540] using mv_range_thread = 24
+[libx264 @ 0x55aab9e74540] using SAR=3574/3575
+[libx264 @ 0x55aab9e74540] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2
+[libx264 @ 0x55aab9e74540] profile High 4:4:4 Predictive, level 3.1, 4:4:4 8-bit
+[libx264 @ 0x55aab9e74540] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x1:0x111 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=0 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=4 threads=12 lookahead_threads=2 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=2 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to '/home/jgcarvalho/Documents/PhD-tese/presentation/conv_bg_white.mp4':
+  Metadata:
+    encoder         : Lavf57.83.100
+    Stream #0:0, 0, 1/16384: Video: h264 (libx264), 1 reference frame (avc1 / 0x31637661), yuv444p, 876x719 [SAR 121511:121545 DAR 676:555], 0/1, q=-1--1, 2 fps, 16384 tbn, 2 tbc
+    Metadata:
+      encoder         : Lavc57.107.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: -1
+Clipping frame in rate conversion by 0.000008
+[libx264 @ 0x55aab9e74540] using SAR=60755/60772
+[libx264 @ 0x55aab9e74540] using mv_range_thread = 24
+cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0009.png' for reading
+[file @ 0x55aaba00bba0] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aaba00bc80] Statistics: 2360431 bytes read, 0 seeks
+frame=    2 fps=0.0 q=0.0 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0010.png' for reading
+[file @ 0x55aaba00bba0] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aaba00bc80] Statistics: 2436199 bytes read, 0 seeks
+cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0011.png' for reading
+[file @ 0x55aaba00bbc0] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aaba2bbc80] Statistics: 2436650 bytes read, 0 seeks
+cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0012.png' for reading
+[file @ 0x55aaba00bc40] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aaba2bbc80] Statistics: 2436650 bytes read, 0 seeks
+cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0013.png' for reading
+[file @ 0x55aaba2bbe00] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aaba2bbc80] Statistics: 2436650 bytes read, 0 seeks
+frame=    6 fps=4.6 q=0.0 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0014.png' for reading
+[file @ 0x55aaba4af300] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aaba4af3e0] Statistics: 1469271 bytes read, 0 seeks
+cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0015.png' for reading
+[file @ 0x55aaba4b3500] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aaba00bba0] Statistics: 1476481 bytes read, 0 seeks
+cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0016.png' for reading
+[file @ 0x55aaba4b36c0] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aaba4b3500] Statistics: 1512637 bytes read, 0 seeks
+cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0017.png' for reading
+[file @ 0x55aaba4b3640] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aaba4b3720] Statistics: 1594735 bytes read, 0 seeks
+frame=   10 fps=5.5 q=0.0 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0018.png' for reading
+[file @ 0x55aaba4b3760] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aaba2bbc80] Statistics: 1645014 bytes read, 0 seeks
+cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0019.png' for reading
+[file @ 0x55aaba4b3780] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aaba2bbc80] Statistics: 1752739 bytes read, 0 seeks
+cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0020.png' for reading
+[file @ 0x55aaba2bbe00] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aaba2bbc80] Statistics: 2017557 bytes read, 0 seeks
+cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0021.png' for reading
+[file @ 0x55aaba4b3680] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aaba4b3500] Statistics: 2300801 bytes read, 0 seeks
+frame=   14 fps=5.9 q=0.0 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0022.png' for reading
+[file @ 0x55aaba4af340] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aaba2bbc80] Statistics: 2364739 bytes read, 0 seeks
+cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0023.png' for reading
+[file @ 0x55aaba4af360] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aaba4b78c0] Statistics: 2364739 bytes read, 0 seeks
+cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0024.png' for reading
+[file @ 0x55aaba4af340] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aaba4af420] Statistics: 2364739 bytes read, 0 seeks
+cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+[image2 @ 0x55aab9e6bee0] Opening '/home/jgcarvalho/Documents/PhD-tese/presentation/frame0025.png' for reading
+[file @ 0x55aaba2bbe00] Setting default whitelist 'file,crypto'
+[AVIOContext @ 0x55aaba4af300] Statistics: 1469209 bytes read, 0 seeks
+frame=   18 fps=6.2 q=0.0 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+    Last message repeated 4 times
+frame=   23 fps=6.6 q=0.0 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    cur_dts is invalid (this is harmless if it occurs once at the start per stream)
+    Last message repeated 4 times
+[out_0_0 @ 0x55aab9e88f20] EOF on sink link out_0_0:default.
+No more output streams to write to, finishing.
+[libx264 @ 0x55aab9e74540] using SAR=60755/60772
+[libx264 @ 0x55aab9e74540] using mv_range_thread = 24
+[libx264 @ 0x55aab9e74540] frame=   0 QP=11.86 NAL=3 Slice:I Poc:0   I:2475 P:0    SKIP:0    size=106889 bytes
+[libx264 @ 0x55aab9e74540] frame=   1 QP=8.97 NAL=2 Slice:P Poc:8   I:93   P:106  SKIP:2276 size=2365 bytes
+[libx264 @ 0x55aab9e74540] frame=   2 QP=11.00 NAL=2 Slice:B Poc:4   I:0    P:122  SKIP:2353 size=131 bytes
+[libx264 @ 0x55aab9e74540] frame=   3 QP=12.00 NAL=0 Slice:B Poc:2   I:0    P:99   SKIP:2376 size=95 bytes
+[libx264 @ 0x55aab9e74540] frame=   4 QP=12.00 NAL=0 Slice:B Poc:6   I:0    P:24   SKIP:2451 size=50 bytes
+[libx264 @ 0x55aab9e74540] frame=   5 QP=12.14 NAL=2 Slice:P Poc:16  I:198  P:123  SKIP:2154 size=25363 bytes
+[libx264 @ 0x55aab9e74540] frame=   6 QP=11.00 NAL=2 Slice:B Poc:12  I:0    P:123  SKIP:2351 size=112 bytes
+[libx264 @ 0x55aab9e74540] frame=   7 QP=12.00 NAL=0 Slice:B Poc:10  I:0    P:54   SKIP:2421 size=69 bytes
+[libx264 @ 0x55aab9e74540] frame=   8 QP=17.68 NAL=0 Slice:B Poc:14  I:0    P:87   SKIP:2386 size=155 bytes
+[libx264 @ 0x55aab9e74540] frame=   9 QP=13.07 NAL=2 Slice:P Poc:24  I:366  P:131  SKIP:1978 size=20670 bytes
+[libx264 @ 0x55aab9e74540] frame=  10 QP=16.21 NAL=2 Slice:B Poc:20  I:0    P:222  SKIP:2251 size=556 bytes
+[libx264 @ 0x55aab9e74540] frame=  11 QP=12.00 NAL=0 Slice:B Poc:18  I:0    P:165  SKIP:2309 size=122 bytes
+[libx264 @ 0x55aab9e74540] frame=  12 QP=12.00 NAL=0 Slice:B Poc:22  I:0    P:96   SKIP:2379 size=92 bytes
+[libx264 @ 0x55aab9e74540] frame=  13 QP=15.68 NAL=2 Slice:P Poc:32  I:228  P:542  SKIP:1705 size=15423 bytes
+[libx264 @ 0x55aab9e74540] frame=  14 QP=14.28 NAL=2 Slice:B Poc:28  I:0    P:279  SKIP:2196 size=200 bytes
+[libx264 @ 0x55aab9e74540] frame=  15 QP=15.41 NAL=0 Slice:B Poc:26  I:0    P:175  SKIP:2300 size=152 bytes
+[libx264 @ 0x55aab9e74540] frame=  16 QP=12.00 NAL=0 Slice:B Poc:30  I:0    P:48   SKIP:2427 size=75 bytes
+[libx264 @ 0x55aab9e74540] frame=  17 QP=15.50 NAL=2 Slice:P Poc:40  I:163  P:94   SKIP:2218 size=21373 bytes
+[libx264 @ 0x55aab9e74540] frame=  18 QP=15.64 NAL=2 Slice:B Poc:36  I:0    P:139  SKIP:2336 size=150 bytes
+[libx264 @ 0x55aab9e74540] frame=  19 QP=12.00 NAL=0 Slice:B Poc:34  I:2    P:50   SKIP:2423 size=77 bytes
+[libx264 @ 0x55aab9e74540] frame=  20 QP=12.00 NAL=0 Slice:B Poc:38  I:2    P:104  SKIP:2368 size=107 bytes
+[libx264 @ 0x55aab9e74540] frame=  21 QP=24.99 NAL=2 Slice:P Poc:48  I:142  P:102  SKIP:2231 size=10277 bytes
+[libx264 @ 0x55aab9e74540] frame=  22 QP=19.73 NAL=2 Slice:B Poc:44  I:7    P:186  SKIP:2273 size=496 bytes
+[libx264 @ 0x55aab9e74540] frame=  23 QP=12.00 NAL=0 Slice:B Poc:42  I:0    P:144  SKIP:2331 size=117 bytes
+[libx264 @ 0x55aab9e74540] frame=  24 QP=12.00 NAL=0 Slice:B Poc:46  I:0    P:117  SKIP:2358 size=119 bytes
+[libx264 @ 0x55aab9e74540] frame=  25 QP=18.74 NAL=2 Slice:P Poc:50  I:163  P:333  SKIP:1979 size=8752 bytes
+frame=   26 fps=6.2 q=-1.0 Lsize=     211kB time=00:00:11.50 bitrate= 150.2kbits/s speed=2.74x    
+[AVIOContext @ 0x55aab9e6bda0] Statistics: 0 seeks, 7 writeouts
+video:210kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.544544%
+Input file #0 (/home/jgcarvalho/Documents/PhD-tese/presentation/frame%04d.png):
+  Input stream #0:0 (video): 26 packets read (48916353 bytes); 26 frames decoded; 
+  Total: 26 packets (48916353 bytes) demuxed
+Output file #0 (/home/jgcarvalho/Documents/PhD-tese/presentation/conv_bg_white.mp4):
+  Output stream #0:0 (video): 26 frames encoded; 26 packets muxed (214675 bytes); 
+  Total: 26 packets (214675 bytes) muxed
+26 frames successfully decoded, 0 decoding errors
+[AVIOContext @ 0x55aab9e75020] Statistics: 2 seeks, 4 writeouts
+[libx264 @ 0x55aab9e74540] frame I:1     Avg QP:11.86  size:106889
+[libx264 @ 0x55aab9e74540] frame P:7     Avg QP:15.58  size: 14889
+[libx264 @ 0x55aab9e74540] frame B:18    Avg QP:13.39  size:   160
+[libx264 @ 0x55aab9e74540] consecutive B-frames:  7.7%  0.0%  0.0% 92.3%
+[libx264 @ 0x55aab9e74540] mb I  I16..4: 24.0%  0.0% 76.0%
+[libx264 @ 0x55aab9e74540] mb P  I16..4:  1.4%  0.0%  6.4%  P16..4:  6.3%  1.3%  0.7%  0.0%  0.0%    skip:83.9%
+[libx264 @ 0x55aab9e74540] mb B  I16..4:  0.0%  0.0%  0.0%  B16..8:  4.8%  0.2%  0.0%  direct: 0.0%  skip:94.9%  L0:46.6% L1:53.4% BI: 0.0%
+[libx264 @ 0x55aab9e74540] coded y,u,v intra: 56.2% 15.0% 15.5% inter: 0.5% 0.3% 0.4%
+[libx264 @ 0x55aab9e74540] i16 v,h,dc,p: 39% 54%  7%  0%
+[libx264 @ 0x55aab9e74540] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 40% 15% 14%  5%  3% 10%  2%  9%  2%
+[libx264 @ 0x55aab9e74540] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x55aab9e74540] ref P L0: 46.2%  3.7% 12.9% 37.2%
+[libx264 @ 0x55aab9e74540] ref B L0: 88.9%  8.4%  2.7%
+[libx264 @ 0x55aab9e74540] ref B L1: 97.1%  2.9%
+[libx264 @ 0x55aab9e74540] kb/s:131.68
